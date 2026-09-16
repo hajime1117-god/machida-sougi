@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { PHONE } from '../../config/site';
+---
+<BaseLayout title="ご相談を受け付けました" description="お問い合わせありがとうございます。内容を確認のうえ、折り返しご連絡します。" pageType="contact" noindex fixedCta={false}>
+  <div class="container">
+    <article class="article thanks">
+      <h1>ご相談を受け付けました</h1>
+      <p class="lead">お問い合わせありがとうございます。内容を確認のうえ、通常2営業日以内にご連絡します。</p>
+      <p>お急ぎの場合はお電話（<a href={PHONE.tel} data-cta="tel" data-cta-position="middle" class="num">{PHONE.display}</a>）でもお受けしています。{PHONE.hours}。</p>
+      <p class="note">※本サイトは検証用の架空サイトのため、実際の送信・返信は行われません。</p>
+      <p><a href="/">トップページへ戻る</a>　/　<a href="/faq/">よくある質問を見る</a></p>
+    </article>
+  </div>
+</BaseLayout>
+<style>
+  .thanks { padding-block: 2rem 4rem; }
+</style>

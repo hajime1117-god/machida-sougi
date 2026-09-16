@@ -1,0 +1,11 @@
+---
+/** 最終確認日（変更されうる情報を含むページに表示） */
+import { SITE } from '../config/site';
+interface Props { date?: string; note?: string; }
+const { date = SITE.lastReviewed, note } = Astro.props;
+const [y, m, d] = date.split('-');
+---
+<p class="last-reviewed">情報の最終確認日：<time datetime={date}>{y}年{Number(m)}月{Number(d)}日</time>{note && <span>　{note}</span>}</p>
+<style>
+  .last-reviewed { font-size: var(--fs-xs); color: var(--c-ink-3); margin: 0.5em 0 1.5em; }
+</style>

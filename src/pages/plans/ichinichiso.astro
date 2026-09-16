@@ -1,0 +1,137 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import NextLink from '../../components/NextLink.astro';
+import Source from '../../components/Source.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
+
+const title = '町田市の一日葬｜費用・流れ・家族葬との違い';
+const h1 = '町田市の一日葬｜費用・1日の流れ・家族葬との違い';
+const description = '町田市で一日葬を行う場合の費用（プラン396,000円〜、10名で総額約50〜65万円）、通夜を省いた当日の流れ、南多摩斎場など使える式場、菩提寺への確認や参列者への伝え方など注意点を解説します。';
+const toc = [
+  { id: 'toha', label: '一日葬とは' },
+  { id: 'hiyou', label: '町田市の一日葬の費用' },
+  { id: 'plan', label: '一日葬プランの内容' },
+  { id: 'nagare', label: '一日葬の流れ（当日）' },
+  { id: 'muku', label: '一日葬が向いている方・向かない方' },
+  { id: 'chui', label: '一日葬の注意点' },
+  { id: 'faq', label: 'よくある質問' },
+];
+const related = [
+  { href: '/plans/kazokuso/', label: '家族葬', note: '通夜と告別式を2日間で行う' },
+  { href: '/plans/kasoshiki/', label: '火葬式・直葬', note: '式を行わず火葬のみ' },
+  { href: '/column/ichinichiso-kazokuso/', label: '一日葬と家族葬、どちらを選ぶか', note: '迷ったときの判断の目安' },
+  { href: '/cost/', label: '葬儀費用の内訳と総額例', note: '追加になりやすい費用' },
+  { href: '/halls/', label: '町田市の斎場・葬儀場', note: '一日葬ができる式場' },
+];
+const faqs = [
+  { q: '一日葬は「通夜をしない家族葬」と同じですか？', a: '<p>ほぼ同じ意味です。一日葬は通夜を省き、告別式と火葬を1日で行う形式で、参列者は家族・親族中心になることが多いため「1日で行う家族葬」と説明されることもあります。当サイトでは、通夜の有無で家族葬と一日葬を区別しています。</p>' },
+  { q: '一日葬でも安置は必要ですか？', a: '<p>必要です。法律で亡くなってから24時間以内の火葬が禁止されているため、告別式の当日まで最低1日はご自宅または安置施設で安置します。南多摩斎場の空き状況によっては、安置が3〜7日になることもあります。</p>' },
+  { q: '一日葬の告別式は何時頃に始まりますか？', a: '<p>火葬の予約時刻から逆算して決めます。南多摩斎場で正午の火葬なら、告別式は午前10時〜10時半に始め、11時頃に出棺するのが一般的です。式場が火葬場に併設の場合は移動時間が不要なため、開式を遅らせることができます。</p>' },
+  { q: '一日葬に会社の人を呼んでもいいですか？', a: '<p>構いません。一日葬は形式の名前で、参列者の範囲を限定するものではありません。ただし平日の日中に行うことが多いため、参列を求める相手には日程を早めに伝えます。呼ばない方には葬儀後に葉書などで知らせます。</p>' },
+];
+---
+<ArticleLayout {title} {h1} {description} {toc} {related} pageType="plan" lastReviewed=""
+  lead="一日葬は、通夜を行わず告別式と火葬を1日で済ませる葬儀です。町田市では、高齢の参列者が多いご家族や、遠方の親族の宿泊を避けたいご家族に選ばれています。このページでは、費用・当日の流れ・向き不向き・注意点を説明します。"
+  crumbs={[{ href: '/plans/', label: '葬儀プラン' }, { href: '/plans/ichinichiso/', label: '一日葬' }]}
+  bottomCtaPosition="plan" bottomCtaTitle="町田市の一日葬のご相談" bottomCtaLead="参列人数と希望する式場を伺えば、総額の目安と南多摩斎場の空き状況の見込みをお伝えします。菩提寺への確認の仕方もご案内します。">
+
+  <h2 id="toha">一日葬とは？</h2>
+  <div class="answer"><p><strong>一日葬とは、通夜を行わず、告別式と火葬を1日で行う葬儀</strong>です。通常の葬儀（家族葬・一般葬）は1日目に通夜、2日目に告別式と火葬を行いますが、一日葬では1日目の通夜を省きます。告別式の内容は通常の葬儀と同じで、僧侶の読経や焼香、お別れの儀式を行ってから火葬します。</p></div>
+  <p>参列者の拘束が1日で済み、式場の使用も1日分になるため、家族葬より費用と負担が軽くなります。一方で「通夜に来るはずだった人が参列できない」「菩提寺が通夜の省略を認めない」といった注意点があります。</p>
+
+  <h2 id="hiyou">町田市で一日葬を行う場合の費用はいくらですか？</h2>
+  <div class="answer"><p>町田市で一日葬を行う場合、当サイトのプラン料金396,000円（税込）に式場使用料と飲食・返礼品を加えた<strong>総額は、参列10名で約50〜65万円</strong>が目安です（宗教者へのお礼は別）。家族葬との差は主に、通夜振る舞いの飲食費がないことと、式場使用料が1日分で済むことです。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>町田市の一日葬 参列人数別の総額例（町田市民・南多摩斎場の式場利用・仏式。税込。宗教者へのお礼は含まない）</caption>
+      <thead><tr><th scope="col">費目</th><th scope="col">5名</th><th scope="col">10名</th><th scope="col">20名</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">一日葬プラン料金</th><td class="num">396,000円</td><td class="num">396,000円</td><td class="num">396,000円</td></tr>
+        <tr><th scope="row">式場使用料（南多摩斎場 第二・第三式場）</th><td class="num">50,000円</td><td class="num">50,000円</td><td class="num">50,000円</td></tr>
+        <tr><th scope="row">火葬料（町田市民）</th><td class="num">0円</td><td class="num">0円</td><td class="num">0円</td></tr>
+        <tr><th scope="row">精進落とし（1人5,000円×1食）</th><td class="num">約25,000円</td><td class="num">約50,000円</td><td class="num">約100,000円</td></tr>
+        <tr><th scope="row">返礼品（1人2,000円）</th><td class="num">約10,000円</td><td class="num">約20,000円</td><td class="num">約40,000円</td></tr>
+        <tr><th scope="row"><strong>総額の目安</strong></th><td class="num"><strong>約48万円</strong></td><td class="num"><strong>約52万円</strong></td><td class="num"><strong>約59万円</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">プラン料金は本サイト（検証用）の設定価格です。民営式場を使う場合は式場使用料が10〜25万円程度になり、総額が上がります。故人が国民健康保険・後期高齢者医療の加入者なら、後日<a href="/subsidy/">葬祭費50,000円</a>が支給されます。</p>
+  <Source items={[{ label: '南多摩斎場 使用料（式場・火葬料）', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }]} />
+  <NextLink href="/cost/" label="費用をくわしく" title="町田市の葬儀費用｜内訳・人数別の総額例・安く抑える方法" />
+
+  <h2 id="plan">一日葬プランに含まれるもの</h2>
+  <div class="answer"><p>一日葬プラン（396,000円・税込）には、<strong>搬送・2日間の安置・棺と骨壺・祭壇と式場設営・告別式の進行・霊柩車・手続き代行</strong>が含まれます。家族葬プランとの違いは、通夜の進行と通夜用の式場設営が含まれない点です。式場使用料、火葬料、飲食、返礼品、宗教者へのお礼は含まれません。</p></div>
+  <div class="table-wrap">
+    <table>
+      <caption>一日葬プランの内容（税込396,000円）</caption>
+      <thead><tr><th scope="col">区分</th><th scope="col">内容</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">搬送</th><td>病院・施設から安置先への寝台車（町田市内）、安置先から式場へ、式場から火葬場への霊柩車</td></tr>
+        <tr><th scope="row">安置</th><td>2日分の安置とドライアイス、枕飾り。3日目以降は1日ごとに加算</td></tr>
+        <tr><th scope="row">納棺</th><td>棺、仏衣、納棺の立ち会い</td></tr>
+        <tr><th scope="row">式場</th><td>生花祭壇（幅約1.8m）、遺影写真、焼香用具、受付用品、式場の設営と撤収（1日分）</td></tr>
+        <tr><th scope="row">進行</th><td>告別式の司会進行、スタッフ2名、火葬場での案内、収骨容器</td></tr>
+        <tr><th scope="row">手続き</th><td>死亡届の提出と火葬許可証の受け取り、火葬場の予約</td></tr>
+        <tr><th scope="row">含まれないもの</th><td>式場使用料、火葬料（町田市民は無料）、待合室使用料、飲食、返礼品・会葬礼状、宗教者へのお礼、安置施設の使用料、追加の安置日数、湯灌、供花</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="nagare">一日葬の流れ（告別式当日）</h2>
+  <div class="answer"><p>一日葬の当日は、<strong>午前中に告別式（約1時間）、正午前後に出棺・火葬、午後に収骨と精進落とし</strong>という流れで、開始から解散まで4〜5時間です。前日までに安置・打ち合わせ・納棺を済ませておきます。</p></div>
+  <div class="table-wrap">
+    <table>
+      <caption>一日葬の当日スケジュール例（南多摩斎場 第二式場、火葬12:00の場合）</caption>
+      <thead><tr><th scope="col">時刻</th><th scope="col">内容</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">9:30</th><td>ご家族が式場に集合。祭壇・供花・遺影の確認、僧侶へのあいさつ</td></tr>
+        <tr><th scope="row">10:30</th><td>告別式（読経・焼香・弔辞）。約1時間</td></tr>
+        <tr><th scope="row">11:30</th><td>お別れの儀（棺に花を入れる）、出棺。併設式場なら火葬棟へ徒歩で移動</td></tr>
+        <tr><th scope="row">12:00</th><td>火葬（約1〜1.5時間）。待合室で待機</td></tr>
+        <tr><th scope="row">13:30</th><td>収骨（骨上げ）</td></tr>
+        <tr><th scope="row">14:00</th><td>初七日法要（同日に行う場合）、精進落とし。15時前後に解散</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>亡くなった日から告別式までの日数は、南多摩斎場の空き状況で決まります。通常は3〜4日、混雑期は1週間以上かかることがあり、その間はご自宅または安置施設で安置します。</p>
+  <NextLink href="/flow/" label="全体の流れ" title="葬儀の流れと手続きの一覧（逝去から法要まで）" />
+
+  <h2 id="muku">一日葬が向いている方・向かない方</h2>
+  <div class="answer"><p>一日葬は、<strong>参列者が高齢、遠方からの親族が多い、参列者が10名前後、費用を抑えつつ式は行いたい</strong>という場合に向いています。反対に、菩提寺が通夜の省略を認めない場合、仕事の都合で夜の通夜にしか来られない参列者が多い場合には向きません。</p></div>
+  <div class="grid grid--2">
+    <div class="callout callout--info">
+      <p class="callout__title"><Icon name="check" />向いているケース</p>
+      <ul>
+        <li>参列者に高齢の方が多く、2日間の参列が負担になる</li>
+        <li>遠方から来る親族の宿泊を避けたい</li>
+        <li>参列者が家族・親族の10名前後</li>
+        <li>火葬式では物足りないが、費用は抑えたい</li>
+      </ul>
+    </div>
+    <div class="callout callout--warn">
+      <p class="callout__title"><Icon name="info" />向かないケース</p>
+      <ul>
+        <li>菩提寺が通夜を省くことを認めていない</li>
+        <li>日中は仕事で来られない参列者が多い（通夜の方が集まりやすい）</li>
+        <li>参列者が30名を超える見込み</li>
+        <li>故人と過ごす時間を長く取りたい（家族葬の方が向く）</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="chui">町田市で一日葬をするときの注意点</h2>
+  <div class="answer"><p>一日葬で注意すべきは、<strong>①菩提寺への事前確認、②式場使用料が「1日分」で済むかの確認、③参列者への日程連絡の早さ</strong>の3点です。</p></div>
+  <h3>菩提寺に通夜の省略を確認する</h3>
+  <p>寺院によっては、通夜を省く一日葬を「正式な葬儀ではない」として認めないことがあります。菩提寺がある場合は、形式を決める前に必ず相談してください。認められない場合は家族葬にするか、菩提寺と相談して通夜を簡略化する方法があります。</p>
+  <h3>式場使用料の扱いを確認する</h3>
+  <p>民営式場では、前日に納棺や設営を行うため「2日分」の使用料を請求される場合があります。南多摩斎場の式場を一日葬で使う場合の使用料の扱いは、斎場に直接確認してください。見積もりで式場使用料が何日分かを確認してください。</p>
+  <h3>参列者への連絡を早めに行う</h3>
+  <p>一日葬は日中に行うため、参列者は仕事を休む必要があります。日程が決まったらすぐに連絡し、参列できない方には後日の弔問や、葬儀後の訃報連絡で対応します。</p>
+  <Source items={[{ label: '墓地、埋葬等に関する法律 第3条', href: 'https://laws.e-gov.go.jp/law/323AC0000000048' }]} />
+  <Cta position="plan" variant="inline" telText="一日葬について電話で相談" contactText="メールで相談" />
+
+  <h2 id="faq">町田市の一日葬でよくある質問</h2>
+  <Faq items={faqs} group="ichinichiso" />
+</ArticleLayout>

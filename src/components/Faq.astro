@@ -1,0 +1,39 @@
+---
+/**
+ * FAQ（details/summary）。開閉で faq_open を計測。
+ * withSchema: true で FAQPage JSON-LD を出力（ページ内に実在するQ&Aのみ）。
+ */
+export interface QA { q: string; a: string; /** HTML可 */ }
+interface Props { items: QA[]; group?: string; withSchema?: boolean; heading?: string; }
+const { items, group = 'faq', withSchema = false, heading } = Astro.props;
+const strip = (h: string) => h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+const ld = withSchema ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((i) => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: strip(i.a) } })),
+} : null;
+---
+<div class="faq" data-region="faq">
+  {heading && <h2 class="faq__heading">{heading}</h2>}
+  {items.map((i) => (
+    <details class="faq__item" data-faq={group}>
+      <summary class="faq__q"><span class="faq__mark" aria-hidden="true">Q</span><span>{i.q}</span><span class="faq__chev" aria-hidden="true"></span></summary>
+      <div class="faq__a"><span class="faq__mark faq__mark--a" aria-hidden="true">A</span><div set:html={i.a} /></div>
+    </details>
+  ))}
+</div>
+{ld && <script type="application/ld+json" set:html={JSON.stringify(ld)} />}
+<style>
+  .faq { margin: 1.5rem 0 2rem; }
+  .faq__heading { font-size: var(--fs-h2); margin: 0 0 1rem; }
+  .faq__item { border-top: 1px solid var(--c-line); }
+  .faq__item:last-of-type { border-bottom: 1px solid var(--c-line); }
+  .faq__q { display: grid; grid-template-columns: auto 1fr auto; gap: 0.75em; align-items: start; padding: 1rem 0.25rem; font-weight: 700; line-height: 1.5; }
+  .faq__q:hover { background: var(--c-surface-2); }
+  .faq__mark { display: inline-grid; place-items: center; width: 1.7em; height: 1.7em; border-radius: 50%; background: var(--c-primary); color: #fff; font-size: 0.9em; font-weight: 700; margin-top: 0.05em; }
+  .faq__mark--a { background: var(--c-accent); }
+  .faq__chev { width: 0.6em; height: 0.6em; border-right: 2px solid var(--c-ink-3); border-bottom: 2px solid var(--c-ink-3); transform: rotate(45deg); margin: 0.5em 0.4em 0 0; transition: transform 0.15s; }
+  .faq__item[open] .faq__chev { transform: rotate(-135deg); margin-top: 0.7em; }
+  .faq__a { display: grid; grid-template-columns: auto 1fr; gap: 0.75em; padding: 0 0.25rem 1.1rem; color: var(--c-ink-2); }
+  .faq__a p:last-child { margin-bottom: 0; }
+</style>

@@ -1,0 +1,99 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import NextLink from '../../components/NextLink.astro';
+import Source from '../../components/Source.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+
+const title = '南町田・つくし野・すずかけ台の葬儀・家族葬｜鶴間・金森・小川の式場と火葬場';
+const h1 = '南町田・つくし野・すずかけ台（鶴間・金森・小川・南つくし野）の葬儀・家族葬案内';
+const description = '南町田グランベリーパーク駅・つくし野駅・すずかけ台駅周辺（鶴間・金森・小川）で葬儀を行う場合の式場・火葬場を案内します。南多摩斎場までは市内で最も遠く、横浜市北部斎場（市外50,000円）が距離的に近い点が特徴です。';
+const toc = [
+  { id: 'gaiyo', label: 'このエリアの概要' },
+  { id: 'kasoba', label: 'このエリアから近い火葬場' },
+  { id: 'shikijo', label: 'このエリアから使いやすい式場' },
+  { id: 'hanso', label: '病院・施設で亡くなった場合の搬送' },
+  { id: 'madoguchi', label: '死亡届・葬祭費の窓口' },
+  { id: 'chui', label: 'このエリアで葬儀をするときの注意点' },
+  { id: 'faq', label: 'よくある質問' },
+];
+const related = [
+  { href: '/area/', label: '町田市のエリア別 葬儀案内', note: '5エリアの一覧に戻る' },
+  { href: '/halls/', label: '町田市の斎場・葬儀場', note: '市内の民営式場一覧' },
+  { href: '/halls/crematorium/', label: '町田市の火葬場', note: '南多摩斎場と市外火葬場の料金比較' },
+  { href: '/first-steps/', label: '亡くなってから最初にすること', note: '搬送・安置の手配の流れ' },
+  { href: '/plans/kazokuso/', label: '家族葬の費用と式場', note: '町田市の家族葬プランと総額例' },
+  { href: '/contact/', label: 'お問い合わせ・事前相談', note: '搬送のみのご依頼も可能' },
+];
+const faqs = [
+  { q: '南町田・つくし野に住んでいますが、南多摩斎場と横浜市北部斎場のどちらを選べばいいですか？', a: '<p>費用を優先するなら南多摩斎場（町田市民は火葬無料）、日程や近さを優先するなら横浜市北部斎場（市外料金50,000円・10歳以上）です。南町田グランベリーパーク駅から南多摩斎場までは直線約12.3km・車で40〜50分程度（目安）かかりますが、火葬料はかかりません。横浜市北部斎場は直線約1.6kmと近い一方、市外予約は火葬のみ3日前から、ホール利用は2日前からしか受け付けられない点に注意が必要です。</p>' },
+  { q: '大和斎場は町田市民でも使えますか？', a: '<p>公式サイトに接続できず、料金・所在地・町田市民の受け入れ条件を確認できていません（未確認）。南町田グランベリーパーク駅から直線約4.5kmと距離は近いため候補にはなりますが、利用を検討する場合は事前に施設へ直接お問い合わせください。</p>' },
+  { q: '死亡届はこのエリアからでも町田市役所で出せますか？', a: '<p>出せます。死亡届は届出人の住所地・故人の本籍地・亡くなった場所のいずれかの市区町村で受け付けるため、南市民センターのほか、町田市役所市民課（市庁舎1階104窓口）や他の市民センターでも提出できます。当サイトにご依頼の場合、届出の代行も行います。</p>' },
+];
+---
+<ArticleLayout {title} {h1} {description} {toc} {related} pageType="area" lastReviewed=""
+  lead="南町田グランベリーパーク駅・つくし野駅・すずかけ台駅周辺（鶴間・金森・小川・南つくし野・つくし野）は、東急田園都市線沿いに広がる町田市南部のエリアです。南多摩斎場までの距離が市内で最も遠い一方、横浜市北部斎場が至近にあるという他エリアにない特徴があります。"
+  crumbs={[{ href: '/area/', label: 'エリア情報' }, { href: '/area/minami-machida/', label: '南町田・つくし野' }]}
+  bottomCtaPosition="hall" bottomCtaTitle="南町田・つくし野エリアからのご相談" bottomCtaLead="お住まいの町名と搬送先（ご自宅・病院・施設）をお伝えいただければ、南多摩斎場と横浜市北部斎場のどちらが向いているか、費用の目安と合わせてお伝えします。">
+
+  <h2 id="gaiyo">南町田・つくし野・すずかけ台エリアの特徴は？</h2>
+  <div class="answer"><p>このエリアは<strong>東急田園都市線の南町田グランベリーパーク駅・つくし野駅・すずかけ台駅周辺</strong>で、鶴間・金森・小川・南つくし野・つくし野などの町名が中心です。町田市の南端にあたり、横浜市緑区・神奈川県大和市に接しています。</p></div>
+  <p>南町田グランベリーパーク駅は2019年10月に「南町田」から改称され、大型商業施設「グランベリーパーク」（約230〜240店舗）に直結する町田市と東急の官民一体まちづくりエリアです。国道16号・246号、町田インターチェンジに近く、車での移動がしやすい立地です。つくし野駅周辺は住民協約で高層建築が規制され、戸建て中心の落ち着いた住宅地で、渋谷まで準急直通で約40分です。すずかけ台駅は東京科学大学（旧・東京工業大学）すずかけ台キャンパスの最寄り駅で、高級住宅街として知られています。</p>
+  <Source items={[{ label: '南町田グランベリーパーク駅周辺地区まちづくり（町田市）', href: 'https://www.city.machida.tokyo.jp/kurashi/sumai/toshikei/ekisyuhenmachidukuri/minamimachidamachidukuri/index.html' }]} />
+
+  <h2 id="kasoba">南町田・つくし野から近い火葬場はどこですか？</h2>
+  <div class="answer"><p>南町田グランベリーパーク駅から公営の<strong>南多摩斎場までは直線約12.3km・車で40〜50分程度（目安）</strong>と、町田市内で最も遠いエリアです。火葬料は町田市民なら無料ですが、距離的には<strong>横浜市北部斎場（直線約1.6km・市外料金50,000円）</strong>のほうが近く、日程を優先する場合の選択肢になります。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>南町田グランベリーパーク駅から見た火葬場の候補（町田市民の場合。距離は座標間の直線距離をもとにした目安、道路距離ではない。確認日2026-09-15）</caption>
+      <thead><tr><th scope="col">施設</th><th scope="col">運営</th><th scope="col">火葬料（12歳以上・町田市民）</th><th scope="col">式場</th><th scope="col">距離の目安</th></tr></thead>
+      <tbody>
+        <tr data-track-view="hall" data-item="南多摩斎場"><th scope="row">南多摩斎場</th><td>公営（南多摩斎場組合）</td><td class="num">無料</td><td class="num">第二・第三 50,000円／第一 140,000円</td><td>直線約12.3km・車40〜50分程度</td></tr>
+        <tr data-track-view="hall" data-item="横浜市北部斎場"><th scope="row">横浜市北部斎場</th><td>公営（横浜市・市外扱い）</td><td class="num">50,000円（10歳以上）</td><td class="num">ホール1室 120,000円</td><td>直線約1.6km・車約20分</td></tr>
+        <tr data-track-view="hall" data-item="大和斎場"><th scope="row">大和斎場</th><td>公営（広域大和斎場組合・市外扱い）</td><td class="num">未確認（公式サイト接続不可）</td><td class="num">未確認</td><td>直線約4.5km</td></tr>
+        <tr data-track-view="hall" data-item="相模原市営斎場"><th scope="row">相模原市営斎場</th><td>公営（相模原市・市外扱い）</td><td class="num">54,000円</td><td class="num">小式場 60,000円</td><td>直線約5.9km</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">公営の使用料は条例に基づく非課税の使用料です（税込・税抜の表記はありません）。</p>
+  <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }, { label: '横浜市 市営斎場の使用料', href: 'https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/saijo/saijo/saijou.html' }]} />
+  <p>横浜市北部斎場（横浜市緑区長津田町、長津田駅からタクシー約10分）は、死亡時の住民票が町田市にある場合は「市外料金」の扱いになります。予約は市民が優先され、市外の場合は火葬のみの予約が火葬日の3日前から、ホール利用の予約が通夜日の2日前からしか受け付けられません。南多摩斎場は無料ですが片道40〜50分（目安）かかるため、「無料だが遠い南多摩斎場」と「有料だが近い横浜市北部斎場」のどちらを優先するかが、このエリアで葬儀をする際の判断のポイントになります。大和斎場は公式サイトに接続できず、料金・所在地・町田市民の受け入れ条件とも未確認です。利用を検討する場合は事前に施設へ直接お問い合わせください。</p>
+  <NextLink href="/halls/crematorium/" label="火葬場をくわしく" title="町田市の火葬場（南多摩斎場と市外の代替火葬場の料金比較）" />
+
+  <h2 id="shikijo">南町田・つくし野で使いやすい式場はどこですか？</h2>
+  <div class="answer"><p>このエリアで公式サイトから所在地を確認できた民営式場は、<strong>小さなお葬式 南町田ホール</strong>（南町田、南町田グランベリーパーク駅より徒歩9分）と<strong>くらしの友 町田総合斎場</strong>（金森東）の2施設です。南多摩斎場の式場（第一〜第三）も利用できますが、火葬場と同じ北西端にあるため移動距離が長くなります。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>南町田・つくし野エリアで確認できた民営式場（公式サイトで所在地・運営会社を確認できたもの。確認日2026-09-15）</caption>
+      <thead><tr><th scope="col">名称</th><th scope="col">所在地（町名）</th><th scope="col">最寄駅</th><th scope="col">運営会社</th><th scope="col">収容規模</th></tr></thead>
+      <tbody>
+        <tr data-track-view="hall" data-item="小さなお葬式 南町田ホール"><th scope="row">小さなお葬式 南町田ホール</th><td>南町田3丁目</td><td>東急田園都市線「南町田グランベリーパーク駅」より徒歩約9分</td><td>小さなお葬式（株式会社ユニクエスト）</td><td>〜30名</td></tr>
+        <tr data-track-view="hall" data-item="くらしの友 町田総合斎場"><th scope="row">くらしの友 町田総合斎場</th><td>金森東1丁目</td><td>JR横浜線「町田駅」中央改札北口より徒歩約15分</td><td>株式会社くらしの友（直営）</td><td>2階約40席・3階約20席、全館利用で最大500名規模</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <Source items={[{ label: '小さなお葬式 南町田ホール', href: 'https://ceremonyhouse.info/tokyo/machida-shi/ceremonyhouse_minamimachida/' }, { label: 'くらしの友 町田総合斎場', href: 'https://www.kurashinotomo.jp/sougi/saijou-direct/machida/' }]} />
+  <p>いずれも当サイトが運営・提携している施設ではなく、情報提供として掲載しています。金森東は南地区に属する町名で、鶴間・小川・つくし野にお住まいの場合はどちらの式場も検討の対象になります。寺院会館や自治会館については公式サイトでの所在地確認ができておらず、このページには掲載していません（未確認）。</p>
+  <NextLink href="/halls/" label="式場を全件見る" title="町田市の斎場・葬儀場一覧（公営・民営・寺院）" />
+
+  <Cta position="hall" variant="inline" telText="式場について電話で相談" contactText="メールで式場を相談" />
+
+  <h2 id="hanso">病院・施設で亡くなった場合の搬送はどうなりますか？</h2>
+  <div class="answer"><p>南町田・鶴間エリアには<strong>南町田病院</strong>（町田市鶴間）があります。病院で亡くなった場合、死亡診断書の発行後にご自宅または安置施設へ搬送（寝台車）し、その後の式場・火葬場の予約に進みます。すぐに葬儀社を決める必要はなく、搬送だけを先に依頼することもできます。</p></div>
+  <p>南町田病院の正確な番地は公式サイトで要確認（未確認）です。搬送にかかる時間は安置先までの距離やその日の道路状況によって変わるため、あくまで目安として扱ってください。病院からの搬送実務（死亡診断書の受け取り、葬儀社への連絡）自体は全国共通の一般的な流れであり、町田市や個別の病院固有のルールではありません。</p>
+  <Source items={[{ label: '南町田病院', href: 'https://www.mmhp.jp/' }]} />
+  <NextLink href="/first-steps/" label="亡くなってから最初にすること" title="搬送・安置の手配と、葬儀社をすぐ決めなくてよい理由" />
+
+  <h2 id="madoguchi">死亡届・葬祭費の窓口はどこですか？</h2>
+  <div class="answer"><p>南町田・つくし野エリアの死亡届・葬祭費の窓口は<strong>南市民センター</strong>です。町田市役所市民課（市庁舎1階104窓口）でも受け付けており、死亡届は届出人の住所地・故人の本籍地・亡くなった場所のいずれかの市区町村で提出できます。</p></div>
+  <p>死亡届は亡くなったことを知った日を含めて7日以内に提出します。南市民センターの詳細な所在地・電話番号は町田市公式ページの施設案内で個別に確認してください（本調査では一覧ページからの遷移まで裏取りできておらず未確認）。国民健康保険・後期高齢者医療の葬祭費（各5万円）も、南市民センターまたは市役所保険年金課（市庁舎1階）で申請できます。申請期限はいずれも葬祭を行った日の翌日から2年です。</p>
+  <Source items={[{ label: '町田市 死亡届', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/todokede/todokede03.html' }, { label: '町田市 市民センター（施設案内）', href: 'https://www.city.machida.tokyo.jp/shisei/shiyakusyo/center/index.html' }, { label: '町田市国民健康保険 葬祭費', href: 'https://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/sousai.html' }]} />
+  <NextLink href="/subsidy/" label="葬祭費の申請方法" title="葬祭費・補助金の申請窓口と必要書類（国保・後期高齢者・社会保険）" />
+
+  <h2 id="chui">南町田・つくし野で葬儀をするときの注意点は？</h2>
+  <div class="answer"><p>このエリア特有の注意点は、<strong>①南多摩斎場までの距離が市内で最も遠いこと、②横浜市北部斎場を使う場合は市外予約の受付開始日が遅いこと、③大和斎場が未確認であること</strong>の3点です。日程と費用のどちらを優先するかを早い段階で決めておくと、火葬場選びで迷いません。</p></div>
+  <p>南多摩斎場は町田市民の火葬料が無料ですが、南町田グランベリーパーク駅からは直線約12.3km・車で40〜50分程度（目安）かかり、町田市内の5エリアの中で最も遠くなります。横浜市北部斎場は直線約1.6kmと近い一方、市外（町田市民）の予約は火葬のみが火葬日の3日前から、ホール利用が通夜日の2日前からしか受け付けられず、前日15時以降は新規予約・変更ができません。混雑期に日程を急ぐ場合は、南多摩斎場の空き状況を先に確認したうえで横浜市北部斎場を選ぶかどうかを判断する必要があります。大和斎場は南町田方面から直線約4.5kmと近い候補ですが、公式サイトに接続できず料金・受け入れ条件が未確認のため、当サイトでは断定的な案内をしていません。利用を検討する場合は施設へ直接問い合わせてください。</p>
+
+  <h2 id="faq">南町田・つくし野・すずかけ台エリアのよくある質問</h2>
+  <Faq items={faqs} group="area-minami-machida" />
+</ArticleLayout>

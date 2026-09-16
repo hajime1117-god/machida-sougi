@@ -1,0 +1,149 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import NextLink from '../../components/NextLink.astro';
+import Source from '../../components/Source.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
+
+const title = '町田市の家族葬｜費用・式場・流れとプランの内容';
+const h1 = '町田市の家族葬｜費用・式場・流れを分かりやすく';
+const description = '町田市で家族葬を行う場合の費用（プラン528,000円〜、20名で総額約75〜95万円）、南多摩斎場や民営ホールなど使える式場、2日間の流れ、参列を断る方への連絡や菩提寺との調整など注意点を、町田市の事情に合わせて解説します。';
+const toc = [
+  { id: 'toha', label: '家族葬とは' },
+  { id: 'hiyou', label: '町田市の家族葬の費用' },
+  { id: 'plan', label: '家族葬プランの内容' },
+  { id: 'shikijo', label: '町田市で家族葬ができる式場' },
+  { id: 'nagare', label: '家族葬の流れ（2日間）' },
+  { id: 'chui', label: '家族葬の注意点' },
+  { id: 'chigai', label: '一日葬・火葬式との違い' },
+  { id: 'faq', label: 'よくある質問' },
+];
+const related = [
+  { href: '/cost/', label: '葬儀費用の内訳と総額例', note: '追加になりやすい費用と安く抑える方法' },
+  { href: '/halls/', label: '町田市の斎場・葬儀場', note: '南多摩斎場の式場と民営式場' },
+  { href: '/halls/crematorium/', label: '町田市の火葬場', note: '南多摩斎場の料金・予約・混雑時の代替' },
+  { href: '/column/kazokuso-renraku/', label: '家族葬で「呼ばない人」への連絡', note: '訃報の伝え方と後日の弔問対応' },
+  { href: '/plans/ichinichiso/', label: '一日葬', note: '通夜を省いて1日で行う' },
+  { href: '/subsidy/', label: '葬祭費・補助金', note: '国保・後期高齢者医療から50,000円' },
+];
+const faqs = [
+  { q: '家族葬は何人くらいまでですか？', a: '<p>明確な上限はありませんが、一般に10〜30名程度です。家族・親族に加えて、故人と特に親しかった友人を数名招くケースも家族葬と呼びます。30名を超える場合は式場の広さと飲食の手配が一般葬に近くなるため、見積もりの段階で人数の見込みをお伝えください。</p>' },
+  { q: '町田市の家族葬で、火葬まで何日かかりますか？', a: '<p>南多摩斎場の空き状況によりますが、通常は亡くなった日から3〜5日、混雑期（年末年始や冬季）は1週間以上かかることがあります。待つ日数の分だけ安置費用が増えるため、日程を優先する場合は市外の火葬場（横浜市北部斎場・相模原市営斎場など）も選択肢になります。</p>' },
+  { q: '家族葬でも香典は受け取りますか？', a: '<p>ご家族の方針で決められます。受け取る場合は返礼品（香典返し）を用意します。辞退する場合は、訃報を伝えるときに「香典・供花はご辞退申し上げます」と明記します。辞退しても後日、弔問に来られた方が香典を持参することがあるため、少量の返礼品を予備として用意しておくと安心です。</p>' },
+  { q: '町田市外に住んでいる親が町田市で亡くなりました。南多摩斎場は使えますか？', a: '<p>使えますが、火葬料は故人の住所で決まります。故人が町田市（または八王子市・多摩市・稲城市・日野市）の住民でない場合は市外料金（12歳以上80,000円）がかかります。喪主が市外在住でも、故人が町田市民であれば無料です。</p>' },
+];
+---
+<ArticleLayout {title} {h1} {description} {toc} {related} pageType="plan" lastReviewed=""
+  lead="町田市で家族葬を行う場合、費用の中心になるのは「プラン料金」「式場使用料」「参列人数に応じた飲食・返礼品」の3つです。町田市民は南多摩斎場の火葬料が無料のため、火葬場の費用はほとんどかかりません。このページでは、費用の目安から式場、2日間の流れ、注意点までを順に説明します。"
+  crumbs={[{ href: '/plans/', label: '葬儀プラン' }, { href: '/plans/kazokuso/', label: '家族葬' }]}
+  bottomCtaPosition="plan" bottomCtaTitle="町田市の家族葬のご相談" bottomCtaLead="参列予定の人数・希望する式場・菩提寺の有無を伺えば、総額の目安と日程の見込みをその場でお伝えします。搬送のみのご依頼も受け付けています。">
+
+  <h2 id="toha">家族葬とは？</h2>
+  <div class="answer"><p><strong>家族葬とは、家族・親族と、故人と特に親しかった人だけで行う小規模な葬儀</strong>です。通夜と告別式を2日間で行う点は一般的な葬儀（一般葬）と同じで、違いは参列者の範囲と人数（10〜30名程度）だけです。会社関係や近所の方には参列を遠慮してもらい、後日あらためて訃報を伝えるのが一般的です。</p></div>
+  <p>「家族葬」という言葉に法律上の定義はなく、葬儀社によって内容が異なります。当サイトでは「通夜・告別式を行う、参列者を家族・親族中心に限定した葬儀」を家族葬と呼び、通夜を省くものは<a href="/plans/ichinichiso/">一日葬</a>、式を行わないものは<a href="/plans/kasoshiki/">火葬式（直葬）</a>として区別しています。</p>
+
+  <h2 id="hiyou">町田市で家族葬を行う場合の費用はいくらですか？</h2>
+  <div class="answer"><p>町田市で家族葬を行う場合、当サイトのプラン料金528,000円（税込）に式場使用料と飲食・返礼品を加えた<strong>総額は、参列20名で約75〜95万円</strong>が目安です（宗教者へのお礼は別）。人数が10名なら約65〜80万円、30名なら約85〜110万円になります。金額に幅があるのは、式場使用料（南多摩斎場の第二・第三式場50,000円〜民営式場20万円前後）と、飲食・返礼品の単価による差です。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>町田市の家族葬 参列人数別の総額例（町田市民・南多摩斎場の式場利用・仏式。税込。宗教者へのお礼は含まない）</caption>
+      <thead><tr><th scope="col">費目</th><th scope="col">10名</th><th scope="col">20名</th><th scope="col">30名</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">家族葬プラン料金</th><td class="num">528,000円</td><td class="num">528,000円</td><td class="num">528,000円</td></tr>
+        <tr><th scope="row">式場使用料（南多摩斎場 第二・第三式場）</th><td class="num">50,000円</td><td class="num">50,000円</td><td class="num">50,000円（第一式場なら140,000円）</td></tr>
+        <tr><th scope="row">火葬料（町田市民）</th><td class="num">0円</td><td class="num">0円</td><td class="num">0円</td></tr>
+        <tr><th scope="row">通夜振る舞い・精進落とし（1人5,000円×2食を想定）</th><td class="num">約100,000円</td><td class="num">約200,000円</td><td class="num">約300,000円</td></tr>
+        <tr><th scope="row">返礼品（1人2,000円）</th><td class="num">約20,000円</td><td class="num">約40,000円</td><td class="num">約60,000円</td></tr>
+        <tr><th scope="row"><strong>総額の目安</strong></th><td class="num"><strong>約70万円</strong></td><td class="num"><strong>約82万円</strong></td><td class="num"><strong>約94万円</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">プラン料金は本サイト（検証用）の設定価格です。飲食・返礼品の単価は一例で、内容により変わります。故人が国民健康保険・後期高齢者医療の加入者なら、後日<a href="/subsidy/">葬祭費50,000円</a>が支給されます。</p>
+  <Source items={[{ label: '南多摩斎場 使用料（式場・火葬料）', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }]} />
+  <p>費用を抑えるには、①式場を南多摩斎場の第二・第三式場にする、②通夜振る舞いを簡素にする（町田市では通夜の飲食を軽くする家庭が増えています）、③返礼品を香典辞退と合わせて省く、の3つが効果的です。くわしくは<a href="/cost/">葬儀費用のページ</a>で説明しています。</p>
+  <Cta position="cost" variant="inline" telText="費用について電話で相談" contactText="メールで見積もりを相談" />
+
+  <h2 id="plan">家族葬プランに含まれるもの</h2>
+  <div class="answer"><p>家族葬プラン（528,000円・税込）には、<strong>搬送・2日間の安置・棺と骨壺・祭壇と式場設営・式の進行・霊柩車・手続き代行</strong>が含まれます。式場使用料、火葬料、飲食、返礼品、宗教者へのお礼は含まれません。</p></div>
+  <div class="table-wrap">
+    <table>
+      <caption>家族葬プランの内容（税込528,000円）</caption>
+      <thead><tr><th scope="col">区分</th><th scope="col">内容</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">搬送</th><td>病院・施設からご自宅または安置施設への寝台車（町田市内）、安置先から式場へ、式場から火葬場への霊柩車</td></tr>
+        <tr><th scope="row">安置</th><td>2日分の安置とドライアイス、枕飾り。3日目以降は1日ごとに加算</td></tr>
+        <tr><th scope="row">納棺</th><td>棺、仏衣、納棺の立ち会い。湯灌（ゆかん：ご遺体を清める儀式）は別途</td></tr>
+        <tr><th scope="row">式場</th><td>生花祭壇（幅約2m）、遺影写真、焼香用具、受付用品、式場の設営と撤収</td></tr>
+        <tr><th scope="row">進行</th><td>通夜・告別式の司会進行、スタッフ2名、火葬場での案内、収骨容器</td></tr>
+        <tr><th scope="row">手続き</th><td>死亡届の提出と火葬許可証の受け取り（町田市役所・市民センター）、南多摩斎場など火葬場の予約</td></tr>
+        <tr><th scope="row">含まれないもの</th><td>式場使用料、火葬料（町田市民は無料）、待合室使用料、飲食、返礼品・会葬礼状、宗教者へのお礼、安置施設の使用料、追加の安置日数、湯灌、遺影の額の変更、供花</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="shikijo">町田市で家族葬ができる式場はどこですか？</h2>
+  <div class="answer"><p>町田市で家族葬に使える式場は、<strong>①南多摩斎場に併設の式場（火葬場と同じ敷地で移動がない）、②市内各地の民営の家族葬ホール、③寺院の会館、④ご自宅</strong>の4種類です。参列者の移動を減らしたいなら南多摩斎場、駅からのアクセスや控室での宿泊を重視するなら民営ホールが向いています。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>家族葬の式場の種類と特徴（町田市）</caption>
+      <thead><tr><th scope="col">種類</th><th scope="col">特徴</th><th scope="col">使用料の目安</th><th scope="col">向いているケース</th></tr></thead>
+      <tbody>
+        <tr data-track-view="hall" data-item="南多摩斎場（式場）"><th scope="row">南多摩斎場の式場</th><td>火葬場併設。第一式場（大）、第二・第三式場（小）。通夜後に泊まれるかは斎場に要確認</td><td class="num">第二・第三 50,000円／第一 140,000円（組織市住民）</td><td>火葬場への移動をなくしたい。費用を抑えたい</td></tr>
+        <tr><th scope="row">民営の家族葬ホール</th><td>町田駅周辺・鶴川・成瀬などに点在。控室・宿泊設備があるところが多い</td><td class="num">おおむね10〜25万円</td><td>駅から近い場所で行いたい。通夜後に付き添いたい</td></tr>
+        <tr><th scope="row">寺院の会館</th><td>檀家（だんか：その寺を菩提寺とする家）向けが中心。檀家以外も使える寺院もある</td><td class="num">寺院により異なる</td><td>菩提寺が市内にある</td></tr>
+        <tr><th scope="row">ご自宅</th><td>式場使用料が不要。祭壇の設置スペースと駐車場が必要</td><td class="num">0円</td><td>住み慣れた家から送り出したい</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }]} />
+  <p>南多摩斎場は町田市の北西端（上小山田町）にあり、市の南部（南町田・成瀬）からは車で30〜40分かかります。お住まいの地域ごとの近い式場は<a href="/area/">エリア情報</a>で案内しています。</p>
+  <NextLink href="/halls/" label="式場をくわしく" title="町田市の斎場・葬儀場一覧（公営・民営・寺院）" />
+
+  <h2 id="nagare">町田市の家族葬の流れ（2日間）</h2>
+  <div class="answer"><p>家族葬は、<strong>亡くなった日に搬送・安置、翌日以降に打ち合わせと火葬場の予約、通夜、翌日に告別式・火葬</strong>という流れです。南多摩斎場の空き状況により、亡くなった日から火葬まで3〜5日、混雑期は1週間以上かかることがあります。</p></div>
+  <div class="table-wrap">
+    <table>
+      <caption>家族葬の標準的なスケジュール（町田市・南多摩斎場の場合）</caption>
+      <thead><tr><th scope="col">時期</th><th scope="col">すること</th><th scope="col">ご家族が決めること</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">逝去当日</th><td>病院・施設からの搬送、ご自宅または安置施設に安置。枕飾りの設置</td><td>安置先（自宅か施設か）、菩提寺への連絡</td></tr>
+        <tr><th scope="row">翌日</th><td>打ち合わせ（式場・日程・祭壇・料理・返礼品）、南多摩斎場の火葬枠の予約、死亡届の提出</td><td>参列者の範囲、訃報を伝える相手、遺影写真</td></tr>
+        <tr><th scope="row">通夜前日〜当日</th><td>納棺、式場へ移動。夕方から通夜（約1時間）、通夜振る舞い</td><td>喪主の挨拶、供花の並び順</td></tr>
+        <tr><th scope="row">告別式当日</th><td>告別式（約1時間）、出棺、火葬（約1〜1.5時間）、収骨。初七日法要と精進落としを同日に行うことが多い</td><td>初七日を同日に行うか</td></tr>
+        <tr><th scope="row">葬儀後</th><td>葬祭費の申請、年金・保険・世帯主変更などの手続き。四十九日法要と納骨の準備</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>死亡届は亡くなったことを知った日を含めて7日以内に提出します。町田市では市役所市民課（市庁舎1階104窓口）と各市民センターで受け付けており、通常は当サイトが代行します。</p>
+  <Source items={[{ label: '町田市 死亡届', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/todokede/todokede03.html' }]} />
+  <NextLink href="/flow/" label="全体の流れ" title="葬儀の流れと手続きの一覧（逝去から法要まで）" />
+
+  <h2 id="chui">町田市で家族葬をするときの注意点</h2>
+  <div class="answer"><p>家族葬で後から困りやすいのは、<strong>①参列を断った方への連絡と弔問対応、②菩提寺との調整、③南多摩斎場の混雑による日程のずれ</strong>の3点です。いずれも事前に決めておけば避けられます。</p></div>
+  <h3>参列を断る方への連絡</h3>
+  <p>家族葬は「誰を呼ばないか」を決める葬儀です。会社・近所・友人には、葬儀後に「家族葬で執り行いました」と葉書や電話で伝えるのが一般的です。葬儀前に知らせると参列や香典の対応が必要になるため、伝える時期を家族で決めておきます。弔問を受ける場合は、四十九日までの間に自宅で対応することが多く、返礼品を少量用意しておくと慌てません。文例は<a href="/column/kazokuso-renraku/">家族葬で「呼ばない人」への連絡</a>にまとめています。</p>
+  <h3>菩提寺への連絡</h3>
+  <p>菩提寺がある場合は、亡くなった当日か翌日に連絡し、通夜・告別式の日程と戒名について相談します。連絡せずに他の僧侶に依頼すると、納骨を断られることがあります。菩提寺が遠方で来られない場合は、菩提寺から近隣の同じ宗派の寺院を紹介してもらう方法があります。</p>
+  <h3>火葬場の混雑</h3>
+  <p>南多摩斎場は八王子市・町田市・多摩市・稲城市・日野市の5市が共同で使う火葬場で、冬季や年末年始は火葬まで1週間以上待つことがあります。待つ間の安置費用（安置施設の使用料とドライアイス）が1日あたり1〜2万円かかるため、日程を優先する場合は市外の火葬場（横浜市北部斎場 50,000円、相模原市営斎場 54,000円）を使う選択肢もあります。くわしくは<a href="/halls/crematorium/">町田市の火葬場</a>と<a href="/column/kaso-machi-anchi/">火葬待ちと安置費用の考え方</a>で説明しています。</p>
+
+  <h2 id="chigai">家族葬と一日葬・火葬式の違い</h2>
+  <div class="answer"><p>家族葬は通夜と告別式を2日間で行い、<strong>一日葬は通夜を省いて1日</strong>、<strong>火葬式は式を行わず火葬のみ</strong>です。式の回数が減るほど式場使用料と飲食費が下がり、総額は家族葬（20名）約82万円、一日葬（10名）約50〜65万円、火葬式 約25万円が目安です。</p></div>
+  <div class="table-wrap">
+    <table>
+      <caption>家族葬・一日葬・火葬式の比較</caption>
+      <thead><tr><th scope="col"></th><th scope="col">家族葬</th><th scope="col">一日葬</th><th scope="col">火葬式</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">通夜／告別式</th><td>あり／あり</td><td>なし／あり</td><td>なし／なし</td></tr>
+        <tr><th scope="row">日数</th><td>2日</td><td>1日</td><td>火葬当日のみ</td></tr>
+        <tr><th scope="row">プラン料金（税込）</th><td class="num">528,000円〜</td><td class="num">396,000円〜</td><td class="num">198,000円〜</td></tr>
+        <tr><th scope="row">向いている方</th><td>ゆっくりお別れしたい</td><td>参列者の負担を減らしたい</td><td>費用を最優先したい</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <NextLink href="/column/ichinichiso-kazokuso/" label="迷ったら" title="一日葬と家族葬、どちらを選ぶか（判断の目安）" />
+
+  <h2 id="faq">町田市の家族葬でよくある質問</h2>
+  <Faq items={faqs} group="kazokuso" />
+</ArticleLayout>

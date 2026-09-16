@@ -1,0 +1,100 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import NextLink from '../../components/NextLink.astro';
+import Source from '../../components/Source.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
+
+const title = '鶴川・玉川学園前の葬儀・家族葬｜能ヶ谷・金井・薬師台・三輪の式場と火葬場';
+const h1 = '鶴川・玉川学園前（能ヶ谷・金井・薬師台・三輪・野津田）の葬儀・家族葬案内';
+const description = '鶴川・玉川学園前エリアの葬儀を、南多摩斎場までの距離、鶴川総合斎場など民営式場、イムス明理会東京町田病院からの搬送、鶴川市民センターの死亡届窓口まで、確認できる事実だけで案内します。';
+const toc = [
+  { id: 'gaiyo', label: 'このエリアの概要' },
+  { id: 'kasoba', label: '近い火葬場' },
+  { id: 'shikijo', label: '使いやすい式場' },
+  { id: 'byoin', label: '病院からの搬送' },
+  { id: 'madoguchi', label: '死亡届・葬祭費の窓口' },
+  { id: 'chuui', label: 'このエリアの注意点' },
+  { id: 'faq', label: 'よくある質問' },
+];
+const related = [
+  { href: '/area/', label: 'エリア情報トップ', note: '町田市内の他エリアを見る' },
+  { href: '/halls/', label: '町田市の斎場・葬儀場', note: '公営・民営・寺院の一覧' },
+  { href: '/halls/crematorium/', label: '町田市の火葬場', note: '南多摩斎場と市外候補の料金' },
+  { href: '/first-steps/', label: '亡くなってから最初にすること', note: '搬送と安置の流れ' },
+  { href: '/plans/kazokuso/', label: '家族葬', note: '費用の目安と流れ' },
+  { href: '/contact/', label: 'お問い合わせ', note: '搬送のみの相談も可' },
+];
+const faqs = [
+  { q: '鶴川は神奈川県に近いですが、川崎市や横浜市の斎場は使えますか？', a: '<p>神奈川県内の公営斎場は住民要件があり、町田市民（東京都民）が利用する場合は非住民料金になるか、施設によっては利用そのものが制限されます。例えばかわさき北部斎苑は個人からの申込を受け付けておらず、葬儀事業者経由のみの受付です。町田市民は火葬料が無料になる南多摩斎場を基本の候補として検討し、神奈川県内の施設を使う場合は葬儀社を通じて個別に条件を確認してください。</p>' },
+  { q: '鶴川駅から南多摩斎場までどのくらいかかりますか？', a: '<p>直線距離で約8.9km、車で30〜40分程度が目安です（道路事情により変動）。公共交通機関は小田急線で町田駅まで出て、そこからJR横浜線に乗り換え、橋本駅または淵野辺駅から神奈中バスに乗り継ぐルートが南多摩斎場の公式アクセスページで案内されています（町田駅からの経路。鶴川駅からはまず町田駅まで移動します）。距離があるため、多くの葬儀社は式場から南多摩斎場までマイクロバスや霊柩車で送迎します。</p>' },
+  { q: '鶴川総合斎場という名前ですが、火葬もできますか？', a: '<p>鶴川総合斎場は葬儀会社くらしの友が直営する葬儀式場で、公式サイトで確認できるのは通夜・告別式を行う式場としての情報です。火葬炉の有無・仕様は本サイトの調査では確認できておらず、火葬は別途、南多摩斎場など公営の火葬場を利用するのが一般的です。詳細は施設に直接お問い合わせください。</p>' },
+];
+---
+<ArticleLayout {title} {h1} {description} {toc} {related} pageType="area" lastReviewed=""
+  lead="鶴川・玉川学園前は小田急線沿線で、能ヶ谷・金井・薬師台・三輪・野津田・大蔵・真光寺などを含む町田市北東部の住宅地です。川崎市麻生区・横浜市青葉区に接する県境エリアのため、火葬場の選び方に他エリアと異なる事情があります。このページでは、南多摩斎場までの距離、公式サイトで確認できた式場、近隣病院からの搬送、死亡届の窓口までをまとめます。"
+  crumbs={[{ href: '/area/', label: 'エリア情報' }, { href: '/area/tsurukawa/', label: '鶴川・玉川学園前' }]}
+  bottomCtaPosition="hall" bottomCtaTitle="鶴川・玉川学園前エリアでのご相談" bottomCtaLead="お住まいの町名と、南多摩斎場・民営式場のどちらを希望するかを伺えば、移動時間を含めた見込みをお伝えします。搬送のみのご依頼も受け付けています。">
+
+  <h2 id="gaiyo">鶴川・玉川学園前エリアはどんな地域ですか？</h2>
+  <div class="answer"><p>鶴川・玉川学園前エリアは<strong>小田急小田原線 鶴川駅・玉川学園前駅</strong>を中心に、能ヶ谷・金井・薬師台・三輪・野津田・大蔵・真光寺などの町を含む、町田市北東部の住宅地です。鶴川駅周辺は川崎市麻生区・横浜市青葉区に隣接する県境エリアで、玉川学園前駅周辺は学校法人玉川学園に合わせて開けた、坂の多い戸建て中心の住宅街です。</p></div>
+  <p>両駅とも小田急小田原線で新宿方面に直結しており、玉川学園前駅から新宿まで急行で約35分です。県境に近い立地のため、「隣の神奈川県の斎場は使えるのか」という疑問が生じやすいエリアですが、公営斎場には住民要件があるため、実務上の火葬場の第一候補は町田市民の火葬料が無料になる南多摩斎場になります。</p>
+  <Source items={[{ label: '町田市ホームページ 鶴川市民センター', href: 'https://www.city.machida.tokyo.jp/shisei/shiyakusyo/gyomu/shimin/com04.html' }]} />
+
+  <h2 id="kasoba">鶴川・玉川学園前から近い火葬場はどこですか？</h2>
+  <div class="answer"><p>鶴川駅からは<strong>南多摩斎場が直線約8.9km（車で30〜40分程度・目安）</strong>で、町田市民は火葬料が無料です。神奈川県境に近いため相模原市営斎場（直線約6.4km）や横浜市北部斎場（約8.1km）、かわさき北部斎苑（約10.8km）の方が近い場合もありますが、いずれも公営の市外扱いとなり火葬料がかかります。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>鶴川駅からの火葬場候補と火葬料（12歳以上・町田市民の場合。直線距離は目安、公式使用料ページで2026-09-15確認）</caption>
+      <thead><tr><th scope="col">火葬場</th><th scope="col">運営</th><th scope="col">鶴川駅からの目安</th><th scope="col">火葬料（町田市民）</th></tr></thead>
+      <tbody>
+        <tr data-track-view="hall" data-item="南多摩斎場"><th scope="row">南多摩斎場</th><td>公営（南多摩斎場組合）</td><td>直線約8.9km／車30〜40分</td><td class="num">無料</td></tr>
+        <tr data-track-view="hall" data-item="相模原市営斎場"><th scope="row">相模原市営斎場</th><td>公営（相模原市）</td><td>直線約6.4km</td><td class="num">54,000円（市外扱い）</td></tr>
+        <tr data-track-view="hall" data-item="横浜市北部斎場"><th scope="row">横浜市北部斎場</th><td>公営（横浜市）</td><td>直線約8.1km</td><td class="num">50,000円（10歳以上・市外扱い）</td></tr>
+        <tr data-track-view="hall" data-item="かわさき北部斎苑"><th scope="row">かわさき北部斎苑</th><td>公営（川崎市）</td><td>直線約10.8km</td><td class="num">60,000円（市外扱い）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">公営施設の使用料は非課税です。距離は駅と施設の座標から算出した直線距離の目安で、実際の道路距離・所要時間とは異なります。</p>
+  <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }, { label: 'かわさき北部斎苑 利用の御案内（川崎市）', href: 'https://www.city.kawasaki.jp/350/page/0000016725.html' }]} />
+  <p>かわさき北部斎苑は個人からの申込を受け付けておらず、葬儀事業者を通じた申込のみです。神奈川県内の公営斎場は住民登録が要件になっている運用が一般的で、非住民の受け入れ可否・料金は施設ごとに異なります。町田市民であれば、火葬料が無料になる南多摩斎場を基準に検討し、日程が優先される場合のみ市外の候補を葬儀社に相談する進め方が現実的です。</p>
+  <NextLink href="/halls/crematorium/" label="火葬場をくわしく" title="町田市の火葬場（南多摩斎場と市外候補の料金・アクセス）" />
+
+  <h2 id="shikijo">鶴川・玉川学園前エリアで使いやすい式場はどこですか？</h2>
+  <div class="answer"><p>公式サイトで所在地を確認できた式場は、<strong>鶴川総合斎場（くらしの友・金井ヶ丘）、小さなお葬式 鶴川ホール（金井ヶ丘）、家族葬の四季風 鶴川（野津田町）</strong>の3施設です。いずれも民営で、火葬は別途、南多摩斎場などの利用が必要です。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>鶴川エリアの民営葬儀式場（公式サイトで所在地を確認できたもの。確認日2026-09-15）</caption>
+      <thead><tr><th scope="col">名称</th><th scope="col">所在地</th><th scope="col">最寄り</th><th scope="col">運営会社</th></tr></thead>
+      <tbody>
+        <tr data-track-view="hall" data-item="鶴川総合斎場"><th scope="row">鶴川総合斎場</th><td>町田市金井ヶ丘4丁目43-26</td><td>鶴川駅北口より徒歩約21分、またはバス「栗谷」下車すぐ</td><td>株式会社くらしの友（直営）</td></tr>
+        <tr data-track-view="hall" data-item="小さなお葬式 鶴川ホール"><th scope="row">小さなお葬式 鶴川ホール</th><td>町田市金井ヶ丘3丁目1-28</td><td>鶴川駅よりバス約10分</td><td>「小さなお葬式」ブランド運営</td></tr>
+        <tr data-track-view="hall" data-item="家族葬の四季風 鶴川"><th scope="row">家族葬の四季風 鶴川</th><td>町田市野津田町851-1</td><td>バス停「袋橋」下車徒歩2分</td><td>株式会社コムウェル</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">3施設とも使用料は公式サイトに具体的な記載がなく、本サイトでは確認できていません（要問い合わせ）。掲載は情報提供目的で、当サイトが運営・提携している施設ではありません。</p>
+  <Source items={[{ label: 'くらしの友 鶴川総合斎場', href: 'https://www.kurashinotomo.jp/sougi/saijou-direct/tsurukawa/' }, { label: '小さなお葬式 鶴川ホール', href: 'https://ceremonyhouse.info/tokyo/machida-shi/ceremonyhouse_tsurukawa/' }, { label: '家族葬の四季風 鶴川（コムウェル）', href: 'https://www.comwellceremony.co.jp/area/machida/' }]} />
+  <p>玉川学園前駅周辺は、公式サイトで所在地を確認できた式場が本サイトの調査では見つかっていません。玉川学園前エリアから式場を探す場合は、上記の鶴川エリアの3施設か、南多摩斎場の式場（火葬場併設、第一〜第三式場）を候補にする進め方になります。</p>
+  <Cta position="hall" variant="inline" telText="式場について電話で相談" contactText="メールで相談" />
+
+  <h2 id="byoin">近くの病院で亡くなった場合、どこへ搬送しますか？</h2>
+  <div class="answer"><p>鶴川エリアの真光寺町には<strong>イムス明理会東京町田病院</strong>（旧・鶴川サナトリウム病院、2026年4月に名称変更）があります。搬送先は自宅または安置施設で、搬送そのものは家族葬プランに含まれます。</p></div>
+  <p>死亡診断書が発行されたあと、必ずしもその場で葬儀社を決める必要はなく、搬送だけを先に依頼して安置先で落ち着いてから式場・日程を決めることもできます。搬送にかかる時間は病院と安置先の距離によって変わるため、目安として案内できるのは「町田市内であれば概ね1時間以内」という一般的な範囲にとどまります。搬送だけの依頼については<a href="/first-steps/">亡くなってから最初にすること</a>で詳しく説明しています。</p>
+  <Source items={[{ label: 'イムス明理会東京町田病院', href: 'https://ims-machida.com/' }]} />
+  <NextLink href="/first-steps/" label="搬送の進め方" title="亡くなってから最初にすること（病院・施設からの搬送）" />
+
+  <h2 id="madoguchi">死亡届・葬祭費の窓口はどこですか？</h2>
+  <div class="answer"><p>鶴川・玉川学園前エリアの死亡届は、<strong>鶴川市民センター（町田市大蔵町1981-4、電話042-735-5704）</strong>で受け付けています。市役所本庁舎（森野2-2-22）まで行かなくても、鶴川市民センターの窓口で死亡届の提出と火葬許可証の受け取りができます。</p></div>
+  <p>提出期限は死亡の事実を知った日を含めて7日以内です。開庁時間は平日午前8時30分から午後5時までで、時間外は市役所1階の休日・夜間窓口での預かり扱いになります。葬祭費（国民健康保険・後期高齢者医療から50,000円）の申請窓口も同じ市民センターです。死亡届の提出は通常、当サイトが代行します。葬祭費の申請は喪主自身が行う手続きですが、必要書類の準備はご相談に応じます。</p>
+  <Source items={[{ label: '町田市 鶴川市民センター', href: 'https://www.city.machida.tokyo.jp/shisei/shiyakusyo/gyomu/shimin/com04.html' }, { label: '町田市 死亡届', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/todokede/todokede03.html' }]} />
+  <NextLink href="/subsidy/" label="葬祭費の申請方法" title="葬祭費・補助金の申請方法（国保・後期高齢者・社会保険）" />
+
+  <h2 id="chuui">鶴川・玉川学園前で葬儀をするときの注意点は？</h2>
+  <div class="answer"><p>このエリア固有の注意点は、<strong>①南多摩斎場まで市内でも距離があること、②神奈川県内の火葬場は住民要件で使いにくいこと、③玉川学園前駅周辺は坂道が多く送迎の動線に配慮が必要なこと</strong>の3点です。</p></div>
+  <p>南多摩斎場までは鶴川駅から直線約8.9kmあり、町田駅周辺エリアと比べても近いとは言えません。式場を鶴川エリアの民営ホールにした場合、通夜・告別式のあと火葬のために南多摩斎場まで移動する動線になるため、霊柩車・マイクロバスの手配を式場と合わせて確認しておくと当日の移動がスムーズです。神奈川県境という立地から「近い神奈川の斎場を使いたい」という要望が出やすいエリアですが、住民要件により非住民は利用できないか高額になる施設が多く、断定的な案内ができない部分は葬儀社を通じて個別に確認する必要があります。玉川学園前駅周辺は急坂の多い住宅地とされており、寝台車・霊柩車の進入経路や駐車スペースを式場・葬儀社と事前に確認しておくと、当日の動線を決めやすくなります。</p>
+
+  <h2 id="faq">鶴川・玉川学園前エリアでよくある質問</h2>
+  <Faq items={faqs} group="area-tsurukawa" />
+</ArticleLayout>

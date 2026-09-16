@@ -1,0 +1,182 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import NextLink from '../components/NextLink.astro';
+import Source from '../components/Source.astro';
+import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
+import Icon from '../components/Icon.astro';
+
+const title = '町田市の葬祭費・葬儀の補助金｜金額・申請方法・必要書類・期限';
+const h1 = '町田市の葬祭費・葬儀の補助金｜50,000円の受け取り方と申請期限';
+const description = '町田市で葬儀後に受け取れるお金は、国民健康保険・後期高齢者医療の葬祭費50,000円、会社の健康保険の埋葬料50,000円、生活保護の葬祭扶助のいずれかです。申請窓口・必要書類・2年の期限を町田市の一次情報にもとづいて説明します。';
+const toc = [
+  { id: 'okane', label: '葬儀をしたら受け取れるお金は？' },
+  { id: 'kokuho', label: '国民健康保険の葬祭費' },
+  { id: 'koukikourei', label: '後期高齢者医療制度の葬祭費' },
+  { id: 'maisouryou', label: '健康保険の埋葬料・埋葬費との違い' },
+  { id: 'shinsei', label: '申請の3ルートと必要書類' },
+  { id: 'fujo', label: '生活保護の葬祭扶助' },
+  { id: 'shiminsou', label: '町田市の市民葬はある？' },
+  { id: 'tetsuzuki', label: '葬儀後の主な手続き一覧' },
+  { id: 'faq', label: 'よくある質問' },
+];
+const related = [
+  { href: '/cost/', label: '葬儀費用の内訳と総額例', note: '葬祭費を差し引いた実質負担額の目安' },
+  { href: '/flow/', label: '葬儀の流れ', note: '死亡届から法要・手続きまでの流れ' },
+  { href: '/first-steps/', label: '亡くなってから最初にすること', note: '死亡届・火葬許可証の手続き' },
+  { href: '/plans/kasoshiki/', label: '火葬式・直葬', note: '葬祭扶助が使える形式' },
+  { href: '/machida/', label: '町田市の葬儀ガイド', note: '町田市固有の事情の総合解説' },
+  { href: '/contact/', label: 'お問い合わせ', note: '申請書類の準備もあわせて相談' },
+];
+const faqs = [
+  { q: '火葬式（直葬）でも葬祭費はもらえますか？', a: '<p>町田市公式ページの記載では、葬祭費の支給要件は「故人が国民健康保険・後期高齢者医療の加入者で、葬祭を行った方（喪主）が申請すること」で、葬儀の形式（家族葬・一日葬・火葬式など）による除外規定は明記されていません。必要書類は、喪主名義の葬祭費用の領収書や、喪主が葬祭を行ったことが分かる書類（会葬礼状等）です。火葬式の場合の取り扱いに不安があるときは、申請前に保険年金課（042-724-2130）に確認すると確実です。</p>' },
+  { q: '喪主が町田市外に住んでいても申請できますか？', a: '<p>できます。葬祭費は故人が加入していた保険（町田市の国民健康保険・後期高齢者医療）で決まり、喪主の住所地は要件ではありません。申請は町田市役所の保険年金課、または町田市内の6市民センター（南・なるせ駅前・鶴川・忠生・小山・堺）の窓口で行います。郵送・オンライン申請にも対応しています。</p>' },
+  { q: '葬祭費の申請を忘れたまま2年経つとどうなりますか？', a: '<p>申請できなくなります。国民健康保険・後期高齢者医療の葬祭費は、いずれも葬祭を行った日の翌日から2年で時効となり、以降は申請しても支給されません。葬儀後の手続きは年金・介護保険・世帯主変更なども重なるため、早い段階で申請を済ませておくと取りこぼしを防げます。</p>' },
+  { q: '国保の葬祭費と会社の健康保険の埋葬料は両方もらえますか？', a: '<p>いずれか一方のみで、重複受給はできません。故人がどちらの保険に加入していたかで決まり、国民健康保険・後期高齢者医療の加入者なら町田市の葬祭費、協会けんぽ等の被用者保険の加入者（被扶養者を含む）なら保険者から埋葬料・家族埋葬料が支給されます。退職して国保に切り替えた後3か月以内に亡くなった場合など、前職の健康保険から支給されるケースもあります。</p>' },
+  { q: '生活保護を受けていた家族が亡くなった場合はどうすればよいですか？', a: '<p>葬儀（火葬）を行う前に町田市生活援護課（市庁舎1階109窓口、電話042-724-2134）へ相談します。葬祭扶助は葬儀後に請求する葬祭費とは異なり、事前申請が前提の制度で、ケースワーカーが葬儀費用の支払い能力がないと判断した場合に利用できます。先に葬儀を済ませてしまうと対象外になることがあるため、事前の連絡が必要です。</p>' },
+];
+---
+<ArticleLayout {title} {h1} {description} {toc} {related} pageType="subsidy" lastReviewed=""
+  lead="町田市で葬儀をした後に受け取れるお金は、故人が加入していた公的医療保険の種類によって決まります。国民健康保険・後期高齢者医療なら葬祭費50,000円、会社の健康保険なら埋葬料50,000円、生活保護を受けていた場合は葬祭扶助です。申請窓口・必要書類・2年の期限を、町田市の一次情報にもとづいて説明します。"
+  crumbs={[{ href: '/subsidy/', label: '葬祭費・補助金' }]}
+  bottomCtaPosition="middle" bottomCtaTitle="葬祭費の申請書類の準備もご相談ください" bottomCtaLead="どの保険に加入していたか分からない場合や、必要書類の集め方に不安がある場合も、葬儀の打ち合わせの中であわせてご相談いただけます。">
+
+  <h2 id="okane">町田市で葬儀をしたら受け取れるお金は？</h2>
+  <div class="answer"><p>町田市で葬儀をした場合に受け取れるお金は、故人の加入していた保険により<strong>①国民健康保険・後期高齢者医療の「葬祭費」50,000円、②会社の健康保険の「埋葬料・埋葬費」50,000円、③生活保護の「葬祭扶助」</strong>のいずれか1つです。3つとも重複しては受け取れず、故人が国保加入の退職者・年金受給者なら①、会社員・その被扶養者なら②、生活保護受給者なら③が該当します。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>町田市で葬儀後に受け取れるお金の比較（確認日 2026-09-15）</caption>
+      <thead><tr><th scope="col">制度</th><th scope="col">故人の加入保険</th><th scope="col">金額</th><th scope="col">申請のタイミング</th><th scope="col">窓口</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">葬祭費</th><td>国民健康保険</td><td class="num">50,000円</td><td>葬儀後（2年以内）</td><td>保険年金課 保険給付係・市民センター</td></tr>
+        <tr><th scope="row">葬祭費</th><td>後期高齢者医療制度</td><td class="num">50,000円</td><td>葬儀後（2年以内）</td><td>保険年金課 高齢者医療係・市民センター</td></tr>
+        <tr><th scope="row">埋葬料・埋葬費</th><td>会社の健康保険（協会けんぽ等）</td><td class="num">定額50,000円または実費上限50,000円</td><td>葬儀後</td><td>加入していた健康保険（協会けんぽ等）</td></tr>
+        <tr><th scope="row">葬祭扶助</th><td>生活保護</td><td>基準額の範囲内（現物給付が中心）</td><td><strong>葬儀（火葬）の前</strong></td><td>生活援護課</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>故人がどの保険に加入していたかは、健康保険証（資格確認書）や年金の種類で確認できます。75歳以上の方は原則として後期高齢者医療制度に加入しているため、町田市への葬祭費申請になります。</p>
+  <NextLink href="/cost/" label="費用の内訳を見る" title="葬儀費用の内訳と参列人数別の総額例" />
+
+  <h2 id="kokuho">国民健康保険の葬祭費はいくら、どこで申請しますか？</h2>
+  <div class="answer"><p>町田市国民健康保険の葬祭費は<strong>50,000円</strong>で、葬祭を行った方（喪主）が申請します。申請期限は<strong>葬祭を行った日の翌日から2年</strong>で、これを過ぎると時効により申請できなくなります。</p></div>
+  <div class="table-wrap">
+    <table>
+      <caption>町田市国民健康保険 葬祭費の申請概要（確認日 2026-09-15）</caption>
+      <thead><tr><th scope="col">項目</th><th scope="col">内容</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">支給額</th><td class="num">50,000円</td></tr>
+        <tr><th scope="row">申請者</th><td>葬祭を行った方（喪主）</td></tr>
+        <tr><th scope="row">申請期限</th><td>葬祭を行った日の翌日から2年</td></tr>
+        <tr><th scope="row">必要書類</th><td>故人のマイナンバーカードまたは資格確認書（有効期間内の保険証も可）／あて先が明記された葬祭費用の領収書か、喪主が葬儀を行ったことが分かる書類（会葬礼状等）／喪主名義の振込口座が分かるもの／喪主以外の口座に振り込む場合は喪主の印鑑</td></tr>
+        <tr><th scope="row">申請窓口</th><td>市役所1階 保険年金課 保険給付係（〒194-8520 東京都町田市森野2-2-22）、または南・なるせ駅前・鶴川・忠生・小山・堺の各市民センター</td></tr>
+        <tr><th scope="row">連絡先</th><td>電話 042-724-2130</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">退職して国民健康保険に切り替えた後、3か月以内に亡くなった場合など、前の会社の健康保険から埋葬料（費）が支給されることがあります。この場合、国保の葬祭費との重複支給はできません。</p>
+  <Source items={[{ label: '町田市 国民健康保険の葬祭費', href: 'https://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/sousai.html' }, { label: '葬祭費支給申請書（PDF）', href: 'http://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/sousai.files/20241202sosaihi.pdf' }]} />
+
+  <h2 id="koukikourei">後期高齢者医療制度の葬祭費はいくらですか？</h2>
+  <div class="answer"><p>東京都後期高齢者医療制度（75歳以上の方などが加入）の葬祭費も<strong>50,000円</strong>で、金額・申請者・2年の期限は国民健康保険の葬祭費と同じです。制度の運営主体は東京都後期高齢者医療広域連合ですが、給付事務の窓口は町田市が担います。</p></div>
+  <div class="table-wrap">
+    <table>
+      <caption>東京都後期高齢者医療制度 葬祭費の申請概要（町田市が窓口。確認日 2026-09-15）</caption>
+      <thead><tr><th scope="col">項目</th><th scope="col">内容</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">支給額</th><td class="num">50,000円</td></tr>
+        <tr><th scope="row">申請者</th><td>葬祭を行った方（喪主）</td></tr>
+        <tr><th scope="row">申請期限</th><td>葬祭を行った日の翌日から2年</td></tr>
+        <tr><th scope="row">必要書類</th><td>町田市葬祭費支給申請書／喪主名義の葬祭費用の領収書か会葬礼状等／喪主名義の振込口座情報／喪主以外の口座に振り込む場合は喪主の印鑑／故人の後期高齢者医療保険者証または資格確認書（あれば）</td></tr>
+        <tr><th scope="row">申請窓口</th><td>保険年金課 高齢者医療係（市庁舎1階）、または忠生・鶴川・南・なるせ駅前・堺・小山の各市民センター</td></tr>
+        <tr><th scope="row">連絡先</th><td>電話 042-724-2144</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <Source items={[{ label: '町田市 後期高齢者医療制度の葬祭費', href: 'https://www.city.machida.tokyo.jp/iryo/old_iryo/koukikoureisyairyou/koukikoureikyuuhu.html' }, { label: '葬祭費支給申請書（PDF）', href: 'https://www.city.machida.tokyo.jp/iryo/old_iryo/koukikoureisyairyou/koukiiryousinsneisho.files/sousaihisinseisho4.pdf' }]} />
+  <NextLink href="/first-steps/" label="亡くなった直後の手続き" title="亡くなってから最初にすること（搬送・死亡届）" />
+
+  <h2 id="maisouryou">会社の健康保険の埋葬料・埋葬費は葬祭費と何が違いますか？</h2>
+  <div class="answer"><p>故人が会社員などで協会けんぽ等の被用者保険に加入していた場合、市区町村の「葬祭費」ではなく、保険者から<strong>「埋葬料」（生計を維持されていた遺族に定額50,000円）</strong>か<strong>「埋葬費」（埋葬料を受け取る遺族がいない場合に実費上限50,000円）</strong>が支給されます。被扶養者が亡くなった場合は被保険者に「家族埋葬料」50,000円が支給されます。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>国保・後期高齢者医療の「葬祭費」と協会けんぽの「埋葬料・埋葬費」の違い（確認日 2026-09-15）</caption>
+      <thead><tr><th scope="col"></th><th scope="col">葬祭費（町田市）</th><th scope="col">埋葬料・埋葬費（協会けんぽ等）</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">対象</th><td>国民健康保険・後期高齢者医療の加入者</td><td>会社の健康保険（被用者保険）の加入者・被扶養者</td></tr>
+        <tr><th scope="row">支給主体</th><td>町田市</td><td>協会けんぽ等の保険者</td></tr>
+        <tr><th scope="row">金額</th><td class="num">定額50,000円</td><td class="num">埋葬料は定額50,000円／埋葬費は実費上限50,000円</td></tr>
+        <tr><th scope="row">申請先</th><td>町田市保険年金課・市民センター</td><td>加入していた協会けんぽ等</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>資格喪失後3か月以内の死亡や、傷病手当金・出産手当金の継続給付中もしくは給付終了後3か月以内の死亡についても、埋葬料・埋葬費の支給対象になります。いずれの制度も、葬祭費と埋葬料・埋葬費の重複受給はできません。埋葬料・埋葬費の申請期限は、協会けんぽの公式ページ本文では確認できておらず、正確な期限は加入先の協会けんぽへの確認が必要です。</p>
+  <Source items={[{ label: '全国健康保険協会 埋葬料（費）の支給', href: 'https://www.kyoukaikenpo.or.jp/faq/benefit/008/index.html' }]} />
+
+  <h2 id="shinsei">葬祭費の申請方法と必要書類のチェックリスト</h2>
+  <div class="answer"><p>町田市の葬祭費（国民健康保険・後期高齢者医療とも）は<strong>①市役所・市民センターの窓口、②郵送、③オンライン申請</strong>の3つの方法で申請できます。窓口に行けない場合も、書類さえそろえば郵送・オンラインで完結します。</p></div>
+  <p>申請前に、次の書類を確認します。</p>
+  <ul>
+    <li>故人のマイナンバーカードまたは資格確認書（国保は有効期間内の保険証でも可、後期高齢者医療は保険者証・資格確認書があれば添付）</li>
+    <li>あて先（喪主名）が明記された葬祭費用の領収書、または喪主が葬祭を行ったことが分かる書類（会葬礼状等）</li>
+    <li>喪主名義の振込口座が分かるもの（通帳等）</li>
+    <li>喪主以外の口座へ振り込みを希望する場合は喪主の印鑑</li>
+    <li>後期高齢者医療の場合は町田市葬祭費支給申請書（窓口またはオンラインで入手）</li>
+  </ul>
+  <ol>
+    <li>会葬礼状または葬儀費用の領収書を保管しておく（喪主名義であることを確認）</li>
+    <li>国民健康保険か後期高齢者医療か、故人の加入していた制度を確認する</li>
+    <li>窓口（保険年金課または6市民センターのいずれか）に行くか、郵送・オンライン申請を選ぶ</li>
+    <li>振込口座を確認し、喪主以外の口座を指定する場合は印鑑を用意する</li>
+    <li>申請から2年の期限内に手続きを終える</li>
+  </ol>
+  <p>窓口は、市役所1階の保険年金課（保険給付係042-724-2130／高齢者医療係042-724-2144）のほか、南市民センター、なるせ駅前市民センター、鶴川市民センター、忠生市民センター、小山市民センター、堺市民センターの6か所で受け付けています。自宅や式場に近い市民センターで手続きできるため、市役所まで行く必要はありません。</p>
+  <Source items={[{ label: '町田市 国民健康保険の葬祭費 オンライン申請', href: 'https://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/sousaihi_online.html' }]} />
+  <Cta position="middle" variant="inline" telText="申請方法を電話で相談" contactText="メールで相談" />
+
+  <h2 id="fujo">生活保護の葬祭扶助はどのように申請しますか？</h2>
+  <div class="answer"><p>生活保護法第18条に基づく<strong>葬祭扶助</strong>は、検案・遺体の搬送・火葬（または埋葬）・納骨など葬祭に必要な最低限の費用を公費で賄う制度です。厚生労働省の実施要領（令和6年4月1日施行）では基準額を<strong>大人21万5,000円以内、子供（12歳未満）17万2,000円以内</strong>（1級地・2級地の場合）としています。</p></div>
+  <p>葬祭費が葬儀後に請求する給付であるのに対し、葬祭扶助は<strong>葬儀（火葬）の前に申請する</strong>必要がある点が大きく異なります。先に葬儀を済ませて費用を支払ってしまうと、対象外と判断される場合があります。ケースワーカーが葬儀費用を負担できないと判断した場合に利用できる制度のため、生活保護を受けている家族が危篤・死亡した時点で、早めに担当のケースワーカーまたは生活援護課へ連絡します。</p>
+  <div class="table-wrap">
+    <table>
+      <caption>町田市 生活援護課（葬祭扶助の相談窓口。確認日 2026-09-15）</caption>
+      <thead><tr><th scope="col">項目</th><th scope="col">内容</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">窓口</th><td>生活援護課（市庁舎1階109窓口、〒194-8520 東京都町田市森野2-2-22）</td></tr>
+        <tr><th scope="row">電話</th><td>042-724-2134（生活援護課代表）</td></tr>
+        <tr><th scope="row">受付時間</th><td>午前8時30分から午後5時（土曜・日曜・祝日・12月29日から1月3日は休み）</td></tr>
+        <tr><th scope="row">基準額の目安</th><td>大人21万5,000円以内、子供（12歳未満）17万2,000円以内（令和6年4月1日施行、1級地・2級地の場合）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">町田市の地域級地区分や、2026年度時点での最新の基準額改定の有無は公式ページ本文からは確認できていません。実際の対象要件・基準額は生活援護課への確認が必要です。火葬のみで葬祭を行う<a href="/plans/kasoshiki/">火葬式</a>は、葬祭扶助の基準額に収まりやすい形式です。</p>
+  <Source items={[{ label: '町田市 生活援護課', href: 'https://www.city.machida.tokyo.jp/shisei/shiyakusyo/gyomu/hukushi/enngoka20150401.html' }, { label: '厚生労働省 生活保護実施要領（令和6年4月1日施行）', href: 'https://www.mhlw.go.jp/content/001222612.pdf' }]} />
+
+  <h2 id="shiminsou">町田市の市民葬はありますか？</h2>
+  <div class="answer"><p>町田市が直接運営する市民葬・規格葬儀は<strong>2022年3月31日をもって終了</strong>しています。現在は、町田市内の葬祭事業者でつくる<strong>町田市民葬祭事業組合（愛称：町田のまちそう）</strong>という民間運営の組合を、町田市が案内する形になっています。</p></div>
+  <p>町田のまちそうは、経済産業大臣認可の全日本葬祭事業協同組合連合会に加盟する市内業者により運営され、連絡先は0120-568-108（365日24時間対応）です。対象者の要件や料金体系、東京都区部の「規格葬儀」に相当する統一料金プランがあるかどうかは、町田市公式ページ本文からは確認できておらず、詳細は問い合わせが必要です。当サイトは町田のまちそうを運営・提携するものではありません。</p>
+  <Source items={[{ label: '町田市 葬祭事業（町田のまちそう）', href: 'https://www.city.machida.tokyo.jp/iryo/tiikihukusihoka/sousaijigyou.html' }]} />
+
+  <h2 id="tetsuzuki">葬儀後にやる主な手続きは何ですか？</h2>
+  <div class="answer"><p>葬儀後は<strong>葬祭費・埋葬料の請求のほか、国民健康保険の資格喪失、年金の手続き、世帯主の変更</strong>など、期限のある手続きが重なります。町田市は手続きを絞り込める「おくやみ手続きナビ」と「おくやみハンドブック」（PDF）を用意しています。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>町田市 葬儀後の主な手続き（確認日 2026-09-15）</caption>
+      <thead><tr><th scope="col">手続き</th><th scope="col">内容・期限の目安</th><th scope="col">窓口</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">死亡届</th><td>死亡の事実を知った日を含めて7日以内</td><td>市民課戸籍係・各市民センター</td></tr>
+        <tr><th scope="row">国民健康保険の資格喪失</th><td>故人が国保加入者だった場合に届出</td><td>保険年金課・市民センター</td></tr>
+        <tr><th scope="row">葬祭費・埋葬料の請求</th><td>葬祭を行った日の翌日から2年以内</td><td>保険年金課、または加入先の健康保険</td></tr>
+        <tr><th scope="row">年金の手続き</th><td>受給中の年金の手続き（未支給年金請求等）、遺族基礎年金・死亡一時金・寡婦年金等</td><td>保険年金課・年金事務所</td></tr>
+        <tr><th scope="row">世帯主の変更</th><td>世帯主が亡くなった場合に届出</td><td>市民課・各市民センター</td></tr>
+        <tr><th scope="row">介護保険</th><td>資格喪失の手続きが必要（具体的な提出書類・期限は公式ページ本文では未確認）</td><td>担当課へ確認</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>町田市公式サイトの「おくやみ」ページには、他自治体にあるような専用の物理的な「おくやみコーナー」窓口の設置は明記されていません。手続きの抜け漏れを防ぐには、「おくやみ手続きナビ」で必要な手続きを事前に確認しておくと、当日の窓口回りがまとまります。</p>
+  <Source items={[{ label: '町田市 おくやみ（死亡後の手続き）', href: 'https://www.city.machida.tokyo.jp/lifecycle/okuyami.html' }, { label: '町田市 死亡届', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/todokede/todokede03.html' }]} />
+  <NextLink href="/flow/" label="葬儀全体の流れを見る" title="葬儀の流れと手続きの一覧（逝去から法要まで）" />
+
+  <h2 id="faq">町田市の葬祭費・補助金でよくある質問</h2>
+  <Faq items={faqs} group="subsidy" />
+</ArticleLayout>

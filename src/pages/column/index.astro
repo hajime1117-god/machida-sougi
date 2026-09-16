@@ -1,0 +1,101 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { SITE } from '../../config/site';
+
+const title = '葬儀コラム｜町田市の葬儀・家族葬の実用情報';
+const h1 = '葬儀コラム｜町田市で葬儀を検討する方のための実用記事';
+const description = '家族葬で呼ばない人への連絡、南多摩斎場の火葬待ちと安置費用、病院からの搬送、一日葬との違いなど、町田市で葬儀を検討する方が迷いやすい実務テーマを扱うコラム記事の一覧です。';
+
+const columns = [
+  {
+    href: '/column/kazokuso-renraku/',
+    label: '家族葬で「呼ばない人」への連絡はどうする？訃報の伝え方と後日の弔問対応',
+    note: '参列を遠慮してもらう相手への訃報の伝え方と、葬儀後に弔問を受けたときの対応を、文例とあわせて説明します。',
+  },
+  {
+    href: '/column/kaso-machi-anchi/',
+    label: '南多摩斎場が混んでいるとき：火葬待ち日数と安置費用の考え方',
+    note: '火葬待ちが起きたときに安置費用がどれだけ増えるかと、市外の火葬場に切り替える判断基準を整理します。',
+  },
+  {
+    href: '/column/byoin-sogisha/',
+    label: '病院で亡くなったら、葬儀社をすぐ決める必要はある？搬送だけ頼む方法',
+    note: '病院で葬儀社を決めるよう言われても、搬送と安置だけを依頼して葬儀は後から比較してよい理由を説明します。',
+  },
+  {
+    href: '/column/ichinichiso-kazokuso/',
+    label: '一日葬と家族葬、どちらを選ぶ？判断の目安と町田市での費用差',
+    note: '通夜を省く一日葬と2日間行う家族葬の違いを、判断基準5つとケース別の目安で説明します。',
+  },
+];
+
+const related = [
+  { href: '/plans/', label: '葬儀プラン比較', note: '家族葬・一日葬・火葬式の違い' },
+  { href: '/cost/', label: '葬儀費用の内訳と総額例', note: '追加になりやすい費用と抑え方' },
+  { href: '/faq/', label: 'よくある質問', note: '葬儀全般のQ&A' },
+  { href: '/machida/', label: '町田市の葬儀ガイド', note: '市固有事情の総合解説' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  headline: h1,
+  description,
+  inLanguage: 'ja',
+  author: { '@type': 'Organization', name: '町田ことのは葬祭 編集部' },
+  publisher: { '@id': `${SITE.url}/#organization` },
+  mainEntityOfPage: `${SITE.url}/column/`,
+};
+---
+<ArticleLayout {title} {h1} {description} {related} pageType="column" lastReviewed=""
+  ogType="website" {jsonLd}
+  lead="葬儀は多くの方にとって初めての経験で、費用や式場の説明だけでは解決しない実務的な迷いが生じます。このコラムでは、家族葬の連絡マナーや火葬待ちへの対応など、町田市で葬儀を検討する方が実際につまずきやすいテーマを、一次情報の確認できる範囲で具体的に扱います。"
+  crumbs={[{ href: '/column/', label: '葬儀コラム' }]}
+  bottomCtaPosition="middle" bottomCtaTitle="コラムの内容について相談する" bottomCtaLead="連絡文例や火葬待ちの日程など、コラムに書ききれない個別の状況もあわせてお伺いします。">
+
+  <ul class="col-list">
+    {columns.map((c) => (
+      <li>
+        <a href={c.href}>{c.label}</a>
+        <p class="col-list__note">{c.note}</p>
+        <time datetime="2026-09-16">2026年9月16日</time>
+      </li>
+    ))}
+  </ul>
+
+  <h2 id="policy">コラムの編集方針</h2>
+  <div class="answer"><p>コラムで扱う制度・料金・施設情報は、町田市や南多摩斎場組合など一次情報で確認できる内容のみを掲載し、記事内に出典と最終確認日を明示します。出典で確認できない数値は「目安」「一般的には」と明記した経験則の幅にとどめ、断定しません。口コミ件数・満足度・スタッフ紹介・創業年などの実績は、実在しない情報のため掲載しません。当サイトの運営方針や検証用サイトである旨は<a href="/about/">運営者情報</a>のページにまとめています。</p></div>
+
+</ArticleLayout>
+
+<style>
+  .col-list {
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+    padding: 0;
+    border-top: 1px solid var(--border, #ddd);
+  }
+  .col-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border, #ddd);
+  }
+  .col-list a {
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .col-list a:hover {
+    text-decoration: underline;
+  }
+  .col-list__note {
+    margin: 0.4rem 0 0.3rem;
+    color: var(--text-muted, #555);
+    font-size: 0.95rem;
+  }
+  .col-list time {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--text-muted, #777);
+  }
+</style>

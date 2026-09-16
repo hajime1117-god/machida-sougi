@@ -1,0 +1,7 @@
+---
+/** 本文中の「次の疑問へ」誘導リンク */
+import Icon from './Icon.astro';
+interface Props { href: string; label?: string; title: string; }
+const { href, label = '次に読む', title } = Astro.props;
+---
+<a href={href} class="next-link"><span><span class="next-link__label">{label}</span>{title}</span><Icon name="arrow" /></a>

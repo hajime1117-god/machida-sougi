@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PHONE } from '../config/site';
+const links = [
+  { href: '/plans/', label: '葬儀プラン（家族葬・一日葬・火葬式）' },
+  { href: '/cost/', label: '葬儀費用の内訳と相場' },
+  { href: '/halls/', label: '町田市の斎場・葬儀場' },
+  { href: '/halls/crematorium/', label: '町田市の火葬場' },
+  { href: '/first-steps/', label: '亡くなってから最初にすること' },
+  { href: '/faq/', label: 'よくある質問' },
+];
+---
+<BaseLayout title="ページが見つかりません" description="お探しのページは移動または削除された可能性があります。" pageType="other" noindex>
+  <div class="container">
+    <article class="article notfound">
+      <p class="notfound__code num">404</p>
+      <h1>ページが見つかりません</h1>
+      <p class="lead">お探しのページは移動または削除された可能性があります。お急ぎの方は、お電話（<a href={PHONE.tel} data-cta="tel" data-cta-position="middle" class="num">{PHONE.display}</a>）でご相談ください。</p>
+      <h2>よく見られているページ</h2>
+      <ul>{links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      <p><a href="/">トップページへ戻る</a></p>
+    </article>
+  </div>
+</BaseLayout>
+<style>
+  .notfound { padding-block: 2rem 4rem; }
+  .notfound__code { font-size: 3rem; font-weight: 700; color: var(--c-line); margin: 0; line-height: 1; }
+</style>

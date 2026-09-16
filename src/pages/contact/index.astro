@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Icon from '../../components/Icon.astro';
+import { PHONE, ANALYTICS, BRAND } from '../../config/site';
+const title = 'お問い合わせ・ご相談';
+const description = '町田市の葬儀・家族葬に関するご相談はこちら。電話は24時間受付、メールフォームは費用の目安や式場のご質問など、まだ葬儀社を決めていない段階のご相談にも対応します。';
+---
+<BaseLayout title={title} description={description} pageType="contact" fixedCta={false}>
+  <div class="container">
+    <Breadcrumb items={[{ href: '/contact/', label: title }]} />
+    <article class="article contact">
+      <h1>お問い合わせ・ご相談</h1>
+      <p class="lead">お急ぎの場合はお電話が確実です。落ち着いて検討したい方は、下のフォームからご相談ください。</p>
+
+      <section class="contact__tel" data-region="hero" aria-labelledby="tel-h">
+        <h2 id="tel-h" class="contact__tel-title">お急ぎの方（搬送・安置のご依頼）</h2>
+        <a href={PHONE.tel} class="btn btn--tel btn--lg btn--block" data-cta="tel" data-cta-position="hero">
+          <Icon name="phone" /><span>電話で相談 <span class="num">{PHONE.display}</span></span>
+        </a>
+        <p class="note">{PHONE.hours}。病院や施設からの搬送、ご自宅への安置のご依頼はお電話でお受けします。{PHONE.note}</p>
+      </section>
+
+      <h2 id="form-h">メールでのご相談</h2>
+      <p>費用の目安、式場・火葬場の選び方、事前相談のご希望など、どのような内容でも構いません。通常2営業日以内にご返信します。</p>
+      {!ANALYTICS.formEndpoint && (
+        <div class="callout callout--info">
+          <p class="callout__title"><Icon name="info" />このフォームは検証用です</p>
+          <p>送信先が設定されていないため、入力内容はどこにも送信されません（送信ボタンを押すと完了ページに移動し、計測イベントのみ記録されます）。</p>
+        </div>
+      )}
+      <form class="form" data-form="contact" method="post" action={ANALYTICS.formEndpoint || '/contact/thanks/'} novalidate aria-labelledby="form-h">
+        <div class="form__row">
+          <label for="f-name">お名前 <span class="form__req">必須</span></label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="50" />
+        </div>
+        <div class="form__row">
+          <label for="f-tel">電話番号 <span class="form__opt">任意</span></label>
+          <input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" />
+        </div>
+        <div class="form__row">
+          <label for="f-email">メールアドレス <span class="form__req">必須</span></label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="100" />
+        </div>
+        <div class="form__row">
+          <label for="f-subject">ご相談の内容 <span class="form__req">必須</span></label>
+          <select id="f-subject" name="subject" required>
+            <option value="">選択してください</option>
+            <option value="費用について">費用について知りたい</option>
+            <option value="家族葬について">家族葬について相談したい</option>
+            <option value="式場・火葬場について">式場・火葬場について知りたい</option>
+            <option value="事前相談">事前相談（まだ亡くなっていない）</option>
+            <option value="手続きについて">手続き・葬祭費について</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+        <div class="form__row">
+          <label for="f-timing">状況 <span class="form__opt">任意</span></label>
+          <select id="f-timing" name="timing">
+            <option value="">選択してください</option>
+            <option value="すでに亡くなっている">すでに亡くなっている</option>
+            <option value="危篤・入院中">危篤・入院中</option>
+            <option value="将来に備えて">将来に備えて</option>
+          </select>
+        </div>
+        <div class="form__row">
+          <label for="f-message">ご質問・ご要望 <span class="form__opt">任意</span></label>
+          <textarea id="f-message" name="message" rows="5" maxlength="2000"></textarea>
+        </div>
+        <div class="form__row form__row--check">
+          <input id="f-agree" name="agree" type="checkbox" required />
+          <label for="f-agree"><a href="/privacy/">プライバシーポリシー</a>に同意する <span class="form__req">必須</span></label>
+        </div>
+        <p class="form__error" id="form-error" hidden role="alert">未入力の必須項目、または形式が正しくない項目があります。</p>
+        <button type="submit" class="btn btn--primary btn--lg btn--block" data-cta="form" data-cta-position="middle">この内容で相談する</button>
+        <p class="note">送信後、{BRAND.name}から折り返しご連絡します。営業目的の電話は行いません。</p>
+      </form>
+    </article>
+  </div>
+</BaseLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('form[data-form="contact"]');
+  const err = document.getElementById('form-error');
+  form?.addEventListener('submit', (e) => {
+    if (!form.checkValidity()) {
+      e.preventDefault();
+      if (err) err.hidden = false;
+      form.querySelector<HTMLElement>(':invalid')?.focus();
+      return;
+    }
+    if (err) err.hidden = true;
+    const endpoint = form.getAttribute('action') || '';
+    if (endpoint.startsWith('/')) {
+      // テストモード: 送信先未設定。完了ページへ遷移するだけ（計測は analytics.ts が submit で記録）
+      e.preventDefault();
+      setTimeout(() => location.assign('/contact/thanks/'), 150);
+    }
+  });
+</script>
+
+<style>
+  .contact { padding-block: 1rem 3rem; }
+  .contact__tel { background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius-lg); padding: 1.25rem; margin: 1.5rem 0 2rem; max-width: var(--w-prose); }
+  .contact__tel-title { font-size: var(--fs-md); margin: 0 0 0.8em; border: 0; padding: 0; }
+  .contact__tel .note { margin: 0.8em 0 0; }
+  .form { max-width: 640px; }
+  .form__row { margin-bottom: 1.2rem; }
+  .form__row label { display: block; font-weight: 700; margin-bottom: 0.35em; font-size: var(--fs-sm); }
+  .form__req, .form__opt { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 0.1em 0.5em; border-radius: 3px; margin-left: 0.4em; vertical-align: middle; }
+  .form__req { background: var(--c-accent); color: #fff; }
+  .form__opt { background: var(--c-surface-2); color: var(--c-ink-3); }
+  .form input:not([type="checkbox"]), .form select, .form textarea { width: 100%; font: inherit; padding: 0.7em 0.8em; border: 1px solid var(--c-line); border-radius: var(--radius); background: var(--c-surface); color: var(--c-ink); min-height: 48px; }
+  .form textarea { min-height: 140px; resize: vertical; }
+  .form__row--check { display: flex; align-items: center; gap: 0.6em; }
+  .form__row--check label { margin: 0; font-weight: 400; }
+  .form__row--check input { width: 20px; height: 20px; }
+  .form__error { color: var(--c-accent-2); font-weight: 700; }
+  .form button { margin-top: 0.5rem; }
+</style>

@@ -1,0 +1,127 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import NextLink from '../../components/NextLink.astro';
+import Source from '../../components/Source.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
+
+const title = '町田市の火葬式・直葬｜費用・流れ・注意点';
+const h1 = '町田市の火葬式・直葬｜費用・流れ・後悔しないための注意点';
+const description = '町田市で火葬式（直葬）を行う場合の費用（プラン198,000円〜、総額約25万円）、安置から火葬までの流れ、南多摩斎場の火葬料が町田市民無料であること、菩提寺や親族とのトラブルを避ける注意点を解説します。';
+const toc = [
+  { id: 'toha', label: '火葬式・直葬とは' },
+  { id: 'hiyou', label: '町田市の火葬式の費用' },
+  { id: 'plan', label: '火葬式プランの内容' },
+  { id: 'nagare', label: '火葬式の流れ' },
+  { id: 'kasoba', label: '町田市民が利用する火葬場' },
+  { id: 'chui', label: '火葬式の注意点' },
+  { id: 'faq', label: 'よくある質問' },
+];
+const related = [
+  { href: '/halls/crematorium/', label: '町田市の火葬場', note: '南多摩斎場の料金・予約・混雑時の代替' },
+  { href: '/cost/', label: '葬儀費用の内訳と総額例', note: '追加になりやすい費用' },
+  { href: '/subsidy/', label: '葬祭費・補助金', note: '火葬式でも葬祭費50,000円の対象' },
+  { href: '/plans/ichinichiso/', label: '一日葬', note: '告別式だけを1日で行う' },
+  { href: '/first-steps/', label: '亡くなってから最初にすること', note: '搬送・安置・死亡届' },
+  { href: '/column/kaso-machi-anchi/', label: '火葬待ちと安置費用の考え方', note: '南多摩斎場が混んでいるとき' },
+];
+const faqs = [
+  { q: '火葬式でも葬祭費（5万円）は受け取れますか？', a: '<p>受け取れます。町田市の国民健康保険・後期高齢者医療制度の葬祭費は、通夜や告別式を行わず火葬のみを行った場合も支給対象です。申請には火葬の領収書など、葬祭を行ったことが分かる書類が必要です。</p>' },
+  { q: '火葬式の場合、お坊さんは呼びますか？', a: '<p>ご家族の希望で決められます。火葬炉の前で5〜10分の読経をお願いする場合は、お布施（一般に3〜5万円程度）が別途必要です。菩提寺がある場合は、火葬式にすること自体を事前に相談してください。宗教儀式を一切行わない火葬式も多くあります。</p>' },
+  { q: '火葬式に参列できるのは何人までですか？', a: '<p>南多摩斎場では火葬炉前のお別れは短時間で、同時に立ち会える人数に制限があります。当サイトの火葬式プランは10名程度までを想定しています。それ以上の参列者が見込まれる場合は、安置施設でのお別れの時間を設けるか、一日葬を検討してください。</p>' },
+  { q: '町田市で火葬式にする人はどのくらいいますか？', a: '<p>町田市の公式統計はありません。全国的には葬儀の簡素化が進み、直葬・一日葬の割合は増えていますが、割合の数値は調査により異なるため当サイトでは断定していません。ご家族の事情に合った形式かどうかを基準に選ぶことをおすすめします。</p>' },
+];
+---
+<ArticleLayout {title} {h1} {description} {toc} {related} pageType="plan" lastReviewed=""
+  lead="火葬式（直葬）は、通夜も告別式も行わず、安置後に火葬場で短いお別れをして火葬する最もシンプルな葬儀です。費用を最も抑えられる一方、菩提寺や親族との調整を怠るとトラブルになりやすい形式でもあります。このページでは、費用・流れ・注意点を町田市の事情に合わせて説明します。"
+  crumbs={[{ href: '/plans/', label: '葬儀プラン' }, { href: '/plans/kasoshiki/', label: '火葬式・直葬' }]}
+  bottomCtaPosition="plan" bottomCtaTitle="町田市の火葬式のご相談" bottomCtaLead="火葬式で本当に問題がないか、菩提寺や親族との関係も含めてご相談ください。安置施設でのお別れの時間を設けるなど、費用を抑えながら気持ちの区切りをつける方法もご提案します。">
+
+  <h2 id="toha">火葬式・直葬とは？</h2>
+  <div class="answer"><p><strong>火葬式（直葬）とは、通夜・告別式を行わず、安置場所から直接火葬場へ向かい、火葬炉の前で短いお別れをして火葬する葬儀</strong>です。式場を使わないため式場使用料・飲食費・返礼品が不要で、費用を最も抑えられます。「直葬」と「火葬式」は同じ形式を指し、葬儀社によって呼び方が異なります。</p></div>
+  <p>亡くなってから24時間以内の火葬は法律で禁止されているため、火葬式でも最低1日はご自宅または安置施設で安置します。安置中にご家族だけでお別れの時間を過ごすことはできます。</p>
+  <Source items={[{ label: '墓地、埋葬等に関する法律 第3条（死後24時間以内の火葬の禁止）', href: 'https://laws.e-gov.go.jp/law/323AC0000000048' }]} />
+
+  <h2 id="hiyou">町田市で火葬式を行う場合の費用はいくらですか？</h2>
+  <div class="answer"><p>町田市民が南多摩斎場で火葬式を行う場合、当サイトのプラン料金198,000円（税込）に待合室使用料などを加えた<strong>総額は約25万円</strong>が目安です。南多摩斎場の火葬料は町田市民なら無料のため、火葬場でかかる費用はほとんどありません。安置が3日目以降に延びた場合と、僧侶に読経を依頼する場合は加算されます。</p></div>
+  <div class="table-wrap">
+    <table>
+      <caption>町田市の火葬式 総額例（町田市民・南多摩斎場・安置2日以内。税込）</caption>
+      <thead><tr><th scope="col">費目</th><th scope="col">金額</th><th scope="col">備考</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">火葬式プラン料金</th><td class="num">198,000円</td><td>搬送・安置2日・棺・骨壺・手続き・火葬場での案内</td></tr>
+        <tr><th scope="row">火葬料（南多摩斎場）</th><td class="num">0円</td><td>組織5市（八王子・町田・多摩・稲城・日野）の住民。市外は12歳以上80,000円</td></tr>
+        <tr><th scope="row">待合室・控室</th><td class="num">数千円〜</td><td>火葬中に待機する場合。使用しないことも可能</td></tr>
+        <tr><th scope="row">安置施設の使用料（自宅安置でない場合）</th><td class="num">約10,000〜20,000円／日</td><td>プランの2日分を超える日数分</td></tr>
+        <tr><th scope="row">僧侶の読経（希望する場合）</th><td class="num">約30,000〜50,000円</td><td>お布施。菩提寺がある場合は寺院の慣例による</td></tr>
+        <tr><th scope="row"><strong>総額の目安</strong></th><td class="num"><strong>約20〜25万円</strong></td><td>読経なし・安置2日以内の場合</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">プラン料金は本サイト（検証用）の設定価格です。故人が国民健康保険・後期高齢者医療の加入者なら、火葬式でも<a href="/subsidy/">葬祭費50,000円</a>が支給されるため、実質負担はさらに下がります。</p>
+  <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }]} />
+  <Cta position="cost" variant="inline" telText="費用について電話で相談" contactText="メールで見積もりを相談" />
+
+  <h2 id="plan">火葬式プランに含まれるもの</h2>
+  <div class="answer"><p>火葬式プラン（198,000円・税込）には、<strong>搬送・2日間の安置とドライアイス・棺と骨壺・枕飾り・死亡届と火葬許可証の手続き代行・火葬場への霊柩車・当日の案内</strong>が含まれます。式場・祭壇・飲食・返礼品は形式上不要で、火葬料は町田市民なら無料です。</p></div>
+  <div class="table-wrap">
+    <table>
+      <caption>火葬式プランの内容（税込198,000円）</caption>
+      <thead><tr><th scope="col">区分</th><th scope="col">内容</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">搬送</th><td>病院・施設からご自宅または安置施設への寝台車（町田市内）、安置先から火葬場への霊柩車</td></tr>
+        <tr><th scope="row">安置</th><td>2日分の安置とドライアイス、枕飾り（線香・ろうそく）。3日目以降は1日ごとに加算</td></tr>
+        <tr><th scope="row">納棺</th><td>棺、仏衣、骨壺・骨箱。納棺の立ち会い</td></tr>
+        <tr><th scope="row">手続き</th><td>死亡届の提出と火葬許可証の受け取り（町田市役所・市民センター）、南多摩斎場の予約</td></tr>
+        <tr><th scope="row">当日</th><td>スタッフ1名による火葬場での案内、お別れ用の花（小）、収骨容器</td></tr>
+        <tr><th scope="row">含まれないもの</th><td>火葬料（町田市民は無料）、待合室使用料、安置施設の使用料、追加の安置日数、僧侶へのお礼、湯灌、市外への搬送</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="nagare">火葬式の流れ</h2>
+  <div class="answer"><p>火葬式は、<strong>亡くなった日に搬送・安置、翌日に死亡届と火葬場の予約・納棺、火葬当日に火葬場でお別れ・火葬・収骨</strong>という流れで、亡くなった日から火葬まで<strong>最短2日</strong>、南多摩斎場の混雑期は1週間程度かかります。</p></div>
+  <ol>
+    <li><strong>逝去・搬送（当日）</strong>　病院や施設からご自宅または安置施設へ搬送します。深夜・早朝でもお受けします。</li>
+    <li><strong>安置・打ち合わせ（当日〜翌日）</strong>　安置場所で火葬の日程を決め、南多摩斎場の火葬枠を予約します。死亡届を提出し、火葬許可証を受け取ります（当サイトが代行）。</li>
+    <li><strong>納棺（火葬前日または当日）</strong>　ご家族が立ち会い、棺に故人を納めます。手紙や思い出の品を入れることができます（燃えないものは不可）。</li>
+    <li><strong>火葬場でのお別れ（火葬当日）</strong>　火葬炉の前で5〜10分ほどお別れをします。読経を希望する場合はここで行います。</li>
+    <li><strong>火葬・収骨（約1〜1.5時間後）</strong>　待合室で待機し、収骨（骨上げ）をして解散します。火葬許可証に火葬済みの証明が押され、埋葬許可証として納骨に使います。</li>
+  </ol>
+  <p>死亡届は亡くなったことを知った日を含めて7日以内に提出します。町田市役所市民課（1階104窓口）または各市民センターで受け付けています。</p>
+  <Source items={[{ label: '町田市 死亡届', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/todokede/todokede03.html' }]} />
+  <NextLink href="/first-steps/" label="最初の24時間" title="亡くなってから最初にすること（病院・自宅・施設の場合別）" />
+
+  <h2 id="kasoba">町田市民が火葬式で利用する火葬場</h2>
+  <div class="answer"><p>町田市民の火葬式は、火葬料が無料の<strong>南多摩斎場（町田市上小山田町）</strong>で行うのが基本です。南多摩斎場が友引・年末年始で休場のときや、混雑で日程が合わないときは、市外料金で<strong>横浜市北部斎場（50,000円）や相模原市営斎場（54,000円）</strong>を利用できます。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>火葬式で使う火葬場の比較（大人1体・町田市民の場合。公営施設の使用料は非課税。確認日は各出典参照）</caption>
+      <thead><tr><th scope="col">火葬場</th><th scope="col">所在地</th><th scope="col">町田市民の火葬料</th><th scope="col">休場日</th><th scope="col">備考</th></tr></thead>
+      <tbody>
+        <tr data-track-view="hall" data-item="南多摩斎場"><th scope="row">南多摩斎場</th><td>町田市上小山田町</td><td class="num"><strong>無料</strong></td><td>友引（開場日あり）、1月1〜3日</td><td>組織5市の共同運営。混雑期は1週間以上待つことがある</td></tr>
+        <tr data-track-view="hall" data-item="横浜市北部斎場"><th scope="row">横浜市北部斎場</th><td>横浜市緑区長津田町</td><td class="num">50,000円（市外）</td><td>1月1〜3日ほか</td><td>南町田・つくし野・成瀬から近い</td></tr>
+        <tr data-track-view="hall" data-item="相模原市営斎場"><th scope="row">相模原市営斎場</th><td>相模原市南区古淵</td><td class="num">54,000円（市外）</td><td>1月1〜3日ほか</td><td>町田駅周辺・木曽から近い。市外住民は予約に制限あり</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }, { label: '横浜市 斎場使用料', href: 'https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/saijo/saijo/saijou.html' }, { label: '相模原市営斎場', href: 'https://www.city.sagamihara.kanagawa.jp/kurashi/shisetsu/shikanren/etc/1002725.html' }]} />
+  <NextLink href="/halls/crematorium/" label="火葬場をくわしく" title="町田市の火葬場｜南多摩斎場の料金・予約・休場日と代替火葬場" />
+
+  <h2 id="chui">火葬式で後悔しないための注意点</h2>
+  <div class="answer"><p>火葬式で後からトラブルになりやすいのは、<strong>①菩提寺に納骨を断られる、②親族から「お別れの機会がなかった」と言われる、③弔問客の対応が葬儀後に集中する</strong>の3点です。いずれも事前の連絡と、お別れの時間の工夫で避けられます。</p></div>
+  <h3>菩提寺がある場合は必ず事前に相談する</h3>
+  <p>読経や戒名のない火葬式を「正式な葬儀ではない」として、菩提寺の墓への納骨を認めない寺院があります。菩提寺がある場合は、火葬式にする前に相談し、必要なら火葬炉前での読経を依頼してください。</p>
+  <h3>親族には形式を事前に伝える</h3>
+  <p>火葬式は参列者が限られ、お別れの時間も短いため、後から「知らされていない」「最後に会えなかった」と不満が出ることがあります。決める前に主な親族に形式と理由を伝え、火葬当日に立ち会いたい方には日程を知らせます。</p>
+  <h3>お別れの時間を別に設ける</h3>
+  <p>火葬炉前のお別れは5〜10分程度です。安置施設や自宅で、火葬前日にご家族だけでゆっくり過ごす時間を設ける、火葬後に食事会や偲ぶ会を開くなど、費用をかけずに気持ちの区切りをつける方法があります。</p>
+  <div class="callout callout--warn">
+    <p class="callout__title"><Icon name="info" />「火葬式 9万円台〜」などの広告表示について</p>
+    <p>低価格の広告には、搬送距離・安置日数・ドライアイス・火葬料・骨壺などが含まれず、実際の総額が倍近くになる例があります。比較するときは「含まれないもの」と「南多摩斎場を使う場合の総額」で確認してください。</p>
+  </div>
+
+  <h2 id="faq">町田市の火葬式でよくある質問</h2>
+  <Faq items={faqs} group="kasoshiki" />
+</ArticleLayout>

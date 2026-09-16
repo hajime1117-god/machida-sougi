@@ -1,0 +1,22 @@
+---
+/** モバイル下部固定CTA（PCでは非表示）。body.has-fixed-cta で余白確保。 */
+import { PHONE } from '../config/site';
+import Icon from './Icon.astro';
+interface Props { telText?: string; contactText?: string; contactHref?: string; }
+const { telText = '電話で相談', contactText = '費用を相談', contactHref = '/contact/' } = Astro.props;
+---
+<div class="fixed-cta" data-region="floating">
+  <a href={PHONE.tel} class="fixed-cta__btn fixed-cta__btn--tel" data-cta="tel" data-cta-position="floating">
+    <Icon name="phone" /><span>{telText}</span>
+  </a>
+  <a href={contactHref} class="fixed-cta__btn fixed-cta__btn--contact" data-cta="contact" data-cta-position="floating">
+    <Icon name="mail" /><span>{contactText}</span>
+  </a>
+</div>
+<style>
+  .fixed-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--c-line); border-top: 1px solid var(--c-line); height: var(--fixed-cta-h); padding-bottom: env(safe-area-inset-bottom); }
+  .fixed-cta__btn { display: flex; align-items: center; justify-content: center; gap: 0.4em; font-weight: 700; text-decoration: none; font-size: var(--fs-sm); }
+  .fixed-cta__btn--tel { background: var(--c-accent); color: #fff; }
+  .fixed-cta__btn--contact { background: var(--c-primary); color: #fff; }
+  @media (min-width: 768px) { .fixed-cta { display: none; } }
+</style>

@@ -1,0 +1,93 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import NextLink from '../../components/NextLink.astro';
+import Source from '../../components/Source.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+
+const title = '町田市のエリア別 葬儀案内｜町田駅・鶴川・成瀬・南町田・多摩境';
+const h1 = '町田市のエリア別 葬儀案内｜お住まいの地域から近い式場・火葬場・窓口';
+const description = '町田市は南北に長く、お住まいの地域によって近い火葬場・式場・死亡届の窓口が変わります。町田駅・鶴川・成瀬・南町田・多摩境の5エリアに分けて、近い施設と所要時間の目安を紹介します。';
+const toc = [
+  { id: 'chigai', label: '町田市はエリアによって何が変わる？' },
+  { id: 'ichiran', label: '5つのエリアと対象地域' },
+  { id: 'kakuchi', label: '各エリアの案内' },
+  { id: 'kyotsu', label: 'エリアに関係なく共通のこと' },
+  { id: 'faq', label: 'よくある質問' },
+];
+const related = [
+  { href: '/halls/', label: '町田市の斎場・葬儀場', note: '南多摩斎場の式場と民営式場の一覧' },
+  { href: '/halls/crematorium/', label: '町田市の火葬場', note: '南多摩斎場と市外の代替火葬場の料金' },
+  { href: '/machida/', label: '町田市の葬儀ガイド', note: '町田市固有の事情をまとめた総合ページ' },
+  { href: '/first-steps/', label: '亡くなってから最初にすること', note: '搬送・安置の手配の流れ' },
+  { href: '/plans/kazokuso/', label: '家族葬の費用と式場', note: '町田市の家族葬の総額例' },
+];
+const faqs = [
+  { q: '自分の住んでいる地域以外の市民センターで死亡届を出せますか？', a: '<p>出せます。死亡届は「亡くなった場所」「故人の本籍地」「届出人の住所地」のいずれかで受け付けられるため、届出人が町田市内に住んでいれば、お住まいの地域に関わらず市役所市民課（104窓口）または最寄りの市民センターで手続きできます。当サイトにご依頼の場合、届出の代行も行います。</p>' },
+  { q: '南多摩斎場が遠いエリアでも、火葬料は無料になりますか？', a: '<p>無料になります。南多摩斎場の火葬料無料は町田市民であること（構成市住民）が条件で、自宅からの距離は関係ありません。南町田・成瀬など南多摩斎場まで車で30〜40分以上かかるエリアでは、距離の近い横浜市北部斎場（市外料金50,000円）も選択肢になります。</p>' },
+  { q: 'エリアによって式場の数は違いますか？', a: '<p>町田駅周辺には民営の家族葬ホールが比較的多く、鶴川・成瀬・南町田・多摩境は町田駅周辺に比べて選択肢が限られる傾向があります。個別の式場名と使用料は<a href="/halls/">町田市の斎場・葬儀場</a>で確認してください。</p>' },
+];
+---
+<ArticleLayout {title} {h1} {description} {toc} {related} pageType="area" lastReviewed=""
+  lead="町田市は南北に長く、南多摩斎場は市の北西端（上小山田町）にあります。お住まいの地域によって近い火葬場・式場・死亡届の窓口が変わるため、町田駅周辺・鶴川・成瀬・南町田・多摩境の5エリアに分けて案内します。"
+  crumbs={[{ href: '/area/', label: 'エリア情報' }]}
+  bottomCtaPosition="middle" bottomCtaTitle="お住まいの地域からご相談" bottomCtaLead="お住まいの町名をお伝えいただければ、近い式場・火葬場と搬送にかかる時間の目安をその場でお伝えします。">
+
+  <h2 id="chigai">町田市はエリアによって何が変わる？</h2>
+  <div class="answer"><p>町田市は南北に長く、<strong>公営の南多摩斎場（町田市民は火葬無料）は市の北西端（上小山田町）にある</strong>ため、南部（南町田・成瀬）からは車で30〜40分以上かかります。北部・西部（多摩境・相原）は南多摩斎場まで最短の地元エリアで、南部は距離の近い市外の横浜市北部斎場（市外料金50,000円）が選択肢になる点が大きな違いです。</p></div>
+  <p>南多摩斎場は八王子市・町田市・多摩市・稲城市・日野市の5市が共同運営する火葬場で、町田市民は火葬料が無料です。距離は南多摩斎場公式サイト等の座標から算出した直線距離をもとにした目安（実際の道路距離ではない）で、車の所要時間も渋滞・経路により変動します。死亡届を出せる窓口（市民課・市民センター）も地域ごとに近いものが異なるため、お住まいのエリアから確認しておくと搬送先の判断が早くなります。</p>
+  <p class="note">距離・所要時間は町田市エリア情報リサーチ（2026-09-15）の直線距離をもとにした目安です。実際の所要時間は地図アプリで再確認してください。</p>
+  <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }, { label: '横浜市 市営斎場のご案内（料金）', href: 'https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/saijo/saijo/saijou.html' }]} />
+
+  <h2 id="ichiran">5つのエリアと対象地域</h2>
+  <div class="answer"><p>当サイトでは町田市を<strong>町田駅周辺・鶴川・成瀬・南町田・多摩境の5エリア</strong>に分けて案内します。生活圏が重なる駅（成瀬・南町田・つくし野・玉川学園など）は無理に分けず、近い火葬場・窓口が共通するエリアとしてまとめています。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>町田市のエリア区分と主な対象地域（駅・生活圏ベースの当サイトの区分。2026-09-15確認の情報をもとに作成）</caption>
+      <thead><tr><th scope="col">エリア</th><th scope="col">主な町名</th><th scope="col">駅</th><th scope="col">近い火葬場候補</th><th scope="col">死亡届の窓口（市民センター）</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><a href="/area/machida-eki/">町田駅周辺</a></th><td>原町田・森野・中町・木曽・忠生</td><td>町田駅</td><td>南多摩斎場（無料）</td><td>市役所市民課・忠生市民センター</td></tr>
+        <tr><th scope="row"><a href="/area/tsurukawa/">鶴川・玉川学園前</a></th><td>能ヶ谷・金井・薬師台・三輪</td><td>鶴川駅・玉川学園前駅</td><td>南多摩斎場（無料）</td><td>鶴川市民センター</td></tr>
+        <tr><th scope="row"><a href="/area/naruse/">成瀬・高ヶ坂</a></th><td>成瀬台・南成瀬・西成瀬</td><td>成瀬駅</td><td>横浜市北部斎場（市外50,000円）／南多摩斎場（無料）</td><td>なるせ駅前市民センター</td></tr>
+        <tr><th scope="row"><a href="/area/minami-machida/">南町田・つくし野・すずかけ台</a></th><td>鶴間・金森・小川</td><td>南町田グランベリーパーク駅</td><td>横浜市北部斎場（市外50,000円）／南多摩斎場（無料）</td><td>南市民センター</td></tr>
+        <tr><th scope="row"><a href="/area/tamasakai-aihara/">多摩境・相原・小山</a></th><td>小山ヶ丘・相原町・小山町</td><td>多摩境駅・相原駅</td><td>南多摩斎場（無料）</td><td>堺市民センター・小山市民センター</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <Source items={[{ label: '町田市 10地区の状況（地域福祉計画）', href: 'https://www.city.machida.tokyo.jp/iryo/tiikihukusihoka/chiikifukushi/hukusikeikaku/keika.files/10tikunozyoukyou.pdf' }, { label: '町田市 市民センター案内', href: 'https://www.city.machida.tokyo.jp/shisei/shiyakusyo/gyomu/shimin/com04.html' }, { label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }, { label: '横浜市 市営斎場のご案内（料金）', href: 'https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/saijo/saijo/saijou.html' }]} />
+  <p class="note">忠生・南・堺・小山の各市民センターの正確な所在地・電話番号は町田市公式ページで個別に確認してください（当リサーチでは一覧ページからの遷移を完了できていません）。</p>
+
+  <h2 id="kakuchi">各エリアの案内</h2>
+  <div class="answer"><p>エリアごとの式場・火葬場・所要時間の詳細は、各エリアの個別ページで説明します。ここでは要点だけを紹介します。</p></div>
+
+  <h3 id="machida-eki">町田駅周辺（原町田・森野・中町・木曽・忠生）</h3>
+  <p>町田市役所・町田警察署・町田市民病院が集まる市の中心部です。南多摩斎場までは車で25〜35分ほどかかりますが、町田市民は火葬無料のため第一候補になります。民営の家族葬ホールも市内で比較的多いエリアです。</p>
+  <NextLink href="/area/machida-eki/" label="町田駅周辺の案内" title="町田駅周辺（原町田・森野・中町）の式場・火葬場・窓口" />
+
+  <h3 id="tsurukawa">鶴川・玉川学園前（能ヶ谷・金井・薬師台・三輪）</h3>
+  <p>川崎市・横浜市に隣接する町田市北東部の県境エリアです。神奈川県内の公営火葬場は住民要件があるため、実務上は南多摩斎場か民営の鶴川総合斎場が現実的な選択肢になります。</p>
+  <NextLink href="/area/tsurukawa/" label="鶴川・玉川学園前の案内" title="鶴川・玉川学園前（能ヶ谷・金井）の式場・火葬場・窓口" />
+
+  <h3 id="naruse">成瀬・高ヶ坂（成瀬台・南成瀬・西成瀬）</h3>
+  <p>南多摩斎場までは車で30〜40分程度かかる一方、距離が近い横浜市北部斎場（市外料金50,000円）が選択肢になります。無料だが遠い南多摩斎場と、近いが有料の横浜市北部斎場のどちらを選ぶかが判断のポイントです。</p>
+  <NextLink href="/area/naruse/" label="成瀬・高ヶ坂の案内" title="成瀬・高ヶ坂（成瀬台・南成瀬）の式場・火葬場・窓口" />
+
+  <h3 id="minami-machida">南町田・つくし野・すずかけ台（鶴間・金森・小川）</h3>
+  <p>町田市内で南多摩斎場から最も遠く、車で40〜50分程度かかるエリアです。横浜市北部斎場が距離的に至近（市外料金50,000円）にあるため、日程を優先する場合の選択肢になります。</p>
+  <NextLink href="/area/minami-machida/" label="南町田・つくし野・すずかけ台の案内" title="南町田・つくし野・すずかけ台（鶴間・金森）の式場・火葬場・窓口" />
+
+  <h3 id="tamasakai-aihara">多摩境・相原・小山（小山ヶ丘・相原町・小山町）</h3>
+  <p>南多摩斎場から最も近い地元エリア（多摩境駅から直線距離1.9km程度・目安）です。相原町・小山町・小山ヶ丘は警察管轄が町田警察署ではなく南大沢警察署（八王子市）である点が他エリアと異なります。</p>
+  <NextLink href="/area/tamasakai-aihara/" label="多摩境・相原・小山の案内" title="多摩境・相原・小山（小山ヶ丘・相原町）の式場・火葬場・窓口" />
+
+  <Cta position="middle" variant="inline" telText="電話で相談" contactText="メールで相談" />
+
+  <h2 id="kyotsu">エリアに関係なく共通のこと</h2>
+  <div class="answer"><p>お住まいのエリアに関わらず、<strong>①町田市民の南多摩斎場の火葬料は無料、②死亡届は届出人の住所地・故人の本籍地・亡くなった場所のいずれかの窓口で提出可能、③搬送は町田市内全域に対応</strong>という3点は共通です。</p></div>
+  <p>死亡届は亡くなったことを知った日を含めて7日以内に、町田市役所市民課（市庁舎1階104窓口）または各市民センターで受け付けています。届出人が町田市内に住んでいれば、故人の居住エリアと窓口のエリアが異なっていても提出できます。病院・自宅からの搬送（寝台車）は町田市内全域に対応し、安置先や式場までの距離によって費用が変わることはありません。</p>
+  <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }, { label: '町田市 死亡届', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/todokede/todokede03.html' }]} />
+  <NextLink href="/first-steps/" label="亡くなってから最初にすること" title="搬送・安置の手配と、葬儀社をすぐ決めなくてよい理由" />
+
+  <h2 id="faq">エリアに関するよくある質問</h2>
+  <Faq items={faqs} group="area" />
+</ArticleLayout>

@@ -1,0 +1,6 @@
+---
+/** 出典表記 */
+interface Props { items: { label: string; href?: string }[]; }
+const { items } = Astro.props;
+---
+<p class="source">出典：{items.map((s, i) => <span>{i > 0 && '、'}{s.href ? <a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a> : s.label}</span>)}</p>

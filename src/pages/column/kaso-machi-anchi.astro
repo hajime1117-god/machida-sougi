@@ -1,0 +1,126 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import NextLink from '../../components/NextLink.astro';
+import Source from '../../components/Source.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+import { SITE } from '../../config/site';
+
+const title = '南多摩斎場の火葬待ちと安置費用の考え方';
+const h1 = '南多摩斎場が混んでいるとき：火葬待ち日数と安置費用の考え方';
+const description = '南多摩斎場で火葬待ちが起きたときに安置費用がどれだけ増えるか、待ち日数別の目安と、横浜市北部斎場・相模原市営斎場など市外の火葬場に切り替える判断基準を出典付きで整理します。';
+const toc = [
+  { id: 'riyu', label: '火葬待ちが起きる理由と時期' },
+  { id: 'hiyou', label: '待ち日数で増える費用' },
+  { id: 'anchi', label: '安置場所の選択肢と費用の違い' },
+  { id: 'shigai', label: '市外の火葬場に切り替える判断基準' },
+  { id: 'matsu', label: '待つ間にできること' },
+  { id: 'faq', label: 'よくある質問' },
+];
+const related = [
+  { href: '/halls/crematorium/', label: '町田市の火葬場', note: '南多摩斎場と市外火葬場の料金・予約方法' },
+  { href: '/plans/kasoshiki/', label: '火葬式・直葬', note: '式を行わず火葬のみで済ませるプラン' },
+  { href: '/cost/', label: '葬儀費用の内訳と総額例', note: '安置費用を含めた総額の考え方' },
+  { href: '/first-steps/', label: '亡くなってから最初にすること', note: '搬送・安置の手配は葬儀社を決める前でも可能' },
+  { href: '/plans/kazokuso/', label: '家族葬', note: '火葬待ちが生じた場合の日程調整の考え方' },
+  { href: '/contact/', label: 'お問い合わせ・事前相談', note: '安置日数と費用の見込みを相談する' },
+];
+const faqs = [
+  { q: '南多摩斎場は必ず1週間以上待ちますか？', a: '<p>いいえ。年間を通じて常に1週間以上待つわけではありません。「1週間以上待ち・年末年始は2週間待つこともある」という情報は葬儀社の経験則によるもので、南多摩斎場が公式に発表している数値ではありません。空き状況は日によって変わるため、実際の待ち日数は電話予約（8:30〜22:00）の際に確認する必要があります。</p>' },
+  { q: '火葬待ちの間、安置費用は誰が払いますか？', a: '<p>喪主（施主）が負担します。安置施設の使用料とドライアイス代は、火葬までの日数に応じて日割りで加算されるのが一般的です。当サイトの家族葬プラン（528,000円・税込）には2日分の安置が含まれており、3日目以降は1日ごとに加算されます。</p>' },
+  { q: '南多摩斎場の霊安室は何日まで使えますか？', a: '<p>南多摩斎場の霊安室は、組織市（八王子市・町田市・多摩市・稲城市・日野市）の住民であれば48時間まで3,000円で利用できます。48時間を超える場合や組織市外の住民の場合の扱いは、南多摩斎場の使用料ページに記載がないため、予約の際に南多摩斎場（042-797-7641）に直接確認してください。</p>' },
+  { q: '友引の日は火葬できませんか？', a: '<p>南多摩斎場は友引を休場日としていますが、友引でも開場する日（開場日）が設定されています。休場日はほかに1月1日〜1月3日と臨時休場日があります。友引前後は予約が集中しやすいため、日程に余裕がない場合は早めに電話で空き状況を確認することをおすすめします。</p>' },
+];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: h1,
+  description,
+  datePublished: '2026-09-16',
+  dateModified: '2026-09-16',
+  inLanguage: 'ja',
+  author: { '@type': 'Organization', name: '町田ことのは葬祭 編集部' },
+  publisher: { '@id': `${SITE.url}/#organization` },
+  mainEntityOfPage: `${SITE.url}/column/kaso-machi-anchi/`,
+};
+---
+<ArticleLayout {title} {h1} {description} {toc} {related} pageType="column" lastReviewed=""
+  ogType="article" datePublished="2026-09-16" dateModified="2026-09-16" {jsonLd}
+  lead="南多摩斎場は八王子市・町田市・多摩市・稲城市・日野市の5市が共同で運営する火葬場で、火葬まで待ちが生じることがあります。待つ日数が増えるほど安置費用が上がるため、このページでは費用の目安と、市外の火葬場に切り替える判断基準を整理します。"
+  crumbs={[{ href: '/column/', label: '葬儀コラム' }, { href: '/column/kaso-machi-anchi/', label: '火葬待ちと安置費用' }]}
+  bottomCtaPosition="middle" bottomCtaTitle="安置日数と費用のご相談" bottomCtaLead="ご逝去の状況と希望する日程を伺えば、南多摩斎場の空き状況の確認方法と、市外火葬場に切り替える場合の総額の見込みをお伝えします。">
+
+  <h2 id="riyu">南多摩斎場で火葬待ちが起きるのはなぜ、いつ頃ですか？</h2>
+  <div class="answer"><p>南多摩斎場は<strong>八王子市・町田市・多摩市・稲城市・日野市の5市が共同で運営</strong>する火葬場が1か所しかないため、5市の需要が1つの施設に集中し、時期によっては予約が埋まって火葬待ちが生じます。休場日は<strong>友引（開場日あり）と1月1日〜1月3日</strong>で、友引明けや年末年始は予約が集中しやすい時期です。</p></div>
+  <p>南多摩斎場の個人からの申込みは電話（8:30〜22:00）で受け付けており、葬祭業者は24時間対応の受付システムを使います。休場日以外は原則として営業していますが、休場日の直後は前日までに火葬できなかった件数が繰り越されるため、空きが少なくなりやすい構造です。「火葬・式場ともに1週間以上待つことがあり、年末年始は2週間待つこともある」という情報は葬儀社の経験則としてよく語られますが、南多摩斎場が公式に発表している数値ではありません。当サイトでは「一般的な経験則」として紹介し、実際の待ち日数は予約時の空き状況によることを前提にしています。</p>
+  <Source items={[{ label: '南多摩斎場 申込方法・休場日', href: 'https://www.minamitama-saijyo.jp/guide/application.php' }]} />
+
+  <h2 id="hiyou">火葬待ちの日数が増えると、費用はどれくらい増えますか？</h2>
+  <div class="answer"><p>火葬まで待つ日数が増えるほど、<strong>安置施設の使用料（目安1日10,000〜20,000円）とドライアイス代（目安1日5,000〜10,000円）</strong>が日数分加算されます。仮に1日あたり合計15,000〜30,000円とすると、7日待った場合は3日待った場合より4日分、60,000〜120,000円ほど多くかかる計算になります。</p></div>
+  <p class="note">安置施設の使用料・ドライアイス代の金額は、南多摩斎場や町田市の公式ページでは示されておらず、一般的な経験則としての目安です。実際の金額は依頼する葬儀社や安置施設によって異なるため、見積もりの際に1日あたりの単価を確認してください。</p>
+  <div class="table-wrap">
+    <table>
+      <caption>火葬待ち日数別の安置費用の目安（税込・1日あたりの単価から試算した一例）</caption>
+      <thead><tr><th scope="col">項目</th><th scope="col">3日待ち（1日超過分）</th><th scope="col">7日待ち（5日超過分）</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">安置施設使用料（1日10,000〜20,000円）</th><td class="num">10,000〜20,000円</td><td class="num">50,000〜100,000円</td></tr>
+        <tr><th scope="row">ドライアイス代（1日5,000〜10,000円）</th><td class="num">5,000〜10,000円</td><td class="num">25,000〜50,000円</td></tr>
+        <tr><th scope="row"><strong>追加費用の合計</strong></th><td class="num"><strong>15,000〜30,000円</strong></td><td class="num"><strong>75,000〜150,000円</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>家族葬プラン（528,000円・税込）には2日分の安置が含まれているため、上の表は3日目以降の超過分だけを示しています。一日葬・火葬式のプランも同様に、含まれる安置日数を超えた分から加算されます。待ち日数がはっきりしない段階では、葬儀社に「現時点の見込みと、超過した場合の1日あたりの金額」を確認しておくと総額のずれを防げます。</p>
+  <Cta position="middle" variant="inline" telText="費用について電話で相談" contactText="メールで見積もりを相談" />
+
+  <h2 id="anchi">安置場所によって費用はどう変わりますか？</h2>
+  <div class="answer"><p>安置場所には<strong>①自宅、②葬儀社の安置施設、③南多摩斎場の霊安室</strong>の3つがあります。自宅は式場使用料と同様に費用がかからず、南多摩斎場の霊安室は組織市住民なら48時間まで3,000円と割安ですが、48時間を超える場合の扱いは公式ページに記載がなく、長期の火葬待ちには向きません。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>安置場所ごとの費用と特徴</caption>
+      <thead><tr><th scope="col">安置場所</th><th scope="col">費用の目安</th><th scope="col">特徴</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">自宅</th><td class="num">0円（ドライアイス代は別）</td><td>付き添える時間が長い。集合住宅では搬入経路（エレベーターの寸法など）の確認が必要</td></tr>
+        <tr><th scope="row">葬儀社の安置施設</th><td class="num">1日10,000〜20,000円が目安</td><td>面会時間が施設ごとに決まっていることが多い。待ち日数が長くなりそうな場合に選ばれやすい</td></tr>
+        <tr><th scope="row">南多摩斎場の霊安室</th><td class="num">48時間まで3,000円（組織市住民）</td><td>火葬場と同じ敷地。48時間超の扱いは公式未記載のため要確認。市外住民の料金も公式ページに記載なし</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <Source items={[{ label: '南多摩斎場 使用料（霊安室）', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }]} />
+  <NextLink href="/halls/crematorium/" label="南多摩斎場の料金をくわしく" title="町田市の火葬場（南多摩斎場の火葬料・式場使用料・霊安室・予約方法）" />
+
+  <h2 id="shigai">市外の火葬場に切り替えるかどうかは、何を基準に判断しますか？</h2>
+  <div class="answer"><p>待ち日数分の安置費用の増加分と、<strong>市外火葬場を使う場合の追加費用（火葬料の差額と搬送距離の増加）</strong>を比べて、安置費用の増加のほうが大きくなる見込みなら市外の火葬場への切り替えを検討する価値があります。市外の火葬料は横浜市北部斎場が50,000円、相模原市営斎場が54,000円で、いずれも南多摩斎場の組織市住民無料と比べて追加費用になります。</p></div>
+  <p>横浜市緑区の横浜市北部斎場、相模原市南区の相模原市営斎場は、いずれも町田市外の施設のため、町田市民が使う場合は市外料金がかかります。相模原市営斎場は市外住民の予約について「利用日の前々日8:30以降」といった制限がある枠があり、横浜市北部斎場の予約条件の詳細（何日前から予約できるか）は両市の公式ページで確認できませんでした。切り替えを検討する場合は、まず電話で市外住民として予約できるか、その時点でどれくらい早く火葬できるかを確認する必要があります。</p>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>南多摩斎場の火葬待ちと市外火葬場を比べる目安（町田市民・税込。式場使用料・搬送費は含まない）</caption>
+      <thead><tr><th scope="col">選択肢</th><th scope="col">火葬料</th><th scope="col">追加でかかりやすい費用</th><th scope="col">向いているケース</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">南多摩斎場で待つ</th><td class="num">0円（組織市住民）</td><td class="num">安置費用が待ち日数分増加（3日待ちで1.5〜3万円、7日待ちで7.5〜15万円が目安）</td><td>日程よりも火葬料の負担を抑えたい</td></tr>
+        <tr><th scope="row">横浜市北部斎場に切り替え</th><td class="num">50,000円（市外10歳以上）</td><td class="num">式場を使う場合は市外1室120,000円〜</td><td>南町田・つくし野など市南部で日程を優先したい</td></tr>
+        <tr><th scope="row">相模原市営斎場に切り替え</th><td class="num">54,000円（市外12歳以上）</td><td class="num">式場は市外 大75,000円／小60,000円。市外住民は一部枠に予約制限あり</td><td>多摩境・小山など市西部で日程を優先したい</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <Source items={[
+    { label: '横浜市 斎場のご案内', href: 'https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/saijo/saijo/saijou.html' },
+    { label: '横浜市 北部斎場', href: 'https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/saijo/saijo/ho-saijou.html' },
+    { label: '相模原市 相模原市営斎場 施設案内', href: 'https://www.city.sagamihara.kanagawa.jp/kurashi/shisetsu/shikanren/etc/1002725.html' },
+  ]} />
+  <p>市外の火葬場を使うと安置日数は短縮できますが、式場も市外施設を使う場合は式場使用料も市外料金になり、参列者の移動距離も増えます。安置費用の節約分と、追加でかかる費用・移動の負担を合わせて比べることが判断の基準になります。</p>
+  <NextLink href="/cost/" label="総額の考え方をくわしく" title="葬儀費用の内訳と総額例（追加になりやすい費用と抑える方法）" />
+
+  <h2 id="matsu">火葬を待つ間に、家族は何をしておけますか？</h2>
+  <div class="answer"><p>火葬を待つ間は、<strong>納棺（のうかん：ご遺体を棺に納める儀式）、故人とのお別れの時間、死亡届など役所の手続き</strong>を落ち着いて行える期間でもあります。日程が延びること自体は負担ですが、その分の時間を使ってできることもあります。</p></div>
+  <ol>
+    <li><strong>死亡届の提出と火葬許可証の受け取り</strong>を済ませておく（町田市役所市民課104窓口または各市民センター、亡くなったことを知った日を含め7日以内）。</li>
+    <li><strong>納棺と対面の時間</strong>を、通夜の前に別途設けることもできる。特に自宅安置の場合は面会の時間を家族の都合で調整しやすい。</li>
+    <li><strong>参列者・弔問客への連絡内容</strong>を整理する。日程が確定してから知らせる範囲と、先に「近日中に日程をお知らせします」と伝える範囲を分けておくと、日程変更の連絡が減る。</li>
+    <li><strong>菩提寺がある場合は早めに連絡</strong>し、日程の候補を伝えておく。火葬待ちで日程が動く可能性がある旨も合わせて伝える。</li>
+  </ol>
+  <Source items={[{ label: '町田市 死亡届', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/todokede/todokede03.html' }]} />
+  <NextLink href="/first-steps/" label="最初にすることを確認" title="亡くなってから最初にすること（搬送・安置・葬儀社への連絡）" />
+
+  <h2 id="faq">よくある質問</h2>
+  <Faq items={faqs} group="kaso-machi-anchi" />
+</ArticleLayout>

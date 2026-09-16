@@ -1,0 +1,117 @@
+---
+import { BRAND, PHONE } from '../config/site';
+import Icon from './Icon.astro';
+const nav = [
+  { href: '/plans/', label: '葬儀プラン' },
+  { href: '/cost/', label: '葬儀費用' },
+  { href: '/machida/', label: '町田市の葬儀' },
+  { href: '/halls/', label: '斎場・火葬場' },
+  { href: '/flow/', label: '葬儀の流れ' },
+  { href: '/faq/', label: 'よくある質問' },
+];
+const current = Astro.url.pathname;
+---
+<header class="site-header" data-region="header">
+  <div class="container site-header__inner">
+    <a href="/" class="site-header__brand">
+      <span class="site-header__logo" aria-hidden="true"></span>
+      <span class="site-header__name">{BRAND.name}</span>
+      <span class="site-header__tag">{BRAND.tagline}</span>
+    </a>
+    <nav class="site-nav" aria-label="サイト内メニュー" id="site-nav">
+      <ul class="site-nav__list">
+        {nav.map((n) => (
+          <li><a href={n.href} aria-current={current.startsWith(n.href) ? 'page' : undefined}>{n.label}</a></li>
+        ))}
+        <li class="site-nav__sub"><a href="/first-steps/">亡くなった直後にすること</a></li>
+        <li class="site-nav__sub"><a href="/subsidy/">葬祭費・補助金</a></li>
+        <li class="site-nav__sub"><a href="/area/">エリア情報</a></li>
+        <li class="site-nav__sub"><a href="/column/">葬儀コラム</a></li>
+        <li class="site-nav__sub"><a href="/about/">運営者情報</a></li>
+        <li class="site-nav__sub"><a href="/contact/">お問い合わせ</a></li>
+      </ul>
+      <div class="site-nav__cta">
+        <a href={PHONE.tel} class="btn btn--tel btn--block" data-cta="tel" data-cta-position="header">
+          <Icon name="phone" /><span>電話で相談 <span class="num">{PHONE.display}</span></span>
+        </a>
+        <p class="site-nav__hours">{PHONE.hours}</p>
+      </div>
+    </nav>
+    <div class="site-header__actions">
+      <a href={PHONE.tel} class="site-header__tel" data-cta="tel" data-cta-position="header" aria-label={`電話で相談 ${PHONE.display}`}>
+        <Icon name="phone" /><span class="site-header__tel-text">電話で相談</span>
+      </a>
+      <a href="/contact/" class="site-header__contact btn btn--primary" data-cta="contact" data-cta-position="header">
+        <Icon name="mail" /><span>相談する</span>
+      </a>
+      <button class="site-header__menu" type="button" aria-expanded="false" aria-controls="site-nav" id="menu-toggle">
+        <Icon name="menu" class="i-open" /><Icon name="close" class="i-close" /><span class="visually-hidden">メニュー</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-toggle');
+  const nav = document.getElementById('site-nav');
+  if (btn && nav) {
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      document.documentElement.classList.toggle('nav-open', !open);
+    });
+    nav.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) {
+        btn.setAttribute('aria-expanded', 'false');
+        document.documentElement.classList.remove('nav-open');
+      }
+    });
+  }
+</script>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 50; background: var(--c-bg); border-bottom: 1px solid var(--c-line-2); }
+  .site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; min-height: var(--header-h); }
+  .site-header__brand { display: flex; align-items: center; gap: 0.55rem; text-decoration: none; color: var(--c-ink); min-width: 0; }
+  .site-header__logo { width: 28px; height: 28px; border-radius: 50%; background: var(--c-primary); flex: none; position: relative; }
+  .site-header__logo::after { content: ''; position: absolute; inset: 8px; border-radius: 50%; background: var(--c-bg); }
+  .site-header__name { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; white-space: nowrap; }
+  .site-header__tag { display: none; font-size: var(--fs-xs); color: var(--c-ink-3); white-space: nowrap; }
+  .site-header__actions { display: flex; align-items: center; gap: 0.4rem; flex: none; }
+  .site-header__tel { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 44px; padding: 0 0.7rem; border-radius: var(--radius); background: var(--c-accent); color: #fff; text-decoration: none; font-weight: 700; font-size: var(--fs-sm); }
+  .site-header__tel-text { display: none; }
+  .site-header__contact { display: none; }
+  .site-header__menu { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--c-line); border-radius: var(--radius); background: var(--c-surface); color: var(--c-ink); cursor: pointer; }
+  .site-header__menu :global(.i-close) { display: none; }
+  :global(html.nav-open) .site-header__menu :global(.i-open) { display: none; }
+  :global(html.nav-open) .site-header__menu :global(.i-close) { display: block; }
+
+  .site-nav { display: none; }
+  :global(html.nav-open) .site-nav { display: block; position: fixed; inset: var(--header-h) 0 0; background: var(--c-bg); overflow-y: auto; padding: 0.5rem var(--gutter) 2rem; z-index: 49; }
+  :global(html.nav-open) { overflow: hidden; }
+  .site-nav__list { list-style: none; margin: 0; padding: 0; }
+  .site-nav__list li { margin: 0; border-bottom: 1px solid var(--c-line-2); }
+  .site-nav__list a { display: block; padding: 0.9rem 0.25rem; text-decoration: none; color: var(--c-ink); font-weight: 700; }
+  .site-nav__list .site-nav__sub a { font-weight: 400; color: var(--c-ink-2); padding-block: 0.7rem; }
+  .site-nav__cta { margin-top: 1.25rem; }
+  .site-nav__hours { font-size: var(--fs-xs); color: var(--c-ink-3); text-align: center; margin: 0.5rem 0 0; }
+
+  @media (min-width: 480px) { .site-header__tel-text { display: inline; } }
+  @media (min-width: 1024px) {
+    .site-header__inner { gap: 1.5rem; }
+    .site-header__tag { display: block; }
+    .site-header__brand { flex-direction: column; align-items: flex-start; gap: 0; }
+    .site-header__brand .site-header__logo { display: none; }
+    .site-header__name { font-size: 1.2rem; }
+    .site-header__menu { display: none; }
+    .site-nav { display: block; flex: 1; }
+    .site-nav__list { display: flex; gap: 0.1rem; justify-content: center; }
+    .site-nav__list li { border: 0; }
+    .site-nav__list .site-nav__sub { display: none; }
+    .site-nav__list a { padding: 0.5rem 0.7rem; font-size: var(--fs-sm); border-radius: var(--radius); white-space: nowrap; }
+    .site-nav__list a:hover, .site-nav__list a[aria-current="page"] { background: var(--c-primary-soft); color: var(--c-primary); }
+    .site-nav__cta { display: none; }
+    .site-header__tel { padding-inline: 0.9rem; }
+    .site-header__contact { display: inline-flex; min-height: 44px; padding-block: 0; font-size: var(--fs-sm); }
+  }
+</style>

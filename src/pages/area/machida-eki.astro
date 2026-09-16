@@ -1,0 +1,114 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import NextLink from '../../components/NextLink.astro';
+import Source from '../../components/Source.astro';
+import Cta from '../../components/Cta.astro';
+import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
+
+const title = '町田駅周辺の葬儀・家族葬｜原町田・森野・中町・木曽・忠生の式場と火葬場';
+const h1 = '町田駅周辺（原町田・森野・中町・木曽・忠生）の葬儀・家族葬案内';
+const description = '町田駅（小田急線・JR横浜線）周辺と原町田・森野・中町・旭町・木曽・忠生で葬儀を行う場合の、近い火葬場・式場、町田市民病院など病院からの搬送、死亡届の窓口を町名ベースで案内します。';
+const toc = [
+  { id: 'gaiyo', label: 'このエリアの概要' },
+  { id: 'kasoba', label: 'このエリアから近い火葬場' },
+  { id: 'shikijo', label: 'このエリアから使いやすい式場' },
+  { id: 'byoin', label: '病院から亡くなった場合の搬送' },
+  { id: 'madoguchi', label: '死亡届・葬祭費の窓口' },
+  { id: 'chui', label: 'このエリアで葬儀をするときの注意点' },
+  { id: 'faq', label: 'よくある質問' },
+];
+const related = [
+  { href: '/area/', label: 'エリア情報トップ', note: '町田市の全5エリア一覧' },
+  { href: '/halls/', label: '町田市の斎場・葬儀場', note: '公営・民営・寺院を市内全域で比較' },
+  { href: '/halls/crematorium/', label: '町田市の火葬場', note: '南多摩斎場の料金・予約・混雑時の代替' },
+  { href: '/first-steps/', label: '亡くなってから最初にすること', note: '病院からの搬送と安置先の決め方' },
+  { href: '/plans/kazokuso/', label: '町田市の家族葬', note: '費用の目安と式場の選び方' },
+  { href: '/contact/', label: 'お問い合わせ・事前相談', note: '搬送のみのご依頼も可' },
+];
+const faqs = [
+  { q: '町田駅周辺で亡くなった場合、南多摩斎場と相模原市営斎場のどちらが近いですか？', a: '<p>直線距離では相模原市営斎場（町田駅から約1.8km、車で約10分）が最も近く、南多摩斎場（約7.9km、車で約25〜35分）より近距離です。ただし相模原市営斎場は町田市民にとって市外扱いで火葬料54,000円がかかるのに対し、南多摩斎場は町田市民の火葬料が無料です。距離を優先するか、費用を優先するかで選択が変わります。</p>' },
+  { q: '町田市民病院やあけぼの病院で亡くなった場合、すぐに葬儀社を決める必要がありますか？', a: '<p>その場で決める必要はありません。病院は霊安室に一時的に安置しますが、長時間は預かれないため搬送先（自宅か安置施設）だけを先に決め、葬儀の内容は搬送後に落ち着いてから相談する進め方ができます。搬送のみの依頼も可能です。</p>' },
+  { q: '忠生地区に住んでいますが、死亡届はどこに出せますか？', a: '<p>町田市役所の市民課（市庁舎1階104窓口、森野2-2-22）のほか、忠生市民センターでも死亡届を提出できます。届出先は死亡地・本籍地・届出人の所在地のいずれかの市区町村内であればよく、町田市内であれば市役所と各市民センターのどちらでも受け付けます。</p>' },
+];
+---
+<ArticleLayout {title} {h1} {description} {toc} {related} pageType="area" lastReviewed=""
+  lead="町田駅（小田急小田原線・JR横浜線）周辺と原町田・森野・中町・旭町・木曽・忠生は、町田市役所や町田市民病院など行政・医療機関が集まる市の中心部です。このページでは、このエリアから近い火葬場・式場、病院からの搬送、死亡届の窓口を、駅・町名を基準に具体的な数値で案内します。"
+  crumbs={[{ href: '/area/', label: 'エリア情報' }, { href: '/area/machida-eki/', label: '町田駅周辺' }]}
+  bottomCtaPosition="hall" bottomCtaTitle="町田駅周辺での葬儀のご相談" bottomCtaLead="搬送先・式場の希望・参列予定人数を伺えば、南多摩斎場と市内式場を組み合わせた総額の目安をその場でお伝えします。搬送のみのご依頼も受け付けています。">
+
+  <h2 id="gaiyo">町田駅周辺とはどのエリアを指しますか？</h2>
+  <div class="answer"><p>小田急小田原線とJR横浜線が乗り入れる<strong>町田駅を中心に、原町田・森野・中町・旭町・木曽・忠生</strong>を含む町田市の中心市街地です。町田市役所（森野2-2-22）や町田市民病院（旭町2-15-41）が立地し、百貨店・商業施設が集積する繁華街と、駅からやや離れた住宅地（木曽・忠生）が混在するエリアです。</p></div>
+  <p>町田駅は東京都南西部有数のターミナル駅で、市役所・警察署・町田市民病院への最寄り駅でもあります。町田市の地域区分では「町田地区」「忠生地区」にあたり、駅前は商業地、木曽・忠生方面は住宅地が中心です。管轄の警察署は町田警察署（旭町3-1-3）で、検視が必要な場合の連絡先もこちらになります。</p>
+  <Source items={[{ label: '町田市役所 アクセス', href: 'https://www.city.machida.tokyo.jp/shisei/shiyakusyo/mainoffice/officeguide.html' }, { label: '警視庁 町田警察署', href: 'https://www.keishicho.metro.tokyo.lg.jp/about_mpd/shokai/ichiran/kankatsu/machida/index.html' }]} />
+
+  <h2 id="kasoba">町田駅周辺から近い火葬場はどこですか？</h2>
+  <div class="answer"><p>町田駅周辺から直線距離で最も近いのは<strong>相模原市営斎場（約1.8km・車で約10分）</strong>ですが、町田市民には市外料金がかかります。<strong>町田市民の火葬料が無料になる南多摩斎場は約7.9km・車で約25〜35分（目安）</strong>で、費用を優先するなら南多摩斎場が第一候補です。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>町田駅からの火葬場別 距離・所要時間の目安と火葬料（町田市民の場合。南多摩斎場・相模原市営斎場は12歳以上、横浜市北部斎場は10歳以上の区分。距離は直線距離、車の時間は概算値。確認日2026-09-15）</caption>
+      <thead><tr><th scope="col">火葬場</th><th scope="col">運営</th><th scope="col">町田駅からの距離</th><th scope="col">車の所要時間（目安）</th><th scope="col">火葬料（町田市民）</th></tr></thead>
+      <tbody>
+        <tr data-track-view="hall" data-item="南多摩斎場"><th scope="row">南多摩斎場</th><td>公営（組合構成市）</td><td class="num">約7.9km</td><td class="num">約25〜35分</td><td class="num">無料</td></tr>
+        <tr data-track-view="hall" data-item="相模原市営斎場"><th scope="row">相模原市営斎場</th><td>公営（市外扱い）</td><td class="num">約1.8km</td><td class="num">約10分</td><td class="num">54,000円</td></tr>
+        <tr data-track-view="hall" data-item="横浜市北部斎場"><th scope="row">横浜市北部斎場</th><td>公営（市外扱い）</td><td class="num">約5.5km</td><td class="num">約20分</td><td class="num">50,000円</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }, { label: '相模原市営斎場 施設案内・使用料', href: 'https://www.city.sagamihara.kanagawa.jp/kurashi/shisetsu/shikanren/etc/1002725.html' }, { label: '横浜市営斎場 使用料', href: 'https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/saijo/saijo/saijou.html' }]} />
+  <p>南多摩斎場への公共交通は、町田駅からJR横浜線で橋本駅または淵野辺駅へ行き、神奈中バスに乗り換える経路が基本です。橋本駅からは「橋76 神奈中多摩車庫行」に乗り「多摩境通り北」で下車し徒歩約600m、淵野辺駅からは「淵65 神奈中多摩車庫行」で「上中村」下車徒歩約500mです。距離・所要時間はいずれも目安で、道路状況により変動するため、実際の移動は地図アプリでも確認してください。</p>
+  <Source items={[{ label: '南多摩斎場 アクセス', href: 'https://www.minamitama-saijyo.jp/access/' }]} />
+  <NextLink href="/halls/crematorium/" label="火葬場をくわしく" title="町田市の火葬場（南多摩斎場の料金・予約・混雑時の代替火葬場）" />
+
+  <h2 id="shikijo">町田駅周辺で使いやすい式場はどこですか？</h2>
+  <div class="answer"><p>原町田・森野・中町・旭町・木曽には<strong>町田駅から徒歩2〜15分圏内に民営の家族葬ホールが複数あります</strong>。駅から最も近いのは徒歩2分の「コムウェルホール町田駅前会堂けやき」、次いで徒歩5分の「湘和会堂町田」です。公式サイトで所在地を確認できた施設は下表のとおりです。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>町田駅周辺（原町田・森野・中町・旭町・木曽）の民営式場（公式サイトで所在地を確認できたもの。確認日2026-09-15）</caption>
+      <thead><tr><th scope="col">名称</th><th scope="col">町名</th><th scope="col">町田駅からのアクセス</th><th scope="col">運営会社</th></tr></thead>
+      <tbody>
+        <tr data-track-view="hall" data-item="コムウェルホール町田駅前会堂けやき"><th scope="row">コムウェルホール町田駅前会堂けやき</th><td>原町田1丁目6-28</td><td>徒歩約2分</td><td>株式会社コムウェル</td></tr>
+        <tr data-track-view="hall" data-item="湘和会堂町田"><th scope="row">湘和会堂町田</th><td>森野1-11-14</td><td>徒歩約5分</td><td>平安レイサービス株式会社</td></tr>
+        <tr data-track-view="hall" data-item="エンディングハウス町田"><th scope="row">エンディングハウス町田</th><td>旭町</td><td>バス「市民病院前」下車徒歩約7分</td><td>株式会社公益社</td></tr>
+        <tr data-track-view="hall" data-item="トレセレホール町田店"><th scope="row">トレセレホール町田店</th><td>中町2-20-3</td><td>徒歩約11〜14分</td><td>未確認（公式ページに明記なし）</td></tr>
+        <tr data-track-view="hall" data-item="小さなお葬式 町田旭町ホール"><th scope="row">小さなお葬式 町田旭町ホール</th><td>旭町2丁目8-7</td><td>バス約12分</td><td>「小さなお葬式」ブランド</td></tr>
+        <tr data-track-view="hall" data-item="小さな家族葬ハウス町田木曽"><th scope="row">小さな家族葬ハウス町田木曽</th><td>木曽東3-33-11</td><td>未確認</td><td>株式会社永田屋</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <Source items={[{ label: 'コムウェルホール町田駅前会堂けやき', href: 'https://www.comwellceremony.co.jp/area/machida/' }, { label: '湘和会堂町田', href: 'https://syouwa-kaidou.co.jp/kaido/machida/' }, { label: 'エンディングハウス町田', href: 'https://www.koekisha.co.jp/endinghaus/haus/machida/' }, { label: 'トレセレホール町田店', href: 'https://www.osohshiki.jp/area/tokyo/machida-shi/sougijou/34658/' }, { label: '小さなお葬式 町田旭町ホール', href: 'https://ceremonyhouse.info/tokyo/machida-shi/ceremonyhouse_machida/' }, { label: '小さな家族葬ハウス町田木曽', href: 'https://www.e-nagataya.com/machida/' }]} />
+  <p class="note">上記はいずれも情報提供を目的とした掲載で、当サイトが運営・提携する式場ではありません。収容人数・料金・宿泊可否は各施設の公式サイトで直接ご確認ください。火葬場に隣接する式場（南多摩斎場の第一〜第三式場）を使う場合は、参列者の移動が発生しません。通夜後に付き添って泊まれるかは施設により異なるため、斎場に直接確認してください。</p>
+  <NextLink href="/halls/" label="町田市の式場一覧" title="町田市の斎場・葬儀場（公営・民営・寺院）を市内全域で比較" />
+
+  <Cta position="hall" variant="inline" telText="式場について電話で相談" contactText="メールで相談" />
+
+  <h2 id="byoin">町田駅周辺の病院で亡くなった場合、どこに搬送されますか？</h2>
+  <div class="answer"><p>このエリアには<strong>町田市民病院（旭町2-15-41）、あけぼの病院（中町1-23-3）、町田病院（木曽東4-21-43）</strong>があります。病院の霊安室は長時間の安置に対応していないため、多くの場合、逝去当日にご自宅か安置施設へ搬送します。搬送先までの時間は施設ごとの距離により異なる目安です。</p></div>
+  <div class="table-wrap">
+    <table>
+      <caption>町田駅周辺の主な病院（所在地は公式サイトで確認。確認日2026-09-15）</caption>
+      <thead><tr><th scope="col">病院名</th><th scope="col">所在地</th><th scope="col">最寄り</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">町田市民病院</th><td>旭町2-15-41</td><td>町田駅よりバス</td></tr>
+        <tr><th scope="row">あけぼの病院</th><td>中町1-23-3</td><td>町田駅より徒歩圏</td></tr>
+        <tr><th scope="row">町田病院</th><td>木曽東4-21-43</td><td>町田駅よりバス</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <Source items={[{ label: '町田市民病院', href: 'https://machida-city-hospital-tokyo.jp/' }, { label: 'あけぼの病院', href: 'https://akebono-hospital.jp/' }, { label: '町田病院', href: 'https://machidahospital.jp/' }]} />
+  <p>病院で亡くなった直後は、葬儀の内容をその場で決める必要はありません。搬送先と安置方法（自宅か安置施設か）だけを決めれば足り、式場や火葬場の予約は搬送後に落ち着いてから相談できます。搬送のみの依頼も可能です。くわしい手順は<a href="/first-steps/">亡くなってから最初にすること</a>で説明しています。</p>
+  <NextLink href="/first-steps/" label="搬送の流れをくわしく" title="亡くなってから最初にすること（病院・施設からの搬送、安置先の決め方）" />
+
+  <h2 id="madoguchi">死亡届や葬祭費の申請はどこの窓口でできますか？</h2>
+  <div class="answer"><p>原町田・森野・中町・旭町にお住まいの場合、最も近い窓口は<strong>町田市役所 市民課（市庁舎1階104窓口、森野2-2-22）</strong>です。忠生地区にお住まいの場合は<strong>忠生市民センター</strong>でも死亡届・葬祭費の申請ができます。</p></div>
+  <p>市役所の開庁時間は平日午前8時30分から午後5時までで、第2・第4日曜日は一部窓口が開きます。市役所は小田急線町田駅西口から徒歩約8分、JR横浜線町田駅から徒歩約11分です。死亡届は亡くなったことを知った日を含めて7日以内に提出し、提出時に火葬許可証が交付されます（受付時間内であれば即日交付）。国民健康保険・後期高齢者医療の葬祭費は、この窓口で申請できます。</p>
+  <Source items={[{ label: '町田市 死亡届', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/todokede/todokede03.html' }, { label: '町田市 市民課', href: 'https://www.city.machida.tokyo.jp/shisei/shiyakusyo/gyomu/shimin/shimin01.html' }]} />
+  <NextLink href="/subsidy/" label="葬祭費の申請方法" title="葬祭費・補助金の申請方法（国保・後期高齢者・社会保険の違い）" />
+
+  <h2 id="chui">町田駅周辺で葬儀をするときの注意点は何ですか？</h2>
+  <div class="answer"><p>このエリア固有の注意点は、<strong>①最も近い相模原市営斎場は町田市民には市外扱いで割高、②南多摩斎場までは公共交通で乗り換えが必要、③駅前の式場は宿泊できない場合がある</strong>の3点です。距離だけで火葬場を選ぶと費用が想定より高くなることがあります。</p></div>
+  <p>相模原市営斎場は町田駅から車で約10分と近距離ですが、町田市民の火葬料は54,000円かかります。一方、南多摩斎場は町田市民の火葬料が無料である代わりに、車で25〜35分、公共交通ではJR横浜線と神奈中バスの乗り換えが必要です。参列者の年齢層や送迎手段（マイクロバスの有無）によって、費用を優先するか移動のしやすさを優先するかを事前に決めておくと、火葬場選びで迷いません。駅前の式場（コムウェルホール町田駅前会堂けやき、湘和会堂町田など）は駅から近い一方、宿泊設備の有無は施設ごとに異なるため、通夜後に付き添いたい場合は事前に確認が必要です。また、通夜・告別式の日程が土日や夕方の時間帯に重なると、駅周辺は繁華街のため駐車場が混みやすく、参列者への案内で駐車場の場所を早めに伝えておくと当日の混乱を避けられます。</p>
+
+  <h2 id="faq">町田駅周辺の葬儀でよくある質問</h2>
+  <Faq items={faqs} group="area-machida-eki" />
+</ArticleLayout>

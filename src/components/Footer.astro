@@ -1,0 +1,93 @@
+---
+import { BRAND, PHONE, SITE } from '../config/site';
+import Icon from './Icon.astro';
+const groups = [
+  { title: '葬儀プラン・費用', links: [
+    { href: '/plans/', label: '葬儀プラン一覧' },
+    { href: '/plans/kazokuso/', label: '家族葬' },
+    { href: '/plans/ichinichiso/', label: '一日葬' },
+    { href: '/plans/kasoshiki/', label: '火葬式・直葬' },
+    { href: '/cost/', label: '葬儀費用の内訳と相場' },
+    { href: '/subsidy/', label: '葬祭費・補助金' },
+  ]},
+  { title: '町田市の葬儀情報', links: [
+    { href: '/machida/', label: '町田市の葬儀' },
+    { href: '/halls/', label: '町田市の斎場・葬儀場' },
+    { href: '/halls/crematorium/', label: '町田市の火葬場' },
+    { href: '/area/', label: 'エリア情報' },
+  ]},
+  { title: '手続き・知識', links: [
+    { href: '/first-steps/', label: '亡くなってから最初にすること' },
+    { href: '/flow/', label: '葬儀の流れ' },
+    { href: '/faq/', label: 'よくある質問' },
+    { href: '/column/', label: '葬儀コラム' },
+  ]},
+  { title: '会社情報', links: [
+    { href: '/about/', label: '運営者情報' },
+    { href: '/contact/', label: 'お問い合わせ' },
+    { href: '/privacy/', label: 'プライバシーポリシー' },
+  ]},
+];
+---
+<footer class="site-footer" data-region="footer">
+  <div class="container">
+    <div class="site-footer__cta">
+      <div>
+        <p class="site-footer__cta-title">{SITE.area}の葬儀のご相談</p>
+        <p class="site-footer__cta-lead">深夜・早朝でも受け付けています。まだ葬儀社を決めていない段階でも構いません。</p>
+      </div>
+      <div class="site-footer__cta-actions">
+        <a href={PHONE.tel} class="btn btn--tel btn--lg" data-cta="tel" data-cta-position="footer">
+          <Icon name="phone" /><span>電話で相談 <span class="num">{PHONE.display}</span></span>
+        </a>
+        <a href="/contact/" class="btn btn--outline btn--lg" data-cta="contact" data-cta-position="footer">
+          <Icon name="mail" /><span>メールで相談</span>
+        </a>
+      </div>
+      <p class="site-footer__cta-note">{PHONE.hours}{PHONE.note ? `　${PHONE.note}` : ''}</p>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="フッターメニュー">
+      {groups.map((g) => (
+        <div class="site-footer__group">
+          <p class="site-footer__group-title">{g.title}</p>
+          <ul>
+            {g.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+          </ul>
+        </div>
+      ))}
+    </nav>
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__brand">{BRAND.name}<span>（{BRAND.reading}）</span></p>
+      <p class="site-footer__demo">本サイトはSEO/AIO検証を目的とした架空の葬儀社サイトです。実際の葬儀受注は行っていません。詳しくは<a href="/about/">運営者情報</a>をご覧ください。</p>
+      <p class="site-footer__copy">© {new Date().getFullYear()} {BRAND.name}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { margin-top: 4rem; background: var(--c-surface); border-top: 1px solid var(--c-line); }
+  .site-footer__cta { padding: 2.5rem 0 2rem; border-bottom: 1px solid var(--c-line-2); }
+  .site-footer__cta-title { font-size: var(--fs-h3); font-weight: 700; margin: 0 0 0.3em; }
+  .site-footer__cta-lead { color: var(--c-ink-2); margin: 0 0 1em; font-size: var(--fs-sm); }
+  .site-footer__cta-actions { display: grid; gap: 0.75rem; }
+  .site-footer__cta-note { font-size: var(--fs-xs); color: var(--c-ink-3); margin: 0.75em 0 0; }
+  .site-footer__nav { display: grid; gap: 1.5rem; padding: 2rem 0; }
+  .site-footer__group-title { font-weight: 700; margin: 0 0 0.5em; font-size: var(--fs-sm); }
+  .site-footer__group ul { list-style: none; padding: 0; margin: 0; }
+  .site-footer__group li { margin: 0; }
+  .site-footer__group a { display: block; padding: 0.3em 0; font-size: var(--fs-sm); color: var(--c-ink-2); text-decoration: none; }
+  .site-footer__group a:hover { color: var(--c-primary); text-decoration: underline; }
+  .site-footer__bottom { padding: 1.5rem 0 2rem; border-top: 1px solid var(--c-line-2); font-size: var(--fs-xs); color: var(--c-ink-3); }
+  .site-footer__brand { font-weight: 700; color: var(--c-ink); font-size: var(--fs-sm); margin: 0 0 0.5em; }
+  .site-footer__brand span { font-weight: 400; color: var(--c-ink-3); margin-left: 0.3em; }
+  .site-footer__demo { margin: 0 0 0.75em; }
+  .site-footer__copy { margin: 0; }
+  @media (min-width: 640px) { .site-footer__cta-actions { grid-template-columns: 1fr 1fr; max-width: 640px; } .site-footer__nav { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) {
+    .site-footer__cta { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+    .site-footer__cta-note { grid-column: 1 / -1; margin-top: 0; }
+    .site-footer__nav { grid-template-columns: repeat(4, 1fr); padding: 2.5rem 0; }
+  }
+</style>

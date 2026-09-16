@@ -1,0 +1,83 @@
+---
+/**
+ * 電話・問い合わせCTA。data-cta / data-cta-position で計測を判別する。
+ * variant: 'stack' (縦積み) | 'inline' (横並び) | 'tel-only' | 'contact-only'
+ */
+import { PHONE } from '../config/site';
+import Icon from './Icon.astro';
+interface Props {
+  position: 'header' | 'hero' | 'middle' | 'floating' | 'footer' | 'sidebar' | 'faq' | 'plan' | 'hall' | 'cost' | 'flow';
+  variant?: 'stack' | 'inline' | 'tel-only' | 'contact-only' | 'box';
+  telText?: string;
+  contactText?: string;
+  contactHref?: string;
+  title?: string;
+  lead?: string;
+  size?: 'md' | 'lg';
+  class?: string;
+}
+const {
+  position,
+  variant = 'box',
+  telText = '電話で相談する',
+  contactText = 'メールで相談する',
+  contactHref = '/contact/',
+  title = 'まずはご相談ください',
+  lead = '費用のこと、式場のこと、今すぐ必要なこと。分からないことをそのままお話しください。',
+  size = 'md',
+  class: cls = '',
+} = Astro.props;
+const showTel = variant !== 'contact-only';
+const showContact = variant !== 'tel-only';
+const btnSize = size === 'lg' ? 'btn--lg' : '';
+---
+{variant === 'box' ? (
+  <aside class={`cta-box ${cls}`} data-region={position} aria-label="お問い合わせ">
+    <p class="cta-box__title">{title}</p>
+    <p class="cta-box__lead">{lead}</p>
+    <div class="cta-box__actions">
+      <a href={PHONE.tel} class={`btn btn--tel ${btnSize}`} data-cta="tel" data-cta-position={position}>
+        <Icon name="phone" /><span>{telText}<span class="cta-box__num num">{PHONE.display}</span></span>
+      </a>
+      <a href={contactHref} class={`btn btn--outline ${btnSize}`} data-cta="contact" data-cta-position={position}>
+        <Icon name="mail" /><span>{contactText}</span>
+      </a>
+    </div>
+    <p class="cta-box__note">{PHONE.hours}{PHONE.note ? `　${PHONE.note}` : ''}</p>
+  </aside>
+) : (
+  <div class={`cta-inline cta-inline--${variant} ${cls}`} data-region={position}>
+    {showTel && (
+      <a href={PHONE.tel} class={`btn btn--tel ${btnSize}`} data-cta="tel" data-cta-position={position}>
+        <Icon name="phone" /><span>{telText}</span>
+      </a>
+    )}
+    {showContact && (
+      <a href={contactHref} class={`btn btn--outline ${btnSize}`} data-cta="contact" data-cta-position={position}>
+        <Icon name="mail" /><span>{contactText}</span>
+      </a>
+    )}
+  </div>
+)}
+
+<style>
+  .cta-box {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-top: 4px solid var(--c-primary);
+    border-radius: var(--radius-lg);
+    padding: 1.4rem 1.25rem 1.1rem;
+    margin: 2.5rem 0;
+    max-width: var(--w-prose);
+  }
+  .cta-box__title { font-size: var(--fs-lg); font-weight: 700; margin: 0 0 0.35em; line-height: 1.4; }
+  .cta-box__lead { color: var(--c-ink-2); font-size: var(--fs-sm); margin: 0 0 1em; }
+  .cta-box__actions { display: grid; gap: 0.75rem; }
+  .cta-box__num { display: block; font-size: 1.25em; font-weight: 700; letter-spacing: 0.02em; line-height: 1.2; margin-top: 0.15em; }
+  .cta-box__note { font-size: var(--fs-xs); color: var(--c-ink-3); margin: 0.9em 0 0; }
+  @media (min-width: 560px) {
+    .cta-box__actions { grid-template-columns: 1fr 1fr; align-items: stretch; }
+  }
+  .cta-inline { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .cta-inline .btn { flex: 1 1 200px; }
+</style>

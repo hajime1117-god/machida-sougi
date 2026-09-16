@@ -1,0 +1,128 @@
+---
+/**
+ * 記事・ガイド系ページの共通レイアウト
+ * - モバイル: 1カラム。PC(1024px〜): 本文 + 追従サイドバー(目次・CTA・関連ページ)
+ * - パンくず / H1 / リード / 最終確認日 / 本文 / 関連ページ
+ */
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import type { Crumb } from '../components/Breadcrumb.astro';
+import LastReviewed from '../components/LastReviewed.astro';
+import Cta from '../components/Cta.astro';
+import Icon from '../components/Icon.astro';
+import { PHONE } from '../config/site';
+
+export interface TocItem { id: string; label: string }
+export interface Related { href: string; label: string; note?: string }
+
+interface Props {
+  title: string;            // <title> 用（ブランド名は自動付与）
+  h1: string;
+  description: string;
+  lead?: string;
+  crumbs: Crumb[];
+  pageType?: 'plan' | 'cost' | 'local' | 'hall' | 'area' | 'flow' | 'subsidy' | 'faq' | 'column' | 'about' | 'other';
+  toc?: TocItem[];
+  related?: Related[];
+  lastReviewed?: string;
+  reviewNote?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  ogType?: 'website' | 'article';
+  datePublished?: string;
+  dateModified?: string;
+  fixedCta?: { telText?: string; contactText?: string; contactHref?: string } | false;
+  showBottomCta?: boolean;
+  bottomCtaTitle?: string;
+  bottomCtaLead?: string;
+  bottomCtaPosition?: 'plan' | 'cost' | 'hall' | 'flow' | 'faq' | 'middle';
+}
+const {
+  title, h1, description, lead, crumbs, pageType = 'other', toc = [], related = [],
+  lastReviewed, reviewNote, jsonLd, ogType = 'website', datePublished, dateModified, fixedCta = {},
+  showBottomCta = true, bottomCtaTitle, bottomCtaLead, bottomCtaPosition = 'middle',
+} = Astro.props;
+---
+<BaseLayout {title} {description} {pageType} {jsonLd} {ogType} {datePublished} {dateModified} {fixedCta}>
+  <div class="container">
+    <Breadcrumb items={crumbs} />
+    <div class="article-layout">
+      <article class="article article-layout__main">
+        <header class="article-head">
+          <h1>{h1}</h1>
+          {lead && <p class="lead">{lead}</p>}
+          {lastReviewed !== undefined ? <LastReviewed date={lastReviewed || undefined} note={reviewNote} /> : null}
+          {toc.length > 0 && (
+            <nav class="toc toc--inline" aria-label="このページの内容" data-region="toc">
+              <p class="toc__title">このページの内容</p>
+              <ol>{toc.map((t) => <li><a href={`#${t.id}`}>{t.label}</a></li>)}</ol>
+            </nav>
+          )}
+        </header>
+        <slot />
+        {showBottomCta && <Cta position={bottomCtaPosition} title={bottomCtaTitle} lead={bottomCtaLead} />}
+        {related.length > 0 && (
+          <nav class="related" aria-label="関連ページ" data-region="related">
+            <h2 class="related__title">関連ページ</h2>
+            <ul>
+              {related.map((r) => (
+                <li><a href={r.href}><span class="related__label">{r.label}</span>{r.note && <span class="related__note">{r.note}</span>}<Icon name="chevron" /></a></li>
+              ))}
+            </ul>
+          </nav>
+        )}
+      </article>
+      <aside class="article-layout__side" data-region="sidebar">
+        <div class="side-sticky">
+          {toc.length > 0 && (
+            <nav class="toc toc--side" aria-label="目次" data-region="toc">
+              <p class="toc__title">目次</p>
+              <ol>{toc.map((t) => <li><a href={`#${t.id}`}>{t.label}</a></li>)}</ol>
+            </nav>
+          )}
+          <div class="side-cta">
+            <p class="side-cta__title">お急ぎの方・ご相談</p>
+            <a href={PHONE.tel} class="btn btn--tel btn--block" data-cta="tel" data-cta-position="sidebar"><Icon name="phone" /><span class="num">{PHONE.display}</span></a>
+            <p class="side-cta__hours">{PHONE.hours}</p>
+            <a href="/contact/" class="btn btn--outline btn--block" data-cta="contact" data-cta-position="sidebar"><Icon name="mail" /><span>メールで相談</span></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .article-layout { display: grid; gap: 2rem; padding-block: 0.5rem 2rem; }
+  .article-layout__main { min-width: 0; }
+  .article-head { margin-bottom: 2rem; }
+  .article-head h1 { font-size: var(--fs-h1); margin: 0.5rem 0 0.6em; }
+  .article-head .lead { margin-bottom: 0.8em; }
+  .toc { border: 1px solid var(--c-line); background: var(--c-surface); border-radius: var(--radius-lg); padding: 1rem 1.2rem; }
+  .toc__title { font-weight: 700; font-size: var(--fs-sm); margin: 0 0 0.5em; color: var(--c-ink-2); }
+  .toc ol { margin: 0; padding-left: 1.4em; font-size: var(--fs-sm); }
+  .toc li { margin: 0.3em 0; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .toc--inline { max-width: var(--w-prose); margin-top: 1rem; }
+  .article-layout__side { display: none; }
+  .related { margin-top: 3rem; }
+  .related__title { font-size: var(--fs-h3); margin: 0 0 0.8em; border: 0; padding: 0; }
+  .related ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+  .related li { margin: 0; }
+  .related a { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; padding: 0.9rem 1rem; border: 1px solid var(--c-line); border-radius: var(--radius); background: var(--c-surface); text-decoration: none; color: var(--c-ink); }
+  .related a:hover { border-color: var(--c-primary-2); background: var(--c-primary-soft); }
+  .related__label { font-weight: 700; }
+  .related__note { grid-column: 1; font-size: var(--fs-xs); color: var(--c-ink-3); }
+  .related a :global(svg) { grid-column: 2; grid-row: 1 / span 2; color: var(--c-ink-3); }
+  @media (min-width: 768px) { .related ul { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) {
+    .article-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: 3.5rem; }
+    .toc--inline { display: none; }
+    .article-layout__side { display: block; }
+    .side-sticky { position: sticky; top: calc(var(--header-h) + 16px); display: grid; gap: 1.25rem; }
+    .toc--side { max-height: 50vh; overflow-y: auto; }
+    .side-cta { border: 1px solid var(--c-line); border-top: 4px solid var(--c-accent); border-radius: var(--radius-lg); background: var(--c-surface); padding: 1.1rem 1.2rem; display: grid; gap: 0.6rem; }
+    .side-cta__title { font-weight: 700; margin: 0; font-size: var(--fs-sm); }
+    .side-cta__hours { margin: -0.3rem 0 0; font-size: var(--fs-xs); color: var(--c-ink-3); text-align: center; }
+  }
+</style>

@@ -1,0 +1,155 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import NextLink from '../components/NextLink.astro';
+import Source from '../components/Source.astro';
+import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
+import Icon from '../components/Icon.astro';
+
+const title = '町田市の葬儀費用｜内訳・形式別の総額例・安く抑える方法';
+const h1 = '町田市の葬儀費用｜内訳と人数別の総額例、安く抑える方法';
+const description = '町田市の葬儀費用は、火葬式で約25万円、一日葬で約50〜65万円、家族葬で約75〜95万円が総額の目安です。費用の内訳（プラン料金・式場使用料・火葬料・飲食返礼・お布施）、追加になりやすい項目、南多摩斎場の火葬料無料や葬祭費5万円を使って安く抑える方法を解説します。';
+const toc = [
+  { id: 'sougaku', label: '町田市の葬儀費用の総額目安' },
+  { id: 'uchiwake', label: '費用の内訳（5つの区分）' },
+  { id: 'ninzu', label: '形式別・人数別の総額例' },
+  { id: 'tsuika', label: '追加になりやすい費用' },
+  { id: 'yasuku', label: '費用を安く抑える方法' },
+  { id: 'hikaku', label: '「◯万円〜」の広告を比較するときの注意' },
+  { id: 'machisou', label: '市民葬・葬祭扶助について' },
+  { id: 'faq', label: 'よくある質問' },
+];
+const related = [
+  { href: '/plans/', label: '葬儀プラン比較', note: '家族葬・一日葬・火葬式の違い' },
+  { href: '/subsidy/', label: '葬祭費・補助金', note: '国保・後期高齢者医療から50,000円' },
+  { href: '/halls/crematorium/', label: '町田市の火葬場', note: '南多摩斎場の料金と市外火葬場の比較' },
+  { href: '/halls/', label: '町田市の斎場・葬儀場', note: '式場使用料の目安' },
+  { href: '/column/kaso-machi-anchi/', label: '火葬待ちと安置費用の考え方', note: '待ち日数で増える費用' },
+  { href: '/contact/', label: 'お問い合わせ・事前相談', note: '人数と形式から総額を試算します' },
+];
+const faqs = [
+  { q: '町田市の葬儀費用の平均はいくらですか？', a: '<p>町田市に限定した公的な統計はありません。当サイトの試算では、火葬式で約25万円、一日葬（10名）で約50〜65万円、家族葬（20名）で約75〜95万円が、南多摩斎場を利用する町田市民の総額の目安です（宗教者へのお礼は別）。全国調査の平均額は調査ごとに前提（含める費目）が異なるため、単純に比較できません。</p>' },
+  { q: '見積もりより高くなることはありますか？', a: '<p>安置日数が延びた場合（火葬場の混雑）、参列者が増えて飲食・返礼品が増えた場合、棺や祭壇のグレードを変更した場合に増えます。逆に、参列者が減れば飲食・返礼品の分は下がります。当サイトでは、変動する費目を見積書に「数量×単価」で明示し、確定前にご説明します。</p>' },
+  { q: '葬儀費用は誰が払いますか？いつ払いますか？', a: '<p>一般には喪主（または施主）が支払い、葬儀後1週間〜10日程度で請求書をお渡しします。故人の預金は死亡後に口座が凍結されますが、2019年7月からは相続人が一定額（1金融機関あたり150万円が上限）を単独で引き出せる制度があり、葬儀費用に充てられます。香典を葬儀費用に充てるご家庭も多くあります。</p>' },
+  { q: 'お布施の相場はいくらですか？', a: '<p>宗派・寺院・地域により大きく異なり、当サイトでは断定していません。菩提寺がある場合は寺院に直接「お布施はいくら包めばよいか」と尋ねて構いません。菩提寺がなく僧侶の紹介を希望する場合は、読経と戒名を含めた金額を事前にお伝えします。</p>' },
+];
+---
+<ArticleLayout {title} {h1} {description} {toc} {related} pageType="cost" lastReviewed=""
+  lead="葬儀費用が分かりにくいのは、「プラン料金」と「総額」が別物だからです。このページでは、町田市で葬儀をするときの総額の目安を先に示し、その内訳、追加になりやすい費用、安く抑える方法の順に説明します。町田市民は南多摩斎場の火葬料が無料で、葬祭費50,000円も受け取れるため、他の地域より火葬にかかる費用を抑えやすい事情があります。"
+  crumbs={[{ href: '/cost/', label: '葬儀費用' }]}
+  bottomCtaPosition="cost" bottomCtaTitle="人数と形式から、総額を試算します" bottomCtaLead="「20名で家族葬、南多摩斎場の式場」のように条件を伺えば、含まれないものも含めた総額の目安をお伝えします。見積もりだけのご依頼でも構いません。">
+
+  <h2 id="sougaku">町田市の葬儀費用は総額でいくらかかる？</h2>
+  <div class="answer"><p>町田市民が南多摩斎場を利用する場合、総額の目安は<strong>火葬式で約25万円、一日葬（10名）で約50〜65万円、家族葬（20名）で約75〜95万円</strong>です（宗教者へのお礼は別）。差が出るのは、式を行う日数（式場使用料）と参列人数（飲食・返礼品）の2点です。故人が国民健康保険・後期高齢者医療の加入者なら、葬儀後に葬祭費50,000円が支給されます。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>町田市の葬儀 形式別の総額目安（町田市民・南多摩斎場利用・仏式で僧侶を呼ぶ場合。税込。宗教者へのお礼は含まない）</caption>
+      <thead><tr><th scope="col">形式</th><th scope="col">プラン料金</th><th scope="col">式場使用料</th><th scope="col">火葬料</th><th scope="col">飲食・返礼品</th><th scope="col">総額目安</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">火葬式・直葬</th><td class="num">198,000円</td><td>不要</td><td class="num">0円</td><td>不要</td><td class="num"><strong>約20〜25万円</strong></td></tr>
+        <tr><th scope="row">一日葬（10名）</th><td class="num">396,000円</td><td class="num">50,000〜140,000円</td><td class="num">0円</td><td class="num">約7万円</td><td class="num"><strong>約50〜65万円</strong></td></tr>
+        <tr><th scope="row">家族葬（20名）</th><td class="num">528,000円</td><td class="num">50,000〜140,000円</td><td class="num">0円</td><td class="num">約24万円</td><td class="num"><strong>約75〜95万円</strong></td></tr>
+        <tr><th scope="row">一般葬（50名）</th><td>個別見積もり</td><td class="num">140,000円〜</td><td class="num">0円</td><td class="num">約60万円</td><td class="num"><strong>約130〜160万円</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">プラン料金は本サイト（検証用）の設定価格です。式場使用料は南多摩斎場の第二・第三式場50,000円〜第一式場140,000円（組織市住民）を例にしています。民営式場は10〜25万円程度が目安です。</p>
+  <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }, { label: '町田市 葬祭費', href: 'https://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/sousai.html' }]} />
+
+  <h2 id="uchiwake">葬儀費用の内訳は？（5つの区分）</h2>
+  <div class="answer"><p>葬儀費用は<strong>①葬儀社のプラン料金 ②式場・火葬場の使用料 ③飲食費 ④返礼品 ⑤宗教者へのお礼</strong>の5つに分かれます。葬儀社に支払うのは①〜④で、⑤は寺院などに直接渡します。「◯万円〜」と広告される金額はほとんどが①だけです。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>葬儀費用の5つの区分と、町田市での目安</caption>
+      <thead><tr><th scope="col">区分</th><th scope="col">内容</th><th scope="col">金額を決める要素</th><th scope="col">町田市での目安</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">① プラン料金</th><td>搬送・安置・棺・骨壺・祭壇・進行・霊柩車・手続き</td><td>形式（火葬式／一日葬／家族葬）、祭壇や棺のグレード</td><td class="num">198,000〜528,000円（当サイト）</td></tr>
+        <tr><th scope="row">② 式場・火葬場</th><td>式場使用料、火葬料、待合室・霊安室の使用料</td><td>公営か民営か、故人の住所（市内／市外）</td><td class="num">式場 50,000〜250,000円、火葬料 0円（市民）〜80,000円（市外）</td></tr>
+        <tr><th scope="row">③ 飲食費</th><td>通夜振る舞い、精進落とし、飲み物</td><td>参列人数×食数×単価</td><td class="num">1人1食 3,000〜6,000円</td></tr>
+        <tr><th scope="row">④ 返礼品</th><td>会葬礼状、香典返し（即日返し）</td><td>参列人数、香典を受けるか</td><td class="num">1人 1,000〜3,000円</td></tr>
+        <tr><th scope="row">⑤ 宗教者へのお礼</th><td>お布施（読経・戒名）、お車代、御膳料</td><td>宗派、寺院、戒名の位</td><td>寺院により異なる（当サイトでは断定しない）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>②の火葬料は、南多摩斎場を組織する5市（八王子市・町田市・多摩市・稲城市・日野市）の住民は無料、それ以外は12歳以上80,000円です。故人の住所で判定されるため、町田市外にお住まいのご家族が喪主でも、故人が町田市民なら無料です。</p>
+  <NextLink href="/halls/crematorium/" label="火葬場の費用" title="町田市の火葬場｜南多摩斎場の料金と市外火葬場の比較" />
+
+  <h2 id="ninzu">形式別・人数別の総額例</h2>
+  <div class="answer"><p>参列人数が10名増えると、飲食（2食で約10万円）と返礼品（約2万円）で<strong>総額が約12万円増える</strong>のが目安です。形式による差は、通夜振る舞いの有無（一日葬は不要）と式場使用料の日数分です。</p></div>
+  <div class="table-wrap table-wrap--wide">
+    <table>
+      <caption>形式別・参列人数別の総額例（町田市民・南多摩斎場 第二式場・飲食1人1食5,000円・返礼品1人2,000円。税込。お布施別）</caption>
+      <thead><tr><th scope="col">形式</th><th scope="col">5名</th><th scope="col">10名</th><th scope="col">20名</th><th scope="col">30名</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">火葬式・直葬</th><td class="num">約21万円</td><td class="num">約23万円</td><td>—</td><td>—</td></tr>
+        <tr><th scope="row">一日葬</th><td class="num">約48万円</td><td class="num">約52万円</td><td class="num">約59万円</td><td class="num">約66万円</td></tr>
+        <tr><th scope="row">家族葬</th><td class="num">約64万円</td><td class="num">約70万円</td><td class="num">約82万円</td><td class="num">約94万円</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">火葬式の人数差は待合室の使用料と花代の差です。第一式場（140,000円）を使う場合は各9万円増、民営式場の場合は施設の使用料に置き換えて計算してください。</p>
+  <div class="link-row">
+    <NextLink href="/plans/kazokuso/" label="家族葬" title="町田市の家族葬｜費用・式場・流れ" />
+    <NextLink href="/plans/ichinichiso/" label="一日葬" title="町田市の一日葬｜費用・流れ・家族葬との違い" />
+  </div>
+  <Cta position="cost" variant="inline" telText="電話で総額を試算する" contactText="メールで見積もりを相談" />
+
+  <h2 id="tsuika">追加になりやすい費用は？</h2>
+  <div class="answer"><p>見積もりの後に増えやすいのは、<strong>①火葬待ちによる安置日数の延長、②ドライアイスの追加、③市外や深夜の搬送料、④参列者の増加、⑤棺・祭壇・遺影のグレード変更</strong>の5つです。町田市では南多摩斎場の混雑による①②が最も多く、1日あたり1〜2万円増えます。</p></div>
+  <div class="table-wrap">
+    <table>
+      <caption>追加になりやすい費用と発生条件</caption>
+      <thead><tr><th scope="col">項目</th><th scope="col">発生する条件</th><th scope="col">目安</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">安置日数の延長</th><td>プランに含まれる2日を超えて安置した場合（火葬場の混雑、友引、年末年始）</td><td class="num">安置施設 10,000〜20,000円／日</td></tr>
+        <tr><th scope="row">ドライアイス追加</th><td>安置3日目以降、夏季</td><td class="num">5,000〜10,000円／日</td></tr>
+        <tr><th scope="row">搬送料の加算</th><td>町田市外の病院からの搬送、火葬場が市外、深夜早朝の割増</td><td class="num">距離・時間帯により数千〜数万円</td></tr>
+        <tr><th scope="row">飲食・返礼品の増加</th><td>参列者が見込みより増えた</td><td class="num">1人あたり 4,000〜8,000円</td></tr>
+        <tr><th scope="row">グレード変更</th><td>棺、祭壇の花、遺影の額、骨壺の変更</td><td class="num">数万円〜</td></tr>
+        <tr><th scope="row">湯灌・エンバーミング</th><td>ご遺体を清める儀式、長期安置の防腐処置を希望した場合</td><td class="num">湯灌 約8〜10万円、エンバーミング 約15〜25万円</td></tr>
+        <tr><th scope="row">供花・供物</th><td>親族名義の供花を葬儀社に依頼した場合</td><td class="num">1基 15,000〜20,000円</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <NextLink href="/column/kaso-machi-anchi/" label="火葬待ちのとき" title="南多摩斎場が混んでいるとき：火葬待ち日数と安置費用の考え方" />
+
+  <h2 id="yasuku">町田市で葬儀費用を安く抑えるには？</h2>
+  <div class="answer"><p>町田市で費用を抑える現実的な方法は、<strong>①南多摩斎場の式場を使う（火葬料無料・式場5万円〜・移動不要）、②形式を一日葬か火葬式にする、③飲食と返礼品を簡素にする、④葬祭費50,000円を申請する</strong>の4つです。この4つで、家族葬でも総額を60万円台に抑えることができます。</p></div>
+  <ol>
+    <li><strong>南多摩斎場の式場を使う。</strong>第二・第三式場は組織市住民50,000円で、火葬場と同じ敷地のためマイクロバスや霊柩車の移動費もかかりません。民営式場（10〜25万円）との差だけで5〜20万円変わります。</li>
+    <li><strong>形式を見直す。</strong>通夜を省く一日葬にすると通夜振る舞いと式場1日分が不要になります。参列者がごく少数なら火葬式も選択肢です。ただし菩提寺がある場合は事前に相談してください。</li>
+    <li><strong>飲食と返礼品を簡素にする。</strong>町田市でも通夜振る舞いを軽食にする、精進落としを省いて解散する家庭が増えています。香典を辞退すれば返礼品も不要になります。</li>
+    <li><strong>葬祭費を申請する。</strong>故人が町田市の国民健康保険または後期高齢者医療の加入者なら、喪主に50,000円が支給されます。申請期限は葬儀の翌日から2年です。会社の健康保険なら埋葬料50,000円が対象です。</li>
+  </ol>
+  <div class="callout callout--info">
+    <p class="callout__title"><Icon name="info" />削らない方がよいもの</p>
+    <p>搬送・安置・ドライアイスは削れません。棺や骨壺は最も安いもので問題ありませんが、遺影写真と火葬前のお別れの時間は、後から「やっておけばよかった」と言われやすい部分です。</p>
+  </div>
+  <NextLink href="/subsidy/" label="5万円が戻る" title="町田市の葬祭費・補助金｜申請方法・必要書類・期限" />
+
+  <h2 id="hikaku">「火葬式 9万円〜」などの広告を比較するときの注意</h2>
+  <div class="answer"><p>低価格の広告表示は、<strong>資料請求や会員登録による割引後の価格で、搬送距離・安置日数・ドライアイス・火葬料・待合室・骨壺などが含まれていない</strong>ことがあります。比較するときは「含まれないもの」と「南多摩斎場を使ったときの総額」で並べてください。</p></div>
+  <p>見積もりを比較するときのチェック項目は次の5つです。</p>
+  <ul>
+    <li>搬送は何kmまで含まれるか。町田市内の病院から自宅までは含まれるか</li>
+    <li>安置は何日分か。ドライアイスは何日分か</li>
+    <li>火葬料・式場使用料・待合室は見積もりに入っているか</li>
+    <li>スタッフの人数と、当日の進行は含まれるか</li>
+    <li>割引の条件（資料請求・会員登録・事前相談）は何か</li>
+  </ul>
+  <p>当サイトの見積書は、プラン料金と「含まれないもの」を分けて記載し、変動する費目は数量×単価で示します。</p>
+
+  <h2 id="machisou">町田市の市民葬・葬祭扶助について</h2>
+  <div class="answer"><p>町田市が直営していた「町田市葬祭事業」（いわゆる市民葬）は<strong>2022年3月31日で終了</strong>しています。現在、町田市は市内の葬儀社で構成する「町田市民葬祭事業組合（愛称: 町田のまちそう）」を案内しています。生活保護を受けている方は、葬祭扶助（そうさいふじょ）により火葬を中心とした最低限の葬儀費用が支給されます。</p></div>
+  <p>葬祭扶助は、葬儀を行う前に町田市の生活保護担当窓口へ申請する必要があります。葬儀後の申請は認められないため、生活保護を受けている方が亡くなった場合は、搬送の前後に担当ケースワーカーへ連絡してください。当サイトでも葬祭扶助の範囲内での火葬式に対応します。</p>
+  <Source items={[{ label: '町田市 葬儀に関するご案内', href: 'https://www.city.machida.tokyo.jp/iryo/tiikihukusihoka/sousaijigyou.html' }]} />
+  <NextLink href="/machida/" label="町田市の事情" title="町田市の葬儀ガイド｜火葬場・式場・制度・費用の全体像" />
+
+  <h2 id="faq">町田市の葬儀費用でよくある質問</h2>
+  <Faq items={faqs} group="cost" />
+</ArticleLayout>
+
+<style>
+  .link-row { display: grid; gap: 0.25rem; }
+  @media (min-width: 900px) { .link-row { grid-template-columns: 1fr 1fr; gap: 1rem; } }
+</style>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import LastReviewed from '../components/LastReviewed.astro';
+import Icon from '../components/Icon.astro';
+import { BRAND, SITE, PHONE } from '../config/site';
+const title = '運営者情報';
+const description = `${BRAND.name}（${BRAND.reading}）は、東京都町田市の葬儀・家族葬に関する情報提供とSEO/AIO検証を目的とした架空の葬儀社サイトです。編集方針・情報の確認方法・免責事項を掲載しています。`;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: title,
+  url: `${SITE.url}/about/`,
+  mainEntity: { '@id': `${SITE.url}/#organization` },
+};
+---
+<BaseLayout title={title} description={description} pageType="about" jsonLd={ld} fixedCta={false}>
+  <div class="container">
+    <Breadcrumb items={[{ href: '/about/', label: title }]} />
+    <article class="article prose" style="padding-block: 1rem 3rem;">
+      <h1>運営者情報</h1>
+      <LastReviewed />
+
+      <div class="callout callout--warn">
+        <p class="callout__title"><Icon name="info" />本サイトは検証用の架空サイトです</p>
+        <p>{BRAND.name}は実在する葬儀社ではありません。本サイトは「町田市 葬儀」「町田市 家族葬」などの検索キーワードにおける自然検索・AI検索での評価、およびユーザー行動の計測を検証する目的で制作されています。葬儀の受注・搬送・施行は一切行っておらず、掲載している電話番号はダミーです。</p>
+      </div>
+
+      <h2>サイト概要</h2>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th scope="row">サイト名</th><td>{BRAND.name}（{BRAND.reading}）</td></tr>
+            <tr><th scope="row">対象地域</th><td>{SITE.area}（町田駅周辺・鶴川・成瀬・玉川学園・南町田・相原・多摩境 ほか市内全域）</td></tr>
+            <tr><th scope="row">扱うテーマ</th><td>家族葬・一日葬・火葬式（直葬）の内容と費用、町田市で利用できる斎場・火葬場、亡くなった直後の手続き、葬祭費などの公的給付</td></tr>
+            <tr><th scope="row">サイトの性質</th><td>SEO/AIO（AI検索最適化）およびアクセス解析の検証用サイト。実際の葬儀サービスは提供していません</td></tr>
+            <tr><th scope="row">電話番号</th><td><span class="num">{PHONE.display}</span>（{PHONE.note.replace('※', '')}）</td></tr>
+            <tr><th scope="row">お問い合わせ</th><td><a href="/contact/">お問い合わせフォーム</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>編集方針</h2>
+      <p>葬儀は、行政手続き・公営施設の料金・公的給付など、誤りがあると読者に不利益が生じる情報を含みます。本サイトでは次の方針で記事を作成しています。</p>
+      <ul>
+        <li><strong>一次情報を優先する。</strong>町田市役所、東京都、南多摩斎場組合、各火葬場・式場の公式サイトなど、制度や料金の運営主体が公開している情報を根拠にします。</li>
+        <li><strong>出典と最終確認日を明示する。</strong>金額・期限・施設情報には出典リンクと確認日を付け、読者が自分で最新情報を確認できるようにしています。</li>
+        <li><strong>架空の実績を書かない。</strong>口コミ、お客様の声、受賞歴、施行件数、スタッフ紹介、創業年などの「実績」は、架空サイトであるため一切掲載しません。</li>
+        <li><strong>実在の施設は事実のみを記載する。</strong>斎場・火葬場・病院などは実在の施設を情報として紹介しますが、本サイトが運営・提携しているかのような記述はしません。</li>
+        <li><strong>専門用語には説明を付ける。</strong>初めて葬儀を経験する方が読んで理解できることを基準にします。</li>
+      </ul>
+
+      <h2>情報の確認と更新</h2>
+      <p>制度や料金は年度の切り替わりで変わることがあります。各ページの「情報の最終確認日」は、その日時点で公式サイトの記載と照合したことを示します。確認日から時間が経っている場合や、実際に手続き・予約をする際は、必ず出典先の公式サイトまたは窓口で最新情報をご確認ください。</p>
+
+      <h2>免責事項</h2>
+      <p>本サイトの情報は一般的な情報提供を目的としており、個別の状況に対する法的・専門的助言ではありません。掲載内容の正確性には注意を払っていますが、その完全性・最新性を保証するものではなく、本サイトの利用によって生じた損害について運営者は責任を負いません。</p>
+
+      <h2>関連ページ</h2>
+      <ul>
+        <li><a href="/privacy/">プライバシーポリシー（アクセス解析ツールの利用について）</a></li>
+        <li><a href="/machida/">町田市の葬儀ガイド</a></li>
+        <li><a href="/faq/">よくある質問</a></li>
+      </ul>
+    </article>
+  </div>
+</BaseLayout>

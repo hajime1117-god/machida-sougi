@@ -1,0 +1,154 @@
+---
+/**
+ * 葬儀のイメージイラスト（SVG・フラット・落ち着いた配色）。写真の代替として「どんなお別れか」を伝える。
+ * 架空サイトのため、実在の施工事例・自社式場ではなく「イメージ」として使う（キャプションで明示）。
+ * variant: hero(家族葬の式場全景) | kazokuso | ichinichiso | kasoshiki | hall(斎場外観) | consult(相談)
+ */
+interface Props { variant: 'hero' | 'kazokuso' | 'ichinichiso' | 'kasoshiki' | 'hall' | 'consult'; class?: string; title?: string; /** 親要素いっぱいに広げて端を切る（PCのヒーロー用） */ cover?: boolean }
+const { variant, class: cls = '', title, cover = false } = Astro.props;
+const titles: Record<Props['variant'], string> = {
+  hero: '家族葬のイメージ。白い花で飾られた祭壇と遺影の前に棺があり、家族が静かに座っている',
+  kazokuso: '家族葬のイメージ。祭壇と遺影の前に、家族・親族が2列に座っている',
+  ichinichiso: '一日葬のイメージ。明るい式場で、告別式の祭壇の前に少人数が座っている',
+  kasoshiki: '火葬式のイメージ。花を添えた棺のそばで、家族数人が最後のお別れをしている',
+  hall: '斎場のイメージ。木々に囲まれた低層の建物と入口',
+  consult: '相談のイメージ。テーブルを挟んで担当者と家族が話している',
+};
+const t = title || titles[variant];
+const id = `il-${variant}`;
+---
+{variant === 'hero' && (
+<svg class={`illust illust--${variant} ${cover ? 'illust--cover' : ''} ${cls}`} viewBox="0 0 480 300" preserveAspectRatio={cover ? 'xMidYMid slice' : 'xMidYMid meet'} role="img" aria-labelledby={`${id}-t`} width="480" height="300">
+  <title id={`${id}-t`}>{t}</title>
+  <defs>
+    <linearGradient id={`${id}-wall`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f1ea"/><stop offset="1" stop-color="#e9e4d9"/></linearGradient>
+    <linearGradient id={`${id}-light`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="480" height="300" fill={`url(#${id}-wall)`}/>
+  <!-- 背景のカーテン/壁面パネル -->
+  <rect x="120" y="0" width="240" height="220" fill="#eef2f1"/>
+  <g fill="#e4eae8"><rect x="130" y="0" width="14" height="220"/><rect x="164" y="0" width="14" height="220"/><rect x="198" y="0" width="14" height="220"/><rect x="232" y="0" width="14" height="220"/><rect x="266" y="0" width="14" height="220"/><rect x="300" y="0" width="14" height="220"/><rect x="334" y="0" width="14" height="220"/></g>
+  <rect x="120" y="0" width="240" height="120" fill={`url(#${id}-light)`}/>
+  <!-- 床 -->
+  <rect x="0" y="220" width="480" height="80" fill="#d9d2c4"/>
+  <rect x="0" y="220" width="480" height="3" fill="#cfc6b6"/>
+  <!-- 祭壇（3段・白布） -->
+  <g>
+    <polygon points="150,220 330,220 322,196 158,196" fill="#fbfaf7"/><rect x="158" y="194" width="164" height="4" fill="#ece8df"/>
+    <polygon points="166,196 314,196 308,172 172,172" fill="#ffffff"/><rect x="172" y="170" width="136" height="4" fill="#ece8df"/>
+    <polygon points="184,172 296,172 292,150 188,150" fill="#fbfaf7"/><rect x="188" y="148" width="104" height="4" fill="#ece8df"/>
+  </g>
+  <!-- 遺影 -->
+  <g><rect x="222" y="108" width="36" height="44" rx="2" fill="#3f4a4f"/><rect x="226" y="112" width="28" height="36" fill="#f6f3ec"/><circle cx="240" cy="126" r="7" fill="#d8d2c6"/><path d="M228 146c2-9 6-13 12-13s10 4 12 13z" fill="#d8d2c6"/><rect x="216" y="100" width="48" height="4" fill="#2f3d43"/></g>
+  <!-- 花（クラスター） -->
+  <g>
+    <g fill="#8fb3a2"><ellipse cx="200" cy="150" rx="18" ry="9"/><ellipse cx="280" cy="150" rx="18" ry="9"/><ellipse cx="184" cy="174" rx="22" ry="10"/><ellipse cx="296" cy="174" rx="22" ry="10"/><ellipse cx="168" cy="198" rx="26" ry="11"/><ellipse cx="312" cy="198" rx="26" ry="11"/></g>
+    <g fill="#ffffff"><circle cx="196" cy="144" r="7"/><circle cx="208" cy="148" r="6"/><circle cx="284" cy="144" r="7"/><circle cx="272" cy="148" r="6"/><circle cx="178" cy="168" r="8"/><circle cx="192" cy="171" r="6"/><circle cx="302" cy="168" r="8"/><circle cx="288" cy="171" r="6"/><circle cx="160" cy="192" r="9"/><circle cx="176" cy="194" r="7"/><circle cx="320" cy="192" r="9"/><circle cx="304" cy="194" r="7"/></g>
+    <g fill="#eacdc7"><circle cx="202" cy="152" r="4"/><circle cx="278" cy="152" r="4"/><circle cx="186" cy="176" r="5"/><circle cx="294" cy="176" r="5"/><circle cx="168" cy="200" r="5"/><circle cx="312" cy="200" r="5"/></g>
+    <g fill="#f1e3b5"><circle cx="190" cy="148" r="3"/><circle cx="290" cy="148" r="3"/><circle cx="174" cy="200" r="3"/><circle cx="306" cy="200" r="3"/></g>
+  </g>
+  <!-- ろうそく -->
+  <g><rect x="146" y="176" width="6" height="20" fill="#f6f3ec"/><ellipse cx="149" cy="174" rx="2.5" ry="4" fill="#f1c27d"/><rect x="328" y="176" width="6" height="20" fill="#f6f3ec"/><ellipse cx="331" cy="174" rx="2.5" ry="4" fill="#f1c27d"/></g>
+  <!-- 棺 -->
+  <g><rect x="196" y="214" width="88" height="22" rx="4" fill="#f4efe6"/><rect x="196" y="214" width="88" height="5" rx="2" fill="#e6dfd2"/><rect x="200" y="236" width="80" height="4" fill="#cfc6b6"/>
+    <g fill="#ffffff"><circle cx="226" cy="214" r="6"/><circle cx="240" cy="212" r="7"/><circle cx="254" cy="214" r="6"/></g><g fill="#eacdc7"><circle cx="233" cy="216" r="4"/><circle cx="247" cy="216" r="4"/></g><g fill="#8fb3a2"><ellipse cx="218" cy="217" rx="6" ry="3"/><ellipse cx="262" cy="217" rx="6" ry="3"/></g></g>
+  <!-- 参列者（後ろ姿・2列） -->
+  <g fill="#3c5560">
+    <g><circle cx="140" cy="252" r="10"/><path d="M122 300v-22a18 18 0 0 1 36 0v22z"/></g>
+    <g><circle cx="190" cy="256" r="10"/><path d="M172 300v-18a18 18 0 0 1 36 0v18z"/></g>
+    <g><circle cx="290" cy="256" r="10"/><path d="M272 300v-18a18 18 0 0 1 36 0v18z"/></g>
+    <g><circle cx="340" cy="252" r="10"/><path d="M322 300v-22a18 18 0 0 1 36 0v22z"/></g>
+  </g>
+  <g fill="#587380">
+    <g><circle cx="86" cy="270" r="11"/><path d="M66 300v-8a20 20 0 0 1 40 0v8z"/></g>
+    <g><circle cx="240" cy="272" r="11"/><path d="M220 300v-6a20 20 0 0 1 40 0v6z"/></g>
+    <g><circle cx="394" cy="270" r="11"/><path d="M374 300v-8a20 20 0 0 1 40 0v8z"/></g>
+  </g>
+</svg>
+)}
+{variant === 'kazokuso' && (
+<svg class={`illust illust--${variant} ${cls}`} viewBox="0 0 320 200" role="img" aria-labelledby={`${id}-t`} width="320" height="200">
+  <title id={`${id}-t`}>{t}</title>
+  <rect width="320" height="200" fill="#f1efe8"/>
+  <rect x="70" y="0" width="180" height="140" fill="#eaefee"/>
+  <rect x="0" y="140" width="320" height="60" fill="#d9d2c4"/>
+  <polygon points="90,140 230,140 224,120 96,120" fill="#fbfaf7"/><polygon points="104,120 216,120 211,102 109,102" fill="#ffffff"/><polygon points="120,102 200,102 196,86 124,86" fill="#fbfaf7"/>
+  <g><rect x="146" y="58" width="28" height="34" rx="2" fill="#3f4a4f"/><rect x="149" y="61" width="22" height="28" fill="#f6f3ec"/><circle cx="160" cy="72" r="5" fill="#d8d2c6"/></g>
+  <g fill="#8fb3a2"><ellipse cx="128" cy="88" rx="14" ry="7"/><ellipse cx="192" cy="88" rx="14" ry="7"/><ellipse cx="112" cy="106" rx="18" ry="8"/><ellipse cx="208" cy="106" rx="18" ry="8"/><ellipse cx="100" cy="124" rx="20" ry="9"/><ellipse cx="220" cy="124" rx="20" ry="9"/></g>
+  <g fill="#ffffff"><circle cx="124" cy="84" r="6"/><circle cx="196" cy="84" r="6"/><circle cx="108" cy="101" r="7"/><circle cx="212" cy="101" r="7"/><circle cx="96" cy="118" r="8"/><circle cx="224" cy="118" r="8"/><circle cx="110" cy="122" r="6"/><circle cx="210" cy="122" r="6"/></g>
+  <g fill="#eacdc7"><circle cx="132" cy="90" r="3.5"/><circle cx="188" cy="90" r="3.5"/><circle cx="116" cy="108" r="4"/><circle cx="204" cy="108" r="4"/><circle cx="102" cy="126" r="4"/><circle cx="218" cy="126" r="4"/></g>
+  <g fill="#3c5560"><circle cx="70" cy="160" r="8"/><path d="M56 200v-24a14 14 0 0 1 28 0v24z"/><circle cx="118" cy="164" r="8"/><path d="M104 200v-20a14 14 0 0 1 28 0v20z"/><circle cx="202" cy="164" r="8"/><path d="M188 200v-20a14 14 0 0 1 28 0v20z"/><circle cx="250" cy="160" r="8"/><path d="M236 200v-24a14 14 0 0 1 28 0v24z"/></g>
+  <g fill="#587380"><circle cx="40" cy="178" r="9"/><path d="M24 200v-6a16 16 0 0 1 32 0v6z"/><circle cx="160" cy="180" r="9"/><path d="M144 200v-4a16 16 0 0 1 32 0v4z"/><circle cx="280" cy="178" r="9"/><path d="M264 200v-6a16 16 0 0 1 32 0v6z"/></g>
+</svg>
+)}
+{variant === 'ichinichiso' && (
+<svg class={`illust illust--${variant} ${cls}`} viewBox="0 0 320 200" role="img" aria-labelledby={`${id}-t`} width="320" height="200">
+  <title id={`${id}-t`}>{t}</title>
+  <rect width="320" height="200" fill="#f3f1ea"/>
+  <rect x="24" y="24" width="72" height="90" rx="3" fill="#fbfbf6"/><rect x="28" y="28" width="64" height="82" fill="#e8f0ee"/><rect x="59" y="28" width="2" height="82" fill="#fbfbf6"/><rect x="28" y="68" width="64" height="2" fill="#fbfbf6"/>
+  <rect x="0" y="140" width="320" height="60" fill="#d9d2c4"/>
+  <polygon points="120,140 250,140 244,120 126,120" fill="#fbfaf7"/><polygon points="134,120 236,120 231,102 139,102" fill="#ffffff"/>
+  <g><rect x="171" y="62" width="28" height="34" rx="2" fill="#3f4a4f"/><rect x="174" y="65" width="22" height="28" fill="#f6f3ec"/><circle cx="185" cy="76" r="5" fill="#d8d2c6"/><rect x="164" y="96" width="42" height="6" fill="#fbfaf7"/></g>
+  <g fill="#8fb3a2"><ellipse cx="150" cy="104" rx="16" ry="7"/><ellipse cx="220" cy="104" rx="16" ry="7"/><ellipse cx="136" cy="124" rx="18" ry="8"/><ellipse cx="234" cy="124" rx="18" ry="8"/></g>
+  <g fill="#ffffff"><circle cx="146" cy="99" r="6"/><circle cx="224" cy="99" r="6"/><circle cx="132" cy="118" r="7"/><circle cx="238" cy="118" r="7"/><circle cx="146" cy="122" r="5"/><circle cx="224" cy="122" r="5"/></g>
+  <g fill="#f1e3b5"><circle cx="156" cy="106" r="3.5"/><circle cx="214" cy="106" r="3.5"/><circle cx="140" cy="126" r="4"/><circle cx="230" cy="126" r="4"/></g>
+  <g fill="#3c5560"><circle cx="110" cy="162" r="8"/><path d="M96 200v-22a14 14 0 0 1 28 0v22z"/><circle cx="185" cy="166" r="8"/><path d="M171 200v-18a14 14 0 0 1 28 0v18z"/><circle cx="260" cy="162" r="8"/><path d="M246 200v-22a14 14 0 0 1 28 0v22z"/></g>
+</svg>
+)}
+{variant === 'kasoshiki' && (
+<svg class={`illust illust--${variant} ${cls}`} viewBox="0 0 320 200" role="img" aria-labelledby={`${id}-t`} width="320" height="200">
+  <title id={`${id}-t`}>{t}</title>
+  <rect width="320" height="200" fill="#f1efe8"/>
+  <rect x="0" y="0" width="320" height="120" fill="#ebeeec"/>
+  <rect x="0" y="120" width="320" height="80" fill="#d9d2c4"/>
+  <!-- 台と棺 -->
+  <rect x="96" y="132" width="128" height="10" fill="#c9bfae"/>
+  <rect x="104" y="104" width="112" height="30" rx="5" fill="#f4efe6"/><rect x="104" y="104" width="112" height="6" rx="3" fill="#e6dfd2"/>
+  <g fill="#8fb3a2"><ellipse cx="130" cy="106" rx="12" ry="5"/><ellipse cx="190" cy="106" rx="12" ry="5"/></g>
+  <g fill="#ffffff"><circle cx="146" cy="103" r="7"/><circle cx="160" cy="100" r="8"/><circle cx="174" cy="103" r="7"/><circle cx="132" cy="102" r="5"/><circle cx="188" cy="102" r="5"/></g>
+  <g fill="#eacdc7"><circle cx="153" cy="106" r="4"/><circle cx="167" cy="106" r="4"/></g>
+  <!-- 小さな花立てと線香 -->
+  <g><rect x="66" y="116" width="10" height="18" fill="#9fb8bf"/><g fill="#ffffff"><circle cx="68" cy="112" r="4"/><circle cx="75" cy="110" r="4"/></g><rect x="244" y="116" width="10" height="18" fill="#9fb8bf"/><g fill="#ffffff"><circle cx="246" cy="112" r="4"/><circle cx="253" cy="110" r="4"/></g></g>
+  <!-- 家族（立ち姿・3人） -->
+  <g fill="#3c5560"><circle cx="78" cy="148" r="9"/><path d="M64 200v-34a14 14 0 0 1 28 0v34z"/><circle cx="242" cy="148" r="9"/><path d="M228 200v-34a14 14 0 0 1 28 0v34z"/></g>
+  <g fill="#587380"><circle cx="50" cy="156" r="8"/><path d="M38 200v-28a12 12 0 0 1 24 0v28z"/><circle cx="270" cy="156" r="8"/><path d="M258 200v-28a12 12 0 0 1 24 0v28z"/></g>
+  <rect x="88" y="142" width="144" height="4" rx="2" fill="#e9e4d9"/>
+</svg>
+)}
+{variant === 'hall' && (
+<svg class={`illust illust--${variant} ${cls}`} viewBox="0 0 320 200" role="img" aria-labelledby={`${id}-t`} width="320" height="200">
+  <title id={`${id}-t`}>{t}</title>
+  <rect width="320" height="200" fill="#eef2f1"/>
+  <rect x="0" y="150" width="320" height="50" fill="#d6d9cf"/>
+  <rect x="0" y="150" width="320" height="4" fill="#c9cdc2"/>
+  <!-- 建物 -->
+  <rect x="60" y="70" width="200" height="82" fill="#f4f1ea"/>
+  <rect x="52" y="60" width="216" height="14" rx="2" fill="#5f7a84"/>
+  <rect x="140" y="98" width="40" height="54" fill="#8fa9b1"/><rect x="159" y="98" width="2" height="54" fill="#f4f1ea"/>
+  <rect x="120" y="92" width="80" height="8" rx="2" fill="#5f7a84"/>
+  <g fill="#c8d5d8"><rect x="76" y="90" width="22" height="26"/><rect x="106" y="90" width="22" height="26"/><rect x="192" y="90" width="22" height="26"/><rect x="222" y="90" width="22" height="26"/></g>
+  <rect x="120" y="122" width="10" height="30" fill="#e9e4d9"/><rect x="190" y="122" width="10" height="30" fill="#e9e4d9"/>
+  <!-- 木 -->
+  <g><rect x="26" y="112" width="8" height="40" fill="#8f7457"/><circle cx="30" cy="96" r="24" fill="#8fb3a2"/><circle cx="18" cy="106" r="14" fill="#a3c3b3"/></g>
+  <g><rect x="286" y="112" width="8" height="40" fill="#8f7457"/><circle cx="290" cy="96" r="24" fill="#8fb3a2"/><circle cx="302" cy="106" r="14" fill="#a3c3b3"/></g>
+  <!-- 看板 -->
+  <g><rect x="248" y="126" width="6" height="26" fill="#5f7a84"/><rect x="236" y="112" width="30" height="16" rx="2" fill="#ffffff" stroke="#5f7a84" stroke-width="2"/></g>
+  <!-- 植栽 -->
+  <g fill="#a3c3b3"><ellipse cx="90" cy="150" rx="18" ry="8"/><ellipse cx="230" cy="150" rx="18" ry="8"/></g>
+</svg>
+)}
+{variant === 'consult' && (
+<svg class={`illust illust--${variant} ${cls}`} viewBox="0 0 320 200" role="img" aria-labelledby={`${id}-t`} width="320" height="200">
+  <title id={`${id}-t`}>{t}</title>
+  <rect width="320" height="200" fill="#f3f1ea"/>
+  <rect x="0" y="150" width="320" height="50" fill="#d9d2c4"/>
+  <rect x="80" y="118" width="160" height="10" rx="3" fill="#b9a184"/><rect x="96" y="128" width="8" height="24" fill="#a58c6b"/><rect x="216" y="128" width="8" height="24" fill="#a58c6b"/>
+  <rect x="140" y="106" width="40" height="12" rx="2" fill="#ffffff" stroke="#d8d2c6" stroke-width="2"/>
+  <g fill="#3c5560"><circle cx="70" cy="92" r="12"/><path d="M50 150v-34a20 20 0 0 1 40 0v34z"/></g>
+  <g fill="#587380"><circle cx="250" cy="92" r="12"/><path d="M230 150v-34a20 20 0 0 1 40 0v34z"/><circle cx="286" cy="100" r="10"/><path d="M270 150v-28a16 16 0 0 1 32 0v28z"/></g>
+</svg>
+)}
+<style is:global>
+  .illust { width: 100%; height: auto; display: block; border-radius: var(--radius-lg); }
+  @media (min-width: 1024px) { .illust--cover { height: 100%; } }
+</style>

@@ -5,6 +5,7 @@ import Source from '../../components/Source.astro';
 import Cta from '../../components/Cta.astro';
 import Icon from '../../components/Icon.astro';
 import PlanPictogram from '../../components/PlanPictogram.astro';
+import Illust from '../../components/Illust.astro';
 
 const title = '葬儀プラン比較｜家族葬・一日葬・火葬式の違いと選び方';
 const h1 = '町田市の葬儀プラン｜家族葬・一日葬・火葬式の違いと選び方';
@@ -24,9 +25,9 @@ const related = [
   { href: '/first-steps/', label: '亡くなってから最初にすること', note: '搬送・安置・死亡届' },
 ];
 const plans = [
-  { key: 'kazokuso' as const, slug: 'kazokuso', name: '家族葬', price: '528,000', days: '2日', people: '10〜30名', hall: '必要', total: '約75〜95万円（20名）', what: '通夜と告別式を2日間で行う、家族・親族中心の葬儀', fit: 'ゆっくりお別れしたい。親族が集まりやすい', caution: '参列を断る方への連絡と後日の弔問対応' },
-  { key: 'ichinichiso' as const, slug: 'ichinichiso', name: '一日葬', price: '396,000', days: '1日', people: '5〜20名', hall: '必要', total: '約50〜65万円（10名）', what: '通夜を省き、告別式と火葬を1日で行う葬儀', fit: '高齢の参列者が多い。遠方の親族の宿泊を避けたい', caution: '菩提寺が通夜の省略を認めるか事前確認' },
-  { key: 'kasoshiki' as const, slug: 'kasoshiki', name: '火葬式・直葬', price: '198,000', days: '当日のみ', people: '1〜10名', hall: '不要', total: '約20〜25万円', what: '通夜・告別式を行わず、安置後に火葬場でお別れをして火葬', fit: '費用を抑えたい。参列者がごく少ない。宗教儀式を望まない', caution: '菩提寺がある場合は納骨を断られることがある。お別れの時間が短い' },
+  { key: 'kazokuso' as const, slug: 'kazokuso', name: '家族葬', who: '家族だけでゆっくり送りたい方', price: '528,000', days: '2日', people: '10〜30名', hall: '必要', total: '約75〜95万円（20名）', what: '通夜と告別式を2日間で行う、家族・親族中心の葬儀', fit: 'ゆっくりお別れしたい。親族が集まりやすい', caution: '参列を断る方への連絡と後日の弔問対応' },
+  { key: 'ichinichiso' as const, slug: 'ichinichiso', name: '一日葬', who: '一日で葬儀を済ませたい方', price: '396,000', days: '1日', people: '5〜20名', hall: '必要', total: '約50〜65万円（10名）', what: '通夜を省き、告別式と火葬を1日で行う葬儀', fit: '高齢の参列者が多い。遠方の親族の宿泊を避けたい', caution: '菩提寺が通夜の省略を認めるか事前確認' },
+  { key: 'kasoshiki' as const, slug: 'kasoshiki', name: '火葬式・直葬', who: '火葬だけを希望する方・費用を抑えたい方', price: '198,000', days: '当日のみ', people: '1〜10名', hall: '不要', total: '約20〜25万円', what: '通夜・告別式を行わず、安置後に火葬場でお別れをして火葬', fit: '費用を抑えたい。参列者がごく少ない。宗教儀式を望まない', caution: '菩提寺がある場合は納骨を断られることがある。お別れの時間が短い' },
 ];
 ---
 <ArticleLayout {title} {h1} {description} {toc} {related} pageType="plan"
@@ -39,9 +40,10 @@ const plans = [
   <ul class="plan-cards">
     {plans.map((p) => (
       <li class="plan-card" data-track-view="plan" data-item={p.name} data-region="plan">
-        <PlanPictogram plan={p.key} />
+        <div class="plan-card__visual"><span class="plan-card__who">{p.who}</span><Illust variant={p.key} /></div>
         <h3 class="plan-card__name"><a href={`/plans/${p.slug}/`}>{p.name}</a></h3>
         <p class="plan-card__what">{p.what}</p>
+        <PlanPictogram plan={p.key} size="sm" />
         <p class="plan-card__price"><span class="num">{p.price}</span><span class="plan-card__unit">円（税込）〜</span></p>
         <dl class="plan-card__spec">
           <div><dt>日数</dt><dd>{p.days}</dd></div>
@@ -162,7 +164,10 @@ const plans = [
 <style>
   .plan-cards { list-style: none; padding: 0; margin: 1.25rem 0 0.5rem; display: grid; gap: 1rem; }
   .plan-card { margin: 0; border: 1px solid var(--c-line); border-radius: var(--radius-lg); background: var(--c-surface); padding: 1.2rem 1.2rem 1.1rem; display: flex; flex-direction: column; }
-  .plan-card :global(.pict) { max-width: 240px; margin-bottom: 0.9rem; }
+  .plan-card__visual { position: relative; margin: -0.2rem -0.2rem 0.8rem; }
+  .plan-card__visual .illust { border: 1px solid var(--c-line-2); }
+  .plan-card__who { display: inline-block; background: var(--c-primary); color: #fff; font-size: var(--fs-xs); font-weight: 700; padding: 0.35em 0.7em; border-radius: 3px; margin: 0.2rem 0 0.5rem 0.2rem; }
+  .plan-card :global(.pict) { max-width: 220px; margin: 0 0 0.8rem; }
   .plan-card__name { font-size: var(--fs-h3); margin: 0 0 0.3em; border: 0; padding: 0; }
   .plan-card__name a { text-decoration: none; color: var(--c-ink); }
   .plan-card__what { font-size: var(--fs-sm); color: var(--c-ink-2); margin: 0 0 0.6em; }

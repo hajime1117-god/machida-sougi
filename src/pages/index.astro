@@ -7,15 +7,25 @@ import Source from '../components/Source.astro';
 import MachidaMap from '../components/MachidaMap.astro';
 import PlanPictogram from '../components/PlanPictogram.astro';
 import CostBar from '../components/CostBar.astro';
+import Illust from '../components/Illust.astro';
 import { BRAND, PHONE, SITE } from '../config/site';
 
 const title = '町田市の葬儀・家族葬｜費用・斎場・手続きを分かりやすく案内｜町田ことのは葬祭';
 const description = '町田市の家族葬・一日葬・火葬式（直葬）の費用と流れ、南多摩斎場など町田市で使える斎場・火葬場、葬祭費5万円の申請まで、出典付きで分かりやすく解説。深夜・早朝のご相談にも対応します。';
 
 const plans = [
-  { slug: 'kazokuso', name: '家族葬', price: '528,000', days: '2日', people: '10〜30名', desc: '通夜と告別式を2日間で行う、家族・親族中心の葬儀。', fit: 'ゆっくりお別れしたい方に', key: 'kazokuso' as const },
-  { slug: 'ichinichiso', name: '一日葬', price: '396,000', days: '1日', people: '5〜20名', desc: '通夜を省き、告別式と火葬を1日で行う葬儀。', fit: '参列者の負担を軽くしたい方に', key: 'ichinichiso' as const },
-  { slug: 'kasoshiki', name: '火葬式・直葬', price: '198,000', days: '火葬のみ', people: '1〜10名', desc: '式を行わず、安置後に火葬場でお別れをする最もシンプルな形式。', fit: '費用を抑えたい方に', key: 'kasoshiki' as const },
+  { slug: 'kazokuso', name: '家族葬', price: '528,000', days: '2日', people: '10〜30名', desc: '通夜と告別式を2日間で行う、家族・親族中心の葬儀。', who: '家族だけでゆっくり送りたい方', fit: 'ゆっくりお別れしたい方に', key: 'kazokuso' as const },
+  { slug: 'ichinichiso', name: '一日葬', price: '396,000', days: '1日', people: '5〜20名', desc: '通夜を省き、告別式と火葬を1日で行う葬儀。', who: '一日で葬儀を済ませたい方', fit: '参列者の負担を軽くしたい方に', key: 'ichinichiso' as const },
+  { slug: 'kasoshiki', name: '火葬式・直葬', price: '198,000', days: '火葬のみ', people: '1〜10名', desc: '式を行わず、安置後に火葬場でお別れをする最もシンプルな形式。', who: '火葬だけを希望する方・費用を抑えたい方', fit: '費用を抑えたい方に', key: 'kasoshiki' as const },
+];
+
+const needs = [
+  { need: '家族だけでゆっくり送りたい', to: '家族葬', sub: '528,000円〜', href: '/plans/kazokuso/' },
+  { need: '一日で葬儀を済ませたい', to: '一日葬', sub: '396,000円〜', href: '/plans/ichinichiso/' },
+  { need: '火葬だけを希望している', to: '火葬式・直葬', sub: '198,000円〜', href: '/plans/kasoshiki/' },
+  { need: '費用をできるだけ抑えたい', to: '費用の目安と抑え方', sub: '総額約25万円〜', href: '/cost/' },
+  { need: '公営の斎場を使いたい', to: '南多摩斎場', sub: '町田市民は火葬料無料', href: '/halls/crematorium/' },
+  { need: 'まだ何も決まっていない', to: '最初にすること', sub: '搬送だけの依頼も可', href: '/first-steps/' },
 ];
 
 const costRows = [
@@ -46,45 +56,36 @@ const areas = [
     <div class="container hero__inner">
       <div class="hero__head">
         <p class="hero__eyebrow"><span class="hero__area">東京都町田市</span>の家族葬・一日葬・火葬式</p>
-        <h1 id="hero-h">町田市で、<br class="br-pc" />費用と斎場を確かめながら、<br class="br-pc" />自分たちに合う葬儀を選べます。</h1>
-      </div>
-      <div class="hero__body">
-        <p class="hero__lead">{BRAND.name}は、町田市の家族葬・一日葬・火葬式（直葬）を扱う葬儀社サイトです。総額の目安、南多摩斎場など市内外の斎場・火葬場、亡くなった直後の手続きを、町田市の実情に合わせて案内します。</p>
-        <ul class="hero__benefits" aria-label="町田市で葬儀をする方に役立つこと">
-          <li><span class="hero__benefit-k">24時間365日</span><span class="hero__benefit-v">深夜・早朝の搬送依頼や相談に対応</span></li>
-          <li><span class="hero__benefit-k">火葬料 <strong>無料</strong></span><span class="hero__benefit-v">南多摩斎場（町田市民の場合）</span></li>
-          <li><span class="hero__benefit-k">葬祭費 <strong>5万円</strong></span><span class="hero__benefit-v">国保・後期高齢者医療から支給</span></li>
-        </ul>
-        <div class="hero__actions">
-          <a href={PHONE.tel} class="btn btn--tel btn--lg" data-cta="tel" data-cta-position="hero"><Icon name="phone" /><span>電話で相談する <span class="num">{PHONE.display}</span></span></a>
-          <a href="/cost/" class="btn btn--outline btn--lg" data-cta="cta" data-cta-position="hero"><Icon name="doc" /><span>費用の目安を見る</span></a>
-        </div>
-        <p class="hero__note">{PHONE.hours}　{PHONE.note}</p>
+        <h1 id="hero-h">町田市で、費用と斎場を<br class="br-pc" />確かめてから決められるお葬式</h1>
+        <p class="hero__lead">{BRAND.name}は、町田市の家族葬・一日葬・火葬式（直葬）を扱う葬儀社サイトです。プラン料金と追加費用を分けて説明し、南多摩斎場など市内外の斎場・火葬場の使い方まで、町田市の実情に合わせて案内します。</p>
       </div>
       <div class="hero__visual">
-        <figure class="hero__map">
-          <MachidaMap variant="simple" title="町田市の概略図。市内の主要駅と、市北西部にある南多摩斎場の位置" />
-          <figcaption>町田市内全域に対応。市内唯一の公営火葬場「南多摩斎場」は、町田市民なら火葬料無料。<span class="muted">（図は概略）</span></figcaption>
+        <figure class="hero__illust">
+          <Illust variant="hero" cover />
+          <figcaption>家族葬のイメージ（イラスト）。祭壇と遺影の前で、家族だけで静かに見送ります。</figcaption>
         </figure>
-        <a href="/first-steps/" class="hero__urgent">
-          <span class="hero__urgent-label"><Icon name="clock" />病院・施設から連絡を受けた方へ</span>
-          <span class="hero__urgent-title">亡くなってから最初にすること（搬送・安置・死亡届）</span>
-          <Icon name="arrow" />
-        </a>
       </div>
-      <ul class="hero__plans" aria-label="対応している葬儀の形式">
-        {plans.map((p) => (
-          <li>
-            <a href={`/plans/${p.slug}/`} class="hero__plan">
-              <PlanPictogram plan={p.key} size="sm" />
-              <span class="hero__plan-name">{p.name}</span>
-              <span class="hero__plan-price"><span class="num">{p.price}</span>円〜</span>
-              <span class="hero__plan-days">{p.days}</span>
-              <span class="hero__plan-fit">{p.fit}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div class="hero__body">
+        <ul class="hero__benefits" aria-label="町田市で葬儀をする方に役立つこと">
+          <li><span class="hero__benefit-k">南多摩斎場<br />対応</span><span class="hero__benefit-v">市内唯一の公営火葬場。<strong>町田市民は火葬料が無料</strong></span></li>
+          <li><span class="hero__benefit-k">追加費用を<br />先に説明</span><span class="hero__benefit-v">プラン料金と、式場使用料・飲食などの<strong>別途費用を分けて</strong>提示</span></li>
+          <li><span class="hero__benefit-k">24時間<br />365日</span><span class="hero__benefit-v">深夜・早朝の<strong>搬送だけのご依頼</strong>も受付。葬儀社を決めるのは安置の後で構いません</span></li>
+        </ul>
+        <div class="hero__actions">
+          <a href={PHONE.tel} class="btn btn--tel btn--lg" data-cta="tel" data-cta-position="hero" data-cta-text="今すぐ搬送について相談"><Icon name="phone" /><span>今すぐ搬送について相談<span class="hero__tel num">{PHONE.display}</span></span></a>
+          <a href="/cost/" class="btn btn--outline btn--lg" data-cta="cta" data-cta-position="hero"><Icon name="doc" /><span>費用の目安を確認する</span></a>
+        </div>
+        <p class="hero__note">{PHONE.hours}　{PHONE.note}　<a href="/contact/" data-cta="contact" data-cta-position="hero">事前相談・見積もりだけのご相談はこちら</a></p>
+      </div>
+      <div class="hero__needs">
+        <p class="hero__needs-title">ご希望から選ぶ</p>
+        <ul class="needs" aria-label="ご希望に合う葬儀の形式・ページ">
+          {needs.map((n) => (
+            <li><a href={n.href} class="need"><span class="need__q">{n.need}</span><span class="need__to"><Icon name="arrow" />{n.to}<span class="need__sub">{n.sub}</span></span></a></li>
+          ))}
+        </ul>
+        <p class="hero__areas"><span class="hero__areas-k">対応エリア</span>{areas.map((a, i) => <span>{i > 0 && '・'}<a href={a.href}>{a.label}</a></span>)}<span>　ほか町田市全域</span></p>
+      </div>
     </div>
   </section>
 
@@ -100,6 +101,7 @@ const areas = [
             <span class="start__desc">搬送先と安置の決め方、死亡届、最初の24時間ですること。</span>
             <Icon name="chevron" />
           </a>
+          <a href={PHONE.tel} class="start__cta" data-cta="tel" data-cta-position="middle" data-cta-text="今すぐ搬送について相談"><Icon name="phone" />今すぐ搬送について相談</a>
         </li>
         <li>
           <a href="/cost/" class="start">
@@ -108,6 +110,7 @@ const areas = [
             <span class="start__desc">形式別・人数別の総額例、追加になりやすい費用、安く抑える方法。</span>
             <Icon name="chevron" />
           </a>
+          <a href={PHONE.tel} class="start__cta" data-cta="tel" data-cta-position="middle" data-cta-text="葬儀費用について相談"><Icon name="phone" />葬儀費用について相談</a>
         </li>
         <li>
           <a href="/plans/" class="start">
@@ -116,6 +119,7 @@ const areas = [
             <span class="start__desc">家族葬・一日葬・火葬式の違いと向き不向き。事前相談も受け付けています。</span>
             <Icon name="chevron" />
           </a>
+          <a href="/contact/" class="start__cta" data-cta="contact" data-cta-position="middle" data-cta-text="自分に合うプランを相談"><Icon name="mail" />自分に合うプランを相談</a>
         </li>
       </ul>
     </div>
@@ -124,13 +128,14 @@ const areas = [
   <!-- ===== プラン ===== -->
   <section class="section section--alt" aria-labelledby="plans-h">
     <div class="container">
-      <h2 id="plans-h" class="section-title">町田市の葬儀プラン</h2>
+      <h2 id="plans-h" class="section-title">ご希望に合わせて選べる、3つの葬儀プラン</h2>
       <p class="section-lead">違いは「通夜と告別式を行うか」だけです。プラン料金には、町田市内の搬送・2日間の安置・棺・ドライアイス・骨壺・火葬場の手続き・当日の進行が含まれます。式場使用料、火葬料（南多摩斎場は町田市民無料）、飲食・返礼品、宗教者へのお礼は別途です。</p>
       <div class="grid grid--3">
         {plans.map((p) => (
           <article class="plan" data-track-view="plan" data-item={p.name} data-region="plan">
-            <PlanPictogram plan={p.key} />
+            <div class="plan__visual"><Illust variant={p.key} /><span class="plan__who">{p.who}</span></div>
             <h3 class="plan__name"><a href={`/plans/${p.slug}/`}>{p.name}</a></h3>
+            <PlanPictogram plan={p.key} size="sm" />
             <p class="plan__price"><span class="num">{p.price}</span><span class="plan__unit">円（税込）〜</span></p>
             <dl class="plan__spec">
               <div><dt>日数</dt><dd>{p.days}</dd></div>
@@ -189,6 +194,7 @@ const areas = [
             <a href="/halls/crematorium/" class="next-link"><span><span class="next-link__label">火葬場</span>南多摩斎場の料金・予約・休場日と、混雑時の代替火葬場</span><Icon name="arrow" /></a>
             <a href="/halls/" class="next-link"><span><span class="next-link__label">式場</span>町田市の斎場・葬儀場一覧と、式場の選び方</span><Icon name="arrow" /></a>
           </div>
+          <Cta position="hall" variant="inline" telText="斎場について電話で相談" contactText="斎場についてメールで相談" />
         </div>
       </div>
     </div>
@@ -233,7 +239,7 @@ const areas = [
   <!-- ===== 方針 ===== -->
   <section class="section" aria-labelledby="policy-h">
     <div class="container">
-      <h2 id="policy-h" class="section-title">{BRAND.name}の方針</h2>
+      <h2 id="policy-h" class="section-title">{BRAND.name}の3つの約束</h2>
       <div class="grid grid--3 policies">
         <div class="policy"><h3>追加費用を先に伝える</h3><p>プラン料金に「含まれないもの」を先に説明し、式場使用料・安置日数・返礼品など変動する費用は見積もりで金額を明示します。</p></div>
         <div class="policy"><h3>出典と確認日を示す</h3><p>火葬場の料金や葬祭費などの制度は、町田市・南多摩斎場組合などの公式情報を確認し、出典と最終確認日を掲載しています。</p></div>
@@ -259,20 +265,38 @@ const areas = [
 
   /* ---- Hero ---- */
   .hero { background: linear-gradient(180deg, #ffffff 0%, var(--c-bg) 100%); border-bottom: 1px solid var(--c-line-2); padding-block: clamp(1.75rem, 3.5vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem); }
-  .hero__inner { display: grid; gap: 1.25rem; grid-template-areas: 'head' 'plans' 'body' 'visual'; }
+  .hero__inner { display: grid; gap: 1.1rem; grid-template-areas: 'head' 'visual' 'body' 'needs'; }
   .hero__head { grid-area: head; }
   .hero__body { grid-area: body; }
   .hero__visual { grid-area: visual; }
-  .hero__plans { grid-area: plans; }
+  .hero__needs { grid-area: needs; margin-top: 0.5rem; }
   .hero__eyebrow { font-size: var(--fs-sm); color: var(--c-ink-2); font-weight: 700; margin: 0 0 0.6em; display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; }
   .hero__area { display: inline-block; background: var(--c-primary); color: #fff; padding: 0.2em 0.7em; border-radius: 3px; letter-spacing: 0.04em; }
   .hero h1 { font-size: var(--fs-display); line-height: 1.35; margin: 0 0 0.6em; letter-spacing: 0.01em; }
-  .hero__lead { color: var(--c-ink-2); max-width: 38em; margin-bottom: 1.1em; font-size: var(--fs-sm); }
+  .hero__lead { color: var(--c-ink-2); max-width: 38em; margin-bottom: 0; font-size: var(--fs-sm); }
+  .hero__illust { margin: 0; display: flex; flex-direction: column; height: 100%; }
+  .hero__illust .illust { border: 1px solid var(--c-line); }
+  @media (min-width: 1024px) { .hero__visual { height: 100%; } .hero__illust .illust { flex: 1 1 auto; min-height: 380px; } }
+  .hero__illust figcaption { font-size: var(--fs-xs); color: var(--c-ink-3); margin-top: 0.5em; }
+  .hero__tel { display: block; font-size: 1.15em; letter-spacing: 0.02em; margin-top: 0.1em; }
+  .hero__note a { color: var(--c-primary); }
+  .hero__needs-title { font-size: var(--fs-sm); font-weight: 700; color: var(--c-ink-2); margin: 0 0 0.5em; }
+  .needs { list-style: none; padding: 0; margin: 0 0 0.9rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .needs li { margin: 0; }
+  .need { display: grid; gap: 0.2rem; padding: 0.7rem 0.75rem; background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius); text-decoration: none; color: var(--c-ink); height: 100%; }
+  .need:hover { border-color: var(--c-primary-2); }
+  .need__q { font-weight: 700; font-size: var(--fs-sm); line-height: 1.4; }
+  .need__to { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2em 0.35em; font-size: var(--fs-xs); color: var(--c-primary); font-weight: 700; }
+  .need__to :global(svg) { width: 0.9em; height: 0.9em; }
+  .need__sub { font-weight: 400; color: var(--c-ink-3); }
+  .hero__areas { font-size: var(--fs-xs); color: var(--c-ink-3); margin: 0; line-height: 1.9; }
+  .hero__areas-k { display: inline-block; font-weight: 700; color: var(--c-ink-2); margin-right: 0.6em; }
+  .hero__areas a { color: var(--c-ink-2); }
   .hero__benefits { list-style: none; padding: 0; margin: 0 0 1.3em; display: grid; gap: 0.45rem; }
-  .hero__benefits li { display: grid; grid-template-columns: 9.5em 1fr; gap: 0.6em; align-items: center; font-size: var(--fs-sm); }
-  .hero__benefit-k { display: inline-block; background: var(--c-primary-soft); color: var(--c-primary); font-weight: 700; padding: 0.35em 0.6em; border-radius: 3px; text-align: center; line-height: 1.2; }
-  .hero__benefit-k strong { font-size: 1.15em; }
-  .hero__benefit-v { color: var(--c-ink-2); }
+  .hero__benefits li { display: grid; grid-template-columns: 6.5em 1fr; gap: 0.7em; align-items: center; font-size: var(--fs-sm); }
+  .hero__benefit-k { display: grid; place-items: center; background: var(--c-primary); color: #fff; font-weight: 700; padding: 0.4em 0.4em; border-radius: 3px; text-align: center; line-height: 1.25; font-size: var(--fs-xs); min-height: 3.2em; }
+  .hero__benefit-v { color: var(--c-ink-2); line-height: 1.55; }
+  .hero__benefit-v strong { color: var(--c-ink); }
   .hero__actions { display: flex; flex-direction: column; gap: 0.7rem; max-width: 520px; }
   .hero__note { font-size: var(--fs-xs); color: var(--c-ink-3); margin: 0.7em 0 0; }
   .hero__visual { display: grid; gap: 1rem; }
@@ -283,31 +307,17 @@ const areas = [
   .hero__urgent-label { font-size: var(--fs-xs); color: var(--c-accent-2); font-weight: 700; display: inline-flex; align-items: center; gap: 0.3em; }
   .hero__urgent-title { font-weight: 700; grid-row: 2; font-size: var(--fs-sm); }
   .hero__urgent > :global(svg:last-child) { grid-column: 2; grid-row: 1 / span 2; color: var(--c-accent); }
-  .hero__plans { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-  .hero__plans li { margin: 0; }
-  .hero__plan { display: grid; grid-template-columns: 1fr; grid-template-areas: 'name' 'price' 'days'; gap: 0.15rem; align-content: start; padding: 0.7rem 0.6rem; background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius-lg); text-decoration: none; color: var(--c-ink); text-align: center; }
-  .hero__plan :global(.pict) { display: none; }
-  .hero__plan-fit { display: none; }
-  .hero__plan-days { grid-area: days; font-size: var(--fs-xs); color: var(--c-ink-3); }
-  .hero__plan:hover { border-color: var(--c-primary-2); }
-  .hero__plan :global(.pict) { grid-area: pict; }
-  .hero__plan-name { grid-area: name; font-weight: 700; font-size: var(--fs-base); }
-  .hero__plan-price { grid-area: price; color: var(--c-primary); font-weight: 700; font-size: var(--fs-xs); white-space: nowrap; }
-  .hero__plan-price .num { font-size: 1.2em; }
   @media (min-width: 640px) {
     .hero__actions { flex-direction: row; flex-wrap: wrap; max-width: none; }
     .hero__actions .btn { flex: 0 1 auto; min-width: 240px; }
-    .hero__inner { grid-template-areas: 'head' 'body' 'visual' 'plans'; }
-    .hero__plans { gap: 1rem; }
-    .hero__plan { grid-template-areas: 'pict' 'name' 'price' 'days' 'fit'; gap: 0.35rem; padding: 0.9rem 1rem; text-align: left; }
-    .hero__plan :global(.pict) { display: grid; grid-area: pict; }
-    .hero__plan-fit { display: block; grid-area: fit; font-size: var(--fs-xs); color: var(--c-ink-3); }
-    .hero__plan-name { font-size: var(--fs-lg); margin-top: 0.3rem; }
-    .hero__plan-price { font-size: var(--fs-md); }
+    .hero__inner { grid-template-areas: 'head' 'visual' 'body' 'needs'; }
+    .needs { grid-template-columns: repeat(3, 1fr); }
   }
   @media (min-width: 1024px) {
-    .hero__inner { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); grid-template-areas: 'head visual' 'body visual' 'plans plans'; grid-template-rows: auto 1fr auto; gap: 0 3.5rem; align-items: start; }
-    .hero__plans { margin-top: 2.5rem; }
+    .hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: 'head visual' 'body visual' 'needs needs'; grid-template-rows: auto 1fr auto; gap: 0 3rem; align-items: start; }
+    .hero__body { margin-top: 1.25rem; }
+    .hero__needs { margin-top: 2.25rem; }
+    .needs { grid-template-columns: repeat(6, 1fr); }
     .hero__lead { font-size: var(--fs-base); }
     .hero h1 { font-size: 2.3rem; }
     .hero__map { padding: 1.25rem 1.25rem 1rem; }
@@ -323,11 +333,18 @@ const areas = [
   .start__title { display: block; font-weight: 700; font-size: var(--fs-md); line-height: 1.4; }
   .start__desc { display: block; font-size: var(--fs-sm); color: var(--c-ink-2); grid-column: 1; }
   .start > :global(svg) { grid-column: 2; grid-row: 1 / span 3; color: var(--c-ink-3); }
+  .starts li { display: grid; }
+  .start__cta { display: inline-flex; align-items: center; gap: 0.35em; margin: 0.4rem 0 0 0.25rem; font-size: var(--fs-sm); font-weight: 700; color: var(--c-accent-2); text-decoration: none; }
+  .start__cta:hover { text-decoration: underline; }
+  .start__cta :global(svg) { width: 1em; height: 1em; }
   @media (min-width: 768px) { .starts { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } .start { grid-template-rows: auto auto 1fr; align-content: start; padding: 1.25rem; } }
 
   /* ---- プラン ---- */
   .plan { background: var(--c-bg); border: 1px solid var(--c-line); border-radius: var(--radius-lg); padding: 1.25rem 1.25rem 1.2rem; display: flex; flex-direction: column; }
-  .plan :global(.pict) { max-width: 260px; margin-bottom: 0.9rem; }
+  .plan__visual { position: relative; margin: -0.25rem -0.25rem 0.9rem; }
+  .plan__visual .illust { border: 1px solid var(--c-line-2); }
+  .plan__who { position: absolute; left: 0.6rem; bottom: 0.6rem; background: rgba(31, 78, 92, 0.92); color: #fff; font-size: var(--fs-xs); font-weight: 700; padding: 0.35em 0.7em; border-radius: 3px; }
+  .plan :global(.pict) { max-width: 220px; margin: 0.4rem 0 0.9rem; }
   .plan__name { font-size: var(--fs-h3); margin: 0 0 0.3em; }
   .plan__name a { text-decoration: none; color: var(--c-ink); }
   .plan__price { font-size: 1.6rem; font-weight: 700; color: var(--c-primary); margin: 0 0 0.5em; line-height: 1.2; }

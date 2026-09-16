@@ -39,6 +39,11 @@ const faqs = [
 
   <h2 id="zentai">町田市の葬儀の流れの全体像</h2>
   <div class="answer"><p>町田市の葬儀は、<strong>逝去→搬送・安置→打ち合わせ→死亡届の提出→納棺→通夜→告別式・出棺→火葬・収骨→初七日→葬儀後の手続き</strong>という順で進みます。南多摩斎場の空き状況により、逝去から火葬までは通常3〜5日程度です。友引明けや年末年始など空きが少ない時期は1週間以上かかることがあるといわれますが、これは葬儀社の経験則であり、南多摩斎場が公式に発表している数値ではありません。火葬式（通夜・告別式を行わない形式）でも、法律上は死亡後24時間を経過しないと火葬できません。</p></div>
+  <ul class="phase-bar" aria-label="葬儀の3つの段階">
+    <li><span class="phase-bar__k">1</span><span class="phase-bar__t">逝去から安置まで</span><span class="phase-bar__d">当日。搬送と安置を最優先</span></li>
+    <li><span class="phase-bar__k">2</span><span class="phase-bar__t">打ち合わせから火葬まで</span><span class="phase-bar__d">翌日〜1週間程度。南多摩斎場の空き次第</span></li>
+    <li><span class="phase-bar__k">3</span><span class="phase-bar__t">葬儀後の手続き</span><span class="phase-bar__d">葬祭費（2年）など期限のある手続き</span></li>
+  </ul>
   <ol class="stepper stepper--h">
     <li><span class="stepper__t">逝去・搬送・安置</span><span class="stepper__d">1日目（逝去当日）</span></li>
     <li><span class="stepper__t">打ち合わせ</span><span class="stepper__d">2日目</span></li>
@@ -251,3 +256,12 @@ const faqs = [
   <h2 id="faq">葬儀の流れについてよくある質問</h2>
   <Faq items={faqs} group="flow" />
 </ArticleLayout>
+
+<style>
+  .phase-bar { list-style: none; padding: 0; margin: 1rem 0 0.5rem; display: grid; gap: 0.5rem; }
+  .phase-bar li { display: grid; grid-template-columns: 2rem 1fr; grid-template-areas: 'k t' 'k d'; gap: 0 0.6rem; align-items: center; padding: 0.7rem 0.9rem; background: var(--c-primary-soft); border-radius: var(--radius); }
+  .phase-bar__k { grid-area: k; display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--c-primary); color: #fff; font-weight: 700; font-size: 0.9rem; }
+  .phase-bar__t { grid-area: t; font-weight: 700; font-size: var(--fs-sm); }
+  .phase-bar__d { grid-area: d; font-size: var(--fs-xs); color: var(--c-ink-2); }
+  @media (min-width: 768px) { .phase-bar { grid-template-columns: repeat(3, 1fr); } }
+</style>

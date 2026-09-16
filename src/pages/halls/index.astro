@@ -4,6 +4,8 @@ import NextLink from '../../components/NextLink.astro';
 import Source from '../../components/Source.astro';
 import Cta from '../../components/Cta.astro';
 import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
+import Illust from '../../components/Illust.astro';
 
 const title = '町田市の斎場・葬儀場一覧｜公営の式場・民営ホール・寺院の使い方';
 const h1 = '町田市の斎場・葬儀場｜南多摩斎場の式場と民営ホール・寺院・自宅の選び方';
@@ -37,6 +39,11 @@ const faqs = [
   crumbs={[{ href: '/halls/', label: '斎場・葬儀場' }]}
   bottomCtaPosition="hall" bottomCtaTitle="式場選びのご相談" bottomCtaLead="参列予定の人数、火葬場との距離、宿泊の希望を伺えば、南多摩斎場と民営ホールのどちらが合うか、その場でお伝えします。">
 
+  <ul class="fact-list citizen-strip" aria-label="町田市民が斎場を選ぶときのポイント">
+    <li><Icon name="check" /><span><strong>町田市民は南多摩斎場の火葬料が無料</strong>（市外の方は12歳以上80,000円）</span></li>
+    <li><Icon name="check" /><span>市営の葬儀式場はなく、公営で使えるのは<strong>南多摩斎場の式場</strong>（第一〜第三式場）</span></li>
+    <li><Icon name="check" /><span>駅から近い場所や通夜後の付き添いを重視するなら<strong>民営ホール</strong>。式場の費用は施設ごとに異なります</span></li>
+  </ul>
   <h2 id="koei">町田市に公営の葬儀式場はありますか？</h2>
   <div class="answer"><p>町田市が単独で運営する「市営斎場」「市民斎場」は<strong>確認できません</strong>。公営で使えるのは、八王子市・町田市・多摩市・稲城市・日野市の5市が共同で運営する一部事務組合「南多摩斎場組合」の<strong>南多摩斎場</strong>（町田市上小山田町2147）で、火葬場に第一〜第三の3式場が併設されています。町田市公式サイトも南多摩斎場組合を市の施設として案内しており、詳細は組合の公式サイトを参照する構成です。</p></div>
   <ul class="choice choice--2">
@@ -71,8 +78,9 @@ const faqs = [
   <Source items={[{ label: '南多摩斎場公式サイト 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }]} />
   <div class="facility">
     <div class="facility__head"><h3 class="facility__name">南多摩斎場</h3><span class="facility__sub">公営（南多摩斎場組合）・町田市上小山田町2147</span></div>
-    <div class="facility__grid">
-      <div class="facility__cell"><span class="facility__label">特徴</span><p>祭壇常備、火葬場と同じ敷地で移動なし、遺族控室で宿泊可能</p></div>
+    <div class="facility__visual"><Illust variant="hall" /><span class="facility__caption">斎場のイメージ（イラスト）。実際の南多摩斎場の外観ではありません</span></div>
+  <div class="facility__grid">
+      <div class="facility__cell"><span class="facility__label">特徴</span><p>祭壇常備、火葬場と同じ敷地で移動なし、遺族控室あり（通夜後に泊まれるかは斎場に確認）</p></div>
       <div class="facility__cell"><span class="facility__label">料金</span><p class="facility__big">50,000円<small>第二・第三式場／組合構成市住民</small></p><p>第一式場140,000円（住民）</p></div>
       <div class="facility__cell"><span class="facility__label">アクセス</span><p>南大沢駅・相模原駅からタクシー、駐車場約100台</p></div>
       <div class="facility__cell"><span class="facility__label">向いている人</span><p>費用を抑えたい人、火葬場への移動をなくしたい人</p></div>
@@ -137,7 +145,7 @@ const faqs = [
       <tbody>
         <tr><th scope="row">参列人数</th><td data-label="南多摩斎場">第二・第三式場は小規模、第一式場は大人数にも対応</td><td data-label="民営ホール">施設により5〜150名超まで幅がある</td></tr>
         <tr><th scope="row">火葬場との距離</th><td data-label="南多摩斎場">同じ敷地内で移動なし</td><td data-label="民営ホール">式場から火葬場まで霊柩車での移動が必要</td></tr>
-        <tr><th scope="row">通夜後の宿泊</th><td data-label="南多摩斎場">遺族控室で宿泊可能（ユニットシャワー付き）</td><td data-label="民営ホール">施設により宿泊設備がある場合が多い</td></tr>
+        <tr><th scope="row">通夜後の宿泊</th><td data-label="南多摩斎場">遺族控室あり（通夜後に泊まれるかは斎場に確認）</td><td data-label="民営ホール">施設により宿泊設備がある場合が多い</td></tr>
         <tr><th scope="row">駅からの距離・駐車場</th><td data-label="南多摩斎場">南大沢駅・相模原駅からタクシー、駐車場約100台</td><td data-label="民営ホール">町田駅周辺は徒歩圏、それ以外はバス便が中心</td></tr>
         <tr><th scope="row">費用</th><td data-label="南多摩斎場">組合構成市住民は50,000〜140,000円</td><td data-label="民営ホール">施設ごとに個別見積もりが必要</td></tr>
       </tbody>
@@ -165,3 +173,10 @@ const faqs = [
   <h2 id="faq">町田市の斎場・葬儀場でよくある質問</h2>
   <Faq items={faqs} group="halls" />
 </ArticleLayout>
+
+<style>
+  .facility__visual { position: relative; padding: 1rem 1.2rem 0; }
+  .facility__visual .illust { border: 1px solid var(--c-line-2); }
+  .facility__caption { display: block; font-size: var(--fs-xs); color: var(--c-ink-3); margin-top: 0.4em; }
+  .citizen-strip { background: var(--c-surface); border: 1px solid var(--c-line); border-left: 4px solid var(--c-primary); border-radius: 0 var(--radius) var(--radius) 0; padding: 0.9rem 1rem; margin: 0 0 1.5rem; max-width: var(--w-prose); }
+</style>

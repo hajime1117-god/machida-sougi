@@ -6,6 +6,7 @@ import Cta from '../../components/Cta.astro';
 import MachidaMap from '../../components/MachidaMap.astro';
 import Faq from '../../components/Faq.astro';
 import Icon from '../../components/Icon.astro';
+import Illust from '../../components/Illust.astro';
 
 const title = '町田市の火葬場｜南多摩斎場の料金・予約・休場日と市外の火葬場';
 const h1 = '町田市の火葬場｜南多摩斎場の使用料・予約・休場日と、混雑時の市外火葬場';
@@ -50,7 +51,8 @@ const faqs = [
   </figure>
   <div class="facility">
     <div class="facility__head"><h3 class="facility__name">南多摩斎場</h3><span class="facility__sub">公営（南多摩斎場組合）・町田市上小山田町</span></div>
-    <div class="facility__grid">
+    <div class="facility__visual"><Illust variant="hall" /><span class="facility__caption">斎場のイメージ（イラスト）。実際の南多摩斎場の外観ではありません</span></div>
+  <div class="facility__grid">
       <div class="facility__cell"><span class="facility__label">特徴</span><p>八王子市・町田市・多摩市・稲城市・日野市の5市が共同運営する、市内唯一の公営火葬場</p></div>
       <div class="facility__cell"><span class="facility__label">料金</span><p class="facility__big">無料<small>町田市民の火葬料（市外 80,000円）</small></p></div>
       <div class="facility__cell"><span class="facility__label">アクセス</span><p>町田駅から直線約7.9km・車で25〜35分程度（目安）。JR横浜線 橋本駅・淵野辺駅から神奈中バス</p></div>
@@ -210,4 +212,7 @@ const faqs = [
 <style>
   .map-figure { margin: 0 0 1rem; background: var(--c-bg); border: 1px solid var(--c-line); border-radius: var(--radius-lg); padding: 1rem 1rem 0.7rem; }
   .map-figure figcaption { font-size: var(--fs-xs); color: var(--c-ink-3); margin-top: 0.4em; }
+  .facility__visual { position: relative; padding: 1rem 1.2rem 0; }
+  .facility__visual .illust { border: 1px solid var(--c-line-2); }
+  .facility__caption { display: block; font-size: var(--fs-xs); color: var(--c-ink-3); margin-top: 0.4em; }
 </style>

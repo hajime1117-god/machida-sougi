@@ -279,3 +279,7 @@ details > summary::-webkit-details-marker { display: none; }
   .choice li { grid-template-columns: 1fr; }
   .choice a.btn { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 0.3rem; }
 }
+.facility__visual { max-width: 360px; }
+.stepper li > .stepper__t, .stepper li > .stepper__d { grid-column: 2; }
+@media (min-width: 900px) { .stepper--h li > .stepper__t, .stepper--h li > .stepper__d { grid-column: 1; } }
+.stepper li { row-gap: 0.15rem; }

@@ -114,3 +114,33 @@ import CostBar from '../../components/CostBar.astro';
 - 見出し（H1/H2/H3）の文言・順序の変更、内部リンクの削除、`<Source>`・「未確認」注記の削除、`data-cta`・`data-track-view` の削除
 - 画像内テキストだけに重要情報を置くこと（SVGは装飾でなく図として `role="img"` + `aria-label`）
 - 新しい色・フォント・角丸の追加、外部ライブラリの追加、JS の追加
+
+## 5. 追加部品（2026-09-16 第2弾: 地域密着型サイトの見せ方を反映）
+
+### `Illust`（葬儀のイメージイラスト）
+```astro
+import Illust from '../components/Illust.astro';
+<Illust variant="kazokuso" />            <!-- hero | kazokuso | ichinichiso | kasoshiki | hall | consult -->
+<Illust variant="hero" cover />          <!-- PCのヒーローで列いっぱいに広げる（端が切れる） -->
+```
+- 写真の代替。必ず「〜のイメージ（イラスト）」とキャプションを添え、実在施設の外観・施工事例と誤認させない。
+- 1セクション1点まで。装飾目的で置かない。
+
+### `Glance`（プラン詳細の要約パネル）
+- `plan / name / price / days / people / hall / total / fit / includes / excludes` を渡す。イラスト＋日程図＋価格＋スペック＋向いている方＋含まれる/含まれない を1枚で表示。
+
+### 「ご希望から選ぶ」導線（TOP `.needs`）
+- 「家族だけでゆっくり送りたい → 家族葬」のように **利用者の希望 → 該当ページ** の順で示す。プラン名を先に出さない。
+
+### 状況別CTA文言
+| 状況 | 文言 | 種別 |
+|---|---|---|
+| お急ぎ | 今すぐ搬送について相談 | tel |
+| 費用だけ知りたい | 葬儀費用について相談 | tel / contact |
+| 比較中 | 自分に合うプランを相談 | contact |
+| 斎場を決めたい | 斎場について相談 | tel / contact |
+| 事前相談 | 事前相談・見積もりだけのご相談はこちら | contact |
+- `data-cta-text` で計測上の文言を明示できる（表示文言と同じにする）。1画面に同種のCTAを3つ以上並べない。
+
+### 二層構造
+- 各ページは「イラスト＋要約（Glance / facility / .choice）＋比較（.cmp）」を先に、詳しい本文（SEO/AIO用）をその下に置く。本文を削らない。

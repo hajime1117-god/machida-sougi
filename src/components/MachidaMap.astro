@@ -1,0 +1,51 @@
+---
+/**
+ * 町田市の概略図（OpenStreetMap の行政境界を簡略化）に、駅・火葬場を示す。
+ * 位置は概略。装飾ではなく「市内全域対応」「火葬場の位置関係」を伝えるための図。
+ */
+import map from '../assets/machida-map.json';
+interface Props {
+  /** 'areas' = 駅とエリア名を表示 / 'crematoriums' = 火葬場を強調 / 'simple' = 輪郭と主要駅のみ */
+  variant?: 'areas' | 'crematoriums' | 'simple';
+  class?: string;
+  title?: string;
+}
+const { variant = 'areas', class: cls = '', title = '町田市の概略図' } = Astro.props;
+const p = map.points as Record<string, { x: number; y: number; label: string }>;
+const stations = ['machida', 'tsurukawa', 'tamagawa', 'naruse', 'minami', 'tamasakai', 'aihara'];
+const crems = ['minamitama', 'yokohama', 'sagamihara'];
+const short: Record<string, string> = { machida: '町田', tsurukawa: '鶴川', tamagawa: '玉川学園前', naruse: '成瀬', minami: '南町田', tamasakai: '多摩境', aihara: '相原', minamitama: '南多摩斎場', yokohama: '横浜市北部斎場', sagamihara: '相模原市営斎場' };
+// ラベルのオフセット（重なり回避）
+const off: Record<string, [number, number, 'start' | 'end' | 'middle']> = {
+  machida: [8, 4, 'start'], tsurukawa: [8, 4, 'start'], tamagawa: [-8, 4, 'end'], naruse: [-8, 4, 'end'], minami: [8, 4, 'start'],
+  tamasakai: [0, -8, 'middle'], aihara: [-8, 4, 'end'], minamitama: [0, -9, 'middle'], yokohama: [-4, 22, 'end'], sagamihara: [8, 4, 'start'],
+};
+const showStations = variant !== 'crematoriums' ? stations : ['machida', 'tsurukawa', 'naruse', 'minami', 'tamasakai'];
+const showCrems = variant === 'simple' ? ['minamitama'] : crems;
+---
+<svg class={`machida-map ${cls}`} viewBox={`0 0 ${map.W} ${map.H}`} role="img" aria-labelledby={`mm-${variant}-t`} width={map.W} height={map.H}>
+  <title id={`mm-${variant}-t`}>{title}</title>
+  <path d={map.path} class="machida-map__area" />
+  {showStations.map((k) => (
+    <g class="machida-map__station">
+      <circle cx={p[k].x} cy={p[k].y} r="4" />
+      <text x={p[k].x + off[k][0]} y={p[k].y + off[k][1]} text-anchor={off[k][2]}>{short[k]}</text>
+    </g>
+  ))}
+  {showCrems.map((k) => (
+    <g class={`machida-map__crem ${k === 'minamitama' ? 'machida-map__crem--main' : ''}`}>
+      <path d={`M${p[k].x} ${p[k].y - 9} l7 7 -7 7 -7 -7z`} />
+      <text x={p[k].x + off[k][0]} y={p[k].y + off[k][1]} text-anchor={off[k][2]}>{short[k]}</text>
+    </g>
+  ))}
+</svg>
+<style is:global>
+  .machida-map { width: 100%; height: auto; max-width: 100%; display: block; font-family: var(--font-sans); }
+  .machida-map__area { fill: var(--c-primary-soft); stroke: var(--c-primary-2); stroke-width: 1.5; stroke-linejoin: round; }
+  .machida-map__station circle { fill: var(--c-surface); stroke: var(--c-primary); stroke-width: 2; }
+  .machida-map__station text { font-size: 12.5px; fill: var(--c-ink-2); font-weight: 700; paint-order: stroke; stroke: var(--c-surface); stroke-width: 3px; stroke-linejoin: round; }
+  .machida-map__crem path { fill: var(--c-accent); stroke: var(--c-surface); stroke-width: 1.5; }
+  .machida-map__crem text { font-size: 12.5px; fill: var(--c-accent-2); font-weight: 700; paint-order: stroke; stroke: var(--c-surface); stroke-width: 3px; stroke-linejoin: round; }
+  .machida-map__crem--main path { fill: var(--c-accent); }
+  .machida-map__crem--main text { font-size: 13px; }
+</style>

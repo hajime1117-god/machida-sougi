@@ -25,12 +25,15 @@ src/
   config/site.ts        ブランド名・電話番号・計測IDなどの設定（電話番号はここだけ変更）
   layouts/BaseLayout.astro  共通レイアウト（title / description / canonical / OGP / JSON-LD / 計測）
   components/           Header / Footer / FixedCta / Cta / Faq / Breadcrumb / NextLink / LastReviewed / Source
+                        MachidaMap（町田市の概略図 SVG）/ PlanPictogram（形式の日程図）/ CostBar（費用構成バー）/ Glance（プラン要約パネル）
+  assets/machida-map.json  町田市境界の簡略ポリゴン（OpenStreetMap 由来、位置は概略）
   pages/                各ページ（URL = ディレクトリ構造）
   scripts/analytics.ts  GA4 / Clarity 計測
   styles/global.css     デザイントークン・基本スタイル
 docs/
   analytics.md          計測イベント仕様と GA4 / Search Console / Clarity 設定手順
   writing-guide.md      ページ執筆ガイド（雛形・文章ルール・ビルド確認）
+  design-guide.md       デザインガイド（視覚部品の使い方・ページ別方針・禁止事項）
   strategy.md           SERP・競合・検索意図分析、キーワードマップ、サイト構造、コンテンツ設計
   research/             調査レポート（競合分析・一次情報・出典）
 tools/                  serve / lighthouse / audit / test-analytics スクリプト
@@ -84,3 +87,12 @@ Vercel の場合も同様に Framework preset を Astro にし、環境変数を
 | GA4 / Clarity 注入 | 環境変数設定時に gtag.js・clarity.ms が読み込まれ、collect リクエストを確認 |
 
 `lighthouse-reports/summary.json` に最新の計測値を保存しています。
+
+## 2026-09-16 デザイン・UX改修
+
+- TOP のファーストビューを「利用者ベネフィット → 対応形式（家族葬・一日葬・火葬式の料金と日数）→ 町田市の概略図（南多摩斎場の位置）→ 電話/費用CTA → 緊急導線」の構成に再設計
+- 形式の違いを日程ピクトグラム（通夜／告別式／火葬）で図示、費用は構成バーで可視化、火葬場・エリアは概略図で位置関係を表示
+- 比較表はPCで表、スマホで縦積みカードに自動変換（`.cmp` + `data-label`）。横スクロールの表を廃止
+- 葬儀の流れはステップカード（今すること／誰が／決めること／注意／困ったら）、斎場・火葬場は判断ガイドと施設カード
+- 見出し・本文・内部リンク・出典・計測属性・構造化データは維持（レビューで欠落なしを確認）。Lighthouse は全ページ Mobile/Desktop とも 4カテゴリ 100 を維持
+- Cloudflare Pages で `SITE_URL` 未設定の場合は `CF_PAGES_URL` を canonical に使用

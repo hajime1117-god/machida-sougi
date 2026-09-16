@@ -4,6 +4,7 @@ import NextLink from '../../components/NextLink.astro';
 import Source from '../../components/Source.astro';
 import Cta from '../../components/Cta.astro';
 import Faq from '../../components/Faq.astro';
+import MachidaMap from '../../components/MachidaMap.astro';
 
 const title = '町田市のエリア別 葬儀案内｜町田駅・鶴川・成瀬・南町田・多摩境';
 const h1 = '町田市のエリア別 葬儀案内｜お住まいの地域から近い式場・火葬場・窓口';
@@ -35,6 +36,10 @@ const faqs = [
 
   <h2 id="chigai">町田市はエリアによって何が変わる？</h2>
   <div class="answer"><p>町田市は南北に長く、<strong>公営の南多摩斎場（町田市民は火葬無料）は市の北西端（上小山田町）にある</strong>ため、南部（南町田・成瀬）からは車で30〜40分以上かかります。北部・西部（多摩境・相原）は南多摩斎場まで最短の地元エリアで、南部は距離の近い市外の横浜市北部斎場（市外料金50,000円）が選択肢になる点が大きな違いです。</p></div>
+  <figure class="map-figure">
+    <MachidaMap variant="areas" title="町田市のエリアと主な駅・火葬場の位置関係（概略）" />
+    <figcaption>● 主な駅　◆ 火葬場（位置は概略）</figcaption>
+  </figure>
   <p>南多摩斎場は八王子市・町田市・多摩市・稲城市・日野市の5市が共同運営する火葬場で、町田市民は火葬料が無料です。距離は南多摩斎場公式サイト等の座標から算出した直線距離をもとにした目安（実際の道路距離ではない）で、車の所要時間も渋滞・経路により変動します。死亡届を出せる窓口（市民課・市民センター）も地域ごとに近いものが異なるため、お住まいのエリアから確認しておくと搬送先の判断が早くなります。</p>
   <p class="note">距離・所要時間は町田市エリア情報リサーチ（2026-09-15）の直線距離をもとにした目安です。実際の所要時間は地図アプリで再確認してください。</p>
   <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }, { label: '横浜市 市営斎場のご案内（料金）', href: 'https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/saijo/saijo/saijou.html' }]} />
@@ -42,15 +47,15 @@ const faqs = [
   <h2 id="ichiran">5つのエリアと対象地域</h2>
   <div class="answer"><p>当サイトでは町田市を<strong>町田駅周辺・鶴川・成瀬・南町田・多摩境の5エリア</strong>に分けて案内します。生活圏が重なる駅（成瀬・南町田・つくし野・玉川学園など）は無理に分けず、近い火葬場・窓口が共通するエリアとしてまとめています。</p></div>
   <div class="table-wrap table-wrap--wide">
-    <table>
+    <table class="cmp">
       <caption>町田市のエリア区分と主な対象地域（駅・生活圏ベースの当サイトの区分。2026-09-15確認の情報をもとに作成）</caption>
       <thead><tr><th scope="col">エリア</th><th scope="col">主な町名</th><th scope="col">駅</th><th scope="col">近い火葬場候補</th><th scope="col">死亡届の窓口（市民センター）</th></tr></thead>
       <tbody>
-        <tr><th scope="row"><a href="/area/machida-eki/">町田駅周辺</a></th><td>原町田・森野・中町・木曽・忠生</td><td>町田駅</td><td>南多摩斎場（無料）</td><td>市役所市民課・忠生市民センター</td></tr>
-        <tr><th scope="row"><a href="/area/tsurukawa/">鶴川・玉川学園前</a></th><td>能ヶ谷・金井・薬師台・三輪</td><td>鶴川駅・玉川学園前駅</td><td>南多摩斎場（無料）</td><td>鶴川市民センター</td></tr>
-        <tr><th scope="row"><a href="/area/naruse/">成瀬・高ヶ坂</a></th><td>成瀬台・南成瀬・西成瀬</td><td>成瀬駅</td><td>横浜市北部斎場（市外50,000円）／南多摩斎場（無料）</td><td>なるせ駅前市民センター</td></tr>
-        <tr><th scope="row"><a href="/area/minami-machida/">南町田・つくし野・すずかけ台</a></th><td>鶴間・金森・小川</td><td>南町田グランベリーパーク駅</td><td>横浜市北部斎場（市外50,000円）／南多摩斎場（無料）</td><td>南市民センター</td></tr>
-        <tr><th scope="row"><a href="/area/tamasakai-aihara/">多摩境・相原・小山</a></th><td>小山ヶ丘・相原町・小山町</td><td>多摩境駅・相原駅</td><td>南多摩斎場（無料）</td><td>堺市民センター・小山市民センター</td></tr>
+        <tr><th scope="row"><a href="/area/machida-eki/">町田駅周辺</a></th><td data-label="主な町名">原町田・森野・中町・木曽・忠生</td><td data-label="駅">町田駅</td><td data-label="近い火葬場候補">南多摩斎場（無料）</td><td data-label="死亡届の窓口">市役所市民課・忠生市民センター</td></tr>
+        <tr><th scope="row"><a href="/area/tsurukawa/">鶴川・玉川学園前</a></th><td data-label="主な町名">能ヶ谷・金井・薬師台・三輪</td><td data-label="駅">鶴川駅・玉川学園前駅</td><td data-label="近い火葬場候補">南多摩斎場（無料）</td><td data-label="死亡届の窓口">鶴川市民センター</td></tr>
+        <tr><th scope="row"><a href="/area/naruse/">成瀬・高ヶ坂</a></th><td data-label="主な町名">成瀬台・南成瀬・西成瀬</td><td data-label="駅">成瀬駅</td><td data-label="近い火葬場候補">横浜市北部斎場（市外50,000円）／南多摩斎場（無料）</td><td data-label="死亡届の窓口">なるせ駅前市民センター</td></tr>
+        <tr><th scope="row"><a href="/area/minami-machida/">南町田・つくし野・すずかけ台</a></th><td data-label="主な町名">鶴間・金森・小川</td><td data-label="駅">南町田グランベリーパーク駅</td><td data-label="近い火葬場候補">横浜市北部斎場（市外50,000円）／南多摩斎場（無料）</td><td data-label="死亡届の窓口">南市民センター</td></tr>
+        <tr><th scope="row"><a href="/area/tamasakai-aihara/">多摩境・相原・小山</a></th><td data-label="主な町名">小山ヶ丘・相原町・小山町</td><td data-label="駅">多摩境駅・相原駅</td><td data-label="近い火葬場候補">南多摩斎場（無料）</td><td data-label="死亡届の窓口">堺市民センター・小山市民センター</td></tr>
       </tbody>
     </table>
   </div>
@@ -91,3 +96,8 @@ const faqs = [
   <h2 id="faq">エリアに関するよくある質問</h2>
   <Faq items={faqs} group="area" />
 </ArticleLayout>
+
+<style>
+  .map-figure { margin: 0 0 1rem; background: var(--c-bg); border: 1px solid var(--c-line); border-radius: var(--radius-lg); padding: 1rem 1rem 0.7rem; }
+  .map-figure figcaption { font-size: var(--fs-xs); color: var(--c-ink-3); margin-top: 0.4em; }
+</style>

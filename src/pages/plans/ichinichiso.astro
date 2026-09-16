@@ -5,6 +5,7 @@ import Source from '../../components/Source.astro';
 import Cta from '../../components/Cta.astro';
 import Faq from '../../components/Faq.astro';
 import Icon from '../../components/Icon.astro';
+import Glance from '../../components/Glance.astro';
 
 const title = '町田市の一日葬｜費用・流れ・家族葬との違い';
 const h1 = '町田市の一日葬｜費用・1日の流れ・家族葬との違い';
@@ -37,6 +38,8 @@ const faqs = [
   crumbs={[{ href: '/plans/', label: '葬儀プラン' }, { href: '/plans/ichinichiso/', label: '一日葬' }]}
   bottomCtaPosition="plan" bottomCtaTitle="町田市の一日葬のご相談" bottomCtaLead="参列人数と希望する式場を伺えば、総額の目安と南多摩斎場の空き状況の見込みをお伝えします。菩提寺への確認の仕方もご案内します。">
 
+  <Glance plan="ichinichiso" name="一日葬" price="396,000" days="1日" people="5〜20名" hall="必要" total="約50〜65万円（10名）" fit="高齢の参列者が多い。遠方の親族の宿泊を避けたい" includes={["搬送・2日間の安置","棺と骨壺","祭壇と式場設営（1日分）","告別式の進行・霊柩車","手続き代行"]} excludes={["式場使用料","火葬料（町田市民は無料）","飲食・返礼品","宗教者へのお礼"]} />
+
   <h2 id="toha">一日葬とは？</h2>
   <div class="answer"><p><strong>一日葬とは、通夜を行わず、告別式と火葬を1日で行う葬儀</strong>です。通常の葬儀（家族葬・一般葬）は1日目に通夜、2日目に告別式と火葬を行いますが、一日葬では1日目の通夜を省きます。告別式の内容は通常の葬儀と同じで、僧侶の読経や焼香、お別れの儀式を行ってから火葬します。</p></div>
   <p>参列者の拘束が1日で済み、式場の使用も1日分になるため、家族葬より費用と負担が軽くなります。一方で「通夜に来るはずだった人が参列できない」「菩提寺が通夜の省略を認めない」といった注意点があります。</p>
@@ -44,16 +47,16 @@ const faqs = [
   <h2 id="hiyou">町田市で一日葬を行う場合の費用はいくらですか？</h2>
   <div class="answer"><p>町田市で一日葬を行う場合、当サイトのプラン料金396,000円（税込）に式場使用料と飲食・返礼品を加えた<strong>総額は、参列10名で約50〜65万円</strong>が目安です（宗教者へのお礼は別）。家族葬との差は主に、通夜振る舞いの飲食費がないことと、式場使用料が1日分で済むことです。</p></div>
   <div class="table-wrap table-wrap--wide">
-    <table>
+    <table class="cmp">
       <caption>町田市の一日葬 参列人数別の総額例（町田市民・南多摩斎場の式場利用・仏式。税込。宗教者へのお礼は含まない）</caption>
       <thead><tr><th scope="col">費目</th><th scope="col">5名</th><th scope="col">10名</th><th scope="col">20名</th></tr></thead>
       <tbody>
-        <tr><th scope="row">一日葬プラン料金</th><td class="num">396,000円</td><td class="num">396,000円</td><td class="num">396,000円</td></tr>
-        <tr><th scope="row">式場使用料（南多摩斎場 第二・第三式場）</th><td class="num">50,000円</td><td class="num">50,000円</td><td class="num">50,000円</td></tr>
-        <tr><th scope="row">火葬料（町田市民）</th><td class="num">0円</td><td class="num">0円</td><td class="num">0円</td></tr>
-        <tr><th scope="row">精進落とし（1人5,000円×1食）</th><td class="num">約25,000円</td><td class="num">約50,000円</td><td class="num">約100,000円</td></tr>
-        <tr><th scope="row">返礼品（1人2,000円）</th><td class="num">約10,000円</td><td class="num">約20,000円</td><td class="num">約40,000円</td></tr>
-        <tr><th scope="row"><strong>総額の目安</strong></th><td class="num"><strong>約48万円</strong></td><td class="num"><strong>約52万円</strong></td><td class="num"><strong>約59万円</strong></td></tr>
+        <tr><th scope="row">一日葬プラン料金</th><td class="num" data-label="5名">396,000円</td><td class="num" data-label="10名">396,000円</td><td class="num" data-label="20名">396,000円</td></tr>
+        <tr><th scope="row">式場使用料（南多摩斎場 第二・第三式場）</th><td class="num" data-label="5名">50,000円</td><td class="num" data-label="10名">50,000円</td><td class="num" data-label="20名">50,000円</td></tr>
+        <tr><th scope="row">火葬料（町田市民）</th><td class="num" data-label="5名">0円</td><td class="num" data-label="10名">0円</td><td class="num" data-label="20名">0円</td></tr>
+        <tr><th scope="row">精進落とし（1人5,000円×1食）</th><td class="num" data-label="5名">約25,000円</td><td class="num" data-label="10名">約50,000円</td><td class="num" data-label="20名">約100,000円</td></tr>
+        <tr><th scope="row">返礼品（1人2,000円）</th><td class="num" data-label="5名">約10,000円</td><td class="num" data-label="10名">約20,000円</td><td class="num" data-label="20名">約40,000円</td></tr>
+        <tr><th scope="row"><strong>総額の目安</strong></th><td class="num" data-label="5名"><strong>約48万円</strong></td><td class="num" data-label="10名"><strong>約52万円</strong></td><td class="num" data-label="20名"><strong>約59万円</strong></td></tr>
       </tbody>
     </table>
   </div>
@@ -135,3 +138,4 @@ const faqs = [
   <h2 id="faq">町田市の一日葬でよくある質問</h2>
   <Faq items={faqs} group="ichinichiso" />
 </ArticleLayout>
+

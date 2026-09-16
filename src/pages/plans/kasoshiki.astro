@@ -5,6 +5,7 @@ import Source from '../../components/Source.astro';
 import Cta from '../../components/Cta.astro';
 import Faq from '../../components/Faq.astro';
 import Icon from '../../components/Icon.astro';
+import Glance from '../../components/Glance.astro';
 
 const title = '町田市の火葬式・直葬｜費用・流れ・注意点';
 const h1 = '町田市の火葬式・直葬｜費用・流れ・後悔しないための注意点';
@@ -37,6 +38,8 @@ const faqs = [
   lead="火葬式（直葬）は、通夜も告別式も行わず、安置後に火葬場で短いお別れをして火葬する最もシンプルな葬儀です。費用を最も抑えられる一方、菩提寺や親族との調整を怠るとトラブルになりやすい形式でもあります。このページでは、費用・流れ・注意点を町田市の事情に合わせて説明します。"
   crumbs={[{ href: '/plans/', label: '葬儀プラン' }, { href: '/plans/kasoshiki/', label: '火葬式・直葬' }]}
   bottomCtaPosition="plan" bottomCtaTitle="町田市の火葬式のご相談" bottomCtaLead="火葬式で本当に問題がないか、菩提寺や親族との関係も含めてご相談ください。安置施設でのお別れの時間を設けるなど、費用を抑えながら気持ちの区切りをつける方法もご提案します。">
+
+  <Glance plan="kasoshiki" name="火葬式・直葬" price="198,000" days="火葬当日のみ" people="1〜10名" hall="不要" total="約20〜25万円" fit="費用を抑えたい。参列者がごく少ない。宗教儀式を望まない" includes={["搬送・2日間の安置","棺と骨壺・枕飾り","死亡届・火葬許可証の代行","火葬場への霊柩車と当日の案内"]} excludes={["火葬料（町田市民は無料）","待合室・安置施設の使用料","追加の安置日数","僧侶へのお礼"]} />
 
   <h2 id="toha">火葬式・直葬とは？</h2>
   <div class="answer"><p><strong>火葬式（直葬）とは、通夜・告別式を行わず、安置場所から直接火葬場へ向かい、火葬炉の前で短いお別れをして火葬する葬儀</strong>です。式場を使わないため式場使用料・飲食費・返礼品が不要で、費用を最も抑えられます。「直葬」と「火葬式」は同じ形式を指し、葬儀社によって呼び方が異なります。</p></div>
@@ -82,12 +85,12 @@ const faqs = [
 
   <h2 id="nagare">火葬式の流れ</h2>
   <div class="answer"><p>火葬式は、<strong>亡くなった日に搬送・安置、翌日に死亡届と火葬場の予約・納棺、火葬当日に火葬場でお別れ・火葬・収骨</strong>という流れで、亡くなった日から火葬まで<strong>最短2日</strong>、南多摩斎場の混雑期は1週間程度かかります。</p></div>
-  <ol>
-    <li><strong>逝去・搬送（当日）</strong>　病院や施設からご自宅または安置施設へ搬送します。深夜・早朝でもお受けします。</li>
-    <li><strong>安置・打ち合わせ（当日〜翌日）</strong>　安置場所で火葬の日程を決め、南多摩斎場の火葬枠を予約します。死亡届を提出し、火葬許可証を受け取ります（当サイトが代行）。</li>
-    <li><strong>納棺（火葬前日または当日）</strong>　ご家族が立ち会い、棺に故人を納めます。手紙や思い出の品を入れることができます（燃えないものは不可）。</li>
-    <li><strong>火葬場でのお別れ（火葬当日）</strong>　火葬炉の前で5〜10分ほどお別れをします。読経を希望する場合はここで行います。</li>
-    <li><strong>火葬・収骨（約1〜1.5時間後）</strong>　待合室で待機し、収骨（骨上げ）をして解散します。火葬許可証に火葬済みの証明が押され、埋葬許可証として納骨に使います。</li>
+  <ol class="stepper">
+    <li><span class="stepper__t">逝去・搬送（当日）</span><span class="stepper__d">病院や施設からご自宅または安置施設へ搬送します。深夜・早朝でもお受けします。</span></li>
+    <li><span class="stepper__t">安置・打ち合わせ（当日〜翌日）</span><span class="stepper__d">安置場所で火葬の日程を決め、南多摩斎場の火葬枠を予約します。死亡届を提出し、火葬許可証を受け取ります（当サイトが代行）。</span></li>
+    <li><span class="stepper__t">納棺（火葬前日または当日）</span><span class="stepper__d">ご家族が立ち会い、棺に故人を納めます。手紙や思い出の品を入れることができます（燃えないものは不可）。</span></li>
+    <li><span class="stepper__t">火葬場でのお別れ（火葬当日）</span><span class="stepper__d">火葬炉の前で5〜10分ほどお別れをします。読経を希望する場合はここで行います。</span></li>
+    <li><span class="stepper__t">火葬・収骨（約1〜1.5時間後）</span><span class="stepper__d">待合室で待機し、収骨（骨上げ）をして解散します。火葬許可証に火葬済みの証明が押され、埋葬許可証として納骨に使います。</span></li>
   </ol>
   <p>死亡届は亡くなったことを知った日を含めて7日以内に提出します。町田市役所市民課（1階104窓口）または各市民センターで受け付けています。</p>
   <Source items={[{ label: '町田市 死亡届', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/todokede/todokede03.html' }]} />
@@ -96,13 +99,13 @@ const faqs = [
   <h2 id="kasoba">町田市民が火葬式で利用する火葬場</h2>
   <div class="answer"><p>町田市民の火葬式は、火葬料が無料の<strong>南多摩斎場（町田市上小山田町）</strong>で行うのが基本です。南多摩斎場が友引・年末年始で休場のときや、混雑で日程が合わないときは、市外料金で<strong>横浜市北部斎場（50,000円）や相模原市営斎場（54,000円）</strong>を利用できます。</p></div>
   <div class="table-wrap table-wrap--wide">
-    <table>
+    <table class="cmp">
       <caption>火葬式で使う火葬場の比較（大人1体・町田市民の場合。公営施設の使用料は非課税。確認日は各出典参照）</caption>
       <thead><tr><th scope="col">火葬場</th><th scope="col">所在地</th><th scope="col">町田市民の火葬料</th><th scope="col">休場日</th><th scope="col">備考</th></tr></thead>
       <tbody>
-        <tr data-track-view="hall" data-item="南多摩斎場"><th scope="row">南多摩斎場</th><td>町田市上小山田町</td><td class="num"><strong>無料</strong></td><td>友引（開場日あり）、1月1〜3日</td><td>組織5市の共同運営。混雑期は1週間以上待つことがある</td></tr>
-        <tr data-track-view="hall" data-item="横浜市北部斎場"><th scope="row">横浜市北部斎場</th><td>横浜市緑区長津田町</td><td class="num">50,000円（市外）</td><td>1月1〜3日ほか</td><td>南町田・つくし野・成瀬から近い</td></tr>
-        <tr data-track-view="hall" data-item="相模原市営斎場"><th scope="row">相模原市営斎場</th><td>相模原市南区古淵</td><td class="num">54,000円（市外）</td><td>1月1〜3日ほか</td><td>町田駅周辺・木曽から近い。市外住民は予約に制限あり</td></tr>
+        <tr data-track-view="hall" data-item="南多摩斎場"><th scope="row">南多摩斎場</th><td data-label="所在地">町田市上小山田町</td><td class="num" data-label="町田市民の火葬料"><strong>無料</strong></td><td data-label="休場日">友引（開場日あり）、1月1〜3日</td><td data-label="備考">組織5市の共同運営。混雑期は1週間以上待つことがある</td></tr>
+        <tr data-track-view="hall" data-item="横浜市北部斎場"><th scope="row">横浜市北部斎場</th><td data-label="所在地">横浜市緑区長津田町</td><td class="num" data-label="町田市民の火葬料">50,000円（市外）</td><td data-label="休場日">1月1〜3日ほか</td><td data-label="備考">南町田・つくし野・成瀬から近い</td></tr>
+        <tr data-track-view="hall" data-item="相模原市営斎場"><th scope="row">相模原市営斎場</th><td data-label="所在地">相模原市南区古淵</td><td class="num" data-label="町田市民の火葬料">54,000円（市外）</td><td data-label="休場日">1月1〜3日ほか</td><td data-label="備考">町田駅周辺・木曽から近い。市外住民は予約に制限あり</td></tr>
       </tbody>
     </table>
   </div>
@@ -125,3 +128,4 @@ const faqs = [
   <h2 id="faq">町田市の火葬式でよくある質問</h2>
   <Faq items={faqs} group="kasoshiki" />
 </ArticleLayout>
+

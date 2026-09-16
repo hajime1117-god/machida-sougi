@@ -1,0 +1,48 @@
+---
+/**
+ * 葬儀形式の日程ピクトグラム。「通夜」「告別式」「火葬」のどれを行うかを、日付ブロックで示す。
+ * plan: 'kazokuso'(通夜+告別式+火葬 2日) | 'ichinichiso'(告別式+火葬 1日) | 'kasoshiki'(火葬のみ)
+ */
+interface Props { plan: 'kazokuso' | 'ichinichiso' | 'kasoshiki'; class?: string; size?: 'sm' | 'md' | 'lg'; }
+const { plan, class: cls = '', size = 'md' } = Astro.props;
+const days: Record<Props['plan'], { label: string; items: { name: string; on: boolean }[] }[]> = {
+  kazokuso: [
+    { label: '1日目', items: [{ name: '通夜', on: true }] },
+    { label: '2日目', items: [{ name: '告別式', on: true }, { name: '火葬', on: true }] },
+  ],
+  ichinichiso: [
+    { label: '1日目', items: [{ name: '通夜', on: false }] },
+    { label: '当日', items: [{ name: '告別式', on: true }, { name: '火葬', on: true }] },
+  ],
+  kasoshiki: [
+    { label: '', items: [{ name: '通夜', on: false }] },
+    { label: '当日', items: [{ name: '告別式', on: false }, { name: '火葬', on: true }] },
+  ],
+};
+const alt: Record<Props['plan'], string> = {
+  kazokuso: '家族葬: 1日目に通夜、2日目に告別式と火葬',
+  ichinichiso: '一日葬: 通夜なし。当日に告別式と火葬',
+  kasoshiki: '火葬式: 通夜・告別式なし。当日に火葬のみ',
+};
+---
+<div class={`pict pict--${size} ${cls}`} role="img" aria-label={alt[plan]}>
+  {days[plan].map((d) => (
+    <div class="pict__day">
+      <span class="pict__daylabel">{d.label || '　'}</span>
+      <div class="pict__items">
+        {d.items.map((it) => <span class:list={['pict__item', { 'pict__item--on': it.on, 'pict__item--off': !it.on }]}>{it.on ? it.name : `${it.name}なし`}</span>)}
+      </div>
+    </div>
+  ))}
+</div>
+<style is:global>
+  .pict { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-items: start; }
+  .pict__day { display: grid; gap: 4px; }
+  .pict__daylabel { font-size: 0.7rem; color: var(--c-ink-3); font-weight: 700; text-align: center; letter-spacing: 0.04em; }
+  .pict__items { display: grid; gap: 4px; }
+  .pict__item { display: block; text-align: center; font-size: 0.78rem; font-weight: 700; padding: 0.45em 0.2em; border-radius: 4px; line-height: 1.2; white-space: nowrap; }
+  .pict__item--on { background: var(--c-primary); color: #fff; }
+  .pict__item--off { background: transparent; color: var(--c-ink-3); border: 1px dashed var(--c-line); font-weight: 400; }
+  .pict--sm .pict__item { font-size: 0.68rem; padding: 0.35em 0.1em; }
+  .pict--lg .pict__item { font-size: 0.9rem; padding: 0.6em 0.4em; }
+</style>

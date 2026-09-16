@@ -4,7 +4,8 @@ import sitemap from '@astrojs/sitemap';
 import { loadEnv } from 'vite';
 
 const { SITE_URL } = loadEnv(process.env.NODE_ENV || 'production', process.cwd(), '');
-const site = (SITE_URL || process.env.SITE_URL || 'https://example.com').replace(/\/$/, '');
+// 優先順: SITE_URL（.env / ホスティングの環境変数）→ Cloudflare Pages が自動付与する CF_PAGES_URL → 既定値
+const site = (SITE_URL || process.env.SITE_URL || process.env.CF_PAGES_URL || 'https://example.com').replace(/\/$/, '');
 
 // https://astro.build/config
 export default defineConfig({

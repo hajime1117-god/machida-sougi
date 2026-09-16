@@ -1,0 +1,39 @@
+---
+/** 形式別の総額の構成を横棒で示す（プラン料金 / 式場使用料 / 飲食・返礼品）。金額は本サイトの試算例。 */
+interface Seg { label: string; value: number }
+interface Props { rows: { name: string; note?: string; segs: Seg[]; total: string; href?: string }[]; max: number; class?: string }
+const { rows, max, class: cls = '' } = Astro.props;
+const colors = ['var(--c-primary)', 'var(--c-primary-2)', '#9dbcc4'];
+const legend = rows[0].segs.map((s) => s.label);
+---
+<div class={`costbar ${cls}`}>
+  <ul class="costbar__legend" aria-hidden="true">
+    {legend.map((l, i) => <li><span style={`background:${colors[i]}`}></span>{l}</li>)}
+  </ul>
+  <ul class="costbar__rows">
+    {rows.map((r) => (
+      <li class="costbar__row">
+        <div class="costbar__head"><span class="costbar__name">{r.href ? <a href={r.href}>{r.name}</a> : r.name}{r.note && <span class="costbar__note">{r.note}</span>}</span><span class="costbar__total num">{r.total}</span></div>
+        <div class="costbar__bar" role="img" aria-label={`${r.name}の内訳: ${r.segs.map((s) => `${s.label} ${s.value.toLocaleString()}円`).join('、')}`}>
+          {r.segs.map((s, i) => s.value > 0 && <span style={`width:${((s.value / max) * 100).toFixed(1)}%;background:${colors[i]}`}></span>)}
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+<style>
+  .costbar { max-width: var(--w-prose); margin: 1rem 0 1.5rem; }
+  .costbar__legend { list-style: none; padding: 0; margin: 0 0 0.75rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; font-size: var(--fs-xs); color: var(--c-ink-2); }
+  .costbar__legend li { display: inline-flex; align-items: center; gap: 0.35em; }
+  .costbar__legend span { width: 0.9em; height: 0.9em; border-radius: 2px; display: inline-block; }
+  .costbar__rows { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
+  .costbar__row { margin: 0; }
+  .costbar__head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; margin-bottom: 0.3rem; font-size: var(--fs-sm); }
+  .costbar__name { font-weight: 700; }
+  .costbar__name a { text-decoration: none; }
+  .costbar__name a:hover { text-decoration: underline; }
+  .costbar__note { font-weight: 400; color: var(--c-ink-3); font-size: var(--fs-xs); margin-left: 0.4em; }
+  .costbar__total { font-weight: 700; color: var(--c-primary); white-space: nowrap; }
+  .costbar__bar { display: flex; height: 18px; border-radius: 3px; overflow: hidden; background: var(--c-surface-2); }
+  .costbar__bar span { display: block; height: 100%; }
+</style>

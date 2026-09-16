@@ -39,16 +39,27 @@ const faqs = [
 
   <h2 id="zentai">町田市の葬儀の流れの全体像</h2>
   <div class="answer"><p>町田市の葬儀は、<strong>逝去→搬送・安置→打ち合わせ→死亡届の提出→納棺→通夜→告別式・出棺→火葬・収骨→初七日→葬儀後の手続き</strong>という順で進みます。南多摩斎場の空き状況により、逝去から火葬までは通常3〜5日程度です。友引明けや年末年始など空きが少ない時期は1週間以上かかることがあるといわれますが、これは葬儀社の経験則であり、南多摩斎場が公式に発表している数値ではありません。火葬式（通夜・告別式を行わない形式）でも、法律上は死亡後24時間を経過しないと火葬できません。</p></div>
+  <ol class="stepper stepper--h">
+    <li><span class="stepper__t">逝去・搬送・安置</span><span class="stepper__d">1日目（逝去当日）</span></li>
+    <li><span class="stepper__t">打ち合わせ</span><span class="stepper__d">2日目</span></li>
+    <li><span class="stepper__t">死亡届・火葬許可証</span><span class="stepper__d">2日目</span></li>
+    <li><span class="stepper__t">納棺</span><span class="stepper__d">3日目</span></li>
+    <li><span class="stepper__t">通夜</span><span class="stepper__d">3日目</span></li>
+    <li><span class="stepper__t">告別式・出棺</span><span class="stepper__d">4日目</span></li>
+    <li><span class="stepper__t">火葬・収骨</span><span class="stepper__d">4日目</span></li>
+    <li><span class="stepper__t">初七日・精進落とし</span><span class="stepper__d">4日目</span></li>
+    <li><span class="stepper__t">葬儀後の手続き</span><span class="stepper__d">4日目以降</span></li>
+  </ol>
   <div class="table-wrap">
-    <table>
+    <table class="cmp">
       <caption>町田市の葬儀の標準的な日数の目安（家族葬・南多摩斎場を利用する場合）</caption>
       <thead><tr><th scope="col">経過</th><th scope="col">すること</th></tr></thead>
       <tbody>
-        <tr><th scope="row">1日目（逝去当日）</th><td>搬送、安置、枕飾りの設置</td></tr>
-        <tr><th scope="row">2日目</th><td>打ち合わせ、死亡届の提出、南多摩斎場の火葬枠の予約</td></tr>
-        <tr><th scope="row">3日目</th><td>納棺、通夜</td></tr>
-        <tr><th scope="row">4日目</th><td>告別式、出棺、火葬、収骨、初七日・精進落とし</td></tr>
-        <tr><th scope="row">4日目以降</th><td>葬祭費の申請、年金・世帯主変更などの手続き</td></tr>
+        <tr><th scope="row">1日目（逝去当日）</th><td data-label="すること">搬送、安置、枕飾りの設置</td></tr>
+        <tr><th scope="row">2日目</th><td data-label="すること">打ち合わせ、死亡届の提出、南多摩斎場の火葬枠の予約</td></tr>
+        <tr><th scope="row">3日目</th><td data-label="すること">納棺、通夜</td></tr>
+        <tr><th scope="row">4日目</th><td data-label="すること">告別式、出棺、火葬、収骨、初七日・精進落とし</td></tr>
+        <tr><th scope="row">4日目以降</th><td data-label="すること">葬祭費の申請、年金・世帯主変更などの手続き</td></tr>
       </tbody>
     </table>
   </div>
@@ -59,58 +70,141 @@ const faqs = [
   <h2 id="step">葬儀の各ステップで何をしますか？</h2>
   <div class="answer"><p>各ステップでは、<strong>搬送・安置（法律上24時間は火葬できない）、打ち合わせ、死亡届・火葬許可証、納棺、通夜、告別式・出棺、火葬・収骨、初七日・精進落とし</strong>の順に進みます。町田市固有の窓口や南多摩斎場の運用がある部分は、以下で個別に説明します。</p></div>
 
-  <h3>逝去・搬送・安置</h3>
-  <p>病院や施設で亡くなった場合、担当医が死亡診断書を発行したあと、病院の霊安室は長時間の利用ができないため、数時間以内に葬儀社へ搬送を依頼して自宅または安置施設へ搬送します。自宅で亡くなった場合、かかりつけ医がいて持病が死因と判断できれば死亡診断書が発行されますが、死因が不明・不自然なときは警察への連絡が必要になり、検視・検案のため搬送までに時間がかかることがあります。墓地埋葬法第3条により、死亡後24時間を経過しなければ火葬できないため、いずれの場合も必ず一定期間の安置が必要です。安置中はドライアイスで遺体を保全し、枕元に線香・ろうそくなどの枕飾りを置きます。</p>
-  <Source items={[{ label: '墓地、埋葬等に関する法律 第3条', href: 'https://hourei.net/law/323AC0000000048' }]} />
+  <section class="step-card" id="step1">
+    <div class="step-card__head"><span class="step-card__num">STEP<strong>1</strong></span><h3 class="step-card__title">逝去・搬送・安置</h3><span class="step-card__when">1日目</span></div>
+    <div class="step-card__body">
+      <p>病院や施設で亡くなった場合、担当医が死亡診断書を発行したあと、病院の霊安室は長時間の利用ができないため、数時間以内に葬儀社へ搬送を依頼して自宅または安置施設へ搬送します。自宅で亡くなった場合、かかりつけ医がいて持病が死因と判断できれば死亡診断書が発行されますが、死因が不明・不自然なときは警察への連絡が必要になり、検視・検案のため搬送までに時間がかかることがあります。墓地埋葬法第3条により、死亡後24時間を経過しなければ火葬できないため、いずれの場合も必ず一定期間の安置が必要です。安置中はドライアイスで遺体を保全し、枕元に線香・ろうそくなどの枕飾りを置きます。</p>
+      <ul class="step-card__facets">
+        <li><b>今すること</b><span>葬儀社へ連絡し搬送を依頼、自宅または安置施設へ搬送、ドライアイスで安置、枕飾りの設置</span></li>
+        <li><b>誰が</b><span>担当医（死亡診断書）、警察（死因不明・不自然な場合の検視・検案）、葬儀社（搬送）</span></li>
+        <li><b>決めること</b><span>安置場所（自宅または安置施設）</span></li>
+        <li class="is-warn"><b>注意</b><span>法律上、死亡後24時間を経過しないと火葬できないため必ず一定期間の安置が必要</span></li>
+        <li class="is-help"><b>困ったら</b><span>深夜・早朝でも搬送のご相談を電話で受け付けています。<a href="/contact/">お問い合わせ</a>から相談も可能です</span></li>
+      </ul>
+      <Source items={[{ label: '墓地、埋葬等に関する法律 第3条', href: 'https://hourei.net/law/323AC0000000048' }]} />
+    </div>
+  </section>
 
-  <h3>打ち合わせで決めること</h3>
-  <p>搬送・安置の翌日以降、葬儀社との打ち合わせで式場・日程・祭壇・料理・返礼品などを決めます。あわせて参列者の範囲、訃報を伝える相手、遺影に使う写真も家族で決めておきます。南多摩斎場を利用する場合はこの段階で火葬枠を予約します。予約は葬儀社であれば受付システムで24時間、個人であれば電話（8:30〜22:00）で受け付けています。式場を申し込む場合は通夜日の前々日まで、火葬室のみの申込は火葬日の前日までが受付システム上の期限です。菩提寺がある場合は、この打ち合わせと並行して連絡し、通夜・告別式の日程と戒名について相談します。</p>
-  <Source items={[{ label: '南多摩斎場 申込方法', href: 'https://www.minamitama-saijyo.jp/guide/application.php' }]} />
+  <section class="step-card" id="step2">
+    <div class="step-card__head"><span class="step-card__num">STEP<strong>2</strong></span><h3 class="step-card__title">打ち合わせで決めること</h3><span class="step-card__when">2日目</span></div>
+    <div class="step-card__body">
+      <p>搬送・安置の翌日以降、葬儀社との打ち合わせで式場・日程・祭壇・料理・返礼品などを決めます。あわせて参列者の範囲、訃報を伝える相手、遺影に使う写真も家族で決めておきます。南多摩斎場を利用する場合はこの段階で火葬枠を予約します。予約は葬儀社であれば受付システムで24時間、個人であれば電話（8:30〜22:00）で受け付けています。式場を申し込む場合は通夜日の前々日まで、火葬室のみの申込は火葬日の前日までが受付システム上の期限です。菩提寺がある場合は、この打ち合わせと並行して連絡し、通夜・告別式の日程と戒名について相談します。</p>
+      <ul class="step-card__facets">
+        <li><b>今すること</b><span>式場・日程・祭壇・料理・返礼品を決定、南多摩斎場の火葬枠を予約、菩提寺への連絡</span></li>
+        <li><b>誰が</b><span>ご家族（打ち合わせ・決定）、葬儀社（火葬枠の予約手続き）、菩提寺（日程・戒名の相談）</span></li>
+        <li><b>決めること</b><span>式場・日程・祭壇・料理・返礼品、参列者の範囲、訃報を伝える相手、遺影の写真</span></li>
+        <li class="is-warn"><b>注意</b><span>南多摩斎場の予約期限は式場が通夜日の前々日まで、火葬室のみは火葬日の前日まで</span></li>
+        <li class="is-help"><b>困ったら</b><span>日程の組み方は電話で相談できます。<a href="/contact/">お問い合わせ</a>も承ります</span></li>
+      </ul>
+      <Source items={[{ label: '南多摩斎場 申込方法', href: 'https://www.minamitama-saijyo.jp/guide/application.php' }]} />
+    </div>
+  </section>
 
-  <h3>死亡届と火葬許可証（町田市の窓口・時間）</h3>
-  <p>死亡届は<strong>死亡の事実を知った日を含めて7日以内</strong>に、死亡地・本籍地・届出人の所在地いずれかの市区町村に提出します。町田市では市庁舎1階の<strong>市民課戸籍係（104窓口）</strong>のほか、忠生・鶴川・南・なるせ駅前・堺・小山の各市民センターでも受け付けています。受付時間は平日と毎月第2・第4日曜日の午前8時30分から午後5時までで、それ以外の夜間・休日は市役所1階の休日・夜間窓口で預かる扱いになります。死亡届の提出に伴って火葬許可証が交付され、受付時間内であれば即日交付ですが、時間外の預かり扱いの場合は交付が翌開庁日以降になることがあります。実際の提出は当サイトが代行します。</p>
-  <Source items={[{ label: '町田市 死亡届', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/todokede/todokede03.html' }]} />
+  <section class="step-card" id="step3">
+    <div class="step-card__head"><span class="step-card__num">STEP<strong>3</strong></span><h3 class="step-card__title">死亡届と火葬許可証（町田市の窓口・時間）</h3><span class="step-card__when">2日目</span></div>
+    <div class="step-card__body">
+      <p>死亡届は<strong>死亡の事実を知った日を含めて7日以内</strong>に、死亡地・本籍地・届出人の所在地いずれかの市区町村に提出します。町田市では市庁舎1階の<strong>市民課戸籍係（104窓口）</strong>のほか、忠生・鶴川・南・なるせ駅前・堺・小山の各市民センターでも受け付けています。受付時間は平日と毎月第2・第4日曜日の午前8時30分から午後5時までで、それ以外の夜間・休日は市役所1階の休日・夜間窓口で預かる扱いになります。死亡届の提出に伴って火葬許可証が交付され、受付時間内であれば即日交付ですが、時間外の預かり扱いの場合は交付が翌開庁日以降になることがあります。実際の提出は当サイトが代行します。</p>
+      <ul class="step-card__facets">
+        <li><b>今すること</b><span>死亡届の提出、火葬許可証の受け取り</span></li>
+        <li><b>誰が</b><span>届出人（同居の親族など）、町田市 市民課戸籍係（104窓口）・各市民センター。実際の提出は葬儀社が代行</span></li>
+        <li><b>決めること</b><span>提出窓口（死亡地・本籍地・届出人の所在地のいずれか）</span></li>
+        <li class="is-warn"><b>注意</b><span>期限は死亡の事実を知った日を含めて7日以内。受付時間外は預かり扱いとなり交付が翌開庁日以降になることがある</span></li>
+        <li class="is-help"><b>困ったら</b><span>手続きは電話で相談・代行のご依頼ができます</span></li>
+      </ul>
+      <Source items={[{ label: '町田市 死亡届', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/todokede/todokede03.html' }]} />
+    </div>
+  </section>
   <Cta position="middle" variant="inline" telText="搬送・手続きを電話で相談" contactText="メールで相談" />
 
-  <h3>納棺</h3>
-  <p>通夜の前後に、遺体を清めて仏衣を着せ、棺に納める納棺を行います。家族が立ち会うことができ、湯灌（ゆかん：遺体を入浴させて清める儀式）を希望する場合は別途手配します。この段階で棺に納める副葬品（故人の愛用品など、燃えにくい金属・ガラス製品は不可）を家族で用意します。</p>
+  <section class="step-card" id="step4">
+    <div class="step-card__head"><span class="step-card__num">STEP<strong>4</strong></span><h3 class="step-card__title">納棺</h3><span class="step-card__when">3日目</span></div>
+    <div class="step-card__body">
+      <p>通夜の前後に、遺体を清めて仏衣を着せ、棺に納める納棺を行います。家族が立ち会うことができ、湯灌（ゆかん：遺体を入浴させて清める儀式）を希望する場合は別途手配します。この段階で棺に納める副葬品（故人の愛用品など、燃えにくい金属・ガラス製品は不可）を家族で用意します。</p>
+      <ul class="step-card__facets">
+        <li><b>今すること</b><span>遺体を清めて仏衣を着せ棺に納める、副葬品の用意</span></li>
+        <li><b>誰が</b><span>葬儀社（納棺の進行）、ご家族（立ち会い・副葬品の用意）</span></li>
+        <li><b>決めること</b><span>湯灌を希望するか、棺に納める副葬品</span></li>
+        <li class="is-warn"><b>注意</b><span>燃えにくい金属・ガラス製品は副葬品にできない</span></li>
+        <li class="is-help"><b>困ったら</b><span>湯灌の手配などは電話でご相談ください</span></li>
+      </ul>
+    </div>
+  </section>
 
-  <h3>通夜</h3>
-  <p>通夜は葬儀・告別式の前夜（または前日）に、近親者や弔問客が故人を偲んで過ごす儀式です。夕方から行い、所要時間は1時間程度が一般的で、終了後に通夜振る舞い（軽い飲食）を行うことが多くあります。南多摩斎場の式場を利用する場合、通夜後に式場での宿泊はできないため、付き添いを希望する家族は自宅や近隣の宿泊施設に戻ることになります。一日葬・火葬式では通夜を行いません。</p>
+  <section class="step-card" id="step5">
+    <div class="step-card__head"><span class="step-card__num">STEP<strong>5</strong></span><h3 class="step-card__title">通夜</h3><span class="step-card__when">3日目</span></div>
+    <div class="step-card__body">
+      <p>通夜は葬儀・告別式の前夜（または前日）に、近親者や弔問客が故人を偲んで過ごす儀式です。夕方から行い、所要時間は1時間程度が一般的で、終了後に通夜振る舞い（軽い飲食）を行うことが多くあります。南多摩斎場の式場を利用する場合、通夜後に式場での宿泊はできないため、付き添いを希望する家族は自宅や近隣の宿泊施設に戻ることになります。一日葬・火葬式では通夜を行いません。</p>
+      <ul class="step-card__facets">
+        <li><b>今すること</b><span>近親者・弔問客を迎え、通夜振る舞いを行う</span></li>
+        <li><b>誰が</b><span>ご家族・近親者・弔問客</span></li>
+        <li><b>決めること</b><span>通夜振る舞いの手配</span></li>
+        <li class="is-warn"><b>注意</b><span>南多摩斎場の式場では通夜後の宿泊はできない。一日葬・火葬式では通夜を行わない</span></li>
+        <li class="is-help"><b>困ったら</b><span>宿泊先の手配などは<a href="/contact/">お問い合わせ</a>からご相談ください</span></li>
+      </ul>
+    </div>
+  </section>
 
-  <h3>告別式・出棺</h3>
-  <p>告別式は故人に最後の別れを告げる儀式で、通夜の翌日、逝去から2〜4日後に行うのが目安です。所要時間は1時間程度で、終了後に棺を霊柩車に乗せて火葬場へ向かう出棺を行います。南多摩斎場は町田市の北西端（上小山田町）にあり、式場と火葬場が同じ敷地にあるため、出棺してから火葬場に到着するまでの移動時間はかかりません。</p>
+  <section class="step-card" id="step6">
+    <div class="step-card__head"><span class="step-card__num">STEP<strong>6</strong></span><h3 class="step-card__title">告別式・出棺</h3><span class="step-card__when">4日目</span></div>
+    <div class="step-card__body">
+      <p>告別式は故人に最後の別れを告げる儀式で、通夜の翌日、逝去から2〜4日後に行うのが目安です。所要時間は1時間程度で、終了後に棺を霊柩車に乗せて火葬場へ向かう出棺を行います。南多摩斎場は町田市の北西端（上小山田町）にあり、式場と火葬場が同じ敷地にあるため、出棺してから火葬場に到着するまでの移動時間はかかりません。</p>
+      <ul class="step-card__facets">
+        <li><b>今すること</b><span>告別式、出棺（棺を霊柩車に乗せて火葬場へ）</span></li>
+        <li><b>誰が</b><span>ご家族・参列者、葬儀社（進行・霊柩車の手配）</span></li>
+        <li class="is-help"><b>困ったら</b><span>南多摩斎場は式場と火葬場が同一敷地のため移動時間はかかりません。日程のご相談は電話で承ります</span></li>
+      </ul>
+    </div>
+  </section>
 
-  <h3>火葬・収骨（南多摩斎場の火葬時間枠）</h3>
-  <p>火葬場に到着後、火葬炉前で最後のお別れをしてから火葬します。南多摩斎場では組織市（町田市・八王子市・多摩市・稲城市・日野市）住民専用の時間枠が9:30〜13:30に多く設けられており、組織市住民以外は9:00・14:00・14:30の枠に限られます（前日0時以降に空きがあれば全時間帯で受付可）。火葬受付は指定時間の前後15分、炉前でのお別れ・花入れは5分以内という運用です。火葬所要時間は約1時間20分で、終了後に遺族が箸で遺骨を骨壺に納める収骨（骨上げ、約15分）を行います。</p>
-  <div class="table-wrap">
-    <table>
-      <caption>南多摩斎場の火葬時間枠（公式マニュアルより抜粋。確認日 2026-09-15）</caption>
-      <thead><tr><th scope="col">時間枠</th><th scope="col">受入件数</th><th scope="col">対象</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">9:00</th><td class="num">3件</td><td>死胎・身体の一部・改葬、組織市住民、組織市住民以外</td></tr>
-        <tr><th scope="row">9:30〜13:30（30分〜1時間おき）</th><td class="num">各2〜3件</td><td>組織市住民専用（11:00は式場利用者優先）</td></tr>
-        <tr><th scope="row">14:00・14:30</th><td class="num">3件・2件</td><td>組織市住民、組織市住民以外</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <Source items={[{ label: '南多摩斎場 火葬申込マニュアル', href: 'https://www.minamitama-saijyo.jp/funeral/pdf/manual_cremate.pdf' }, { label: '南多摩斎場 館内設備（火葬所要時間）', href: 'https://www.minamitama-saijyo.jp/guide/facility.php' }]} />
+  <section class="step-card" id="step7">
+    <div class="step-card__head"><span class="step-card__num">STEP<strong>7</strong></span><h3 class="step-card__title">火葬・収骨（南多摩斎場の火葬時間枠）</h3><span class="step-card__when">4日目</span></div>
+    <div class="step-card__body">
+      <p>火葬場に到着後、火葬炉前で最後のお別れをしてから火葬します。南多摩斎場では組織市（町田市・八王子市・多摩市・稲城市・日野市）住民専用の時間枠が9:30〜13:30に多く設けられており、組織市住民以外は9:00・14:00・14:30の枠に限られます（前日0時以降に空きがあれば全時間帯で受付可）。火葬受付は指定時間の前後15分、炉前でのお別れ・花入れは5分以内という運用です。火葬所要時間は約1時間20分で、終了後に遺族が箸で遺骨を骨壺に納める収骨（骨上げ、約15分）を行います。</p>
+      <ul class="step-card__facets">
+        <li><b>今すること</b><span>火葬炉前でのお別れ・花入れ（5分以内）、火葬（約1時間20分）、収骨（骨上げ、約15分）</span></li>
+        <li><b>誰が</b><span>ご遺族（収骨）、南多摩斎場（火葬の実施）</span></li>
+        <li class="is-warn"><b>注意</b><span>組織市住民以外は9:00・14:00・14:30の枠に限られる（前日0時以降に空きがあれば全時間帯で受付可）</span></li>
+        <li class="is-help"><b>困ったら</b><span>火葬枠の空き状況は電話でご相談ください</span></li>
+      </ul>
+      <div class="table-wrap">
+        <table class="cmp">
+          <caption>南多摩斎場の火葬時間枠（公式マニュアルより抜粋。確認日 2026-09-15）</caption>
+          <thead><tr><th scope="col">時間枠</th><th scope="col">受入件数</th><th scope="col">対象</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">9:00</th><td class="num" data-label="受入件数">3件</td><td data-label="対象">死胎・身体の一部・改葬、組織市住民、組織市住民以外</td></tr>
+            <tr><th scope="row">9:30〜13:30（30分〜1時間おき）</th><td class="num" data-label="受入件数">各2〜3件</td><td data-label="対象">組織市住民専用（11:00は式場利用者優先）</td></tr>
+            <tr><th scope="row">14:00・14:30</th><td class="num" data-label="受入件数">3件・2件</td><td data-label="対象">組織市住民、組織市住民以外</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <Source items={[{ label: '南多摩斎場 火葬申込マニュアル', href: 'https://www.minamitama-saijyo.jp/funeral/pdf/manual_cremate.pdf' }, { label: '南多摩斎場 館内設備（火葬所要時間）', href: 'https://www.minamitama-saijyo.jp/guide/facility.php' }]} />
+    </div>
+  </section>
   <NextLink href="/halls/crematorium/" label="火葬場の料金" title="町田市の火葬場（南多摩斎場の使用料・混雑時の代替）" />
 
-  <h3>初七日・精進落とし</h3>
-  <p>初七日は本来は死後7日目に行う法要ですが、現在は葬儀・火葬当日にまとめて行う「繰り上げ初七日」が一般的です。初七日法要のあとに精進落とし（会食）を行い、参列者への挨拶をもって当日の儀式は終了します。火葬済みの証明が押された火葬許可証は、そのまま埋葬許可証として納骨の際に必要になるため、大切に保管しておきます。</p>
+  <section class="step-card" id="step8">
+    <div class="step-card__head"><span class="step-card__num">STEP<strong>8</strong></span><h3 class="step-card__title">初七日・精進落とし</h3><span class="step-card__when">4日目</span></div>
+    <div class="step-card__body">
+      <p>初七日は本来は死後7日目に行う法要ですが、現在は葬儀・火葬当日にまとめて行う「繰り上げ初七日」が一般的です。初七日法要のあとに精進落とし（会食）を行い、参列者への挨拶をもって当日の儀式は終了します。火葬済みの証明が押された火葬許可証は、そのまま埋葬許可証として納骨の際に必要になるため、大切に保管しておきます。</p>
+      <ul class="step-card__facets">
+        <li><b>今すること</b><span>繰り上げ初七日法要、精進落とし（会食）、参列者への挨拶</span></li>
+        <li><b>誰が</b><span>喪主・ご家族・参列者</span></li>
+        <li class="is-warn"><b>注意</b><span>火葬済みの証明が押された火葬許可証は埋葬許可証として納骨の際に必要になるため大切に保管する</span></li>
+      </ul>
+    </div>
+  </section>
 
   <h2 id="keishiki">形式（家族葬・一日葬・火葬式）で流れはどう変わりますか？</h2>
   <div class="answer"><p>家族葬は通夜と告別式を2日間で行い、<strong>一日葬は通夜を省いて告別式と火葬を1日</strong>、<strong>火葬式は通夜・告別式を行わず火葬のみ</strong>を行います。式の回数が減るほど、逝去から火葬までにかかる実質的な日数（打ち合わせ・死亡届・南多摩斎場の予約待ちを含む）は短くなりやすくなります。</p></div>
   <div class="table-wrap table-wrap--wide">
-    <table>
+    <table class="cmp">
       <caption>家族葬・一日葬・火葬式の流れの違い（プラン料金は税込・本サイトの設定価格）</caption>
       <thead><tr><th scope="col"></th><th scope="col">家族葬</th><th scope="col">一日葬</th><th scope="col">火葬式</th></tr></thead>
       <tbody>
-        <tr><th scope="row">通夜／告別式</th><td>あり／あり</td><td>なし／あり</td><td>なし／なし</td></tr>
-        <tr><th scope="row">儀式の日数</th><td>2日</td><td>1日</td><td>火葬当日のみ</td></tr>
-        <tr><th scope="row">プラン料金</th><td class="num">528,000円</td><td class="num">396,000円</td><td class="num">198,000円</td></tr>
-        <tr><th scope="row">死亡届・火葬許可証</th><td colspan="3">形式にかかわらず必要（死亡から7日以内に提出）</td></tr>
+        <tr><th scope="row">通夜／告別式</th><td data-label="家族葬">あり／あり</td><td data-label="一日葬">なし／あり</td><td data-label="火葬式">なし／なし</td></tr>
+        <tr><th scope="row">儀式の日数</th><td data-label="家族葬">2日</td><td data-label="一日葬">1日</td><td data-label="火葬式">火葬当日のみ</td></tr>
+        <tr><th scope="row">プラン料金</th><td class="num" data-label="家族葬">528,000円</td><td class="num" data-label="一日葬">396,000円</td><td class="num" data-label="火葬式">198,000円</td></tr>
+        <tr><th scope="row">死亡届・火葬許可証</th><td colspan="3" data-label="共通">形式にかかわらず必要（死亡から7日以内に提出）</td></tr>
       </tbody>
     </table>
   </div>
@@ -120,17 +214,17 @@ const faqs = [
   <h2 id="tetsuzuki">葬儀後の手続きにはどのような期限がありますか？</h2>
   <div class="answer"><p>葬儀後の手続きで<strong>期限が明確なのは、死亡届（7日以内）と国民健康保険・後期高齢者医療の葬祭費申請（葬祭を行った日の翌日から2年）</strong>です。年金・世帯主変更・介護保険などの手続きも必要になりますが、具体的な提出書類・期限は町田市の担当窓口で確認するのが確実です。</p></div>
   <div class="table-wrap table-wrap--wide">
-    <table>
+    <table class="cmp">
       <caption>町田市の葬儀後の主な手続きと期限（確認日 2026-09-15）</caption>
       <thead><tr><th scope="col">手続き</th><th scope="col">期限</th><th scope="col">窓口</th></tr></thead>
       <tbody>
-        <tr><th scope="row">死亡届</th><td>死亡の事実を知った日を含めて7日以内</td><td>市民課戸籍係（104窓口）・各市民センター</td></tr>
-        <tr><th scope="row">国民健康保険の葬祭費（50,000円）</th><td>葬祭を行った日の翌日から2年</td><td>保険年金課 保険給付係</td></tr>
-        <tr><th scope="row">後期高齢者医療の葬祭費（50,000円）</th><td>葬祭を行った日の翌日から2年</td><td>保険年金課 高齢者医療係</td></tr>
-        <tr><th scope="row">国民健康保険の資格喪失</th><td>町田市ホームページで案内あり（期限は窓口で確認）</td><td>保険年金課</td></tr>
-        <tr><th scope="row">年金の手続き（未支給年金請求等）</th><td>町田市ホームページで案内あり（期限は窓口で確認）</td><td>保険年金課</td></tr>
-        <tr><th scope="row">世帯主変更届</th><td>町田市ホームページで案内あり（期限は窓口で確認）</td><td>市民課</td></tr>
-        <tr><th scope="row">介護保険の手続き</th><td>町田市ホームページで言及あり（詳細は窓口で確認）</td><td>担当課（詳細は窓口で確認）</td></tr>
+        <tr><th scope="row">死亡届</th><td data-label="期限">死亡の事実を知った日を含めて7日以内</td><td data-label="窓口">市民課戸籍係（104窓口）・各市民センター</td></tr>
+        <tr><th scope="row">国民健康保険の葬祭費（50,000円）</th><td data-label="期限">葬祭を行った日の翌日から2年</td><td data-label="窓口">保険年金課 保険給付係</td></tr>
+        <tr><th scope="row">後期高齢者医療の葬祭費（50,000円）</th><td data-label="期限">葬祭を行った日の翌日から2年</td><td data-label="窓口">保険年金課 高齢者医療係</td></tr>
+        <tr><th scope="row">国民健康保険の資格喪失</th><td data-label="期限">町田市ホームページで案内あり（期限は窓口で確認）</td><td data-label="窓口">保険年金課</td></tr>
+        <tr><th scope="row">年金の手続き（未支給年金請求等）</th><td data-label="期限">町田市ホームページで案内あり（期限は窓口で確認）</td><td data-label="窓口">保険年金課</td></tr>
+        <tr><th scope="row">世帯主変更届</th><td data-label="期限">町田市ホームページで案内あり（期限は窓口で確認）</td><td data-label="窓口">市民課</td></tr>
+        <tr><th scope="row">介護保険の手続き</th><td data-label="期限">町田市ホームページで言及あり（詳細は窓口で確認）</td><td data-label="窓口">担当課（詳細は窓口で確認）</td></tr>
       </tbody>
     </table>
   </div>

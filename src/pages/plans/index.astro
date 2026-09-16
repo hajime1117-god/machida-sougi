@@ -4,15 +4,17 @@ import NextLink from '../../components/NextLink.astro';
 import Source from '../../components/Source.astro';
 import Cta from '../../components/Cta.astro';
 import Icon from '../../components/Icon.astro';
+import PlanPictogram from '../../components/PlanPictogram.astro';
 
 const title = '葬儀プラン比較｜家族葬・一日葬・火葬式の違いと選び方';
 const h1 = '町田市の葬儀プラン｜家族葬・一日葬・火葬式の違いと選び方';
 const description = '町田市で選ばれている家族葬・一日葬・火葬式（直葬）の3つの形式を、日程・参列人数・費用・向いている方で比較。プラン料金に含まれるもの・含まれないものと、形式を決めるときの判断基準を解説します。';
 const toc = [
-  { id: 'hikaku', label: '3つの形式の比較表' },
+  { id: 'ichiran', label: '3つの形式をひと目で比べる' },
+  { id: 'hikaku', label: '比較表（日数・人数・費用・注意点）' },
+  { id: 'erabikata', label: '自分たちに合う形式の選び方' },
   { id: 'plans', label: '各プランの内容と料金' },
   { id: 'fukumu', label: 'プラン料金に含まれるもの・含まれないもの' },
-  { id: 'erabikata', label: '形式の決め方（4つの判断基準）' },
   { id: 'ippanso', label: '一般葬を希望する場合' },
 ];
 const related = [
@@ -21,81 +23,75 @@ const related = [
   { href: '/column/ichinichiso-kazokuso/', label: '一日葬と家族葬、どちらを選ぶか', note: '迷ったときの考え方' },
   { href: '/first-steps/', label: '亡くなってから最初にすること', note: '搬送・安置・死亡届' },
 ];
+const plans = [
+  { key: 'kazokuso' as const, slug: 'kazokuso', name: '家族葬', price: '528,000', days: '2日', people: '10〜30名', hall: '必要', total: '約75〜95万円（20名）', what: '通夜と告別式を2日間で行う、家族・親族中心の葬儀', fit: 'ゆっくりお別れしたい。親族が集まりやすい', caution: '参列を断る方への連絡と後日の弔問対応' },
+  { key: 'ichinichiso' as const, slug: 'ichinichiso', name: '一日葬', price: '396,000', days: '1日', people: '5〜20名', hall: '必要', total: '約50〜65万円（10名）', what: '通夜を省き、告別式と火葬を1日で行う葬儀', fit: '高齢の参列者が多い。遠方の親族の宿泊を避けたい', caution: '菩提寺が通夜の省略を認めるか事前確認' },
+  { key: 'kasoshiki' as const, slug: 'kasoshiki', name: '火葬式・直葬', price: '198,000', days: '当日のみ', people: '1〜10名', hall: '不要', total: '約20〜25万円', what: '通夜・告別式を行わず、安置後に火葬場でお別れをして火葬', fit: '費用を抑えたい。参列者がごく少ない。宗教儀式を望まない', caution: '菩提寺がある場合は納骨を断られることがある。お別れの時間が短い' },
+];
 ---
 <ArticleLayout {title} {h1} {description} {toc} {related} pageType="plan"
-  lead="町田市で行われる葬儀の多くは、家族葬・一日葬・火葬式（直葬）のいずれかです。この3つは「式を何日行うか」「式場を使うか」で分かれ、それによって費用と参列者の負担が変わります。"
+  lead="町田市で行われる葬儀の多くは、家族葬・一日葬・火葬式（直葬）のいずれかです。3つの違いは「通夜を行うか」「告別式を行うか」だけで、それによって日数・費用・参列者の負担が変わります。まず図と表で違いをつかみ、次に「自分たちに合う形式の選び方」で判断してください。"
   crumbs={[{ href: '/plans/', label: '葬儀プラン' }]}
   bottomCtaPosition="plan" bottomCtaTitle="形式を決めかねている方へ" bottomCtaLead="ご家族の状況（参列予定の人数、菩提寺の有無、ご予算、日程の希望）を伺えば、向いている形式と総額の目安をお伝えできます。">
 
-  <h2 id="hikaku">家族葬・一日葬・火葬式は何が違う？</h2>
+  <h2 id="ichiran">家族葬・一日葬・火葬式は何が違う？</h2>
   <div class="answer"><p>違いは<strong>「通夜を行うか」「告別式を行うか」</strong>の2点です。家族葬は通夜と告別式を2日間で行い、一日葬は通夜を省いて告別式と火葬を1日で行い、火葬式（直葬）は式を行わず火葬のみを行います。式の回数が減るほど、式場使用料・飲食費・宗教者へのお礼が減り、総額が下がります。</p></div>
+  <ul class="plan-cards">
+    {plans.map((p) => (
+      <li class="plan-card" data-track-view="plan" data-item={p.name} data-region="plan">
+        <PlanPictogram plan={p.key} />
+        <h3 class="plan-card__name"><a href={`/plans/${p.slug}/`}>{p.name}</a></h3>
+        <p class="plan-card__what">{p.what}</p>
+        <p class="plan-card__price"><span class="num">{p.price}</span><span class="plan-card__unit">円（税込）〜</span></p>
+        <dl class="plan-card__spec">
+          <div><dt>日数</dt><dd>{p.days}</dd></div>
+          <div><dt>参列</dt><dd>{p.people}</dd></div>
+          <div><dt>式場</dt><dd>{p.hall}</dd></div>
+        </dl>
+        <p class="plan-card__fit"><Icon name="check" /><span>{p.fit}</span></p>
+        <a href={`/plans/${p.slug}/`} class="plan-card__link">{p.name}の詳細を見る<Icon name="chevron" /></a>
+      </li>
+    ))}
+  </ul>
+  <p class="note">プラン料金は本サイト（検証用）の設定価格です。</p>
+
+  <h2 id="hikaku">3つの形式の比較表</h2>
+  <div class="answer"><p>日数・参列人数・式場の要否・総額の目安・注意点を並べると、<strong>家族葬は「時間」、一日葬は「参列者の負担」、火葬式は「費用」</strong>を優先する形式だと分かります。総額は南多摩斎場を町田市民が利用し、飲食・返礼品を含めた一例です（宗教者へのお礼は別）。</p></div>
   <div class="table-wrap table-wrap--wide">
-    <table>
+    <table class="cmp">
       <caption>3つの形式の比較（町田市・南多摩斎場を利用する場合の目安）</caption>
-      <thead><tr><th scope="col">項目</th><th scope="col">家族葬</th><th scope="col">一日葬</th><th scope="col">火葬式・直葬</th></tr></thead>
+      <thead><tr><th scope="col">形式</th><th scope="col">通夜／告別式</th><th scope="col">日数</th><th scope="col">参列人数</th><th scope="col">式場</th><th scope="col">プラン料金（税込）</th><th scope="col">総額の目安（お布施別）</th><th scope="col">向いている方</th><th scope="col">注意点</th></tr></thead>
       <tbody>
-        <tr><th scope="row">通夜</th><td>行う</td><td>行わない</td><td>行わない</td></tr>
-        <tr><th scope="row">告別式</th><td>行う</td><td>行う</td><td>行わない（火葬炉の前で短いお別れ）</td></tr>
-        <tr><th scope="row">日数</th><td>2日（安置期間を除く）</td><td>1日</td><td>火葬当日のみ</td></tr>
-        <tr><th scope="row">参列人数の目安</th><td>10〜30名</td><td>5〜20名</td><td>1〜10名</td></tr>
-        <tr><th scope="row">式場</th><td>必要</td><td>必要</td><td>不要</td></tr>
-        <tr><th scope="row">プラン料金（税込）</th><td class="num">528,000円〜</td><td class="num">396,000円〜</td><td class="num">198,000円〜</td></tr>
-        <tr><th scope="row">総額の目安（お布施別）</th><td class="num">約75〜95万円（20名）</td><td class="num">約50〜65万円（10名）</td><td class="num">約25万円</td></tr>
-        <tr><th scope="row">向いている方</th><td>ゆっくりお別れしたい。親族が集まりやすい</td><td>高齢の参列者が多い。遠方の親族の宿泊を避けたい</td><td>費用を抑えたい。参列者がごく少ない。宗教儀式を望まない</td></tr>
-        <tr><th scope="row">注意点</th><td>参列を断る方への連絡と後日の弔問対応</td><td>菩提寺が通夜の省略を認めるか事前確認</td><td>菩提寺がある場合は納骨を断られることがある。後日「お別れの機会がなかった」と言われやすい</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="note">プラン料金は本サイト（検証用）の設定価格です。総額の目安は、南多摩斎場を町田市民が利用し（火葬料無料）、式場使用料・飲食・返礼品を含めた一例です。</p>
-
-  <h2 id="plans">各プランの内容と料金</h2>
-  <div class="plan-list">
-    <section class="plan-row" data-track-view="plan" data-item="家族葬" data-region="plan">
-      <h3>家族葬 <span class="plan-row__price num">528,000円（税込）〜</span></h3>
-      <p>通夜と告別式を2日間で行う、家族・親族中心の葬儀です。一般葬との違いは規模だけで、儀式の内容は同じです。町田市では、南多摩斎場の式場、または町田駅・鶴川・成瀬などにある民営の家族葬ホールで行います。</p>
-      <NextLink href="/plans/kazokuso/" label="家族葬の詳細" title="町田市の家族葬｜費用・式場・流れ" />
-    </section>
-    <section class="plan-row" data-track-view="plan" data-item="一日葬" data-region="plan">
-      <h3>一日葬 <span class="plan-row__price num">396,000円（税込）〜</span></h3>
-      <p>通夜を行わず、告別式と火葬を1日で行います。式場の使用が1日で済むため、家族葬より式場使用料と飲食費が抑えられます。参列者が高齢の場合や、遠方から来る親族の宿泊を避けたい場合に選ばれます。</p>
-      <NextLink href="/plans/ichinichiso/" label="一日葬の詳細" title="町田市の一日葬｜費用・流れ・家族葬との違い" />
-    </section>
-    <section class="plan-row" data-track-view="plan" data-item="火葬式・直葬" data-region="plan">
-      <h3>火葬式・直葬 <span class="plan-row__price num">198,000円（税込）〜</span></h3>
-      <p>通夜・告別式を行わず、安置後に火葬場へ移動し、火葬炉の前で短いお別れをして火葬します。式場を使わないため最も費用を抑えられますが、法律上、亡くなってから24時間は火葬できないため、最低1日は安置が必要です。</p>
-      <NextLink href="/plans/kasoshiki/" label="火葬式・直葬の詳細" title="町田市の火葬式・直葬｜費用・流れ・注意点" />
-    </section>
-  </div>
-  <Source items={[{ label: '墓地、埋葬等に関する法律 第3条（死後24時間以内の火葬の禁止）', href: 'https://laws.e-gov.go.jp/law/323AC0000000048' }]} />
-
-  <h2 id="fukumu">プラン料金に含まれるもの・含まれないものは？</h2>
-  <div class="answer"><p>プラン料金には「葬儀を行うために必ず必要なもの」（搬送・安置・棺・骨壺・火葬場の手続き・当日の進行）が含まれ、<strong>式場使用料・火葬料・飲食・返礼品・宗教者へのお礼</strong>は含まれません。これらは式場・人数・宗派によって金額が変わるため、見積もりで個別に提示します。</p></div>
-  <div class="table-wrap table-wrap--wide">
-    <table>
-      <caption>プラン料金に含まれるもの・含まれないもの（3プラン共通）</caption>
-      <thead><tr><th scope="col">区分</th><th scope="col">項目</th><th scope="col">備考</th></tr></thead>
-      <tbody>
-        <tr><th scope="row" rowspan="7">含まれる</th><td>寝台車での搬送（町田市内、病院・施設からご自宅または安置施設へ）</td><td>市外は距離に応じて加算</td></tr>
-        <tr><td>安置（2日分）とドライアイス（2日分）</td><td>3日目以降は1日ごとに加算</td></tr>
-        <tr><td>棺・仏衣・骨壺・骨箱</td><td>棺のグレード変更は差額</td></tr>
-        <tr><td>枕飾り（線香・ろうそくなどの簡易な祭壇）</td><td>火葬式は簡易セット</td></tr>
-        <tr><td>死亡届・火葬許可証の手続き代行</td><td>町田市役所または市民センターへ</td></tr>
-        <tr><td>火葬場への霊柩車、当日の進行・スタッフ</td><td>家族葬・一日葬は式場設営・祭壇を含む</td></tr>
-        <tr><td>収骨容器・お別れ用の花（家族葬・一日葬）</td><td></td></tr>
-        <tr><th scope="row" rowspan="6">含まれない</th><td>式場使用料</td><td>南多摩斎場 第二・第三式場 50,000円、第一式場 140,000円（組織市住民）。民営式場は施設により異なる</td></tr>
-        <tr><td>火葬料・待合室使用料</td><td>南多摩斎場は町田市民無料（市外 80,000円）。待合室は別途</td></tr>
-        <tr><td>通夜振る舞い・精進落としなどの飲食</td><td>1人あたり3,000〜6,000円程度が目安</td></tr>
-        <tr><td>会葬礼状・返礼品（香典返し）</td><td>1人あたり1,000〜3,000円程度が目安</td></tr>
-        <tr><td>宗教者へのお礼（お布施・戒名料・お車代）</td><td>宗派・寺院による。菩提寺がない場合は僧侶の紹介も可能</td></tr>
-        <tr><td>安置施設の使用料（自宅安置でない場合）、追加の安置日数</td><td>火葬待ちの日数分</td></tr>
+        {plans.map((p) => (
+          <tr>
+            <th scope="row">{p.name}</th>
+            <td data-label="通夜／告別式">{p.key === 'kazokuso' ? '行う／行う' : p.key === 'ichinichiso' ? '行わない／行う' : '行わない／行わない（火葬炉の前で短いお別れ）'}</td>
+            <td data-label="日数">{p.days}</td>
+            <td data-label="参列人数">{p.people}</td>
+            <td data-label="式場">{p.hall}</td>
+            <td data-label="プラン料金" class="num">{p.price}円〜</td>
+            <td data-label="総額の目安" class="num">{p.total}</td>
+            <td data-label="向いている方">{p.fit}</td>
+            <td data-label="注意点">{p.caution}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   </div>
   <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }]} />
-  <NextLink href="/cost/" label="費用をくわしく" title="町田市の葬儀費用｜内訳・人数別の総額例・安く抑える方法" />
 
-  <h2 id="erabikata">葬儀の形式はどう決めればいい？</h2>
-  <div class="answer"><p>迷ったときは、<strong>①参列する人数 ②菩提寺（先祖代々のお墓がある寺）の有無 ③参列者の年齢と移動距離 ④予算</strong>の4つで判断します。この順に考えると、多くの場合は形式が自然に決まります。</p></div>
+  <h2 id="erabikata">自分たちに合う形式はどう選べばいい？</h2>
+  <div class="answer"><p>迷ったときは、<strong>①参列する人数 ②菩提寺（先祖代々のお墓がある寺）の有無 ③参列者の年齢と移動距離 ④予算</strong>の4つで判断します。この順に考えると、多くの場合は形式が自然に決まります。下の「状況別の目安」で、当てはまるものから確認してください。</p></div>
+  <h3>状況別の目安</h3>
+  <ul class="choice choice--2">
+    <li><span class="choice__q">参列は家族だけで10名以下</span><span class="choice__a">式場を使わない<strong>火葬式</strong>か、告別式だけ行う<strong>一日葬</strong>が現実的</span><a href="/plans/kasoshiki/" class="btn btn--outline">火葬式を見る</a></li>
+    <li><span class="choice__q">親族を含めて20名前後が集まる</span><span class="choice__a">通夜と告別式のある<strong>家族葬</strong>。会社関係も来るなら一般葬を検討</span><a href="/plans/kazokuso/" class="btn btn--outline">家族葬を見る</a></li>
+    <li><span class="choice__q">高齢の参列者や遠方の親族が多い</span><span class="choice__a">2日間の拘束を避けられる<strong>一日葬</strong>。宿泊も不要になる</span><a href="/plans/ichinichiso/" class="btn btn--outline">一日葬を見る</a></li>
+    <li><span class="choice__q">菩提寺（お墓のある寺）がある</span><span class="choice__a">通夜を省く一日葬・儀式のない火葬式は認めない寺院もある。<strong>先に寺院へ相談</strong>し、難しければ家族葬</span><a href="/plans/kazokuso/" class="btn btn--outline">家族葬を見る</a></li>
+    <li><span class="choice__q">費用を最優先したい</span><span class="choice__a"><strong>火葬式</strong>（総額約20〜25万円）。葬祭費5万円の支給も見込める</span><a href="/cost/" class="btn btn--outline">費用を見る</a></li>
+    <li><span class="choice__q">故人と過ごす時間を長く取りたい</span><span class="choice__a">通夜の晩に付き添える<strong>家族葬</strong>。火葬式でも安置中にお別れの時間は作れる</span><a href="/plans/kazokuso/" class="btn btn--outline">家族葬を見る</a></li>
+  </ul>
+  <h3>判断の順番</h3>
   <ol>
     <li><strong>参列する人数を数える。</strong>家族・親族だけで10名以下なら一日葬か火葬式、20名前後なら家族葬が現実的です。会社関係や近所の方が多数参列する見込みなら一般葬を検討します。</li>
     <li><strong>菩提寺があるか確認する。</strong>菩提寺がある場合、通夜を省く一日葬や、儀式を行わない火葬式を認めない寺院があります。納骨を断られることを避けるため、形式を決める前に寺院へ相談してください。</li>
@@ -106,17 +102,97 @@ const related = [
     <p class="callout__title"><Icon name="info" />火葬式を選ぶ前に</p>
     <p>火葬式は費用面の利点が大きい一方、「お別れの時間が短かった」と後から感じるご家族もいます。火葬前に安置場所で家族だけのお別れの時間を設ける、後日お別れ会を開くなど、費用を抑えながら気持ちの区切りをつける方法もあります。</p>
   </div>
+  <NextLink href="/column/ichinichiso-kazokuso/" label="迷ったら" title="一日葬と家族葬、どちらを選ぶか（判断の目安）" />
+  <Cta position="plan" variant="inline" telText="形式について電話で相談" contactText="メールで相談" />
+
+  <h2 id="plans">各プランの内容と料金</h2>
+  <div class="plan-list">
+    <section class="plan-row">
+      <h3>家族葬 <span class="plan-row__price num">528,000円（税込）〜</span></h3>
+      <p>通夜と告別式を2日間で行う、家族・親族中心の葬儀です。一般葬との違いは規模だけで、儀式の内容は同じです。町田市では、南多摩斎場の式場、または町田駅・鶴川・成瀬などにある民営の家族葬ホールで行います。</p>
+      <NextLink href="/plans/kazokuso/" label="家族葬の詳細" title="町田市の家族葬｜費用・式場・流れ" />
+    </section>
+    <section class="plan-row">
+      <h3>一日葬 <span class="plan-row__price num">396,000円（税込）〜</span></h3>
+      <p>通夜を行わず、告別式と火葬を1日で行います。式場の使用が1日で済むため、家族葬より式場使用料と飲食費が抑えられます。参列者が高齢の場合や、遠方から来る親族の宿泊を避けたい場合に選ばれます。</p>
+      <NextLink href="/plans/ichinichiso/" label="一日葬の詳細" title="町田市の一日葬｜費用・流れ・家族葬との違い" />
+    </section>
+    <section class="plan-row">
+      <h3>火葬式・直葬 <span class="plan-row__price num">198,000円（税込）〜</span></h3>
+      <p>通夜・告別式を行わず、安置後に火葬場へ移動し、火葬炉の前で短いお別れをして火葬します。式場を使わないため最も費用を抑えられますが、法律上、亡くなってから24時間は火葬できないため、最低1日は安置が必要です。</p>
+      <NextLink href="/plans/kasoshiki/" label="火葬式・直葬の詳細" title="町田市の火葬式・直葬｜費用・流れ・注意点" />
+    </section>
+  </div>
+  <Source items={[{ label: '墓地、埋葬等に関する法律 第3条（死後24時間以内の火葬の禁止）', href: 'https://laws.e-gov.go.jp/law/323AC0000000048' }]} />
+
+  <h2 id="fukumu">プラン料金に含まれるもの・含まれないものは？</h2>
+  <div class="answer"><p>プラン料金には「葬儀を行うために必ず必要なもの」（搬送・安置・棺・骨壺・火葬場の手続き・当日の進行）が含まれ、<strong>式場使用料・火葬料・飲食・返礼品・宗教者へのお礼</strong>は含まれません。これらは式場・人数・宗派によって金額が変わるため、見積もりで個別に提示します。</p></div>
+  <div class="incl">
+    <div class="incl__col incl__col--in">
+      <p class="incl__title"><Icon name="check" />含まれるもの（3プラン共通）</p>
+      <ul>
+        <li>寝台車での搬送（町田市内、病院・施設からご自宅または安置施設へ）<small>市外は距離に応じて加算</small></li>
+        <li>安置（2日分）とドライアイス（2日分）<small>3日目以降は1日ごとに加算</small></li>
+        <li>棺・仏衣・骨壺・骨箱<small>棺のグレード変更は差額</small></li>
+        <li>枕飾り（線香・ろうそくなどの簡易な祭壇）<small>火葬式は簡易セット</small></li>
+        <li>死亡届・火葬許可証の手続き代行<small>町田市役所または市民センターへ</small></li>
+        <li>火葬場への霊柩車、当日の進行・スタッフ<small>家族葬・一日葬は式場設営・祭壇を含む</small></li>
+        <li>収骨容器・お別れ用の花（家族葬・一日葬）</li>
+      </ul>
+    </div>
+    <div class="incl__col incl__col--out">
+      <p class="incl__title"><Icon name="info" />含まれないもの（見積もりで個別提示）</p>
+      <ul>
+        <li>式場使用料<small>南多摩斎場 第二・第三式場 50,000円、第一式場 140,000円（組織市住民）。民営式場は施設により異なる</small></li>
+        <li>火葬料・待合室使用料<small>南多摩斎場は町田市民無料（市外 80,000円）。待合室は別途</small></li>
+        <li>通夜振る舞い・精進落としなどの飲食<small>1人あたり3,000〜6,000円程度が目安</small></li>
+        <li>会葬礼状・返礼品（香典返し）<small>1人あたり1,000〜3,000円程度が目安</small></li>
+        <li>宗教者へのお礼（お布施・戒名料・お車代）<small>宗派・寺院による。菩提寺がない場合は僧侶の紹介も可能</small></li>
+        <li>安置施設の使用料（自宅安置でない場合）、追加の安置日数<small>火葬待ちの日数分</small></li>
+      </ul>
+    </div>
+  </div>
+  <Source items={[{ label: '南多摩斎場 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }]} />
+  <NextLink href="/cost/" label="費用をくわしく" title="町田市の葬儀費用｜内訳・人数別の総額例・安く抑える方法" />
 
   <h2 id="ippanso">一般葬（参列者が多い葬儀）を希望する場合</h2>
   <div class="answer"><p>会社関係者や地域の方を含めて50名以上が参列する一般葬も承ります。内容は家族葬と同じ2日間の儀式で、式場の広さ・飲食・返礼品の数量が増えます。町田市内では南多摩斎場の第一式場（組織市住民 140,000円）や、大規模な民営式場が候補になります。人数の見込みを伺い、個別にお見積もりします。</p></div>
-
-  <Cta position="plan" variant="inline" telText="形式について電話で相談" contactText="メールで相談" />
 </ArticleLayout>
 
 <style>
-  .plan-list { display: grid; gap: 1.5rem; margin: 1.5rem 0 2rem; }
+  .plan-cards { list-style: none; padding: 0; margin: 1.25rem 0 0.5rem; display: grid; gap: 1rem; }
+  .plan-card { margin: 0; border: 1px solid var(--c-line); border-radius: var(--radius-lg); background: var(--c-surface); padding: 1.2rem 1.2rem 1.1rem; display: flex; flex-direction: column; }
+  .plan-card :global(.pict) { max-width: 240px; margin-bottom: 0.9rem; }
+  .plan-card__name { font-size: var(--fs-h3); margin: 0 0 0.3em; border: 0; padding: 0; }
+  .plan-card__name a { text-decoration: none; color: var(--c-ink); }
+  .plan-card__what { font-size: var(--fs-sm); color: var(--c-ink-2); margin: 0 0 0.6em; }
+  .plan-card__price { font-size: 1.5rem; font-weight: 700; color: var(--c-primary); margin: 0 0 0.6em; line-height: 1.15; white-space: nowrap; }
+  .plan-card__unit { display: block; font-size: var(--fs-xs); font-weight: 400; color: var(--c-ink-2); }
+  .plan-card__spec { display: grid; gap: 0.3rem; margin: 0 0 0.8em; }
+  .plan-card__spec div { display: grid; grid-template-columns: 3.5em 1fr; gap: 0.5em; background: var(--c-surface-2); border-radius: var(--radius); padding: 0.4em 0.7em; align-items: baseline; }
+  .plan-card__spec dt { font-size: 0.72rem; color: var(--c-ink-3); font-weight: 700; }
+  .plan-card__spec dd { margin: 0; font-weight: 700; font-size: var(--fs-sm); }
+  .plan-card__fit { display: flex; gap: 0.4em; align-items: flex-start; font-size: var(--fs-sm); margin: 0 0 1em; }
+  .plan-card__fit :global(svg) { color: var(--c-primary); flex: none; margin-top: 0.2em; }
+  .plan-card__link { margin-top: auto; display: inline-flex; align-items: center; gap: 0.2em; font-weight: 700; text-decoration: none; }
+  .plan-card__link:hover { text-decoration: underline; }
+  @media (min-width: 768px) { .plan-cards { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
+
+  .plan-list { display: grid; gap: 1.25rem; margin: 1.25rem 0 1.5rem; }
   .plan-row { border: 1px solid var(--c-line); border-radius: var(--radius-lg); background: var(--c-surface); padding: 1.25rem 1.3rem 0.5rem; max-width: var(--w-prose); }
   .plan-row h3 { margin: 0 0 0.6em; border: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3em 0.8em; }
   .plan-row__price { font-size: var(--fs-md); color: var(--c-primary); font-weight: 700; }
   .plan-row :global(.next-link) { margin-top: 0.5em; margin-bottom: 1em; }
+
+  .incl { display: grid; gap: 1rem; margin: 1.25rem 0 1rem; }
+  .incl__col { border: 1px solid var(--c-line); border-radius: var(--radius-lg); background: var(--c-surface); padding: 1rem 1.1rem; }
+  .incl__col--in { border-top: 4px solid var(--c-primary); }
+  .incl__col--out { border-top: 4px solid var(--c-accent); }
+  .incl__title { display: flex; align-items: center; gap: 0.4em; font-weight: 700; margin: 0 0 0.6em; }
+  .incl__col--in .incl__title :global(svg) { color: var(--c-primary); }
+  .incl__col--out .incl__title :global(svg) { color: var(--c-accent); }
+  .incl ul { margin: 0; padding-left: 1.2em; font-size: var(--fs-sm); }
+  .incl li { margin: 0.35em 0; }
+  .incl small { display: block; color: var(--c-ink-3); font-size: var(--fs-xs); }
+  @media (min-width: 900px) { .incl { grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
 </style>

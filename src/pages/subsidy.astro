@@ -44,14 +44,14 @@ const faqs = [
   <h2 id="okane">町田市で葬儀をしたら受け取れるお金は？</h2>
   <div class="answer"><p>町田市で葬儀をした場合に受け取れるお金は、故人の加入していた保険により<strong>①国民健康保険・後期高齢者医療の「葬祭費」50,000円、②会社の健康保険の「埋葬料・埋葬費」50,000円、③生活保護の「葬祭扶助」</strong>のいずれか1つです。3つとも重複しては受け取れず、故人が国保加入の退職者・年金受給者なら①、会社員・その被扶養者なら②、生活保護受給者なら③が該当します。</p></div>
   <div class="table-wrap table-wrap--wide">
-    <table>
+    <table class="cmp">
       <caption>町田市で葬儀後に受け取れるお金の比較（確認日 2026-09-15）</caption>
       <thead><tr><th scope="col">制度</th><th scope="col">故人の加入保険</th><th scope="col">金額</th><th scope="col">申請のタイミング</th><th scope="col">窓口</th></tr></thead>
       <tbody>
-        <tr><th scope="row">葬祭費</th><td>国民健康保険</td><td class="num">50,000円</td><td>葬儀後（2年以内）</td><td>保険年金課 保険給付係・市民センター</td></tr>
-        <tr><th scope="row">葬祭費</th><td>後期高齢者医療制度</td><td class="num">50,000円</td><td>葬儀後（2年以内）</td><td>保険年金課 高齢者医療係・市民センター</td></tr>
-        <tr><th scope="row">埋葬料・埋葬費</th><td>会社の健康保険（協会けんぽ等）</td><td class="num">定額50,000円または実費上限50,000円</td><td>葬儀後</td><td>加入していた健康保険（協会けんぽ等）</td></tr>
-        <tr><th scope="row">葬祭扶助</th><td>生活保護</td><td>基準額の範囲内（現物給付が中心）</td><td><strong>葬儀（火葬）の前</strong></td><td>生活援護課</td></tr>
+        <tr><th scope="row">葬祭費</th><td data-label="故人の加入保険">国民健康保険</td><td class="num" data-label="金額">50,000円</td><td data-label="申請のタイミング">葬儀後（2年以内）</td><td data-label="窓口">保険年金課 保険給付係・市民センター</td></tr>
+        <tr><th scope="row">葬祭費</th><td data-label="故人の加入保険">後期高齢者医療制度</td><td class="num" data-label="金額">50,000円</td><td data-label="申請のタイミング">葬儀後（2年以内）</td><td data-label="窓口">保険年金課 高齢者医療係・市民センター</td></tr>
+        <tr><th scope="row">埋葬料・埋葬費</th><td data-label="故人の加入保険">会社の健康保険（協会けんぽ等）</td><td class="num" data-label="金額">定額50,000円または実費上限50,000円</td><td data-label="申請のタイミング">葬儀後</td><td data-label="窓口">加入していた健康保険（協会けんぽ等）</td></tr>
+        <tr><th scope="row">葬祭扶助</th><td data-label="故人の加入保険">生活保護</td><td data-label="金額">基準額の範囲内（現物給付が中心）</td><td data-label="申請のタイミング"><strong>葬儀（火葬）の前</strong></td><td data-label="窓口">生活援護課</td></tr>
       </tbody>
     </table>
   </div>
@@ -116,19 +116,19 @@ const faqs = [
   <h2 id="shinsei">葬祭費の申請方法と必要書類のチェックリスト</h2>
   <div class="answer"><p>町田市の葬祭費（国民健康保険・後期高齢者医療とも）は<strong>①市役所・市民センターの窓口、②郵送、③オンライン申請</strong>の3つの方法で申請できます。窓口に行けない場合も、書類さえそろえば郵送・オンラインで完結します。</p></div>
   <p>申請前に、次の書類を確認します。</p>
-  <ul>
-    <li>故人のマイナンバーカードまたは資格確認書（国保は有効期間内の保険証でも可、後期高齢者医療は保険者証・資格確認書があれば添付）</li>
-    <li>あて先（喪主名）が明記された葬祭費用の領収書、または喪主が葬祭を行ったことが分かる書類（会葬礼状等）</li>
-    <li>喪主名義の振込口座が分かるもの（通帳等）</li>
-    <li>喪主以外の口座へ振り込みを希望する場合は喪主の印鑑</li>
-    <li>後期高齢者医療の場合は町田市葬祭費支給申請書（窓口またはオンラインで入手）</li>
+  <ul class="fact-list">
+    <li><Icon name="check" /><span>故人のマイナンバーカードまたは資格確認書（国保は有効期間内の保険証でも可、後期高齢者医療は保険者証・資格確認書があれば添付）</span></li>
+    <li><Icon name="check" /><span>あて先（喪主名）が明記された葬祭費用の領収書、または喪主が葬祭を行ったことが分かる書類（会葬礼状等）</span></li>
+    <li><Icon name="check" /><span>喪主名義の振込口座が分かるもの（通帳等）</span></li>
+    <li><Icon name="check" /><span>喪主以外の口座へ振り込みを希望する場合は喪主の印鑑</span></li>
+    <li><Icon name="check" /><span>後期高齢者医療の場合は町田市葬祭費支給申請書（窓口またはオンラインで入手）</span></li>
   </ul>
-  <ol>
-    <li>会葬礼状または葬儀費用の領収書を保管しておく（喪主名義であることを確認）</li>
-    <li>国民健康保険か後期高齢者医療か、故人の加入していた制度を確認する</li>
-    <li>窓口（保険年金課または6市民センターのいずれか）に行くか、郵送・オンライン申請を選ぶ</li>
-    <li>振込口座を確認し、喪主以外の口座を指定する場合は印鑑を用意する</li>
-    <li>申請から2年の期限内に手続きを終える</li>
+  <ol class="stepper">
+    <li><span class="stepper__t">会葬礼状または葬儀費用の領収書を保管しておく（喪主名義であることを確認）</span></li>
+    <li><span class="stepper__t">国民健康保険か後期高齢者医療か、故人の加入していた制度を確認する</span></li>
+    <li><span class="stepper__t">窓口（保険年金課または6市民センターのいずれか）に行くか、郵送・オンライン申請を選ぶ</span></li>
+    <li><span class="stepper__t">振込口座を確認し、喪主以外の口座を指定する場合は印鑑を用意する</span></li>
+    <li><span class="stepper__t">申請から2年の期限内に手続きを終える</span></li>
   </ol>
   <p>窓口は、市役所1階の保険年金課（保険給付係042-724-2130／高齢者医療係042-724-2144）のほか、南市民センター、なるせ駅前市民センター、鶴川市民センター、忠生市民センター、小山市民センター、堺市民センターの6か所で受け付けています。自宅や式場に近い市民センターで手続きできるため、市役所まで行く必要はありません。</p>
   <Source items={[{ label: '町田市 国民健康保険の葬祭費 オンライン申請', href: 'https://www.city.machida.tokyo.jp/kurashi/hoken/kokuho/ironnakyuufu/sousaihi_online.html' }]} />
@@ -160,16 +160,16 @@ const faqs = [
   <h2 id="tetsuzuki">葬儀後にやる主な手続きは何ですか？</h2>
   <div class="answer"><p>葬儀後は<strong>葬祭費・埋葬料の請求のほか、国民健康保険の資格喪失、年金の手続き、世帯主の変更</strong>など、期限のある手続きが重なります。町田市は手続きを絞り込める「おくやみ手続きナビ」と「おくやみハンドブック」（PDF）を用意しています。</p></div>
   <div class="table-wrap table-wrap--wide">
-    <table>
+    <table class="cmp">
       <caption>町田市 葬儀後の主な手続き（確認日 2026-09-15）</caption>
       <thead><tr><th scope="col">手続き</th><th scope="col">内容・期限の目安</th><th scope="col">窓口</th></tr></thead>
       <tbody>
-        <tr><th scope="row">死亡届</th><td>死亡の事実を知った日を含めて7日以内</td><td>市民課戸籍係・各市民センター</td></tr>
-        <tr><th scope="row">国民健康保険の資格喪失</th><td>故人が国保加入者だった場合に届出</td><td>保険年金課・市民センター</td></tr>
-        <tr><th scope="row">葬祭費・埋葬料の請求</th><td>葬祭を行った日の翌日から2年以内</td><td>保険年金課、または加入先の健康保険</td></tr>
-        <tr><th scope="row">年金の手続き</th><td>受給中の年金の手続き（未支給年金請求等）、遺族基礎年金・死亡一時金・寡婦年金等</td><td>保険年金課・年金事務所</td></tr>
-        <tr><th scope="row">世帯主の変更</th><td>世帯主が亡くなった場合に届出</td><td>市民課・各市民センター</td></tr>
-        <tr><th scope="row">介護保険</th><td>資格喪失の手続きが必要（具体的な提出書類・期限は公式ページ本文では未確認）</td><td>担当課へ確認</td></tr>
+        <tr><th scope="row">死亡届</th><td data-label="内容・期限の目安">死亡の事実を知った日を含めて7日以内</td><td data-label="窓口">市民課戸籍係・各市民センター</td></tr>
+        <tr><th scope="row">国民健康保険の資格喪失</th><td data-label="内容・期限の目安">故人が国保加入者だった場合に届出</td><td data-label="窓口">保険年金課・市民センター</td></tr>
+        <tr><th scope="row">葬祭費・埋葬料の請求</th><td data-label="内容・期限の目安">葬祭を行った日の翌日から2年以内</td><td data-label="窓口">保険年金課、または加入先の健康保険</td></tr>
+        <tr><th scope="row">年金の手続き</th><td data-label="内容・期限の目安">受給中の年金の手続き（未支給年金請求等）、遺族基礎年金・死亡一時金・寡婦年金等</td><td data-label="窓口">保険年金課・年金事務所</td></tr>
+        <tr><th scope="row">世帯主の変更</th><td data-label="内容・期限の目安">世帯主が亡くなった場合に届出</td><td data-label="窓口">市民課・各市民センター</td></tr>
+        <tr><th scope="row">介護保険</th><td data-label="内容・期限の目安">資格喪失の手続きが必要（具体的な提出書類・期限は公式ページ本文では未確認）</td><td data-label="窓口">担当課へ確認</td></tr>
       </tbody>
     </table>
   </div>

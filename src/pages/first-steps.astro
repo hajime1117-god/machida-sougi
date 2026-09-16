@@ -4,6 +4,7 @@ import NextLink from '../components/NextLink.astro';
 import Source from '../components/Source.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
+import Icon from '../components/Icon.astro';
 
 const title = '町田市で亡くなったら最初にすること｜搬送・安置・死亡届の順番';
 const h1 = '町田市で亡くなったら最初にすること｜最初の24時間の順番と連絡先';
@@ -44,12 +45,12 @@ const faqs = [
   <h2 id="nani">町田市で亡くなったら、まず何をすればいい？</h2>
   <div class="answer">
     <p>今すぐやることは次の順番です。<strong>葬儀の形式（家族葬・一日葬・火葬式）はこの時点で決めなくてよく</strong>、搬送と安置を先に済ませます。</p>
-    <ol>
-      <li>葬儀社に電話し、<strong>搬送</strong>を依頼する</li>
-      <li>安置先（自宅・葬儀社の安置施設・南多摩斎場の霊安室）を決める</li>
-      <li>近親者に連絡する</li>
-      <li>医師から<strong>死亡診断書</strong>（自宅で異状死の場合は死体検案書）を受け取る</li>
-      <li>死亡を知った日を含めて<strong>7日以内</strong>に死亡届を提出する</li>
+    <ol class="stepper">
+      <li><span class="stepper__t">葬儀社に電話し、搬送を依頼する</span></li>
+      <li><span class="stepper__t">安置先（自宅・葬儀社の安置施設・南多摩斎場の霊安室）を決める</span></li>
+      <li><span class="stepper__t">近親者に連絡する</span></li>
+      <li><span class="stepper__t">医師から死亡診断書（自宅で異状死の場合は死体検案書）を受け取る</span></li>
+      <li><span class="stepper__t">死亡を知った日を含めて7日以内に死亡届を提出する</span></li>
     </ol>
   </div>
   <p>法律上、死亡または死産から24時間を経過するまでは火葬・埋葬ができません（墓地、埋葬等に関する法律第3条）。そのため亡くなった当日に火葬まで進むことはなく、必ず一定期間の安置が必要になります。慌てて葬儀社や式場を即決する必要はなく、搬送先の確保が最優先です。</p>
@@ -59,28 +60,44 @@ const faqs = [
 
   <h2 id="byoin">病院で亡くなった場合、何をすればいい？</h2>
   <div class="answer"><p>病院で亡くなった場合、担当医が<strong>死亡診断書</strong>を発行し、看護師が体を清める処置（エンゼルケア）を行います。病院の<strong>霊安室は数時間程度</strong>しか使えないため、そのうちに搬送先を決めて葬儀社に連絡します。病院から紹介される葬儀社に葬儀を依頼する必要はなく、搬送のみを依頼することもできます。</p></div>
+  <ul class="fact-list">
+    <li><Icon name="check" /><span>担当医が死亡診断書を発行、看護師がエンゼルケアを行う</span></li>
+    <li><Icon name="check" /><span>霊安室は数時間程度しか使えない</span></li>
+    <li><Icon name="check" /><span>病院紹介の葬儀社に依頼する必要はなく、搬送のみの依頼も可能</span></li>
+  </ul>
   <p>死亡診断書は、死亡届の提出に必要な書類で、多くの場合は死亡届の用紙と一体になっています。原本は死亡届の提出時に使うため、コピーを取っておくと保険金請求など他の手続きにも使えます。エンゼルケア（末期の水、清拭、死化粧などの処置）が終わるまでには一定の時間がかかるため、その間に自宅か葬儀社の安置施設かを決めておくと搬送がスムーズです。町田市民病院・町田病院・あけぼの病院・イムス明理会東京町田病院（旧・鶴川サナトリウム病院）・多摩丘陵病院・南町田病院など、市内のどの病院からでも搬送の流れ自体は共通しています。</p>
   <NextLink href="/column/byoin-sogisha/" label="くわしく読む" title="病院で亡くなったら葬儀社をすぐ決める必要はあるか" />
 
   <h2 id="jitaku">自宅で亡くなった場合、何をすればいい？</h2>
   <div class="answer"><p>自宅で亡くなった場合、<strong>かかりつけ医がいて持病による死亡と判断できるとき</strong>はかかりつけ医に連絡し、死亡前24時間以内に診察があれば死亡診断書が発行できます。<strong>かかりつけ医がいない、または死因が不明・急変のとき</strong>は119番または110番に連絡し、警察による検視・検案を経て死体検案書が交付されます。</p></div>
+  <ul class="fact-list">
+    <li><Icon name="check" /><span>かかりつけ医がいて持病による死亡と判断できるときはかかりつけ医に連絡</span></li>
+    <li><Icon name="check" /><span>かかりつけ医がいない・死因不明・急変のときは119番か110番に連絡</span></li>
+    <li><Icon name="check" /><span>警察の検視・検案を経て死体検案書が交付される</span></li>
+    <li><Icon name="check" /><span>到着までは遺体を動かさない</span></li>
+  </ul>
   <p>かかりつけ医がいない場合や、様子がおかしいと気づいて発見した場合は、まず救急（119番）または警察（110番）に連絡します。事件性の有無を判断するための手続きのため、<strong>到着までは遺体を動かさない</strong>ようにします。着替えさせたり、周囲を片付けたりすると検視の判断に影響することがあります。検視の結果、事件性がないと判断されれば、死体検案書が交付され、その後は病院で亡くなった場合と同様に葬儀社へ搬送を依頼する流れになります。町田市内の多くの地域（旭町・中町・原町田・森野・鶴川・玉川学園・成瀬・鶴間・忠生・木曽など）は町田警察署（町田市旭町3-1-3）の管轄ですが、<strong>相原町・小山町・小山ヶ丘地区は町田警察署の管轄外で、南大沢警察署（八王子市）の管轄</strong>です。</p>
   <Source items={[{ label: '警視庁 町田警察署', href: 'https://www.keishicho.metro.tokyo.lg.jp/about_mpd/shokai/ichiran/kankatsu/machida/index.html' }]} />
 
   <h2 id="shisetsu">施設（老人ホームなど）で亡くなった場合は？</h2>
   <div class="answer"><p>介護施設や老人ホームで亡くなった場合、多くは<strong>施設の協力医または救急搬送先の医師が死亡診断書を発行</strong>し、検視は不要な流れになります。施設ごとに死亡後の対応手順が決まっていることが多いため、まずは施設のスタッフの案内に従い、そのうえで葬儀社に搬送を依頼します。</p></div>
+  <ul class="fact-list">
+    <li><Icon name="check" /><span>施設の協力医または救急搬送先の医師が死亡診断書を発行、検視は不要</span></li>
+    <li><Icon name="check" /><span>まずは施設スタッフの案内に従う</span></li>
+    <li><Icon name="check" /><span>提携の葬儀社を紹介されてもその場で契約する必要はない</span></li>
+  </ul>
   <p>施設によっては提携する葬儀社を紹介される場合がありますが、病院と同様に、その場で契約する必要はありません。搬送のみを依頼し、安置後に落ち着いて葬儀社を選び直すことができます。施設からの退去期限（お部屋の明け渡し）が決まっていることもあるため、荷物の引き取りについては施設側に確認しておくと後日の手続きが円滑です。</p>
 
   <h2 id="anchi">搬送と安置先はどう決めればいい？</h2>
   <div class="answer"><p>安置先は主に<strong>①自宅、②葬儀社の安置施設、③南多摩斎場の霊安室</strong>の3つです。自宅は費用がかからず慣れた場所で過ごせますが、集合住宅では搬入経路の確認が必要です。葬儀社の安置施設は個室での安置が中心で、南多摩斎場の霊安室は火葬場に併設されているため火葬までの移動が少なくて済みます。</p></div>
-  <div class="table-wrap">
-    <table>
+  <div class="table-wrap table-wrap--wide">
+    <table class="cmp">
       <caption>安置先の選択肢と条件（町田市）</caption>
       <thead><tr><th scope="col">安置先</th><th scope="col">条件</th><th scope="col">向いているケース</th></tr></thead>
       <tbody>
-        <tr><th scope="row">自宅</th><td>祭壇スペースと搬入経路（エレベーター・階段幅）の確認が必要。ドライアイスの交換で葬儀社が訪問</td><td>住み慣れた家で付き添いたい</td></tr>
-        <tr><th scope="row">葬儀社の安置施設</th><td>個室での面会が中心。施設により面会時間の制限あり</td><td>自宅での安置が難しい（集合住宅・遠方の親族がいる 等）</td></tr>
-        <tr data-track-view="hall" data-item="南多摩斎場（霊安室）"><th scope="row">南多摩斎場の霊安室</th><td>組合構成市（町田市含む）住民は2日目（48時間）まで3,000円、以降1日（24時間）ごとに3,000円。搬入・面会は8:30〜21:30（17:00以降は警備員対応・要事前連絡）</td><td>南多摩斎場で火葬・式まで行う予定がある</td></tr>
+        <tr><th scope="row">自宅</th><td data-label="条件">祭壇スペースと搬入経路（エレベーター・階段幅）の確認が必要。ドライアイスの交換で葬儀社が訪問</td><td data-label="向いているケース">住み慣れた家で付き添いたい</td></tr>
+        <tr><th scope="row">葬儀社の安置施設</th><td data-label="条件">個室での面会が中心。施設により面会時間の制限あり</td><td data-label="向いているケース">自宅での安置が難しい（集合住宅・遠方の親族がいる 等）</td></tr>
+        <tr data-track-view="hall" data-item="南多摩斎場（霊安室）"><th scope="row">南多摩斎場の霊安室</th><td data-label="条件">組合構成市（町田市含む）住民は2日目（48時間）まで3,000円、以降1日（24時間）ごとに3,000円。搬入・面会は8:30〜21:30（17:00以降は警備員対応・要事前連絡）</td><td data-label="向いているケース">南多摩斎場で火葬・式まで行う予定がある</td></tr>
       </tbody>
     </table>
   </div>
@@ -91,16 +108,16 @@ const faqs = [
   <h2 id="timeline">最初の24時間のタイムラインは？</h2>
   <div class="answer"><p>亡くなってからの24時間は、<strong>①死亡確認と死亡診断書、②搬送、③安置、④近親者への連絡、⑤死亡届の準備</strong>の順に進みます。法律上24時間は火葬できないため、この間に打ち合わせと日程の相談を行います。</p></div>
   <div class="table-wrap table-wrap--wide">
-    <table>
+    <table class="cmp">
       <caption>亡くなってから24時間の目安（一般的な流れ。時間は目安）</caption>
       <thead><tr><th scope="col">時刻の目安</th><th scope="col">すること</th><th scope="col">誰が</th></tr></thead>
       <tbody>
-        <tr><th scope="row">死亡確認直後</th><td>死亡診断書（または死体検案書）の受け取り</td><td>医師</td></tr>
-        <tr><th scope="row">〜1時間程度</th><td>末期の水、エンゼルケア（清拭・死化粧など）</td><td>病院・施設のスタッフ</td></tr>
-        <tr><th scope="row">数時間以内</th><td>葬儀社へ搬送を依頼。病院の霊安室は長時間使えないため早めに連絡</td><td>ご家族</td></tr>
-        <tr><th scope="row">搬送後</th><td>自宅・葬儀社の安置施設・南多摩斎場の霊安室いずれかに安置</td><td>葬儀社</td></tr>
-        <tr><th scope="row">当日中</th><td>近親者・菩提寺への連絡</td><td>ご家族</td></tr>
-        <tr><th scope="row">翌日以降</th><td>死亡届の提出・火葬許可証の受け取り、打ち合わせ、火葬場の予約</td><td>葬儀社が代行することが多い</td></tr>
+        <tr><th scope="row">死亡確認直後</th><td data-label="すること">死亡診断書（または死体検案書）の受け取り</td><td data-label="誰が">医師</td></tr>
+        <tr><th scope="row">〜1時間程度</th><td data-label="すること">末期の水、エンゼルケア（清拭・死化粧など）</td><td data-label="誰が">病院・施設のスタッフ</td></tr>
+        <tr><th scope="row">数時間以内</th><td data-label="すること">葬儀社へ搬送を依頼。病院の霊安室は長時間使えないため早めに連絡</td><td data-label="誰が">ご家族</td></tr>
+        <tr><th scope="row">搬送後</th><td data-label="すること">自宅・葬儀社の安置施設・南多摩斎場の霊安室いずれかに安置</td><td data-label="誰が">葬儀社</td></tr>
+        <tr><th scope="row">当日中</th><td data-label="すること">近親者・菩提寺への連絡</td><td data-label="誰が">ご家族</td></tr>
+        <tr><th scope="row">翌日以降</th><td data-label="すること">死亡届の提出・火葬許可証の受け取り、打ち合わせ、火葬場の予約</td><td data-label="誰が">葬儀社が代行することが多い</td></tr>
       </tbody>
     </table>
   </div>
@@ -129,12 +146,12 @@ const faqs = [
 
   <h2 id="denwa">葬儀社に電話で伝えることは？</h2>
   <div class="answer"><p>葬儀社への最初の電話では、<strong>①故人の名前、②現在いる場所（病院名・自宅住所など）、③希望する搬送先、④宗教（分かれば）、⑤ご自身の連絡先</strong>の5点を伝えれば搬送の手配が始められます。葬儀の形式や式場は、搬送・安置が済んでから相談すれば十分です。</p></div>
-  <ul class="checklist">
-    <li>故人のお名前</li>
-    <li>亡くなった場所（病院名・部屋番号、または自宅住所）</li>
-    <li>希望する搬送先（自宅・葬儀社の安置施設・南多摩斎場の霊安室のいずれか、決まっていなければ「未定」で可）</li>
-    <li>宗教・菩提寺の有無（分かる範囲で）</li>
-    <li>ご自身の氏名・続柄・連絡先電話番号</li>
+  <ul class="fact-list">
+    <li><Icon name="check" /><span>故人のお名前</span></li>
+    <li><Icon name="check" /><span>亡くなった場所（病院名・部屋番号、または自宅住所）</span></li>
+    <li><Icon name="check" /><span>希望する搬送先（自宅・葬儀社の安置施設・南多摩斎場の霊安室のいずれか、決まっていなければ「未定」で可）</span></li>
+    <li><Icon name="check" /><span>宗教・菩提寺の有無（分かる範囲で）</span></li>
+    <li><Icon name="check" /><span>ご自身の氏名・続柄・連絡先電話番号</span></li>
   </ul>
   <p>菩提寺がある場合は、亡くなった当日か翌日のうちに連絡し、日程について相談しておくと後の調整がしやすくなります。搬送のみの依頼であることを伝えれば、葬儀社はその条件で対応します。</p>
 

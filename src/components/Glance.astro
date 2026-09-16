@@ -1,0 +1,58 @@
+---
+/** プラン詳細ページ冒頭の「ひと目で分かる」パネル（3プラン共通の構造） */
+import PlanPictogram from './PlanPictogram.astro';
+import Icon from './Icon.astro';
+interface Props {
+  plan: 'kazokuso' | 'ichinichiso' | 'kasoshiki';
+  name: string;
+  price: string;
+  days: string;
+  people: string;
+  hall: string;
+  total: string;
+  fit: string;
+  includes: string[];
+  excludes: string[];
+}
+const { plan, name, price, days, people, hall, total, fit, includes, excludes } = Astro.props;
+---
+<div class="glance" data-track-view="plan" data-item={name} data-region="plan">
+  <div class="glance__lead">
+    <PlanPictogram plan={plan} size="lg" />
+    <p class="glance__price"><span class="num">{price}</span><span class="glance__unit">円（税込）〜　本サイトの設定価格</span></p>
+  </div>
+  <div class="glance__body">
+    <dl class="glance__spec">
+      <div><dt>日数</dt><dd>{days}</dd></div>
+      <div><dt>参列</dt><dd>{people}</dd></div>
+      <div><dt>式場</dt><dd>{hall}</dd></div>
+      <div><dt>総額目安</dt><dd>{total}</dd></div>
+    </dl>
+    <p class="glance__fit"><Icon name="check" /><span><b>向いている方：</b>{fit}</span></p>
+    <div class="glance__incl">
+      <p class="glance__inclcol"><Icon name="check" /><span><b>含まれる：</b>{includes.join('／')}</span></p>
+      <p class="glance__inclcol glance__inclcol--out"><Icon name="info" /><span><b>含まれない：</b>{excludes.join('／')}</span></p>
+    </div>
+  </div>
+</div>
+<style is:global>
+  .glance { display: grid; gap: 1.1rem; margin: 0 0 2rem; border: 1px solid var(--c-line); border-radius: var(--radius-lg); background: var(--c-surface); padding: 1.2rem 1.3rem; }
+  .glance__lead { display: grid; gap: 0.6rem; justify-items: start; }
+  .glance__lead .pict { width: 100%; max-width: 300px; }
+  .glance__price { margin: 0.2rem 0 0; font-size: 1.9rem; font-weight: 700; color: var(--c-primary); line-height: 1.1; }
+  .glance__unit { display: block; font-size: var(--fs-xs); font-weight: 400; color: var(--c-ink-2); margin-top: 0.2em; }
+  .glance__body { display: grid; gap: 0.8rem; }
+  .glance__spec { display: grid; grid-template-columns: 1fr; gap: 0.4rem; margin: 0; }
+  .glance__spec div { display: grid; grid-template-columns: 5em 1fr; gap: 0.5em; background: var(--c-surface-2); border-radius: var(--radius); padding: 0.45em 0.8em; align-items: baseline; }
+  .glance__spec dt { font-size: 0.72rem; color: var(--c-ink-3); font-weight: 700; margin: 0; }
+  .glance__spec dd { margin: 0; font-weight: 700; font-size: var(--fs-sm); }
+  .glance__fit, .glance__inclcol { display: flex; gap: 0.45em; align-items: flex-start; font-size: var(--fs-sm); margin: 0; }
+  .glance__fit svg, .glance__inclcol svg { color: var(--c-primary); flex: none; margin-top: 0.25em; }
+  .glance__inclcol--out svg { color: var(--c-accent-2); }
+  .glance__incl { display: grid; gap: 0.4rem; }
+  .glance b { font-weight: 700; }
+  @media (min-width: 768px) {
+    .glance { grid-template-columns: minmax(0, 260px) minmax(0, 1fr); align-items: start; gap: 1.75rem; }
+    .glance__lead { padding-right: 1.5rem; border-right: 1px solid var(--c-line-2); }
+  }
+</style>

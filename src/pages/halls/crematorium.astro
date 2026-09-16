@@ -3,6 +3,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import NextLink from '../../components/NextLink.astro';
 import Source from '../../components/Source.astro';
 import Cta from '../../components/Cta.astro';
+import MachidaMap from '../../components/MachidaMap.astro';
 import Faq from '../../components/Faq.astro';
 import Icon from '../../components/Icon.astro';
 
@@ -43,6 +44,20 @@ const faqs = [
 
   <h2 id="doko">町田市の火葬場はどこですか？</h2>
   <div class="answer"><p>町田市が単独で運営する市営火葬場は<strong>ありません</strong>。町田市は、八王子市・町田市・多摩市・稲城市・日野市の5市でつくる一部事務組合「南多摩斎場組合」の構成市で、この組合が運営する<strong>南多摩斎場</strong>（東京都町田市上小山田町2147番地）が実質的な「町田市の火葬場」です。死亡時に町田市（または他の4構成市）に住民登録があった方は、南多摩斎場の火葬料が<strong>無料</strong>になります。</p></div>
+  <figure class="map-figure">
+    <MachidaMap variant="crematoriums" title="町田市と周辺の火葬場の位置関係（概略）" />
+    <figcaption>◆ 火葬場　● 主な駅　（位置は概略）</figcaption>
+  </figure>
+  <div class="facility">
+    <div class="facility__head"><h3 class="facility__name">南多摩斎場</h3><span class="facility__sub">公営（南多摩斎場組合）・町田市上小山田町</span></div>
+    <div class="facility__grid">
+      <div class="facility__cell"><span class="facility__label">特徴</span><p>八王子市・町田市・多摩市・稲城市・日野市の5市が共同運営する、市内唯一の公営火葬場</p></div>
+      <div class="facility__cell"><span class="facility__label">料金</span><p class="facility__big">無料<small>町田市民の火葬料（市外 80,000円）</small></p></div>
+      <div class="facility__cell"><span class="facility__label">アクセス</span><p>町田駅から直線約7.9km・車で25〜35分程度（目安）。JR横浜線 橋本駅・淵野辺駅から神奈中バス</p></div>
+      <div class="facility__cell"><span class="facility__label">向いている人</span><p>町田市民全般。費用を抑えたい方。式場も併設のため、火葬場への移動なしで通夜・告別式まで行いたい方</p></div>
+      <div class="facility__cell facility__cell--warn facility__cell--wide"><span class="facility__label">注意点</span><p>友引日（開場日あり）・1月1日〜3日は休場。混雑期は待ちが生じることがあります（公式サイトに待ち日数の公表はなく、経験則の目安です）</p></div>
+    </div>
+  </div>
   <p>町田市公式サイトも南多摩斎場組合を市の施設のひとつとして案内しており、担当窓口は町田市民部市民総務課（042-724-4346）です。町田市が直接行っていた葬祭事業は2022年3月31日で終了しており、現在は「町田市民葬祭事業組合（愛称: まちそう）」0120-568-108 が案内されています。火葬場と市民葬の窓口は別の組織である点に注意してください。</p>
   <Source items={[
     { label: '町田市公式「南多摩斎場組合」', href: 'https://www.city.machida.tokyo.jp/kurashi/touroku/shisetsu/minamitamasaijyo.html' },
@@ -76,20 +91,20 @@ const faqs = [
   <h2 id="shiyoryo">南多摩斎場の使用料はいくらですか？</h2>
   <div class="answer"><p>南多摩斎場の使用料は、死亡時に<strong>構成市（八王子市・町田市・多摩市・稲城市・日野市）に住民登録があったかどうか</strong>で2区分に分かれます。町田市民を含む構成市住民は火葬室（12歳以上）が<strong>無料</strong>、市外は80,000円です。式場・待合室・霊安室にも別途使用料がかかります。条例に基づく公営施設の使用料のため、金額に消費税はかかりません（非課税）。</p></div>
   <div class="table-wrap table-wrap--wide">
-    <table>
+    <table class="cmp">
       <caption>南多摩斎場の使用料（非課税。町田市を含む組合構成市民／市外の2区分。確認日 2026-09-15）</caption>
       <thead><tr><th scope="col">区分</th><th scope="col">組合構成市民（町田市民を含む）</th><th scope="col">市外</th></tr></thead>
       <tbody data-track-view="hall" data-item="南多摩斎場（使用料）">
-        <tr><th scope="row">火葬室 12歳以上</th><td class="num">無料</td><td class="num">80,000円</td></tr>
-        <tr><th scope="row">火葬室 12歳未満</th><td class="num">無料</td><td class="num">50,000円</td></tr>
-        <tr><th scope="row">火葬室 死胎・改葬・身体の一部</th><td class="num">無料</td><td class="num">30,000円</td></tr>
-        <tr><th scope="row">第一式場</th><td class="num">140,000円</td><td class="num">280,000円</td></tr>
-        <tr><th scope="row">第二式場</th><td class="num">50,000円</td><td class="num">100,000円</td></tr>
-        <tr><th scope="row">第三式場</th><td class="num">50,000円</td><td class="num">100,000円</td></tr>
-        <tr><th scope="row">待合室（火葬時・40名定員1室）</th><td class="num">無料</td><td class="num">無料</td></tr>
-        <tr><th scope="row">待合室（通夜時）</th><td class="num">10,000円</td><td class="num">10,000円</td></tr>
-        <tr><th scope="row">霊安室（2日目＝48時間まで）</th><td class="num">3,000円</td><td class="num" rowspan="2">1日（24時間）につき5,000円</td></tr>
-        <tr><th scope="row">霊安室（3日目以降・1日につき）</th><td class="num">3,000円</td></tr>
+        <tr><th scope="row">火葬室 12歳以上</th><td class="num" data-label="組合構成市民">無料</td><td class="num" data-label="市外">80,000円</td></tr>
+        <tr><th scope="row">火葬室 12歳未満</th><td class="num" data-label="組合構成市民">無料</td><td class="num" data-label="市外">50,000円</td></tr>
+        <tr><th scope="row">火葬室 死胎・改葬・身体の一部</th><td class="num" data-label="組合構成市民">無料</td><td class="num" data-label="市外">30,000円</td></tr>
+        <tr><th scope="row">第一式場</th><td class="num" data-label="組合構成市民">140,000円</td><td class="num" data-label="市外">280,000円</td></tr>
+        <tr><th scope="row">第二式場</th><td class="num" data-label="組合構成市民">50,000円</td><td class="num" data-label="市外">100,000円</td></tr>
+        <tr><th scope="row">第三式場</th><td class="num" data-label="組合構成市民">50,000円</td><td class="num" data-label="市外">100,000円</td></tr>
+        <tr><th scope="row">待合室（火葬時・40名定員1室）</th><td class="num" data-label="組合構成市民">無料</td><td class="num" data-label="市外">無料</td></tr>
+        <tr><th scope="row">待合室（通夜時）</th><td class="num" data-label="組合構成市民">10,000円</td><td class="num" data-label="市外">10,000円</td></tr>
+        <tr><th scope="row">霊安室（2日目＝48時間まで）</th><td class="num" data-label="組合構成市民">3,000円</td><td class="num" data-label="市外" rowspan="2">1日（24時間）につき5,000円</td></tr>
+        <tr><th scope="row">霊安室（3日目以降・1日につき）</th><td class="num" data-label="組合構成市民">3,000円</td></tr>
       </tbody>
     </table>
   </div>
@@ -150,17 +165,17 @@ const faqs = [
   <h2 id="shigai">町田市民が利用できる市外の火葬場はどこですか？</h2>
   <div class="answer"><p>南多摩斎場が混雑している場合や友引休場と重なる場合は、<strong>相模原市営斎場・横浜市北部斎場・八王子市斎場・かわさき北部斎苑</strong>などの市外火葬場を検討できます。町田市民が利用すると火葬料は市外料金になり、南多摩斎場の無料と比べて50,000〜80,000円程度の負担が生じます。</p></div>
   <div class="table-wrap table-wrap--wide">
-    <table>
+    <table class="cmp">
       <caption>町田市民が市外料金で利用する場合の火葬場比較（12歳以上・税表記なしの条例使用料。確認日 2026-09-15）</caption>
       <thead><tr><th scope="col">施設</th><th scope="col">運営</th><th scope="col">火葬料（町田市民＝市外扱い）</th><th scope="col">式場（最小構成）</th><th scope="col">町田駅からの目安</th></tr></thead>
       <tbody>
-        <tr data-track-view="hall" data-item="相模原市営斎場"><th scope="row">相模原市営斎場</th><td>相模原市</td><td class="num">54,000円</td><td class="num">小式場 60,000円</td><td>直線約1.8km・車約10分</td></tr>
-        <tr data-track-view="hall" data-item="横浜市北部斎場"><th scope="row">横浜市北部斎場</th><td>横浜市</td><td class="num">50,000円（10歳以上）</td><td class="num">ホール1室 120,000円</td><td>直線約5.5km・車約20分</td></tr>
-        <tr data-track-view="hall" data-item="八王子市斎場"><th scope="row">八王子市斎場</th><td>八王子市</td><td class="num">80,000円</td><td class="num">第2式場 通夜40,000円＋告別式40,000円</td><td>直線約15.6km</td></tr>
-        <tr data-track-view="hall" data-item="かわさき北部斎苑"><th scope="row">かわさき北部斎苑</th><td>川崎市</td><td class="num">60,000円</td><td class="num">第3A・3B式場 各33,750円</td><td>直線約15.4km</td></tr>
-        <tr data-track-view="hall" data-item="大和斎場"><th scope="row">大和斎場</th><td>大和市ほか3市（広域大和斎場組合）</td><td class="num">未確認（公式サイト接続不可のため要問い合わせ）</td><td>未確認</td><td>直線約7.2km（南町田方面は約4.5km）</td></tr>
-        <tr data-track-view="hall" data-item="東京博善（代々幡斎場）"><th scope="row">東京博善（代々幡斎場ほか、民営）</th><td>民営</td><td class="num">普通炉 87,000円（税込・非課税）</td><td class="num">式場は別途、休憩室19,800円〜</td><td>小田急線で代々木上原駅へ</td></tr>
-        <tr data-track-view="hall" data-item="日華斎場・多磨葬祭場"><th scope="row">日華斎場・多磨葬祭場（民営）</th><td>株式会社日華（府中市）</td><td class="num">最上等 90,000円（税込・非課税）</td><td class="num">はなれ 143,000円〜</td><td>直線約16.5km</td></tr>
+        <tr data-track-view="hall" data-item="相模原市営斎場"><th scope="row">相模原市営斎場</th><td data-label="運営"><span class="badge">公営</span> 相模原市</td><td class="num" data-label="火葬料（市外扱い）"><span class="badge badge--accent">市外料金</span> 54,000円</td><td class="num" data-label="式場（最小構成）">小式場 60,000円</td><td data-label="町田駅からの目安">直線約1.8km・車約10分</td></tr>
+        <tr data-track-view="hall" data-item="横浜市北部斎場"><th scope="row">横浜市北部斎場</th><td data-label="運営"><span class="badge">公営</span> 横浜市</td><td class="num" data-label="火葬料（市外扱い）"><span class="badge badge--accent">市外料金</span> 50,000円（10歳以上）</td><td class="num" data-label="式場（最小構成）">ホール1室 120,000円</td><td data-label="町田駅からの目安">直線約5.5km・車約20分</td></tr>
+        <tr data-track-view="hall" data-item="八王子市斎場"><th scope="row">八王子市斎場</th><td data-label="運営"><span class="badge">公営</span> 八王子市</td><td class="num" data-label="火葬料（市外扱い）"><span class="badge badge--accent">市外料金</span> 80,000円</td><td class="num" data-label="式場（最小構成）">第2式場 通夜40,000円＋告別式40,000円</td><td data-label="町田駅からの目安">直線約15.6km</td></tr>
+        <tr data-track-view="hall" data-item="かわさき北部斎苑"><th scope="row">かわさき北部斎苑</th><td data-label="運営"><span class="badge">公営</span> 川崎市</td><td class="num" data-label="火葬料（市外扱い）"><span class="badge badge--accent">市外料金</span> 60,000円</td><td class="num" data-label="式場（最小構成）">第3A・3B式場 各33,750円</td><td data-label="町田駅からの目安">直線約15.4km</td></tr>
+        <tr data-track-view="hall" data-item="大和斎場"><th scope="row">大和斎場</th><td data-label="運営"><span class="badge">公営</span> 大和市ほか3市（広域大和斎場組合）</td><td class="num" data-label="火葬料（市外扱い）">未確認（公式サイト接続不可のため要問い合わせ）</td><td data-label="式場（最小構成）">未確認</td><td data-label="町田駅からの目安">直線約7.2km（南町田方面は約4.5km）</td></tr>
+        <tr data-track-view="hall" data-item="東京博善（代々幡斎場）"><th scope="row">東京博善（代々幡斎場ほか、民営）</th><td data-label="運営"><span class="badge">民営</span></td><td class="num" data-label="火葬料（市外扱い）">普通炉 87,000円（税込・非課税）</td><td class="num" data-label="式場（最小構成）">式場は別途、休憩室19,800円〜</td><td data-label="町田駅からの目安">小田急線で代々木上原駅へ</td></tr>
+        <tr data-track-view="hall" data-item="日華斎場・多磨葬祭場"><th scope="row">日華斎場・多磨葬祭場（民営）</th><td data-label="運営"><span class="badge">民営</span> 株式会社日華（府中市）</td><td class="num" data-label="火葬料（市外扱い）">最上等 90,000円（税込・非課税）</td><td class="num" data-label="式場（最小構成）">はなれ 143,000円〜</td><td data-label="町田駅からの目安">直線約16.5km</td></tr>
       </tbody>
     </table>
   </div>
@@ -178,22 +193,21 @@ const faqs = [
 
   <h2 id="eria">お住まいのエリアによって、どう使い分ければよいですか？</h2>
   <div class="answer"><p>町田駅周辺・鶴川・成瀬・玉川学園エリアは<strong>火葬料が無料の南多摩斎場が基本的に第一候補</strong>です。南町田・つきみ野など町田市南部だけは南多摩斎場が遠く（車で40〜50分程度・目安）、距離的に近い横浜市北部斎場（市外料金50,000円）との比較が有効になります。</p></div>
-  <div class="table-wrap table-wrap--wide">
-    <table>
-      <caption>町田市エリア別の火葬場の考え方（距離は直線距離の目安・確認日 2026-09-15）</caption>
-      <thead><tr><th scope="col">エリア</th><th scope="col">距離的に最も近い公営施設</th><th scope="col">考え方</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">町田駅周辺（原町田・中町・森野）</th><td>相模原市営斎場（約1.8km）</td><td>物理的には相模原市営が最寄りだが市外料金54,000円。無料の南多摩斎場（約7.9km・車25〜35分）が第一候補</td></tr>
-        <tr><th scope="row">鶴川・能ヶ谷・三輪</th><td>相模原市営斎場（約6.4km）</td><td>南多摩斎場（約8.9km）が第一候補。小田急線で代々木上原駅に直結するため、民営の代々幡斎場を検討する場合の利便性は市内で最も高い</td></tr>
-        <tr><th scope="row">成瀬・南成瀬</th><td>横浜市北部斎場（約3.0km）</td><td>横浜北部が最寄りだが市外料金50,000円・市外予約は3日前から。南多摩斎場は車で30〜40分程度（目安）</td></tr>
-        <tr><th scope="row">南町田・つきみ野・鶴間</th><td>横浜市北部斎場（約1.6km）</td><td>市内で唯一、南多摩斎場が遠い（車で40〜50分程度・目安）エリア。「無料だが遠い南多摩斎場」と「近いが市外料金の横浜北部」を日程優先度で比較する</td></tr>
-        <tr><th scope="row">相原・多摩境・小山</th><td>南多摩斎場（多摩境駅から約1.9km）</td><td>南多摩斎場が地元エリア。橋本駅からの神奈中バス（橋76系統）も使いやすい</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>お住まいのエリアごとの式場や葬儀社の動線は、<a href="/area/">エリア情報</a>のページでも案内しています。距離・所要時間はいずれも座標から算出した直線距離の目安で、実際の道路距離や渋滞状況とは異なる場合があります。</p>
+  <ul class="choice">
+    <li><span class="choice__q">町田駅周辺（原町田・中町・森野）</span><span class="choice__a">距離的に最も近い公営施設は<strong>相模原市営斎場</strong>（約1.8km）だが市外料金54,000円。無料の<strong>南多摩斎場</strong>（約7.9km・車25〜35分）が第一候補</span><a href="/area/" class="btn btn--outline">エリア情報を見る</a></li>
+    <li><span class="choice__q">鶴川・能ヶ谷・三輪</span><span class="choice__a">距離的に最も近い公営施設は相模原市営斎場（約6.4km）。<strong>南多摩斎場</strong>（約8.9km）が第一候補。小田急線で代々木上原駅に直結するため、民営の代々幡斎場を検討する場合の利便性は市内で最も高い</span><a href="/area/" class="btn btn--outline">エリア情報を見る</a></li>
+    <li><span class="choice__q">成瀬・南成瀬</span><span class="choice__a">距離的に最も近い公営施設は<strong>横浜市北部斎場</strong>（約3.0km）だが市外料金50,000円・市外予約は3日前から。南多摩斎場は車で30〜40分程度（目安）</span><a href="/area/" class="btn btn--outline">エリア情報を見る</a></li>
+    <li><span class="choice__q">南町田・つきみ野・鶴間</span><span class="choice__a">距離的に最も近い公営施設は<strong>横浜市北部斎場</strong>（約1.6km）。市内で唯一、南多摩斎場が遠い（車で40〜50分程度・目安）エリア。「無料だが遠い南多摩斎場」と「近いが市外料金の横浜北部」を日程優先度で比較する</span><a href="/area/" class="btn btn--outline">エリア情報を見る</a></li>
+    <li><span class="choice__q">相原・多摩境・小山</span><span class="choice__a">距離的に最も近い公営施設は<strong>南多摩斎場</strong>（多摩境駅から約1.9km）。南多摩斎場が地元エリア。橋本駅からの神奈中バス（橋76系統）も使いやすい</span><a href="/area/" class="btn btn--outline">エリア情報を見る</a></li>
+  </ul>
+  <p class="note">距離は直線距離の目安（確認日 2026-09-15）。お住まいのエリアごとの式場や葬儀社の動線は、<a href="/area/">エリア情報</a>のページでも案内しています。距離・所要時間はいずれも座標から算出した直線距離の目安で、実際の道路距離や渋滞状況とは異なる場合があります。</p>
   <NextLink href="/area/" label="エリアから探す" title="町田市エリア情報｜駅・地域別の式場と火葬場の動線" />
 
   <h2 id="faq">町田市の火葬場でよくある質問</h2>
   <Faq items={faqs} group="crematorium" />
 </ArticleLayout>
+
+<style>
+  .map-figure { margin: 0 0 1rem; background: var(--c-bg); border: 1px solid var(--c-line); border-radius: var(--radius-lg); padding: 1rem 1rem 0.7rem; }
+  .map-figure figcaption { font-size: var(--fs-xs); color: var(--c-ink-3); margin-top: 0.4em; }
+</style>

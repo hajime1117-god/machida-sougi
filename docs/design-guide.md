@@ -144,3 +144,11 @@ import Illust from '../components/Illust.astro';
 
 ### 二層構造
 - 各ページは「イラスト＋要約（Glance / facility / .choice）＋比較（.cmp）」を先に、詳しい本文（SEO/AIO用）をその下に置く。本文を削らない。
+
+## 6. 写真・アイコン（2026-09-18 第3弾）
+
+- **写真は `Photo` コンポーネント**（`src/components/Photo.astro`）で配置する。`astro:assets` の `<Picture>` により AVIF/WebP + srcset を生成し、既定で遅延読込。LCP 画像（TOPヒーロー）だけ `priority` を付け、`BaseLayout` の `preloadImage` で AVIF を preload する。
+- 素材は `src/assets/photos/`（出典・ライセンスは `docs/assets.md`）。他社サイト・検索画像からの転載は禁止。実在施設の写真は権利確認できない限り使わず、汎用写真に「〜のイメージ写真」「実際の◯◯ではありません」とキャプションを付ける。
+- **アイコンは Lucide**（`Icon` コンポーネント、`name` は `phone / mail / clock / pin / check / info / arrow / chevron / doc / building / car / bed / users / calendar / flower / flame / landmark / yen / handshake / home / hospital / clipboard / alarm / scroll / help / shield / list / message / phone-call / menu / close`）。装飾目的では置かない。
+- 自作イラスト（`Illust`）は廃止。図として残すのは町田市概略図（`MachidaMap`）、日程図（`PlanPictogram`）、費用構成バー（`CostBar`）のみ。
+- 写真の役割分担: 写真＝雰囲気・安心感、アイコン＝素早い理解、バッジ＝重要条件、表＝比較、本文＝SEO/AIU・詳細。

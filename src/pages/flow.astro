@@ -5,6 +5,10 @@ import Source from '../components/Source.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
 import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import photoAnchi from '../assets/photos/tatami-alcove.jpg';
+import photoUchiawase from '../assets/photos/signing.jpg';
+import photoSogi from '../assets/photos/candles-flowers.jpg';
 
 const title = '葬儀の流れ｜町田市で亡くなってから火葬・法要・手続きまで';
 const h1 = '町田市の葬儀の流れ｜逝去から火葬・法要・葬儀後の手続きまで';
@@ -78,6 +82,7 @@ const faqs = [
   <section class="step-card" id="step1">
     <div class="step-card__head"><span class="step-card__num">STEP<strong>1</strong></span><h3 class="step-card__title">逝去・搬送・安置</h3><span class="step-card__when">1日目</span></div>
     <div class="step-card__body">
+    <Photo src={photoAnchi} alt="ご自宅での安置のイメージ。静かな和室" widths={[480, 800]} sizes="(min-width: 768px) 320px, 100vw" ratio="3/2" caption="ご自宅での安置のイメージ写真" class="step-card__photo" />
       <p>病院や施設で亡くなった場合、担当医が死亡診断書を発行したあと、病院の霊安室は長時間の利用ができないため、数時間以内に葬儀社へ搬送を依頼して自宅または安置施設へ搬送します。自宅で亡くなった場合、かかりつけ医がいて持病が死因と判断できれば死亡診断書が発行されますが、死因が不明・不自然なときは警察への連絡が必要になり、検視・検案のため搬送までに時間がかかることがあります。墓地埋葬法第3条により、死亡後24時間を経過しなければ火葬できないため、いずれの場合も必ず一定期間の安置が必要です。安置中はドライアイスで遺体を保全し、枕元に線香・ろうそくなどの枕飾りを置きます。</p>
       <ul class="step-card__facets">
         <li><b>今すること</b><span>葬儀社へ連絡し搬送を依頼、自宅または安置施設へ搬送、ドライアイスで安置、枕飾りの設置</span></li>
@@ -93,6 +98,7 @@ const faqs = [
   <section class="step-card" id="step2">
     <div class="step-card__head"><span class="step-card__num">STEP<strong>2</strong></span><h3 class="step-card__title">打ち合わせで決めること</h3><span class="step-card__when">2日目</span></div>
     <div class="step-card__body">
+    <Photo src={photoUchiawase} alt="打ち合わせで書類に記入する手元" widths={[480, 800]} sizes="(min-width: 768px) 320px, 100vw" ratio="3/2" caption="打ち合わせのイメージ写真" class="step-card__photo" />
       <p>搬送・安置の翌日以降、葬儀社との打ち合わせで式場・日程・祭壇・料理・返礼品などを決めます。あわせて参列者の範囲、訃報を伝える相手、遺影に使う写真も家族で決めておきます。南多摩斎場を利用する場合はこの段階で火葬枠を予約します。予約は葬儀社であれば受付システムで24時間、個人であれば電話（8:30〜22:00）で受け付けています。式場を申し込む場合は通夜日の前々日まで、火葬室のみの申込は火葬日の前日までが受付システム上の期限です。菩提寺がある場合は、この打ち合わせと並行して連絡し、通夜・告別式の日程と戒名について相談します。</p>
       <ul class="step-card__facets">
         <li><b>今すること</b><span>式場・日程・祭壇・料理・返礼品を決定、南多摩斎場の火葬枠を予約、菩提寺への連絡</span></li>
@@ -152,6 +158,7 @@ const faqs = [
   <section class="step-card" id="step6">
     <div class="step-card__head"><span class="step-card__num">STEP<strong>6</strong></span><h3 class="step-card__title">告別式・出棺</h3><span class="step-card__when">4日目</span></div>
     <div class="step-card__body">
+    <Photo src={photoSogi} alt="ろうそくの明かりと白い花。告別式のイメージ" widths={[480, 800]} sizes="(min-width: 768px) 320px, 100vw" ratio="3/2" caption="告別式のイメージ写真" class="step-card__photo" />
       <p>告別式は故人に最後の別れを告げる儀式で、通夜の翌日、逝去から2〜4日後に行うのが目安です。所要時間は1時間程度で、終了後に棺を霊柩車に乗せて火葬場へ向かう出棺を行います。南多摩斎場は町田市の北西端（上小山田町）にあり、式場と火葬場が同じ敷地にあるため、出棺してから火葬場に到着するまでの移動時間はかかりません。</p>
       <ul class="step-card__facets">
         <li><b>今すること</b><span>告別式、出棺（棺を霊柩車に乗せて火葬場へ）</span></li>
@@ -264,4 +271,6 @@ const faqs = [
   .phase-bar__t { grid-area: t; font-weight: 700; font-size: var(--fs-sm); }
   .phase-bar__d { grid-area: d; font-size: var(--fs-xs); color: var(--c-ink-2); }
   @media (min-width: 768px) { .phase-bar { grid-template-columns: repeat(3, 1fr); } }
+  :global(.step-card__photo) { max-width: 320px; margin: 0 0 1rem; }
+  @media (min-width: 900px) { :global(.step-card__photo) { float: right; margin: 0 0 0.75rem 1.25rem; } .step-card__facets { clear: both; } }
 </style>

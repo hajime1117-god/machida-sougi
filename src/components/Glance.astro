@@ -1,7 +1,12 @@
 ---
 /** プラン詳細ページ冒頭の「ひと目で分かる」パネル（3プラン共通の構造） */
 import PlanPictogram from './PlanPictogram.astro';
-import Illust from './Illust.astro';
+import Photo from './Photo.astro';
+import photoKazokuso from '../assets/photos/candles-flowers.jpg';
+import photoIchinichiso from '../assets/photos/mums-white-bg.jpg';
+import photoKasoshiki from '../assets/photos/mums-bunch.jpg';
+const photos = { kazokuso: photoKazokuso, ichinichiso: photoIchinichiso, kasoshiki: photoKasoshiki } as const;
+const photoAlt = { kazokuso: '家族葬のイメージ。ろうそくの明かりと白い花', ichinichiso: '一日葬のイメージ。白い菊の花', kasoshiki: '火葬式のイメージ。白い菊の花束' } as const;
 import Icon from './Icon.astro';
 interface Props {
   plan: 'kazokuso' | 'ichinichiso' | 'kasoshiki';
@@ -19,7 +24,7 @@ const { plan, name, price, days, people, hall, total, fit, includes, excludes } 
 ---
 <div class="glance" data-track-view="plan" data-item={name} data-region="plan">
   <div class="glance__lead">
-    <div class="glance__visual"><Illust variant={plan} /><span class="glance__caption">{name}のイメージ（イラスト）</span></div>
+    <div class="glance__visual"><Photo src={photos[plan]} alt={photoAlt[plan]} widths={[480, 800]} sizes="(min-width: 768px) 300px, 100vw" ratio="3/2" /><span class="glance__caption">{name}のイメージ写真</span></div>
     <PlanPictogram plan={plan} size="lg" />
     <p class="glance__price"><span class="num">{price}</span><span class="glance__unit">円（税込）〜　本サイトの設定価格</span></p>
   </div>
@@ -42,7 +47,7 @@ const { plan, name, price, days, people, hall, total, fit, includes, excludes } 
   .glance__lead { display: grid; gap: 0.6rem; justify-items: start; }
   .glance__lead .pict { width: 100%; max-width: 300px; }
   .glance__visual { position: relative; width: 100%; }
-  .glance__visual .illust { border: 1px solid var(--c-line-2); }
+  .glance__visual .photo__img { border: 1px solid var(--c-line-2); }
   .glance__caption { position: absolute; left: 0.5rem; bottom: 0.5rem; background: rgba(255,255,255,0.9); color: var(--c-ink-2); font-size: 0.7rem; padding: 0.25em 0.55em; border-radius: 3px; }
   .glance__price { margin: 0.2rem 0 0; font-size: 1.9rem; font-weight: 700; color: var(--c-primary); line-height: 1.1; }
   .glance__unit { display: block; font-size: var(--fs-xs); font-weight: 400; color: var(--c-ink-2); margin-top: 0.2em; }

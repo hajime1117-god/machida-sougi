@@ -5,7 +5,12 @@ import Source from '../../components/Source.astro';
 import Cta from '../../components/Cta.astro';
 import Icon from '../../components/Icon.astro';
 import PlanPictogram from '../../components/PlanPictogram.astro';
-import Illust from '../../components/Illust.astro';
+import Photo from '../../components/Photo.astro';
+import photoKazokuso from '../../assets/photos/candles-flowers.jpg';
+import photoIchinichiso from '../../assets/photos/mums-white-bg.jpg';
+import photoKasoshiki from '../../assets/photos/mums-bunch.jpg';
+const planPhotos = { kazokuso: photoKazokuso, ichinichiso: photoIchinichiso, kasoshiki: photoKasoshiki } as const;
+const planPhotoAlt = { kazokuso: '家族葬のイメージ。ろうそくの明かりと白い花', ichinichiso: '一日葬のイメージ。白い菊の花', kasoshiki: '火葬式のイメージ。白い菊の花束' } as const;
 
 const title = '葬儀プラン比較｜家族葬・一日葬・火葬式の違いと選び方';
 const h1 = '町田市の葬儀プラン｜家族葬・一日葬・火葬式の違いと選び方';
@@ -40,7 +45,7 @@ const plans = [
   <ul class="plan-cards">
     {plans.map((p) => (
       <li class="plan-card" data-track-view="plan" data-item={p.name} data-region="plan">
-        <div class="plan-card__visual"><span class="plan-card__who">{p.who}</span><Illust variant={p.key} /></div>
+        <div class="plan-card__visual"><span class="plan-card__who">{p.who}</span><Photo src={planPhotos[p.key]} alt={planPhotoAlt[p.key]} widths={[480, 800]} sizes="(min-width: 768px) 240px, 100vw" ratio="3/2" /></div>
         <h3 class="plan-card__name"><a href={`/plans/${p.slug}/`}>{p.name}</a></h3>
         <p class="plan-card__what">{p.what}</p>
         <PlanPictogram plan={p.key} size="sm" />
@@ -165,7 +170,7 @@ const plans = [
   .plan-cards { list-style: none; padding: 0; margin: 1.25rem 0 0.5rem; display: grid; gap: 1rem; }
   .plan-card { margin: 0; border: 1px solid var(--c-line); border-radius: var(--radius-lg); background: var(--c-surface); padding: 1.2rem 1.2rem 1.1rem; display: flex; flex-direction: column; }
   .plan-card__visual { position: relative; margin: -0.2rem -0.2rem 0.8rem; }
-  .plan-card__visual .illust { border: 1px solid var(--c-line-2); }
+  .plan-card__visual :global(.photo__img) { border: 1px solid var(--c-line-2); }
   .plan-card__who { display: inline-block; background: var(--c-primary); color: #fff; font-size: var(--fs-xs); font-weight: 700; padding: 0.35em 0.7em; border-radius: 3px; margin: 0.2rem 0 0.5rem 0.2rem; }
   .plan-card :global(.pict) { max-width: 220px; margin: 0 0 0.8rem; }
   .plan-card__name { font-size: var(--fs-h3); margin: 0 0 0.3em; border: 0; padding: 0; }

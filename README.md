@@ -34,6 +34,7 @@ docs/
   analytics.md          計測イベント仕様と GA4 / Search Console / Clarity 設定手順
   writing-guide.md      ページ執筆ガイド（雛形・文章ルール・ビルド確認）
   design-guide.md       デザインガイド（視覚部品の使い方・ページ別方針・禁止事項）
+  assets.md             使用写真・アイコンの出典とライセンス
   strategy.md           SERP・競合・検索意図分析、キーワードマップ、サイト構造、コンテンツ設計
   research/             調査レポート（競合分析・一次情報・出典）
 tools/                  serve / lighthouse / audit / test-analytics スクリプト
@@ -104,3 +105,10 @@ Vercel の場合も同様に Framework preset を Astro にし、環境変数を
 - 斎場・火葬場: 南多摩斎場の施設カードにイラスト、「町田市民なら」のポイント、状況別CTA「斎場について相談」
 - 流れ: 「逝去から安置／打ち合わせから火葬／葬儀後」の3段階バー＋ステップ
 - 参考サイト分析: `docs/research/regional-fv-analysis.md`
+
+### 第3弾（写真・アイコンの品質改善）
+
+- 自作イラストを廃止し、商用利用可・クレジット不要の写真（Unsplash / Pexels）に置き換え。TOPヒーロー（白菊の花祭壇イメージ）、プラン3種、斎場・火葬場の施設カード、葬儀の流れの主要ステップ（安置・打ち合わせ・告別式）に使用。出典・ライセンスは `docs/assets.md`
+- 画像は `astro:assets` で AVIF/WebP・srcset・width/height・遅延読込を自動生成。ヒーロー画像のみ eager + fetchpriority=high + `<link rel="preload" imagesrcset>`
+- アイコンを Lucide（ISC）に統一（`src/assets/icons/lucide/` に原本とライセンス）
+- Lighthouse: Mobile 99〜100 / Desktop 100（TOPのモバイル LCP 約2.0秒、写真追加前 1.5秒）

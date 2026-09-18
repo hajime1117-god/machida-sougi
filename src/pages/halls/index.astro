@@ -5,7 +5,8 @@ import Source from '../../components/Source.astro';
 import Cta from '../../components/Cta.astro';
 import Faq from '../../components/Faq.astro';
 import Icon from '../../components/Icon.astro';
-import Illust from '../../components/Illust.astro';
+import Photo from '../../components/Photo.astro';
+import facilityPhoto from '../../assets/photos/round-window.jpg';
 
 const title = '町田市の斎場・葬儀場一覧｜公営の式場・民営ホール・寺院の使い方';
 const h1 = '町田市の斎場・葬儀場｜南多摩斎場の式場と民営ホール・寺院・自宅の選び方';
@@ -78,7 +79,7 @@ const faqs = [
   <Source items={[{ label: '南多摩斎場公式サイト 使用料', href: 'https://www.minamitama-saijyo.jp/guide/charge.php' }]} />
   <div class="facility">
     <div class="facility__head"><h3 class="facility__name">南多摩斎場</h3><span class="facility__sub">公営（南多摩斎場組合）・町田市上小山田町2147</span></div>
-    <div class="facility__visual"><Illust variant="hall" /><span class="facility__caption">斎場のイメージ（イラスト）。実際の南多摩斎場の外観ではありません</span></div>
+    <div class="facility__visual"><Photo src={facilityPhoto} alt="落ち着いた和室と緑のイメージ" widths={[480, 800]} sizes="(min-width: 768px) 360px, 100vw" ratio="3/2" caption="式場のイメージ写真。実在の南多摩斎場ではありません" /></div>
   <div class="facility__grid">
       <div class="facility__cell"><span class="facility__label">特徴</span><p>祭壇常備、火葬場と同じ敷地で移動なし、遺族控室あり（通夜後に泊まれるかは斎場に確認）</p></div>
       <div class="facility__cell"><span class="facility__label">料金</span><p class="facility__big">50,000円<small>第二・第三式場／組合構成市住民</small></p><p>第一式場140,000円（住民）</p></div>
@@ -176,7 +177,7 @@ const faqs = [
 
 <style>
   .facility__visual { position: relative; padding: 1rem 1.2rem 0; }
-  .facility__visual .illust { border: 1px solid var(--c-line-2); }
+  .facility__visual :global(.photo__img) { border: 1px solid var(--c-line-2); }
   .facility__caption { display: block; font-size: var(--fs-xs); color: var(--c-ink-3); margin-top: 0.4em; }
   .citizen-strip { background: var(--c-surface); border: 1px solid var(--c-line); border-left: 4px solid var(--c-primary); border-radius: 0 var(--radius) var(--radius) 0; padding: 0.9rem 1rem; margin: 0 0 1.5rem; max-width: var(--w-prose); }
 </style>

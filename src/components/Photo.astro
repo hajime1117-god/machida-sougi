@@ -1,0 +1,32 @@
+---
+/**
+ * 写真（商用利用可の素材。出典は docs/assets.md）。
+ * astro:assets の <Picture> で AVIF/WebP + srcset を生成。既定は遅延読込、priority=true で LCP 画像として即時読込。
+ * caption を渡すと「〜のイメージ」等の注記を表示（実在施設・施工事例と誤認させないため、イメージ写真には必ず付ける）。
+ */
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  /** レイアウト上の表示幅の目安（sizes 属性） */
+  sizes?: string;
+  widths?: number[];
+  priority?: boolean;
+  caption?: string;
+  class?: string;
+  /** 画像の縦横比（CSS aspect-ratio。例 '3/2'） */
+  ratio?: string;
+  quality?: number;
+}
+const { src, alt, sizes = '(min-width: 1024px) 560px, 100vw', widths = [480, 800, 1200], priority = false, caption, class: cls = '', ratio, quality = 62 } = Astro.props;
+---
+<figure class={`photo ${cls}`} style={ratio ? `--ratio:${ratio}` : undefined}>
+  <Picture src={src} alt={alt} widths={widths} sizes={sizes} formats={['avif', 'webp']} quality={quality} loading={priority ? 'eager' : 'lazy'} decoding={priority ? 'sync' : 'async'} fetchpriority={priority ? 'high' : 'auto'} class="photo__img" />
+  {caption && <figcaption class="photo__caption">{caption}</figcaption>}
+</figure>
+<style is:global>
+  .photo { margin: 0; }
+  .photo__img { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); object-fit: cover; aspect-ratio: var(--ratio, auto); }
+  .photo__caption { font-size: var(--fs-xs); color: var(--c-ink-3); margin-top: 0.45em; }
+</style>

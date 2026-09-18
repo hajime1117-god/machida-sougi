@@ -26,6 +26,8 @@ interface Props {
   /** 記事の公開日・更新日（Article用） */
   datePublished?: string;
   dateModified?: string;
+  /** LCP 画像のプリロード（imagesrcset / imagesizes / type） */
+  preloadImage?: { srcset: string; sizes: string; type: string };
 }
 const {
   title,
@@ -36,6 +38,7 @@ const {
   noindex = false,
   jsonLd,
   fixedCta = {},
+  preloadImage,
 } = Astro.props;
 
 const path = Astro.url.pathname;
@@ -108,6 +111,7 @@ const analyticsConfig = JSON.stringify({ ga4Id: ANALYTICS.ga4Id, clarityId: ANAL
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    {preloadImage && <link rel="preload" as="image" imagesrcset={preloadImage.srcset} imagesizes={preloadImage.sizes} type={preloadImage.type} fetchpriority="high" />}
     {ANALYTICS.ga4Id && <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />}
     <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(siteLd)} />

@@ -9,7 +9,7 @@ import PlanPictogram from '../components/PlanPictogram.astro';
 import CostBar from '../components/CostBar.astro';
 import Photo from '../components/Photo.astro';
 import { getImage } from 'astro:assets';
-import heroPhoto from '../assets/photos/hero-chrysanthemum.jpg';
+import heroPhoto from '../assets/photos/hero-lisianthus.jpg';
 import photoKazokuso from '../assets/photos/candles-flowers.jpg';
 import photoIchinichiso from '../assets/photos/mums-white-bg.jpg';
 import photoKasoshiki from '../assets/photos/mums-bunch.jpg';
@@ -27,8 +27,8 @@ const plans = [
 const planPhotos = { kazokuso: photoKazokuso, ichinichiso: photoIchinichiso, kasoshiki: photoKasoshiki } as const;
 const planPhotoAlt = { kazokuso: '家族葬のイメージ。ろうそくの明かりと白い花', ichinichiso: '一日葬のイメージ。白い菊の花', kasoshiki: '火葬式のイメージ。白い菊の花束' } as const;
 
-const heroSizes = '(min-width: 1024px) 50vw, 100vw';
-const heroWidths = [480, 780, 1100, 1400];
+const heroSizes = '(min-width: 1024px) 100vw, 100vw';
+const heroWidths = [640, 960, 1366, 1800];
 const heroAvif = await getImage({ src: heroPhoto, widths: heroWidths, format: 'avif', quality: 55 });
 const heroPreload = { srcset: heroAvif.srcSet.attribute, sizes: heroSizes, type: 'image/avif' };
 
@@ -65,39 +65,54 @@ const areas = [
 ---
 <BaseLayout title={title} description={description} pageType="top" fixedCta={{ contactText: '費用を相談' }} preloadImage={heroPreload}>
   <!-- ===== ファーストビュー ===== -->
-  <section class="hero" data-region="hero" aria-labelledby="hero-h">
-    <div class="container hero__inner">
-      <div class="hero__head">
-        <p class="hero__eyebrow"><span class="hero__area">東京都町田市</span>の家族葬・一日葬・火葬式</p>
-        <h1 id="hero-h">町田市で、費用と斎場を<br class="br-pc" />確かめてから決められるお葬式</h1>
-        <p class="hero__lead">{BRAND.name}は、町田市の家族葬・一日葬・火葬式（直葬）を扱う葬儀社サイトです。プラン料金と追加費用を分けて説明し、南多摩斎場など市内外の斎場・火葬場の使い方まで、町田市の実情に合わせて案内します。</p>
-      </div>
-      <div class="hero__visual">
-        <span class="hero__photo-tag"><Icon name="pin" size={14} />東京都町田市の家族葬・一日葬・火葬式</span>
-        <Photo src={heroPhoto} alt="白い菊が敷き詰められた花祭壇のイメージ" widths={heroWidths} sizes={heroSizes} priority ratio="16/10" class="hero__photo" quality={55} />
-        <p class="hero__photo-caption"><Icon name="flower" size={14} />花祭壇のイメージ写真</p>
-      </div>
-      <div class="hero__body">
-        <ul class="hero__benefits" aria-label="町田市で葬儀をする方に役立つこと">
-          <li><span class="hero__benefit-k"><Icon name="landmark" size={18} />南多摩斎場<br />対応</span><span class="hero__benefit-v">市内唯一の公営火葬場。<strong>町田市民は火葬料が無料</strong></span></li>
-          <li><span class="hero__benefit-k"><Icon name="yen" size={18} />追加費用を<br />先に説明</span><span class="hero__benefit-v">プラン料金と、式場使用料・飲食などの<strong>別途費用を分けて</strong>提示</span></li>
-          <li><span class="hero__benefit-k"><Icon name="clock" size={18} />24時間<br />365日</span><span class="hero__benefit-v">深夜・早朝の<strong>搬送だけのご依頼</strong>も受付。葬儀社を決めるのは安置の後で構いません</span></li>
+  <section class="fv" data-region="hero" aria-labelledby="hero-h">
+    <div class="fv__bg">
+      <Photo src={heroPhoto} alt="白い花と柔らかい光。落ち着いたお別れのイメージ" widths={heroWidths} sizes={heroSizes} priority class="fv__photo" quality={55} />
+    </div>
+    <div class="container fv__inner">
+      <div class="fv__copy">
+        <p class="fv__area"><Icon name="pin" size={18} />東京都町田市の家族葬・一日葬・火葬式</p>
+        <h1 id="hero-h">突然のことでも、<br />お電話一本で大丈夫です。</h1>
+        <p class="fv__sub">町田市の家族葬・一日葬・火葬式を承る葬儀社サイトです。夜間・早朝でも、病院や施設へのお迎え（搬送）からお受けします。</p>
+        <ul class="fv__promises" aria-label="安心してご相談いただくために">
+          <li><Icon name="check" size={22} strokeWidth={2.5} /><span>葬儀が初めてでも、<strong>一つずつご案内します</strong></span></li>
+          <li><Icon name="check" size={22} strokeWidth={2.5} /><span>費用は先にご説明します。<strong>分からないまま進めることはありません</strong></span></li>
+          <li><Icon name="check" size={22} strokeWidth={2.5} /><span>お迎え（搬送）だけのご依頼もできます。<strong>葬儀社はあとで決めても構いません</strong></span></li>
         </ul>
-        <div class="hero__actions">
-          <a href={PHONE.tel} class="btn btn--tel btn--lg" data-cta="tel" data-cta-position="hero" data-cta-text="今すぐ搬送について相談"><Icon name="phone" /><span>今すぐ搬送について相談<span class="hero__tel num">{PHONE.display}</span></span></a>
-          <a href="/cost/" class="btn btn--outline btn--lg" data-cta="cta" data-cta-position="hero"><Icon name="doc" /><span>費用の目安を確認する</span></a>
+        <div class="fv__cta">
+          <a href={PHONE.tel} class="fv__tel" data-cta="tel" data-cta-position="hero" data-cta-text="電話で相談する">
+            <span class="fv__tel-label"><Icon name="phone-call" size={22} />電話で相談する</span>
+            <span class="fv__tel-num num">{PHONE.display}</span>
+            <span class="fv__tel-note">24時間365日受付・ご相談は無料</span>
+          </a>
+          <a href="/cost/" class="fv__second" data-cta="cta" data-cta-position="hero"><Icon name="doc" size={22} />費用の目安を見る</a>
         </div>
-        <p class="hero__note">{PHONE.hours}　{PHONE.note}　<a href="/contact/" data-cta="contact" data-cta-position="hero">事前相談・見積もりだけのご相談はこちら</a></p>
+        <p class="fv__links">
+          <a href="/first-steps/"><Icon name="alarm" size={18} />病院から急かされている方へ：最初にすること</a>
+          <a href="/contact/" data-cta="contact" data-cta-position="hero" data-cta-text="事前のご相談・お見積もり"><Icon name="mail" size={18} />事前のご相談・お見積もり</a>
+        </p>
+        <p class="fv__dummy">{PHONE.note}</p>
       </div>
-      <div class="hero__needs">
-        <p class="hero__needs-title">ご希望から選ぶ</p>
-        <ul class="needs" aria-label="ご希望に合う葬儀の形式・ページ">
-          {needs.map((n) => (
-            <li><a href={n.href} class="need"><span class="need__q">{n.need}</span><span class="need__to"><Icon name="arrow" />{n.to}<span class="need__sub">{n.sub}</span></span></a></li>
-          ))}
-        </ul>
-        <p class="hero__areas"><span class="hero__areas-k">対応エリア</span>{areas.map((a, i) => <span>{i > 0 && '・'}<a href={a.href}>{a.label}</a></span>)}<span>　ほか町田市全域</span></p>
-      </div>
+    </div>
+    <div class="container">
+      <ol class="fv__steps" aria-label="ご連絡から葬儀までの流れ">
+        <li><span class="fv__step-n">1</span><span class="fv__step-body"><span class="fv__step-t">お電話</span><span class="fv__step-d">状況をお聞きし、お迎えの手配をします</span></span></li>
+        <li><span class="fv__step-n">2</span><span class="fv__step-body"><span class="fv__step-t">お迎え・安置</span><span class="fv__step-d">ご自宅または安置施設へお連れします</span></span></li>
+        <li><span class="fv__step-n">3</span><span class="fv__step-body"><span class="fv__step-t">落ち着いてから、葬儀を決める</span><span class="fv__step-d">形式・費用・斎場をご説明してから決めていただきます</span></span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== ご希望から選ぶ ===== -->
+  <section class="section section--needs" aria-labelledby="needs-h">
+    <div class="container">
+      <h2 id="needs-h" class="section-title">ご希望から選ぶ</h2>
+      <ul class="needs" aria-label="ご希望に合う葬儀の形式・ページ">
+        {needs.map((n) => (
+          <li><a href={n.href} class="need"><span class="need__q">{n.need}</span><span class="need__to"><Icon name="arrow" />{n.to}<span class="need__sub">{n.sub}</span></span></a></li>
+        ))}
+      </ul>
+      <p class="hero__areas"><span class="hero__areas-k">対応エリア</span>{areas.map((a, i) => <span>{i > 0 && '・'}<a href={a.href}>{a.label}</a></span>)}<span>　ほか町田市全域</span></p>
     </div>
   </section>
 
@@ -275,76 +290,72 @@ const areas = [
   .br-pc { display: none; }
   @media (min-width: 1024px) { .br-pc { display: inline; } }
 
-  /* ---- Hero ---- */
-  .hero { background: linear-gradient(180deg, #ffffff 0%, var(--c-bg) 100%); border-bottom: 1px solid var(--c-line-2); padding-block: clamp(1.75rem, 3.5vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem); }
-  .hero__inner { display: grid; gap: 1.1rem; grid-template-areas: 'visual' 'head' 'body' 'needs'; }
-  .hero__visual { position: relative; }
-  .hero__photo-tag { position: absolute; left: 0.75rem; top: 0.75rem; z-index: 1; display: inline-flex; align-items: center; gap: 0.35em; background: rgba(255, 255, 255, 0.94); color: var(--c-primary); font-weight: 700; font-size: var(--fs-xs); padding: 0.4em 0.7em; border-radius: 3px; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
-  .hero__head .hero__eyebrow { display: none; }
-  .hero__head { grid-area: head; }
-  .hero__body { grid-area: body; }
-  .hero__visual { grid-area: visual; }
-  .hero__needs { grid-area: needs; margin-top: 0.5rem; }
-  .hero__eyebrow { font-size: var(--fs-sm); color: var(--c-ink-2); font-weight: 700; margin: 0 0 0.6em; display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; }
-  .hero__area { display: inline-block; background: var(--c-primary); color: #fff; padding: 0.2em 0.7em; border-radius: 3px; letter-spacing: 0.04em; }
-  .hero h1 { font-size: var(--fs-display); line-height: 1.35; margin: 0 0 0.6em; letter-spacing: 0.01em; }
-  .hero__lead { color: var(--c-ink-2); max-width: 38em; margin-bottom: 0; font-size: var(--fs-sm); }
-  :global(.hero__photo .photo__img) { border: 1px solid var(--c-line-2); }
-  .hero__photo-caption { display: inline-flex; align-items: center; gap: 0.3em; font-size: var(--fs-xs); color: var(--c-ink-3); margin: 0.5em 0 0; }
-  @media (min-width: 1024px) {
-    .hero__visual { height: 100%; display: flex; flex-direction: column; }
-    :global(.hero__photo) { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
-    :global(.hero__photo picture) { flex: 1 1 auto; display: block; min-height: 0; }
-    :global(.hero__photo .photo__img) { height: 100%; min-height: 440px; aspect-ratio: auto; object-fit: cover; }
+  /* ---- FV ---- */
+  .fv { position: relative; background: #f7f4ee; border-bottom: 1px solid var(--c-line-2); }
+  .fv__bg { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+  .fv__bg :global(.photo), .fv__bg :global(picture) { height: 100%; }
+  .fv__bg :global(.photo__img) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; border-radius: 0; aspect-ratio: auto; }
+  .fv__inner { position: relative; padding-block: 1.6rem 1.25rem; }
+  .fv__area { display: inline-flex; align-items: center; gap: 0.4em; background: var(--c-primary); color: #fff; font-weight: 700; font-size: 0.95rem; padding: 0.45em 0.85em; border-radius: 4px; margin: 0 0 0.9rem; }
+  .fv h1 { font-size: clamp(1.7rem, 1.3rem + 1.8vw, 2.6rem); line-height: 1.4; margin: 0 0 0.6em; letter-spacing: 0.01em; color: var(--c-ink); }
+  .fv__sub { font-size: 1.0625rem; line-height: 1.8; color: var(--c-ink-2); margin: 0 0 1.1rem; }
+  .fv__promises { list-style: none; padding: 0; margin: 0 0 1.4rem; display: grid; gap: 0.7rem; }
+  .fv__promises li { display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.55rem; align-items: start; font-size: 1.0625rem; line-height: 1.6; color: var(--c-ink); }
+  .fv__promises :global(svg) { color: var(--c-primary); margin-top: 0.15em; }
+  .fv__promises strong { font-weight: 700; }
+  .fv__cta { display: grid; gap: 0.7rem; margin: 0 0 0.9rem; }
+  .fv__tel { display: grid; justify-items: center; gap: 0.1rem; padding: 0.9rem 1rem 0.8rem; background: var(--c-accent); color: #fff; border-radius: 10px; text-decoration: none; box-shadow: 0 2px 0 var(--c-accent-2); }
+  .fv__tel:hover { background: var(--c-accent-2); color: #fff; }
+  .fv__tel-label { display: inline-flex; align-items: center; gap: 0.4em; font-size: 1.0625rem; font-weight: 700; }
+  .fv__tel-num { font-size: 2rem; font-weight: 700; letter-spacing: 0.03em; line-height: 1.15; }
+  .fv__tel-note { font-size: 0.9rem; opacity: 0.95; }
+  .fv__second { display: inline-flex; align-items: center; justify-content: center; gap: 0.45em; min-height: 58px; padding: 0.6em 1.2em; background: #fff; color: var(--c-primary); border: 2px solid var(--c-primary); border-radius: 10px; font-size: 1.0625rem; font-weight: 700; text-decoration: none; }
+  .fv__second:hover { background: var(--c-primary-soft); }
+  .fv__links { display: grid; gap: 0.45rem; margin: 0 0 0.6rem; font-size: 0.95rem; }
+  .fv__links a { display: inline-flex; align-items: center; gap: 0.35em; color: var(--c-primary); font-weight: 700; text-decoration: underline; text-underline-offset: 0.2em; }
+  .fv__links :global(svg) { flex: none; }
+  .fv__dummy { font-size: 0.85rem; color: var(--c-ink-3); margin: 0; }
+  .fv__steps { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; gap: 0.5rem; padding-bottom: 1.5rem; }
+  .fv__steps li { display: grid; grid-template-columns: 2.4rem 1fr; gap: 0.7rem; align-items: center; background: #fff; border: 1px solid var(--c-line); border-radius: 10px; padding: 0.75rem 0.9rem; }
+  .fv__step-n { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--c-primary); color: #fff; font-weight: 700; font-size: 1.1rem; }
+  .fv__step-body { display: grid; gap: 0.1rem; }
+  .fv__step-t { font-weight: 700; font-size: 1.0625rem; }
+  .fv__step-d { font-size: 0.95rem; color: var(--c-ink-2); line-height: 1.5; }
+  @media (min-width: 640px) {
+    .fv__cta { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: stretch; }
+    .fv__links { grid-template-columns: auto auto; justify-content: start; gap: 0.5rem 1.5rem; }
+    .fv__steps { grid-template-columns: repeat(3, 1fr); }
   }
-  .hero__illust figcaption { font-size: var(--fs-xs); color: var(--c-ink-3); margin-top: 0.5em; }
-  .hero__tel { display: block; font-size: 1.15em; letter-spacing: 0.02em; margin-top: 0.1em; }
-  .hero__note a { color: var(--c-primary); }
-  .hero__needs-title { font-size: var(--fs-sm); font-weight: 700; color: var(--c-ink-2); margin: 0 0 0.5em; }
+  @media (min-width: 1024px) {
+    .fv__bg { position: absolute; inset: 0; aspect-ratio: auto; }
+    .fv__bg :global(.photo__img) { object-position: 72% 60%; }
+    .fv__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(247,244,238,0.97) 0%, rgba(247,244,238,0.94) 36%, rgba(247,244,238,0.55) 58%, rgba(247,244,238,0.05) 80%); }
+    .fv__inner { min-height: 620px; display: flex; align-items: center; padding-block: 4rem 3rem; }
+    .fv__copy { max-width: 640px; }
+    .fv h1 { font-size: 2.75rem; }
+    .fv__sub { font-size: 1.15rem; }
+    .fv__promises li { font-size: 1.125rem; }
+    .fv__tel-num { font-size: 2.25rem; }
+    .fv__steps { position: relative; margin-top: -0.5rem; padding-bottom: 2rem; gap: 1rem; }
+    .fv__steps li { padding: 1rem 1.1rem; box-shadow: 0 1px 2px rgba(31, 42, 48, 0.05); }
+  }
+
+  /* ---- ご希望から選ぶ ---- */
+  .section--needs { padding-block: 2rem 2.5rem; }
+  .section--needs .section-title { font-size: var(--fs-h3); margin-bottom: 0.8rem; }
   .needs { list-style: none; padding: 0; margin: 0 0 0.9rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
   .needs li { margin: 0; }
-  .need { display: grid; gap: 0.2rem; padding: 0.7rem 0.75rem; background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius); text-decoration: none; color: var(--c-ink); height: 100%; }
+  .need { display: grid; gap: 0.2rem; padding: 0.75rem 0.8rem; background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius); text-decoration: none; color: var(--c-ink); height: 100%; }
   .need:hover { border-color: var(--c-primary-2); }
   .need__q { font-weight: 700; font-size: var(--fs-sm); line-height: 1.4; }
   .need__to { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2em 0.35em; font-size: var(--fs-xs); color: var(--c-primary); font-weight: 700; }
   .need__to :global(svg) { width: 0.9em; height: 0.9em; }
   .need__sub { font-weight: 400; color: var(--c-ink-3); }
-  .hero__areas { font-size: var(--fs-xs); color: var(--c-ink-3); margin: 0; line-height: 1.9; }
+  .hero__areas { font-size: var(--fs-sm); color: var(--c-ink-3); margin: 0; line-height: 1.9; }
   .hero__areas-k { display: inline-block; font-weight: 700; color: var(--c-ink-2); margin-right: 0.6em; }
   .hero__areas a { color: var(--c-ink-2); }
-  .hero__benefits { list-style: none; padding: 0; margin: 0 0 1.3em; display: grid; gap: 0.45rem; }
-  .hero__benefits li { display: grid; grid-template-columns: 6.5em 1fr; gap: 0.7em; align-items: center; font-size: var(--fs-sm); }
-  .hero__benefit-k { display: grid; place-items: center; gap: 0.15em; background: var(--c-primary); color: #fff; font-weight: 700; padding: 0.45em 0.4em; border-radius: 3px; text-align: center; line-height: 1.25; font-size: var(--fs-xs); min-height: 3.2em; }
-  .hero__benefit-k :global(svg) { opacity: 0.9; }
-  .hero__benefit-v { color: var(--c-ink-2); line-height: 1.55; }
-  .hero__benefit-v strong { color: var(--c-ink); }
-  .hero__actions { display: flex; flex-direction: column; gap: 0.7rem; max-width: 520px; }
-  .hero__note { font-size: var(--fs-xs); color: var(--c-ink-3); margin: 0.7em 0 0; }
-  .hero__visual { display: grid; gap: 1rem; }
-  .hero__map { margin: 0; background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius-lg); padding: 1rem 1rem 0.8rem; }
-  .hero__map figcaption { font-size: var(--fs-xs); color: var(--c-ink-2); margin-top: 0.6em; line-height: 1.6; }
-  .hero__urgent { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.2rem 0.75rem; padding: 0.9rem 1.1rem; border: 1px solid #e7c9a6; background: #fff8f0; border-radius: var(--radius-lg); text-decoration: none; color: var(--c-ink); }
-  .hero__urgent:hover { border-color: var(--c-accent); }
-  .hero__urgent-label { font-size: var(--fs-xs); color: var(--c-accent-2); font-weight: 700; display: inline-flex; align-items: center; gap: 0.3em; }
-  .hero__urgent-title { font-weight: 700; grid-row: 2; font-size: var(--fs-sm); }
-  .hero__urgent > :global(svg:last-child) { grid-column: 2; grid-row: 1 / span 2; color: var(--c-accent); }
-  @media (min-width: 640px) {
-    .hero__actions { flex-direction: row; flex-wrap: wrap; max-width: none; }
-    .hero__actions .btn { flex: 0 1 auto; min-width: 240px; }
-    .hero__inner { grid-template-areas: 'head' 'visual' 'body' 'needs'; }
-    .hero__head .hero__eyebrow { display: flex; }
-    .hero__photo-tag { display: none; }
-    .needs { grid-template-columns: repeat(3, 1fr); }
-  }
-  @media (min-width: 1024px) {
-    .hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: 'head visual' 'body visual' 'needs needs'; grid-template-rows: auto 1fr auto; gap: 0 3rem; align-items: start; }
-    .hero__body { margin-top: 1.25rem; }
-    .hero__needs { margin-top: 2.25rem; }
-    .needs { grid-template-columns: repeat(6, 1fr); }
-    .hero__lead { font-size: var(--fs-base); }
-    .hero h1 { font-size: 2.3rem; }
-    .hero__map { padding: 1.25rem 1.25rem 1rem; }
-  }
+  @media (min-width: 640px) { .needs { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1024px) { .needs { grid-template-columns: repeat(6, 1fr); gap: 0.75rem; } }
 
   /* ---- 状況から選ぶ ---- */
   .starts { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }

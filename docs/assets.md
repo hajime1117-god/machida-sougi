@@ -6,6 +6,7 @@
 
 | ファイル | 内容 | 出典 | ライセンス |
 |---|---|---|---|
+| hero-lisianthus.jpg | 白い花（トルコキキョウ・バラ）と自然光。TOPファーストビュー | Pexels https://www.pexels.com/photo/38909725/ | Pexels License |
 | hero-chrysanthemum.jpg | 白菊が敷き詰められたアレンジ（花祭壇イメージ） | Unsplash https://unsplash.com/photos/ 画像ID `photo-1560238786-aa5717f6ba63` | Unsplash License（商用可・クレジット不要・再配布不可） |
 | mums-white-bg.jpg | 白背景の白菊 | Unsplash 画像ID `photo-1480511361210-b1b966c8d614` | Unsplash License |
 | candles-flowers.jpg | ろうそくと白い花のテーブル | Unsplash 画像ID `photo-1659902374294-0a97f40b8877` | Unsplash License |
